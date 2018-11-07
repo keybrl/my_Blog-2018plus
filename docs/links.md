@@ -9,6 +9,7 @@
 - 手搓堆排序之**zsr** - [Stephen的小本本](http://www.stephenzhang.me/)
 - 全能型学霸**李主席** - [Stay Hungry, Stay Foolish.](https://tobiaslee.top/)
 - Web全栈之**钟大佬** - [37A's Personal Site](http://www.three7.cc/)
+- 精通ML之**Virtuoso** - [Virtuoso's Blog](https://blog.de1ete.com/)
 - 精通计算机图形学的**杨大佬** - [心渡的小黑屋](http://blog.xindu233.com/)
 - 游戏组三代目**张大炮** - [大炮的部落格](http://blog.dapaostudio.com/)
 

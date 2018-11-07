@@ -41,6 +41,7 @@ pages:
         - 'Python入门1': 'sssta/2017-09-29-SSSTA-Python1.md'
     - 无聊的日常:
         - '无聊的日常 - 导读': 'boring/index.md'
+#        - '软路由与NAS 硬件平台搭建': 'boring/2018-11-02-router.md'
 #        - 'New Surface Pro 初体验（未完成）': 'boring/2018-09-07-new_surface_pro.md'
         - '虹吸壶冲泡咖啡': 'boring/2018-03-03-siphon.md'
         - 'IKBC Poker2 加灯历程': 'boring/2018-01-20-lighted-poker2.md'
