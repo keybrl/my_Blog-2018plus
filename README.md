@@ -27,6 +27,12 @@ Keyboard 非常垃圾，写的文也垃圾，写的代码也垃圾。（同意�
 - Email: [keyboard-l@outlook.com](mailto:keyboard-l@outlook.com)
 - Steam: [keyboard_l](http://steamcommunity.com/id/keybrl)
 
+## 关于订阅
+
+实在非常抱歉了，MkDocs 貌似还不支持自动生成 feed 。但我觉得 RSS 还是非常有必要的，所以我手搓了一个生成 Atom feed 的脚本（具体可以看看 [该项目的 feeds/ 路径下的一些代码](https://github.com/keybrl/my_Blog-2018plus/tree/master/feeds) ）。生成的 feed 也非常拙劣，大家可以将就着看，主要也是为了获取最近的更新。不过由于是我手动生成的，所以，我会有选择地挑选我觉得必要推给大家的更新，这样大家就不会被我经常性的小修小补打扰了。
+
+那么如果需要的话，大家可以通过这个链接获取订阅：[https://blog.keybrl.com/feed.xml](https://blog.keybrl.com/feed.xml)
+
 ## 版权信息
 
 **除文章中特别说明外，[本站](https://blog.keybrl.com/)所有文章版权由我本人所有**

@@ -82,6 +82,8 @@ extra:
       link: 'https://steamcommunity.com/id/keybrl'
     - type: 'envelope'
       link: 'mailto:keyboard-l@outlook.com'
+    - type: 'rss'
+      link: 'https://blog.keybrl.com/feed.xml'
 
 # Preview controls
 #use_directory_urls: true
