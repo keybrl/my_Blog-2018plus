@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title type="text">KeybrL's Blog</title>
+    <generator>MkDocs v1.0.3</generator>
+    <id>https://blog.keybrl.com/</id>
+    <link href="https://blog.keybrl.com/" rel="alternate" type="text/html"/>
+    <link href="https://blog.keybrl.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <author>
+        <name>KeybrL</name>
+        <email>keyboard-l@outlook.com</email>
+    </author>
+    <rights type="html">Copyright &amp;copy; &lt;a href="https://blog.keybrl.com/">KeybrL&lt;/a> All Rights Reserved.</rights>
+    <updated>2018-11-19T00:00:01+08:00</updated>
+
+    <entry>
+        <title>软路由与NAS 硬件平台搭建</title>
+        <link rel="alternate" type="text/html" title="软路由与NAS 硬件平台搭建" href="http://blog.keybrl.com/boring/2018-11-02-router1_hardware/"/>
+        <id>http://blog.keybrl.com/boring/2018-11-02-router1_hardware/</id>
+        <updated>2018-11-18T00:00:00+08:00</updated>
+        <published>2018-11-18T00:00:00+08:00</published>
+        <summary></summary>
+        <content type="html" xml:base="http://blog.keybrl.com/boring/2018-11-02-router1_hardware/">&lt;h1 id="nas">软路由与NAS 硬件平台搭建&lt;/h1>
+&lt;p>从大二下学期以来，一直梦想着拥有一个自己的软路由。千兆位局域网、透明代理、NAS、自建git私有仓库、...只要能运行Linux系统，就有无尽的乐趣。这种想法总会让我对各种奇奇怪怪的机子产生兴趣（也不知道我大三去了嵌入式方向是不是因为这个）&lt;/p>
+&lt;p>最初我有一个 Raspberry Pi 3B ，那也确实好玩，我还拿他刷过 OpenWrt ，做过一段时间的随身路由，上面配置有透明代理。可是 Raspberry Pi 最大的问题就是 I/O 性能太弱， USB 、内置无线网卡，都慢得不行。它本身的 SD 卡读写性能也是一个瓶颈。这就导致无论用它干什么都觉得不爽，无论是软路由还是文件共享，还是别的什么服务。也就有时需要一个东西在校园网内跑个长进程时需要他（比如大二期末用它跑了个成绩监视应用，有新成绩出来时通知我（项目仓库在这 &lt;a href="https://github.com/keybrl/xidian_grade_monitor">keybrl/xidian_grade_monitor&lt;/a> ）），它的体验甚至不如阿里云学生主机。所以后来也就很少玩了。开学初把它卖给了舍友，换了个 Raspberry Pi 3B+ ，一样没什么好玩。几周前，不小心短接了他 GPIO 的 VCC 5V 和 3.3V ，瞬间黑屏了。送修至今（发表这篇文章时已经等了 38 天了），了无音信，便不再牵挂。&lt;/p>
+&lt;p>大二下学期开学初，看了尹大人的几篇博客，了解了他与他的那个小小的软路由之间的有趣故事。比如这篇 &lt;a href="https://www.yichya.review/diy-nas-project-1/">DIY NAS Project (1) Hardware and OpenWRT&lt;/a> ，这是他这个系列文章的第一篇。下面这是尹大人初代 NAS&lt;/p>
+&lt;p>&lt;img alt="尹大人的初代" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/yichya_router.webp" />&lt;/p>
+&lt;p>感觉，哇，太厉害了，我也想要一个！！于是乎心心念念到了现在，在又一个双十一的推波助澜下（虽然我买的这些东西都不会降价），我开始了我有生以来最具挑战的一次 DIY 之旅。&lt;/p>
+&lt;hr />
+&lt;h2 id="too-young">Too Young!&lt;/h2>
+&lt;p>电脑嘛，首先是 CPU 和 板子，因为 Raspberry Pi 给我的不好印象，我觉得只有 x86 好玩，兼容性也好，跑个什么系统都比较随意，其他平台都没意思（ARM 各种玄学）。开始也没多想，某宝搜个“工控主板”一大堆，挑了个比较小巧，好看的，像这个...&lt;/p>
+&lt;p>&lt;img alt="n29" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/n29.png" />&lt;/p>
+&lt;p>CPU 是 Intel&amp;reg; Celeron&amp;reg; J1800 ， TDP 只有 10W ，大小也只有 12cm * 12cm ，而且 CPU 我查了一下性能还可以。双以太网卡、一个 SATA 、一个 mSATA 、一个 mini PCI-E 、 USB 若干（甚至还有 USB3.0 ）。看起来无可挑剔了。&lt;/p>
+&lt;p>正当我准备买时（大概在我后来真正下单前 12h），我在群里问了一下尹大人。我获知了一个惊人的消息（其实一点也不惊人，因为我就没有想过），&lt;strong>这个赛扬 J1800 是不支持 VT-d 的！&lt;/strong>&lt;br />
+尹大人刚说时，其实我没有什么感觉，因为我也不知道什么是 VT-d ，反正尹大人也经常说一些奇奇怪怪的名词，估计是什么高级功能，没有就没有吧，反正就是个软路由。但是出于对尹大人的尊敬，我查了一下什么是 VT-d ...&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Intel&amp;reg; 官方说法：&lt;/strong>&lt;br />
+&lt;em>Intel&amp;reg; Virtualization Technology for Directed I/O (VT-d) continues from the existing support for IA-32 (VT-x) and Itanium&amp;reg; processor (VT-i) virtualization adding new support for I/O-device virtualization. Intel VT-d can help end users improve security and reliability of the systems and also improve performance of I/O devices in virtualized environments.&lt;/em>&lt;/p>
+&lt;p>&lt;strong>中文：&lt;/strong>&lt;br />
+&lt;em>英特尔&amp;reg; 定向 I/O 虚拟化技术 (VT-d) 在现有对 IA-32（VT-x）和安腾&amp;reg; 处理器 (VT-i) 虚拟化支持的基础上，还新增了对 I/O 设备虚拟化的支持。英特尔定向 I/O 虚拟化技术能帮助最终用户提高系统的安全性和可靠性，并改善 I/O 设备在虚拟化环境中的性能。&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;p>嗯，看起来就是某种对 I/O 设备做专门优化的虚拟化技术。再 Google 一查，不得了，有 VT-d 的话，可以直接把一个 PCI-E 设备划分给虚拟机，可以大幅提高虚拟机的某些 I/O 性能。而且，按尹大人的说法， &lt;em>“据我说知，这是目前让无线网卡穿进虚拟机的 &lt;strong>唯一方法&lt;/strong> ”&lt;/em> 。&lt;/p>
+&lt;p>一语惊醒梦中人。如果按照我最初的设想，就是这机子上跑个 Ubuntu ， Ubuntu 里跑个 OpenWrt 虚拟机， Openwrt 承担软路由的功能， Ubuntu 上面还可以部署别的应用。可这如果无线网卡穿不进虚拟机，我还做个鬼无线路由啊（其实也是可以的，只是少了很多配置无线参数的空间，还要面临性能的大幅下降的窘迫）。所以如果要愉快玩耍，肯定要买个带支持 VT-d 的 CPU 的板子。&lt;/p>
+&lt;h2 id="_1">甚至有点绝望&lt;/h2>
+&lt;p>多了一个要求的话，找板子还是很艰辛的。我甚至顺便去翻了翻 Intel&amp;reg; 的产品线。工控板，供电和散热都有比较严格的限制，我还想没有风扇，这样 TDP 基本就限制在 10W 左右了。 Intel&amp;reg; 目前满足这个要求的 CPU 只有 Celeron&amp;reg; 和 Core&amp;trade; m3 。想想都知道， m3 那么贵，不会有厂商愚蠢到把它用在工控机上的，所以只剩 赛扬&amp;reg; 了。 赛扬&amp;reg; 的芯片命名也很有趣，大致分 4 类：&lt;/p>
+&lt;ul>
+&lt;li>Gxxxx G 开头跟 4 个数字的， TDP 基本都 2、30W ，受不起；&lt;/li>
+&lt;li>Jxxxx J 开头跟 4 个数字的， TDP 一般比较低， 10W 或以下，但是全都没有 VT-d；&lt;/li>
+&lt;li>Nxxxx N 开头跟 4 个数字的，跟 Jxxxx 差不多，反正没有 VT-d；&lt;/li>
+&lt;li>xxxxU 4 个数字开头跟一个字母 U 的， TDP 普遍是 15W ，稍高，但是支持 VT-d；&lt;/li>
+&lt;/ul>
+&lt;p>综合来看，别无选择，只能是 Celeron&amp;reg; xxxxU 了。&lt;/p>
+&lt;p>把现有的几个 xxxxU CPU 的型号依次在某宝搜搜，最后，选择真是少得可怜。一个是尹大人的二代软路由用的板子，长这样&lt;/p>
+&lt;p>&lt;img alt="3215U" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/3215U.png" />&lt;/p>
+&lt;p>那是一块 Celeron&amp;reg; 3215U ，四个以太网卡还是很诱人的，具体可以看尹大人这篇文章 &lt;a href="https://www.yichya.review/diy-nas-project-3/">DIY NAS Project (3) Hardware Upgrade &amp;amp; Disaster&lt;/a> 。这块板子据说有 USB3.0 干扰网卡的情况，加上也比较贵，而且仔细一想， 4 以太网卡对我也没什么用，所以还是算了。&lt;/p>
+&lt;p>然后还有就是 Celeron&amp;reg; 3855U 的有几块，大致是这样的&lt;/p>
+&lt;p>&lt;img alt="3855U" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/3855U.png" />&lt;/p>
+&lt;p>区别的话主要是，有的板子支持 DDR4 2133 内存条，有的板子支持 DDR3L 1333/1600 。考虑到 DDR4 内存可能比这板子都贵，就选了用 DDR3L 内存的，也就是上图那块。配置基本如下&lt;/p>
+&lt;ul>
+&lt;li>CPU: Intel&amp;reg; Celeron&amp;reg; 3855U&lt;/li>
+&lt;li>NB/DDR3L 插槽 * 1，支持 DDR3L 1333/1600&lt;/li>
+&lt;li>mini PCI-E 插槽 * 1，可以插无线网卡&lt;/li>
+&lt;li>mSATA 插槽 * 1&lt;/li>
+&lt;li>USB3.0 、 USB2.0 各 * 2&lt;/li>
+&lt;li>吉比特以太网卡 * 2&lt;/li>
+&lt;li>SATA3.0 接口及 4pin 硬盘电源接口各 * 1&lt;/li>
+&lt;li>VGA 、 HDMI 各 * 1&lt;/li>
+&lt;li>GPIO 、 COM 、 FPI 、 PS/2 ...（除了GPIO都不认识...）&lt;/li>
+&lt;/ul>
+&lt;p>心一横，下单！！&lt;/p>
+&lt;h2 id="_2">买买买！！&lt;/h2>
+&lt;p>下单了板子之后，就开始了各种配件的选购，因为不想双十一跟大家排队拿快递，加上主要配件早就看好了，所以多数都在当天下单了。&lt;/p>
+&lt;p>首先是内存、外存、无线网卡&lt;/p>
+&lt;p>&lt;img alt="order1" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/order1.png" />&lt;/p>
+&lt;p>内存没什么挑的，找了个比较便宜的大牌子，镁光的8G DDR3L 1600。原本我想的是一个小路由用不了多少内存，我主力笔记本也才8G内存，302一堆2G内存的旧机子都能算得上流畅运行，偶尔给他们插上4G内存就流畅得不行了，所以4G内存绝对足够。 &lt;strong>但是&lt;/strong> ，在我下单之前，我又在群里问了一下，尹大人竟然回我了个“多多益善”，还说什么8G内存就能支持什么什么文件系统了（具体是什么我甚至都忘了）。加上我一看8G比4G也就贵了100多，这多4G跑个虚拟机什么的肯定更轻松，于是心一横又下单了。&lt;/p>
+&lt;p>外存嘛，本来我有一块1T的希捷酷鱼3.5"硬盘，也是我平时用来堆东西的盘，本来就够了。 &lt;strong>但是&lt;/strong> ，尹大人见我要搞个软路由，在群里提议我买个SSD，说什么“系统装在SSD里，硬盘没事可以下下来”，“装个SSD可以显著提高系统性能的”，“反正一个几十G的拆机盘也不用几个钱”...有道理喔，赶紧淘宝搜索一下，一圈搜索下来，贵的太贵，受不起。便宜的看不上，那些几十块钱几十G的SSD，顺序写入150MB/s，顺序读220MB/s，这不就坑人嘛，我那块硬盘都随便上200MB/s，虽说这SSD访问速率和4K随机读取什么的比硬盘要好很多，但这挫成这样的SSD还真不想买。于是乎，心一横，挑了个不算很贵，也不算差的中档SSD...&lt;/p>
+&lt;p>无线网卡肯定得挑个好的。由于才疏学浅，开始只知道 Intel&amp;reg; 无线网卡还不错，淘宝一搜，一大堆，随便挑个看起来还不错的，所谓 2.4GHz /5GHz 双频的，所谓支持千兆位无线局域网的，便宜的，五六十左右的，一块。 &lt;strong>但是&lt;/strong> （又是但是），我还是在群里问了一下，尹大人直接说了个 &lt;strong>“QCA9880”&lt;/strong> ，这可还行，都精确到型号了，赶紧 Google 一下。高通的的一块其貌不扬的无线网卡，看介绍好像是挺厉害，再看尹大人说“无线网卡，除了高通的方案都不用考虑”...后面尹大人说了一大堆，结合 Google ，大致理解了一下。就是，目前的技术，基本上只能做到单天线 450Mbps ，业界对千兆位无线局域网的解决方案都是 MIMO (Multi-input Multi-output, 多输入多输出) 也就是，多根天线在不同频段，同时传输，多根天线互不干扰。一般手机只有一根天线，那么就只能到 450Mbps ，笔记本一般有两根天线，就可以 2 * 2 MIMO ，达到 900Mbps 。苹果的笔记本比较厉害，他们是支持 3 * 3 MIMO 的，到 1300Mbps 。多天线除了可以 MIMO 提升单用户的传输速率，还可以通过 MU-MIMO （多用户多输入多输出）降低用户之间的冲突，提升整个无线局域网内的网络质量。所以这也是为什么现在很多路由器都有两根或者三根天线的原因。而回到网卡上， QCA9880 是有3个天线接口的，支持 3 * 3 MIMO，而 Intel&amp;reg; 多数网卡都是 蓝牙 + 2天线 ，蓝牙对于软路由来说又没卵用，所以就性价比不怎么样。加上， MIMO 是需要收发两端同时支持而且共用同一套解决方案才能发挥作用的，也就是不同品牌之间甚至都不兼容，而高通在无线网卡方面市场占有率比较高，加上高通近年来在 MIMO 的研发方面投入了不少精力，颇有造诣，支持高通方案的设备也比较多，所以体验会好很多。最后，尹大人补充了一句 &lt;strong>“QCA9880是世界上最好的无线网卡，那些很牛的路由器都是好几块这个堆起来的”&lt;/strong> ...反正也就贵几十块，好，买！&lt;/p>
+&lt;p>买完了大头，还得买些小东西，馈线、天线得买几根，随便下单了几条好看的&lt;/p>
+&lt;p>&lt;img alt="order2" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/order2.png" />&lt;/p>
+&lt;p>在这期间顺便 Google 了一下那些天线说的什么增益，什么 5dBi 、 6dBi 到底是些啥意思。天线增益嘛，大家直观感觉肯定是增强信号了，那那个多少多少 dBi 肯定是增益的单位嘛，那数值肯定是越大越好了。真的吗？当然不是。其实要说增益是增强信号也不是没有道理，但是这个增强不是通过增加功率做到的，输出功率是由网卡决定的，天线没有任何影响。天线增益的基本原理其实就是改变信号的形状，一般的WiFi天线就是把信号压扁，削弱竖直方向的信号，增强水平方向的信号。那么增益的多少就是由形变量实现的，其实下面这张图已经可以非常清楚地说明了&lt;/p>
+&lt;p>&lt;img alt="dbi" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/dbi.jpg" />&lt;/p>
+&lt;p>说了那么多，所以我应该挑选多少 dBi 的天线呢？不知道，我瞎挑的，最重要是好看。看了一些文章，看起来 5dBi 挺中规中矩，那就 5dBi 吧。买了3根， 3 * 3 MIMO 嘛。顺便看到一根 3dBi 的挺可爱，也许便携使用时会有用，反正也不贵，顺便买了一根。&lt;/p>
+&lt;p>最后是电源，电源这虽然技术含量不高，但是也很重要啊，就某宝随便搜个 DC12V ，然后选个合适的功率。功率可麻烦了，我去查了各种配件的文档，最后算起来最高应该不到 30W 。但是，这个电源不能省，特别是注意到 &lt;strong>硬盘的启动电流是 2A&lt;/strong> ，正常工作电流是 0.8A （都是 12V），这里就会有一个大电流的冲击，如果随便买个 30W （也就是 2.5A ）的电源，那可能硬盘一启动，主板和其他配件就会突然欠压，轻则屏幕黑一下，重则直接关机了。所以我也懒得想了，直接 double ，买了个 60W 的电源。&lt;/p>
+&lt;p>那该买的差不多就买完了（个鬼了）...&lt;/p>
+&lt;h2 id="_3">拼积木&lt;/h2>
+&lt;p>经过几天焦急的等待，东西陆续都到了。首先是某个风和日丽的早晨，内存和SSD到了。&lt;/p>
+&lt;p>&lt;img alt="SSD&amp;amp;Memory" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/SSD&amp;amp;Memory.jpg" />&lt;/p>
+&lt;p>&lt;img alt="Memory" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/Memory.jpg" />&lt;/p>
+&lt;p>&lt;img alt="SSD" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/SSD.jpg" />&lt;/p>
+&lt;p>甚至挺好看，但是好像除了吊我胃口，没有任何卵用。&lt;/p>
+&lt;p>所幸，内存和SSD到的那天的下午，板子也到了。那起码能开机、装个系统了。&lt;/p>
+&lt;p>毫无意外，板子长这样&lt;/p>
+&lt;p>&lt;img alt="board front" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/board1.jpg" />&lt;/p>
+&lt;p>&lt;img alt="board back" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/board2.jpg" />&lt;/p>
+&lt;p>真的毫无意外吗？太意外了好吧，我发现他居然没带散热器！！虽然我在淘宝上看的时候没有看见他有散热器的照片，但是他们家其他板子都有带散热器，我以为只是因为这块CPU在背面所以才看不见，结果一到货彻底傻眼了...赶紧一量尺寸下单了两个散热器，和硅脂&lt;/p>
+&lt;p>&lt;img alt="cooler" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/cooler.jpg" />&lt;/p>
+&lt;p>两个尺寸是一样的，之所以买两个是因为我看我这U 15W TDP ，人家 J1800 才 10W TDP 散热器都比这个大，这怕是得有风扇才能压住。所以买了个有风扇的（虽然风扇电源接口不合适），但还是不想放弃无风扇散热方案，所以两个都买来试试。硅脂在京东买的，因为刚好发现京东有卖，而且自营的话第二天就能到。&lt;/p>
+&lt;p>但是这板子、内存、SSD都齐了，总不能不让我玩吧，所以秉着好死也不能赖活着的原则（我记得原话好像是“好死不如赖活着”来着），在302四处踱步，寻找临时解决方案。功夫不负有心人，在302垃圾堆找到几块闲置的主板，上面有几块小散热片，估计是南桥芯片、北桥芯片什么的，果断拆下来，擦拭干净。&lt;/p>
+&lt;p>刚要高兴，发现，电源没到啊。找遍了302也没有发现接口合适的 DC12V 电源。但我看板子上有个奇怪的 4-pin 插座，在正常的电源接口旁边&lt;/p>
+&lt;p>&lt;img alt="power" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/power.jpg" />&lt;/p>
+&lt;p>而且这个接口和台式机电源引出来的一堆线中的一个看起来可以完美对接，就下面这个&lt;/p>
+&lt;p>&lt;img alt="power" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/power-line.jpg" />&lt;/p>
+&lt;p>那是不是可以用这个苟一下呢。&lt;/p>
+&lt;p>但是，电源可是大事，莽不得，特别是我看尹大人文章时了解了尹大人因为电源问题烧毁了一块塞满数据的硬盘的有趣故事（详情可以看尹大人这篇文章 &lt;a href="https://www.yichya.review/diy-nas-project-3/">DIY NAS Project (3) Hardware Upgrade &amp;amp; Disaster&lt;/a> ）。于是我去找这板子的规格说明和用户手册，上面是这么说的&lt;/p>
+&lt;p>&lt;img alt="power-info" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/power_info.jpg" />&lt;/p>
+&lt;p>噢，才疏学浅的我，结合一下 Google 才知道，原来这个东西就是传说中的 ATX 12V 电源接口，那应该是能用的吧。保险起见，我还拿多用电表测了一下电源上几个针脚的电压，看是不是符合说明书上的定义。但其实这样接上还是通不了电的，因为电源上的主输出接口没有输出，电源会以为没有东西接上他。所以我还得在302垃圾堆找到一块没用的主板插上，电源开始工作，然后插上那根 ATX 12V 电源线。压上散热片，按下电源开关，哔~ 的一声...&lt;/p>
+&lt;p>&lt;img alt="first-light" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/first_light.jpg" />&lt;/p>
+&lt;p>之所以要这样鬼畜地压着散热片，是因为散热片是随便找了块主板拆下来的，规格是不合适的，不能自己固定在这块板子上，而且由于没有硅脂，所以接触非常不紧密，只能通过增加一点压力让他们接触没那么糟糕（事实上还是很糟糕，看后面就知道了）。&lt;/p>
+&lt;p>不管怎样，这样能开机了。首先进入 BIOS 看一眼。还行，没有坑我。BIOS 能设置的东西还挺丰富的，甚至主板某些组件的供电电压、时钟频率都可以设置（是不是意味着可以搞搞超频了）。由于过于兴奋，当时没有及时拍照，所以就这样吧，反正 BIOS 也没什么好看。比较有趣的是，BIOS 上可以看见CPU温度，我发现随随便便就能上60摄氏度，手松一点就上到70+，而且才没几分钟，温度还在以肉眼可见的速度缓慢上升，太可怕了。&lt;/p>
+&lt;p>看起来，散热就位之前也没法做什么了。但是好死也好过赖活着，作死为什么不做到底呢，怎么说也得让我装个系统看看吧，我还想看看 SSD 擦写次数呢（为了确定没有人坑我），我甚至还想编译个 OpenWrt 呢... 再次去 Intel&amp;reg; 官网看了一眼对于 CPU 温度的描述&lt;/p>
+&lt;p>&lt;img alt="temp-limit" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/temp_limit.jpg" />&lt;/p>
+&lt;p>看起来只要没到100度就不会死，反正 CPU 也会自己启动保护措施。那么就快动手吧，插上 Ubuntu 装机盘，深吸一口气，开机...&lt;/p>
+&lt;p>&lt;img alt="install-ubuntu" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/install_ubuntu1.jpg" />&lt;/p>
+&lt;p>&lt;img alt="install-ubuntu" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/install_ubuntu2.jpg" />&lt;/p>
+&lt;p>呼，忍着手底的热度，终于完了，幸好是 SSD ，安装个系统不用半个钟。然后我还开机装了几个软件，期间感觉好像也没多热，松了一下手，没过多久，散热片甚至变凉了，凉了！！完全凉了。完全难以理解，我甚至以为是静息时就这个温度，但是很快，我发现我点什么都没有反应了，再过了一会鼠标都不能动了，赶紧强制关机，幸好还能再开机，于是便不敢再玩了。后来也没有想明白怎么回事，也许是 CPU 过热关机了，当时凉得不可思议，就好像关机时的温度一样，几十秒前还是温热的，但是为什么鼠标还可以动呢，难道外设通信不需要CPU干预？为什么没有瞬间黑屏呢，难道显卡还能自己工作？难道显示器有缓存？管他呢...&lt;/p>
+&lt;p>第二天，硅脂到了，因为是京东自营嘛，而且电源也在不久后到了，具体是哪一天就忘了。而且无线网卡也到了，无线网卡是最期待的，毕竟我还没摸过这所谓的神卡呢，网卡见下图。虽然散热器没有到，但是有硅脂的话，之前那个小小的散热片也能勉强撑着。甚至开始尝试编译 OpenWrt 。&lt;/p>
+&lt;p>&lt;img alt="qca9880" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/qca9880.jpg" />&lt;/p>
+&lt;p>虽然天线还没有到，但是，302有一块闲置的 PCI-E 无线网卡，上面有两根天线，而且非常巧，在一个机箱里找到一根悬空的馈线，拆下来，这样就可以接一根网线了。但是，天线怎么固定呢。总不能像尹大人那样随便找个地方拿包装带一扎就当固定了吧。这可是有3根天线，总得齐齐整整摆着吧。然后我发现 PCI-E 挡板非常好用，就这样的东西&lt;/p>
+&lt;p>&lt;img alt="pcie-card" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/pcie_wlan.jpg" />&lt;/p>
+&lt;p>赶紧拆下来，找个位置拧个螺丝固定住&lt;/p>
+&lt;p>&lt;img alt="full1" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/full1.jpg" />&lt;/p>
+&lt;p>蓝色的东西是电工胶布，因为会接触到主板上一堆焊点，所以缠点电工胶布避免短路。四个脚是铜柱，把板子垫高，避免压到正面的元件&lt;/p>
+&lt;p>&lt;img alt="full2" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/full2.jpg" />&lt;/p>
+&lt;p>这扳手、纸巾是编译OpenWrt时热得不行时想出来的方法，扳手下面压的纸巾是湿水的（甚至可以称之为水冷），之所以用扳手是因为那是我当时第一眼看见的最合适的可以压在上面的东西&lt;/p>
+&lt;p>&lt;img alt="water cooler" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/water_cooler.jpg" />&lt;/p>
+&lt;p>后来天线到了，但3孔位的 PCI-E 挡板没到，所以临时用了块纸板来固定天线（这里要感谢 &lt;a href="https://github.com/virtuoso00">@Virtuoso&lt;/a> 的创意）&lt;/p>
+&lt;p>&lt;img alt="full3" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/full3.jpg" />&lt;/p>
+&lt;p>&lt;img alt="full4" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/full4.jpg" />&lt;/p>
+&lt;p>散热器到了之后就可以把他反过来正面朝上了，天线挡板还是没有到，所以暂时用单天线，用一个回形针固定，还挺可爱&lt;/p>
+&lt;p>&lt;img alt="full5" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/full5.jpg" />&lt;/p>
+&lt;p>最后所有东西都到了之后，长这样&lt;/p>
+&lt;p>&lt;img alt="full8" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/full8.jpg" />&lt;/p>
+&lt;p>&lt;img alt="full6" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/full6.jpg" />&lt;/p>
+&lt;p>&lt;img alt="full7" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/full7.jpg" />&lt;/p>
+&lt;p>插上硬盘，找了个小角落将它安置下来&lt;/p>
+&lt;p>&lt;img alt="full9" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/full9.jpg" />&lt;/p>
+&lt;p>&lt;img alt="full10" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/full10.jpg" />&lt;/p>
+&lt;p>好了，硬件部分就先讲那么多吧，一篇文章太长也会把人看死，也会把我写死。软件部分也是坑巨多，有空我会再写一篇介绍一下这辛酸历程...&lt;/p>
+&lt;hr />
+&lt;h2 id="_4">略显遗憾&lt;/h2>
+&lt;p>最后最后，其实硬盘的固定方案还没有找到合适的，正如你看见的，硬盘就直接摆在旁边。我也有尝试过尹大人的光驱位硬盘架固定法，但是可能也是缺少材料，也不像尹大人那时那样有一堆星火杯小车，所以硬盘架买了我也没找到合适的固定方法。而且对于这个主板来说，硬盘架有点大，看起来不是那么般配。有思考过定制亚克力、定制木板、之类的方案，但是感觉还是略显麻烦，所以暂时也没有付诸实践，日后如果有优雅的方案了会再更...也欢迎大家留言板写下自己的创意...&lt;/p></content>
+    </entry>
+
+    <entry>
+        <title>Windows 常用注册表项</title>
+        <link rel="alternate" type="text/html" title="Windows 常用注册表项" href="https://blog.keybrl.com/posts/2018-10-23-Windows-regedit/"/>
+        <id>https://blog.keybrl.com/posts/2018-10-23-Windows-regedit/</id>
+        <updated>2018-10-23T00:00:00+08:00</updated>
+        <published>2018-10-23T00:00:00+08:00</published>
+        <summary></summary>
+        <content type="html" xml:base="https://blog.keybrl.com/posts/2018-10-23-Windows-regedit/">&lt;h1 id="windows">Windows 常用注册表项&lt;/h1>
+&lt;p>不知道为什么，每当涉及到 Windows 系统的的比较复杂的配置时，都会涉及注册表或者组策略的修改，由于 Windows10 Home 没有组策略编辑器，所以我们还是看看注册表吧&lt;/p>
+&lt;p>Windows 的注册表，有点像 Linux 的 &lt;code>/etc&lt;/code> 文件夹，里面有各种奇奇怪怪的配置文件，而且 Windows 的明显要奇怪和反人类得多。所以才需要专门记录一下，以备不时之需&lt;/p>
+&lt;p>以下是本人平时遇到需要修改注册表时通过搜索引擎获得并搜集整理的一些注册表项的作用的记录，它们对于当时的 Windows 10 是有效的，理论上有可能会失效（特别是如果 Windows 10 还能苟很久的话）。如果你发现部分已经被移除了或者被永久转移了，可以在文章下方留言或者通过邮件联系我（邮箱在本站主页有）&lt;/p>
+&lt;hr />
+&lt;p>首先是打开注册表编辑器的方法&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>Windows + R&lt;/code> 打开“运行”，输入 &lt;code>regedit&lt;/code> ，回车&lt;/li>
+&lt;li>在“开始”菜单的搜索栏搜索“注册表编辑器”&lt;/li>
+&lt;li>问小娜&lt;/li>
+&lt;/ul>
+&lt;h2 id="_1">在文件资源管理器中的右键菜单&lt;/h2>
+&lt;p>有时候可能因为安装无聊软件时忘了取消勾选什么，或者某些软件没卵用被卸载了，或者其他各种历史原因，右键菜单塞满了你不希望看见的选项，比如 “使用360强力删除”。修改或删除以下注册表项可以编辑你在文件资源管理器中的右键菜单。&lt;/p>
+&lt;ul>
+&lt;li>右键文件 &lt;code>`HKEY_CLASSES_ROOT\&lt;/code>&lt;/li>
+&lt;li>所有类型的文件 &lt;code>*\shell\&lt;/code> 和 &lt;code>*\shellex\ContextMenuHandlers\&lt;/code>&lt;/li>
+&lt;li>&lt;code>.hhh&lt;/code> 类型的文件 &lt;code>.hhh\shell\&lt;/code> 和 &lt;code>.hhh\shellex\ContextMenuHandlers\&lt;/code> （一般不存在 &lt;code>.hhh&lt;/code> ，这只是个代称，它可以是 &lt;code>.mp4&lt;/code> 、 &lt;code>.jpeg&lt;/code> ...）&lt;/li>
+&lt;li>右键文件夹 &lt;code>HKEY_CLASSES_ROOT\Directory\&lt;/code>&lt;/li>
+&lt;li>文件夹空白处 &lt;code>Background\shell\&lt;/code> 和 &lt;code>Background\shellex\ContextMenuHandlers\&lt;/code>&lt;/li>
+&lt;li>文件夹图标 &lt;code>shell\&lt;/code> 和 &lt;code>shellex\ContextMenuHandlers\&lt;/code>&lt;/li>
+&lt;/ul></content>
+    </entry>
+
+    <entry>
+        <title>keybrl-mines - 优雅的扫雷从此无处不在</title>
+        <link rel="alternate" type="text/html" title="keybrl-mines - 优雅的扫雷从此无处不在" href="https://blog.keybrl.com/projects/2018-10-14-Project-keybrl-gnome/"/>
+        <id>https://blog.keybrl.com/projects/2018-10-14-Project-keybrl-gnome/</id>
+        <updated>2018-10-14T00:00:01+08:00</updated>
+        <published>2018-10-14T00:00:01+08:00</published>
+        <summary></summary>
+        <content type="html" xml:base="https://blog.keybrl.com/projects/2018-10-14-Project-keybrl-gnome/">&lt;h1 id="keybrl-mines-">keybrl-mines - 优雅的扫雷从此无处不在&lt;/h1>
+&lt;p>&lt;strong>该项目未完成！！&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>项目地址：&lt;a href="https://github.com/keybrl/keybrl-mines/tree/master">keybrl/keybrl-mines&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>点击链接开始游戏 &lt;a href="https://mines.keybrl.com/">https://mines.keybrl.com/&lt;/a>&lt;/p>
+&lt;p>&lt;em>通过浏览器，畅玩经典游戏，从雷区中清除隐藏的地雷&lt;/em>&lt;/p>
+&lt;hr />
+&lt;p>我过去很多项目都是从我的爱好出发而开始的。 keybrl-mines 也不例外，扫雷非常有趣，而且它不像 Tetris （我特别喜欢的另一个游戏） 那么刺激，适合安静的时候玩，而且随时可以停止去干别的事情。所以，下载大的代码库，编译大的项目，往嵌入式设备刷写系统，上机前等待老师出现等无聊的时间，就非常适合玩扫雷。Tetris 我已经实现过一个了，C语言写的在 Windows 命令行运行的小游戏，很简陋，甚至不能 T-Spin ，但是我实现了。而扫雷我没有写过，就连C语言命令行版的扫雷都没有写过，这就很遗憾了。扫雷比 Tetris 容易太多，讲道理我应该要写一个的，所以现在它来了...&lt;/p>
+&lt;h2 id="gnome-mines">复刻 gnome-mines&lt;/h2>
+&lt;blockquote>
+&lt;p>Clear hidden mines from a minefield&lt;/p>
+&lt;/blockquote>
+&lt;p>使用过 &lt;a href="https://www.ubuntu.com/global">Ubuntu Desktop&lt;/a> 的同学都知道，“常规安装”的情况下 Ubuntu Deskdop 自带一个 &lt;a href="https://www.gnome.org/">GNOME&lt;/a> 桌面的小游戏 &lt;code>gnome-mines&lt;/code> ，中文一般叫“扫雷”。即使你的Linux发行版默认不安装这个游戏也没有关系，你可以使用 &lt;code>apt&lt;/code> 轻松安装它（如果你的发行版使用apt作为包管理工具的话），只需在终端输入如下命令。&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>sudo apt install gnome-mines
+&lt;/pre>&lt;/div>
+
+
+&lt;p>即使你不能使用 apt ，你也可以通过求助你的社区获得解决方案，或者直接加入信奉 Debian 的阵营，比如换用 Ubuntu Desktop 作为你的桌面端 Linux 系统。&lt;/p>
+&lt;p>扫雷是非常有趣的。Microsoft Windows 已经在 Windows 10 中移除了原本在 Windows XP /7 中自带的扫雷游戏，而且现在在 Windows 平台已经很难找到一个外观上能看的扫雷游戏了。而 Ubuntu Desktop 默认安装的 gnome-mines 界面朴素优雅，交互动画丰富又恰到好处，成了我玩扫雷的最佳选择。&lt;/p>
+&lt;p>但是，我并不总是使用 Linux 的桌面系统，当我回到 Windows 的世界，问题仍然存在，我仍然找不到一个合适的扫雷游戏。&lt;/p>
+&lt;p>这就是我想要开启这个项目的原因，我想要实现一个跨平台的，像 gnome-mines 般优雅的扫雷游戏，我暂时把它起名叫 &lt;code>keybrl-mines&lt;/code>。&lt;/p>
+&lt;p>当你看见这个游戏的成品，你可能会觉得他完全就是 gnome-mines 的样子。如果真是这样，那我就成功了，事实上，我从一开始就打算让我的项目完全复刻 gnome-mines 的体验，尽管平台不同，很多细节难以做到一模一样，但我还是尽可能让他们相似。甚至这个项目中很多图片、图标都是直接从 gnome-mines 的项目仓库中搬过来的（如果我没有错误理解 GPLv3 的含义的话，我这么做应该是完全合法的）。&lt;/p>
+&lt;p>&lt;img alt="gnome-mines 和 keybrl-mines 的比较" src="//keybrl-webapp.oss-cn-shenzhen.aliyuncs.com/keybrl-mines/image/compare.png" title="gnome-mines 和 keybrl-mines 的比较" />&lt;/p>
+&lt;p>无论如何，gnome-mines 是一个非常棒的游戏。不管你觉得我的 keybrl-mines 体验如何，我都建议你尝试一下 gnome-mines ，最简单的方法就如上面说的，安装一个 Ubuntu Desktop。或者看看这个项目，到它的Github仓库（&lt;a href="https://github.com/GNOME/gnome-mines">GNOME/gnome-mines&lt;/a>）中点个 Star。&lt;/p>
+&lt;h2 id="keybrl-mines">为什么是 keybrl-mines&lt;/h2>
+&lt;p>说实话，在我几乎还没有思考这个游戏的实现细节的时候，我首先思考的就是这个项目的名字，这十分有挑战性。我过去的项目大都十分无聊，仅仅为了满足我的某些奇怪癖好，而且只是写着玩玩，比如&lt;a href="https://github.com/keybrl/Coin">keybrl/Coin&lt;/a>。相比之下，我觉得扫雷这个项目不是无聊的，尽管它仍然是为了满足我的奇怪癖好，而且我有预感它会得到不少关注，因为我知道有很多人喜欢玩这个小游戏，而且像我一样在 Windows 平台很难找到合适的版本。所以起一个恰当的好名字就非常重要。&lt;/p>
+&lt;p>我不能简单地将它命名为 &lt;code>Mine Sweeper&lt;/code> ，因为扫雷是一个历史悠久的游戏，多年来各种版本层出不穷，如果我简单的命名为 “Mine sweeper” 、 “扫雷” 或者 “Mines” 什么的，那我仿佛在宣称我的项目才是扫雷的标准，事实上这十分自以为是。所以首先我想到的是 &lt;code>web-mines&lt;/code> 因为我几乎是打算复刻 gnome-mines ，而我的项目是运行在 Web 平台的，所以模仿 gnome-mines 的命名就非常合适。但是 “web” 是一个含义很广的词，看起来还不如 &lt;code>www-mines&lt;/code> 明确。但不管是 “web-mines” 还是 “www-mines” ，都有一个问题， Web 不是我发明的，随随便便冠以 “Web” 的名头，是不是显得太自以为是，而且同样有企图宣称我的项目是 Web 平台上扫雷的标准的嫌疑。&lt;/p>
+&lt;p>所以，经过若干小时的思考，我认为 “gnome-mines” 的 “gnome” 除了是一个桌面平台，也可以理解为是作者（尽管作者不止一人），也就是 “gnome 写的 mines” 的意思。如果是这样，那我带上我的 id 似乎就非常不错，低调，而且万一以后火了大家还能轻易看出是谁写的，所以就有了目前这个项目名 &lt;code>keybrl-mines&lt;/code>。&lt;/p></content>
+    </entry>
+
+    <entry>
+        <title>Nginx常用配置套路</title>
+        <link rel="alternate" type="text/html" title="Nginx常用配置套路" href="https://blog.keybrl.com/posts/2018-07-02-nginx-configure/"/>
+        <id>https://blog.keybrl.com/posts/2018-07-02-nginx-configure/</id>
+        <updated>2018-07-02T00:00:01+08:00</updated>
+        <published>2018-07-02T00:00:01+08:00</published>
+        <summary></summary>
+        <content type="html" xml:base="https://blog.keybrl.com/posts/2018-07-02-nginx-configure/">&lt;h1 id="nginx">Nginx常用配置套路&lt;/h1>
+&lt;p>我们都知道， Nginx 是一个强大的 Web 服务器。只需要简单配置，它就能承载你的 Web 应用。轻易实现诸如负载均衡、反向代理、重定向、HTTPS证书配置、静态资源托管、......这一切只需要填写几个配置文件&lt;/p>
+&lt;p>我第一次使用 Nginx 是用它部署我的 Python Flask 应用，当时的情景可以看看这篇文章（ &lt;a href="2017-08-01-Nginx_uWSGI_Flask_in_CentOS.md">CentOS中通过Nginx和uWSGI部署Flask项目&lt;/a> ）作为回顾。其实后来我发现 Nginx 太好用了，我经常用它重定向或者搭建静态站点什么的。但是背配置文件实在太痛苦啦，每次都要借助 Google 的帮助，而且还不是特别容易一下子找到我想要的东西。所以我不如把我常用的配置记下来吧，找自己博客总还是比瞎搜快很多的。&lt;/p>
+&lt;h2 id="_1">初始配置&lt;/h2>
+&lt;p>在 Ubuntu 上， Nginx 可以通过 &lt;code>apt install nginx&lt;/code> 安装。如果是那样，那么默认配置文件是 &lt;code>/etc/nginx/nginx.conf&lt;/code> 。初始内容是这样的&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>&lt;span class="nt">user&lt;/span> &lt;span class="nt">www-data&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;span class="nt">worker_processes&lt;/span> &lt;span class="nt">auto&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;span class="nt">pid&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="nt">run&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nt">nginx&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nc">pid&lt;/span>&lt;span class="o">;&lt;/span>
+&lt;span class="nt">include&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="nt">etc&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nt">nginx&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nt">modules-enabled&lt;/span>&lt;span class="o">/*&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nc">conf&lt;/span>&lt;span class="o">;&lt;/span>
+
+&lt;span class="nt">events&lt;/span> &lt;span class="p">{&lt;/span>
+    &lt;span class="err">worker_connections&lt;/span> &lt;span class="err">768&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">multi_accept&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+
+&lt;span class="nt">http&lt;/span> &lt;span class="p">{&lt;/span>
+
+    &lt;span class="err">##&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">Basic&lt;/span> &lt;span class="err">Settings&lt;/span>
+    &lt;span class="err">##&lt;/span>
+
+    &lt;span class="err">sendfile&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">tcp_nopush&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">tcp_nodelay&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">keepalive_timeout&lt;/span> &lt;span class="err">65&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">types_hash_max_size&lt;/span> &lt;span class="err">2048&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">server_tokens&lt;/span> &lt;span class="err">off&lt;/span>&lt;span class="p">;&lt;/span>
+
+    &lt;span class="err">#&lt;/span> &lt;span class="err">server_names_hash_bucket_size&lt;/span> &lt;span class="err">64&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">server_name_in_redirect&lt;/span> &lt;span class="err">off&lt;/span>&lt;span class="p">;&lt;/span>
+
+    &lt;span class="err">include&lt;/span> &lt;span class="err">/etc/nginx/mime.types&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">default_type&lt;/span> &lt;span class="err">application/octet-stream&lt;/span>&lt;span class="p">;&lt;/span>
+
+    &lt;span class="err">##&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">SSL&lt;/span> &lt;span class="err">Settings&lt;/span>
+    &lt;span class="err">##&lt;/span>
+
+    &lt;span class="err">ssl_protocols&lt;/span> &lt;span class="err">TLSv1&lt;/span> &lt;span class="err">TLSv1.1&lt;/span> &lt;span class="err">TLSv1.2&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="err">#&lt;/span> &lt;span class="err">Dropping&lt;/span> &lt;span class="err">SSLv3,&lt;/span> &lt;span class="n">ref&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">POODLE&lt;/span>
+    &lt;span class="n">ssl_prefer_server_ciphers&lt;/span> &lt;span class="kc">on&lt;/span>&lt;span class="p">;&lt;/span>
+
+    &lt;span class="err">##&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">Logging&lt;/span> &lt;span class="err">Settings&lt;/span>
+    &lt;span class="err">##&lt;/span>
+
+    &lt;span class="err">access_log&lt;/span> &lt;span class="err">/var/log/nginx/access.log&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">error_log&lt;/span> &lt;span class="err">/var/log/nginx/error.log&lt;/span>&lt;span class="p">;&lt;/span>
+
+    &lt;span class="err">##&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">Gzip&lt;/span> &lt;span class="err">Settings&lt;/span>
+    &lt;span class="err">##&lt;/span>
+
+    &lt;span class="err">gzip&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
+
+    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_vary&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_proxied&lt;/span> &lt;span class="err">any&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_comp_level&lt;/span> &lt;span class="err">6&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_buffers&lt;/span> &lt;span class="err">16&lt;/span> &lt;span class="err">8k&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_http_version&lt;/span> &lt;span class="err">1.1&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_types&lt;/span> &lt;span class="err">text/plain&lt;/span> &lt;span class="err">text/css&lt;/span> &lt;span class="err">application/json&lt;/span> &lt;span class="err">application/javascript&lt;/span> &lt;span class="err">text/xml&lt;/span> &lt;span class="err">application/xml&lt;/span> &lt;span class="err">application/xml+rss&lt;/span> &lt;span class="err">text/javascript&lt;/span>&lt;span class="p">;&lt;/span>
+
+    &lt;span class="err">##&lt;/span>
+    &lt;span class="err">#&lt;/span> &lt;span class="err">Virtual&lt;/span> &lt;span class="err">Host&lt;/span> &lt;span class="err">Configs&lt;/span>
+    &lt;span class="err">##&lt;/span>
+
+    &lt;span class="err">include&lt;/span> &lt;span class="err">/etc/nginx/conf.d/*.conf&lt;/span>&lt;span class="p">;&lt;/span>
+    &lt;span class="err">include&lt;/span> &lt;span class="err">/etc/nginx/sites-enabled/*&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="p">}&lt;/span>
+
+
+&lt;span class="p">#&lt;/span>&lt;span class="nn">mail&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="err">#&lt;/span>    &lt;span class="err">#&lt;/span> &lt;span class="err">See&lt;/span> &lt;span class="err">sample&lt;/span> &lt;span class="err">authentication&lt;/span> &lt;span class="err">script&lt;/span> &lt;span class="n">at&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;span class="err">#&lt;/span>    &lt;span class="err">#&lt;/span> &lt;span class="n">http&lt;/span>&lt;span class="o">://&lt;/span>&lt;span class="n">wiki&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">nginx&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">org&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">ImapAuthenticateWithApachePhpScript&lt;/span>
+&lt;span class="err">#&lt;/span>
+&lt;span class="err">#&lt;/span>    &lt;span class="err">#&lt;/span> &lt;span class="n">auth_http&lt;/span> &lt;span class="n">localhost&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">auth&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">php&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="err">#&lt;/span>    &lt;span class="err">#&lt;/span> &lt;span class="err">pop3_capabilities&lt;/span> &lt;span class="err">&amp;quot;TOP&amp;quot;&lt;/span> &lt;span class="err">&amp;quot;USER&amp;quot;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="err">#&lt;/span>    &lt;span class="err">#&lt;/span> &lt;span class="err">imap_capabilities&lt;/span> &lt;span class="err">&amp;quot;IMAP4rev1&amp;quot;&lt;/span> &lt;span class="err">&amp;quot;UIDPLUS&amp;quot;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="err">#&lt;/span>
+&lt;span class="err">#&lt;/span>    &lt;span class="err">server&lt;/span> &lt;span class="err">{&lt;/span>
+&lt;span class="err">#&lt;/span>        &lt;span class="err">listen&lt;/span>     &lt;span class="n">localhost&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">110&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="err">#&lt;/span>        &lt;span class="err">protocol&lt;/span>   &lt;span class="err">pop3&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="err">#&lt;/span>        &lt;span class="err">proxy&lt;/span>      &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="err">#&lt;/span>    &lt;span class="p">}&lt;/span>
+&lt;span class="err">#&lt;/span>
+&lt;span class="err">#&lt;/span>    &lt;span class="nt">server&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;span class="err">#&lt;/span>        &lt;span class="err">listen&lt;/span>     &lt;span class="n">localhost&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">143&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="err">#&lt;/span>        &lt;span class="err">protocol&lt;/span>   &lt;span class="err">imap&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="err">#&lt;/span>        &lt;span class="err">proxy&lt;/span>      &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;span class="err">#&lt;/span>    &lt;span class="p">}&lt;/span>
+&lt;span class="err">#}&lt;/span>
+&lt;/pre>&lt;/div>
+
+
+&lt;p>一般来说这个文件是不需要修改的，其中有一行是 &lt;code>include /etc/nginx/conf.d/*.conf;&lt;/code> ，说明，它会自动把 &lt;code>/etc/nginx/conf.d/&lt;/code> 下面所有 &lt;code>.conf&lt;/code> 文件引入到 &lt;code>http {}&lt;/code> 里面，一般我们通过这种方式就可以达到目的。&lt;/p>
+&lt;div class="admonition note">
+&lt;p class="admonition-title">值得注意&lt;/p>
+&lt;/div>
+&lt;p>​    &lt;code>http {}&lt;/code> 内有一句 &lt;code>include /etc/nginx/sites-enabled/*;&lt;/code> 会让你的 Nginx 成功安装、启动后，被访问时，显示 Nginx 的欢迎页面，像下面这样&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>![Nginx 的欢迎页面](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/nginx-configure/nginx_welcome_page.png)
+
+而且无论你设置什么别的配置，80 端口都会被这个页面占用，所以需要先加个井号注释掉这行。
+
+![Nginx 配置文件注释掉某行](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/nginx-configure/nginx_command.png)
+&lt;/pre>&lt;/div>
+
+
+&lt;p>然后剩下的配置可以写在 &lt;code>/etc/nginx/conf.d/&lt;/code> 里&lt;/p>
+&lt;h2 id="_2">静态文件服务器&lt;/h2>
+&lt;p>最简单最基础的就是配置一个静态文件服务器，它可以托管你的静态站点（比如这个博客），或者为别的什么静态资源提供一个简单的可通过 http 访问的接口。&lt;/p>
+&lt;p>我们在 &lt;code>/etc/nginx/conf.d/static_website.conf&lt;/code> 写下如下配置（当然，文件名可以是任意的，只要路径和文件名后缀一样就行）&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>server {
+    # 服务器监听的端口号
+    listen      80;
+    # 服务的ip地址或者域名
+    # 一般可以为 0.0.0.0 ，表示接受通过任意网卡任意域名的访问
+    server_name 0.0.0.0;
+
+    # 可选的日志文件路径，如果不设置则记录到 Nginx 的主日志文件中，其设置见 `/etc/nginx/nginx.conf`
+    access_log /home/someone/logs/neinx_static_files.log;
+    error_log  /home/someone/logs/nginx_static_files_error.log;
+
+    # 静态文件根目录
+    root        /home/someone/static_files/;
+
+    # 通过从头部开始能完整匹配 &amp;#39;/&amp;#39; 的 url访问的“路由”
+    location / {
+        autoindex on;
+    }
+}
+&lt;/pre>&lt;/div></content>
+    </entry>
+
+    <entry>
+        <title>通过MkDocs搭建个人博客</title>
+        <link rel="alternate" type="text/html" title="通过MkDocs搭建个人博客" href="https://blog.keybrl.com/posts/2018-05-19-mkdocs-blog/"/>
+        <id>https://blog.keybrl.com/posts/2018-05-19-mkdocs-blog/</id>
+        <updated>2018-05-19T00:00:01+08:00</updated>
+        <published>2018-05-19T00:00:01+08:00</published>
+        <summary></summary>
+        <content type="html" xml:base="https://blog.keybrl.com/posts/2018-05-19-mkdocs-blog/">&lt;h1 id="mkdocs">通过MkDocs搭建个人博客&lt;/h1>
+&lt;blockquote>
+&lt;p>date: 2018-05-19&lt;/p>
+&lt;/blockquote>
+&lt;hr />
+&lt;p>搭建和维护个人博客以及写博客是一件非常酷的事情，这也是每个程序员生活的一部分。一个个人博客既是自己的一张名片也是自己学习的见证。&lt;/p>
+&lt;p>搭建和托管博客的方法有很多，很久以前我曾经推荐过通过GitHub托管Jekyll项目，并通过GitHub Pages服务展示博客的方法。&lt;/p>
+&lt;blockquote>
+&lt;p>详见，&lt;a href="../sssta/2017-10-08-SSSTA-Blog.md">《在GitHub上通过Jekyll搭建个人博客》&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>Jekyll是一个强大的静态网站生成器，结合GitHub Pages的完美支持，非常便于你展示你的想法。但是，他并不易于操作，如果没有前端的知识你甚至没法操作，你只能被动接受Jekyll主题设计者在设计中加入的一大堆垃圾。&lt;/p>
+&lt;p>如果你只是想好好地写写文章，并让他们优雅地展示出来，那用Jekyll肯定是不合适的，或者至少是不方便的。很快我将为你介绍一个更优雅的方式应该具备的特性。&lt;/p>
+&lt;h2 id="0-mkdocs">0. MkDocs概述&lt;/h2>
+&lt;blockquote>
+&lt;p>MkDocs is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation.&lt;/p>
+&lt;p>MkDocs是一个致力于构建项目文档的快速、简单和绝对优雅的静态网站生成器。&lt;/p>
+&lt;/blockquote>
+&lt;p>MkDocs是被设计用于构建文档的，所以它特别适于注重内容的静态站点，它至少有以下优雅之处&lt;/p>
+&lt;ul>
+&lt;li>清晰的文章分级目录&lt;/li>
+&lt;li>文章内标题导航&lt;/li>
+&lt;li>全站文本搜索&lt;/li>
+&lt;li>全部Python Markdown扩展&lt;/li>
+&lt;li>优雅、易于阅读的Markdown渲染&lt;/li>
+&lt;/ul>
+&lt;p>除此之外，MkDocs的多数主题都没有多余的内容，只专注于展示文章，正如&lt;a href="https://blog.keybrl.ink">该站点&lt;/a>所呈现的。而且，你需要做的也只是写文章，其他细节都能很便捷地设置。这比Jekyll还简单，而且更优雅。&lt;br />
+&lt;strong>酷炸了不是吗？&lt;/strong>&lt;/p>
+&lt;p>接下来我将分部分逐步介绍通过MkDocs构建、部署个人博客的过程。点击列表中的超链接可以直接跳转到相应章节。&lt;/p>
+&lt;ol>
+&lt;li>&lt;a href="#1">环境搭建和MkDocs的安装&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#2">构建一个最简单的网站&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#3">通过Markdown写自己的文章&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#4">选择主题&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#5">完善配置文件&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#6">站点托管与部署&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;div class="admonition tip">
+&lt;p class="admonition-title">阅读提示&lt;/p>
+&lt;p>本篇旨在从一个大的视角了解通过MkDocs构建站点的过程，而不是作为指导工作的手册、文档&lt;/p>
+&lt;p>对于上述的部分内容，本篇可能只会作简要描述，并引导读者前去阅读&lt;a href="http://www.mkdocs.org/">MkDocs的官方文档&lt;/a>或另一篇更详尽的文章&lt;/p>
+&lt;p>&lt;a href="#_1">本文最后&lt;/a>有一个列表，列出了全部在本文出现的建议阅读的相关的官方文档和其它文章，它们对于读者建立完善、准确的认识将更有帮助。&lt;/p>
+&lt;/div>
+&lt;h2 id="1">1. 准备工作&lt;/h2>
+&lt;p>MkDocs 是一个以 Python 实现的轻量化静态网站生成器&lt;/p>
+&lt;p>所以，首先我们需要安装 Python ，在 Debian/Ubuntu 下只需要通过 apt 安装即可&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>apt install python
+&lt;/pre>&lt;/div>
+
+
+&lt;div class="admonition warning">
+&lt;p class="admonition-title">兼容的Python版本&lt;/p>
+&lt;blockquote>
+&lt;p>官方文档的说明是：MkDocs supports Python versions 2.7, 3.3, 3.4, 3.5 and pypy.&lt;/p>
+&lt;/blockquote>
+&lt;p>但事实上我用 Python 3.6 也没有任何问题，所以我建议首先尝试 Python 的最新稳定版，如果存在兼容问题再参考官方推荐&lt;/p>
+&lt;/div>
+&lt;p>安装Python的第三方包管理器 pip&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>apt install python-pip
+&lt;/pre>&lt;/div>
+
+
+&lt;p>在Windows环境下安装 Python 和 pip 请参考 &lt;a href="https://www.python.org">python.org&lt;/a>&lt;/p>
+&lt;p>然后通过 pip 安装 MkDocs&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>pip install mkdocs
+&lt;/pre>&lt;/div>
+
+
+&lt;p>检查安装情况&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>pip show mkdocs
+&lt;/pre>&lt;/div>
+
+
+&lt;p>如果有出现对 MkDocs 的简要描述即安装成功&lt;/p>
+&lt;div class="admonition tip">
+&lt;p class="admonition-title">强烈推荐WSL&lt;/p>
+&lt;p>在 Windows 环境下进行与 Web 相关的开发经常都很不方便，如果既不喜欢虚拟机，又不习惯长时间在 Linux 下工作，又不想来回切换系统，那你一定要试试 WSL&lt;/p>
+&lt;blockquote>
+&lt;p>WSL: Windows Subsystem for Linux&lt;/p>
+&lt;/blockquote>
+&lt;p>WSL 是 Windows 的 Linux 子系统，可以在 Windows 中运行 Linux 应用，它只能通过命令行进行交互，有兴趣自行 Google&lt;/p>
+&lt;/div>
+&lt;h2 id="2">2. 好的开端&lt;/h2>
+&lt;p>MkDocs 给我们提供了一种简单的创建 MkDocs 项目的方式&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>mkdocs new hhh
+&lt;/pre>&lt;/div>
+
+
+&lt;div class="admonition tip">
+&lt;p class="admonition-title">备选方案&lt;/p>
+&lt;p>基于我还不清楚的原因，某些情况下，这样的命令可能不能工作&lt;/p>
+&lt;p>尝试替换为 &lt;code>python -m mkdocs new hhh&lt;/code> ，以下涉及 mkdocs 的命令都可以作类似替换&lt;/p>
+&lt;/div>
+&lt;p>在终端 cd 到合适的目录，执行上述命令，即可在当前目录创建一个最简单的 MkDocs 项目文件夹，在此他的文件夹名为 &lt;code>hhh&lt;/code> ，你可以将其换成任何你喜欢的名字，只要他符合文件夹命名规范&lt;/p>
+&lt;p>进入新建的目录&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>&lt;span class="nb">cd&lt;/span> hhh
+&lt;/pre>&lt;/div>
+
+
+&lt;p>使用 &lt;code>ls&lt;/code> 命令或直接在文件资源管理器打开可以看见里面有这些文件&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>- docs
+  |- index.md
+- mkdocs.yml
+&lt;/pre>&lt;/div>
+
+
+&lt;p>其中 &lt;code>mkdocs.yml&lt;/code> 是项目配置文件， &lt;code>docs/&lt;/code> 是默认用于存放文档的文件夹，目前里面只有一个 &lt;code>index.md&lt;/code> 是文档主页的文档&lt;/p>
+&lt;p>在上面所说的目录下，即 &lt;code>hhh/&lt;/code> 内，输入以下命令即可呈现文档&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>mkdocs serve
+&lt;/pre>&lt;/div>
+
+
+&lt;p>输入完之后终端会提示通过 URL http://127.0.0.1:8000 访问，在浏览器地址栏输入它，回车，你就能看见默认的主页&lt;/p>
+&lt;p>这是一个开发用的服务器，当你修改项目中的配置文件或文章，他会自动更新并使打开的页面刷新以保持同步。除此之外，使用 &lt;code>mkdocs build&lt;/code> 可以构建网站并将静态文件放入配置文件设置的某目录内，，默认是 &lt;code>site/&lt;/code> 里面就是一些简单的如 &lt;code>.html&lt;/code> 、 &lt;code>.css&lt;/code> 、 &lt;code>.js&lt;/code> 等静态文件，它们完全可以直接通过如 GitHub Pages 等静态网站服务展示出来，只需要将生成的 &lt;code>site/&lt;/code> 目录下的文件放进 GitHub 仓库，开启 GitHub Pages 服务即可。不过先不要急着这么做， MkDocs 有更优雅的方式，我将在该篇最后一节介绍这些部署技巧。&lt;/p>
+&lt;h2 id="3">3. 跃动的思想&lt;/h2>
+&lt;p>一个博客，或者文档，最重要的是里面的内容。和多数博客、文档或别的什么静态网站生成器一样 MkDocs&lt;br />
+支持将用 Markdown 写就的文章转换为具有好看样式的 HTML 页面，而且 MkDocs 只支持 Markdown。只需要将 &lt;code>.md&lt;/code> 文件放在 &lt;code>docs/&lt;/code> 目录内， MkDocs 会自动转换他们，按 &lt;code>docs/&lt;/code> 内的目录结构生成静态页面树，并尽可能将这种结构展现在页面中&lt;/p>
+&lt;div class="admonition tip">
+&lt;p class="admonition-title">关于文档结构&lt;/p>
+&lt;p>MkDocs会尽量自动展现文档结构，你也可以通过修改 &lt;code>mkdocs.yml&lt;/code> 文件来自定义文档结构，详见 &lt;a href="#5">5. 尽在掌控&lt;/a> 中关于修改配置文件的说明&lt;/p>
+&lt;p>不同的 MkDocs 主题对文档结构的呈现能力不同，但他们一般都不能呈现超过两层的文件目录&lt;/p>
+&lt;/div>
+&lt;p>MkDocs 对 Markdown 的转换是通过 &lt;a href="https://github.com/Python-Markdown/markdown">Python-Markdown&lt;/a> （一个 Python 的第三方库）实现的，所以除了支持标准的 Markdown 语法 （见&lt;a href="https://daringfireball.net/projects/markdown/syntax">Daring Fireball: Markdown Syntax Documentation&lt;/a>），也支持 Python-Markdown 支持的多数 Markdown 扩展 （详见其&lt;a href="https://python-markdown.github.io/extensions/">官方文档&lt;/a>，或另一篇更详尽的文章&lt;a href="2018-05-24-python-markdown.md">《Python-Markdown支持的Markdown扩展》&lt;/a>）&lt;/p>
+&lt;h2 id="4">4. 颜值即正义&lt;/h2>
+&lt;p>一个博客，或者文档，最重要的是里面的内容。但是这不意味着我们将容忍外观的丑陋，而且我们还应该有极致追求&lt;/p>
+&lt;p>MkDocs 有一个简单的基础主题，就是你刚刚看见那个。除此之外，你还可以在十几种第三方主题中选择一个或自己自定义主题&lt;/p>
+&lt;p>在 &lt;code>mkdocs.yml&lt;/code> 中加入以下内容&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>theme: &amp;#39;readthedocs&amp;#39;
+&lt;/pre>&lt;/div>
+
+
+&lt;p>这将将主题切换至 Read the Docs 的主题，或许你会发现这个主题十分熟悉，因为很多文档都是这么构建的。更多第三方主题详见 &lt;a href="https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes">社区wiki&lt;/a>&lt;/p>
+&lt;blockquote>
+&lt;p>我个人推荐 &lt;a href="https://squidfunk.github.io/mkdocs-material/">&lt;strong>Material&lt;/strong>&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>自定义主题的相关内容已经远远超出本篇所能描述的范畴，详见 &lt;a href="http://www.mkdocs.org/user-guide/custom-themes/">Custom themes - MkDocs&lt;/a>&lt;/p>
+&lt;h2 id="5">5. 尽在掌控&lt;/h2>
+&lt;p>对 MkDocs 很多细节的设置是通过其项目配置文件 &lt;code>mkdocs.yml&lt;/code> 达成的，由于内容繁琐不便于叙述，所以我建议通过参阅相关官方文档了解这部分内容 &lt;a href="http://www.mkdocs.org/user-guide/configuration/">Configuration - MkDocs&lt;/a>&lt;/p>
+&lt;h2 id="6">6. 锋芒毕露&lt;/h2>
+&lt;p>无论怎么样，博客总是要给人看的。前面我已经介绍了如何在开发环境预览自己的 MkDocs 项目和在 GitHub Pages 部署 &lt;code>site/&lt;/code> 目录。在此，我将介绍 MkDocs 一个更方便、优雅的部署技巧。&lt;/p>
+&lt;p>GitHub Pages 不只能简单地展示 master 分支内的内容，他还能部署任意一个分支或者 master branch /docs folder 。所以如果我们要在一个 GitHub 仓库中展示 MkDocs 项目并部署其生成的静态网站，我们可以将它们分在两个分支中。将 MkDocs 项目的全部文件放在 master 分支，按照正常方法管理。创建一个专门用于部署静态网站的分支，比如我设置的是 &lt;code>gh-pages&lt;/code> ，在里面放置 &lt;code>site/&lt;/code> 中的文件，并在该分支开启 GitHub Pages 服务即可。&lt;/p>
+&lt;p>不要急着复制 &lt;code>site/&lt;/code> 中的文件， MkDocs 提供了 gh-deploy 工具，他可以帮你一键 build、commit、push&lt;/p>
+&lt;p>在 &lt;code>mkdocs.yml&lt;/code> 文件中加入以下内容&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>&lt;span class="n">remote_branch&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">gh&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">pages&lt;/span>
+&lt;span class="n">remote_name&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">origin&lt;/span>
+&lt;/pre>&lt;/div>
+
+
+&lt;p>第一个是用于开启 GitHub Pages 的分支名，第二项是仓库地址名，如果你打算设置成上述样子，那你就可以省略他们，因为他们是默认设置&lt;/p>
+&lt;p>然后在终端执行&lt;/p>
+&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>mkdocs gh-deploy
+&lt;/pre>&lt;/div>
+
+
+&lt;p>MkDocs 会自动 build 该项目并 commit、push 到该项目仓库的指定分支，第一次使用该功能可能需要登录，按提示操作即可&lt;/p>
+&lt;p>如果分支设置、 GitHub Pages 设置、 gh-deploy 设置都正确的话，理论上讲你就已经把最新构建的网站部署了&lt;/p>
+&lt;div class="admonition danger">
+&lt;p class="admonition-title">谨慎行事&lt;/p>
+&lt;p>在您决定公开部署你的 MkDocs 项目之前，请确保项目中的全部内容符合您所在国家、地区的相关法律法规，避免冒犯您所在国家或地区的常见宗教信仰、风俗习惯，并尽量尊重可能的读者。&lt;/p>
+&lt;p>即使你确保符合上述要求，我个人仍然额外地建议您，当您在您的 MkDocs 项目中公开谈论政治时保持谨慎&lt;/p>
+&lt;/div>
+&lt;hr />
+&lt;h2 id="_1">建议阅读&lt;/h2>
+&lt;ul>
+&lt;li>MkDocs官方文档 &lt;a href="http://www.mkdocs.org/">MkDocs&lt;/a>&lt;/li>
+&lt;li>Python-Markdown的GitHub仓库 &lt;a href="https://github.com/Python-Markdown/markdown">Python-Markdown&lt;/a>&lt;/li>
+&lt;li>标准 Markdown 语法规范文档 &lt;a href="https://daringfireball.net/projects/markdown/syntax">Daring Fireball: Markdown Syntax Documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/mkdocs/mkdocs/wiki/">MkDocs社区wiki&lt;/a>&lt;/li>
+&lt;li>&lt;a href="2018-05-24-python-markdown.md">《Python-Markdown支持的Markdown扩展》&lt;/a>&lt;/li>
+&lt;li>&lt;a href="../sssta/2017-10-08-SSSTA-Blog.md">《在GitHub上通过Jekyll搭建个人博客》&lt;/a>&lt;/li>
+&lt;/ul></content>
+    </entry>
+</feed>
