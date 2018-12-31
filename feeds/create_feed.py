@@ -7,10 +7,18 @@ base_info = {
     'author_name': 'KeybrL',
     'author_email': 'keyboard-l@outlook.com',
     'rights': 'Copyright &amp;copy; &lt;a href="https://blog.keybrl.com/">KeybrL&lt;/a> All Rights Reserved.',
-    'updated': '2018-11-19T00:00:01+08:00'
+    'updated': '2018-12-31T00:00:01+08:00'
 }
 
 entrys = [
+	{
+        'title': '2018年终总结',
+        'link': 'http://blog.keybrl.com/boring/2018-12-31-summary/',
+        'updated': '2018-12-31T00:00:00+08:00',
+        'published': '2018-12-31T00:00:00+08:00',
+        'summary': '',
+        'content_url': './posts/2018-12-31-summary.md'
+    },
     {
         'title': '软路由与NAS 硬件平台搭建',
         'link': 'http://blog.keybrl.com/boring/2018-11-02-router1_hardware/',
@@ -42,14 +50,6 @@ entrys = [
         'published': '2018-07-02T00:00:01+08:00',
         'summary': '',
         'content_url': './posts/2018-07-02-nginx-configure.md'
-    },
-    {
-        'title': '通过MkDocs搭建个人博客',
-        'link': 'https://blog.keybrl.com/posts/2018-05-19-mkdocs-blog/',
-        'updated': '2018-05-19T00:00:01+08:00',
-        'published': '2018-05-19T00:00:01+08:00',
-        'summary': '',
-        'content_url': './posts/2018-05-19-mkdocs-blog.md'
     }
 ]
 

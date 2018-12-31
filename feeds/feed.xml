@@ -10,7 +10,71 @@
         <email>keyboard-l@outlook.com</email>
     </author>
     <rights type="html">Copyright &amp;copy; &lt;a href="https://blog.keybrl.com/">KeybrL&lt;/a> All Rights Reserved.</rights>
-    <updated>2018-11-19T00:00:01+08:00</updated>
+    <updated>2018-12-31T00:00:01+08:00</updated>
+
+    <entry>
+        <title>2018年终总结</title>
+        <link rel="alternate" type="text/html" title="2018年终总结" href="http://blog.keybrl.com/boring/2018-12-31-summary/"/>
+        <id>http://blog.keybrl.com/boring/2018-12-31-summary/</id>
+        <updated>2018-12-31T00:00:00+08:00</updated>
+        <published>2018-12-31T00:00:00+08:00</published>
+        <summary></summary>
+        <content type="html" xml:base="http://blog.keybrl.com/boring/2018-12-31-summary/">&lt;h1 id="2018">2018年终总结&lt;/h1>
+&lt;p>想来已经20年没有好好写过年终总结了，正值 2018 这么一个吉利的数字，加上正值人生中一个相当关键的节点，还是总结一下。一方面让自己觉得 2018 自己还是做过事情的，另一方面给 2019 定几个小目标...&lt;/p>
+&lt;h2 id="_1">时间线索&lt;/h2>
+&lt;p>&lt;strong>2018.01&lt;/strong>&lt;/p>
+&lt;p>想来 2018 年最初做的有趣的事情就是给我的 Poker 加了灯，那时正值期末考试周无聊（就像现在的一周之后）。具体可以浏览这篇文章 &lt;a href="2018-01-20-lighted-poker2.md">“IKBC Poker2 加灯历程”&lt;/a> 。（原来我的 Poker 都陪我超过一年了）&lt;/p>
+&lt;p>这月即将结束时，考虑到过完年能有不少闲钱，遂入了人生中第一个 Raspberry Pi 3B 。不过事实上真的没什么好玩，热情也就持续了不到两个月。期间用它做过最有用的事情莫过于 带透明代理的便携路由（OpenWrt）、让一台不能联网的打印机变成网络打印机（SMB打印服务）、让一个3.5寸硬盘变成无线硬盘（还是SMB）、成绩监视系统服务器（详见 &lt;a href="https://github.com/keybrl/xidian_grade_monitor">keybrl/xidian_grade_monitor&lt;/a> ，新教务系统上线后就失效了）。在他没到一周年纪念日的时候我就把他转手给了舍友，新入了一个 3B+ ，后来瞎搞 GPIO ，烧了，送修，还没给我送回来。&lt;/p>
+&lt;p>&lt;strong>2018.02&lt;/strong>&lt;/p>
+&lt;p>CET-4 好像是这个时候出的，430分飘过，心中巨石落地。&lt;/p>
+&lt;p>二月末就开学了，新入了一个虹吸壶，于是乎我便熟练掌握了 法压、越式滴滤、滴滤、虹吸 制作咖啡的方法（熟练个鬼了）。关于这个这个东西的第一次使用，可以看这篇文章 &lt;a href="2018-03-03-siphon.md">“虹吸壶冲泡咖啡”&lt;/a>（第一次还是相当笨拙和小心翼翼）。事实上，这完全不能算是一个错误的尝试，目前我喝的最多的是滴滤的，其次就是虹吸的了。感觉虹吸还是相当适合入门，虽然你体积大了点，流程又有点复杂，还有热源，看起来相当可怕。但是咖啡做出来质量还相当可以，而且也不算很复杂，熟练了5分钟之内就可以做好，有一点初中化学实验常识的人应该都不会炸了壶或者火灾什么的。最重要是便宜啊，一个虹吸壶 100 - 300 已经非常不错了，滴滤的话得 漏斗 + 手冲壶 ，漏斗又有各种形状的，手冲壶又可高可低，滤纸又是一大耗材（虹吸壶用滤布，我一般几个月才换一次）。而且虹吸壶非常容易可以做多人份，多加水，多加粉就好，滴滤的话粉一多，水一多，自己平时习惯的注水节奏就完全不合适，可能各种灾难，而且滤纸还要用不同的（滤纸大小只是一方面，主要是透水速率不同）。&lt;/p>
+&lt;p>咳咳，跑题了是不是...&lt;/p>
+&lt;p>&lt;strong>2018.03&lt;/strong>&lt;/p>
+&lt;p>我也忘了是不是这个月了，去年下半年软考成绩出了，挂了，上午下午都差几分。罢了罢了，其实现在来看还是相当难的，因为报的是“网络工程师”，我开始以为主要是计网的知识，所以还挺有信心，也没有专门去复习，后来发现其实包括了 大一的机导、大二大三的计组、大二下的软件工程和数据库系统概念、大三上的计算机网络、编译原理、操作系统 相关的知识，所以就全完了，特别是软件工程那些名词那么多，没学过的谁知道是啥。如果是大三上或者大二下去报都稳很多。罢了，也懒得考了。&lt;/p>
+&lt;p>&lt;strong>2018.04&lt;/strong>&lt;/p>
+&lt;p>跟着钟大佬接触了一个外包，具体是个啥就不方便透露了，反正我就是个没地位的 web前端。最后甲方嫌我们菜，另外找了外包公司，算是不了了之。没所谓，啥也没交付就拿了几百预付（虽然没交付但我还是写了个大概的样子了啊，心疼（实际上好像比起拿到的钱，这点劳动还算值得））&lt;/p>
+&lt;p>跟上面那个几乎同一时期的，SS::STA 的传统项目，所谓“清明集训”，在这一年与 为之工作室 合作举办。为之有钱有运营小姐姐有产品有策划果然是不一样（其实也没有多不一样），反正看起来活动搞的很大了（事实上初赛总参赛队伍还没有晋级名额多）。虽然作品不多，但是看得出来学弟学妹们都挺努力了。我也就顺便做了个活动主页和最后的评分系统，算是上面那个外包结束了，消遣一下。如果不嫌无聊也可以看看 &lt;a href="https://github.com/keybrl/rw_hackathon">keybrl/rw_hackathon&lt;/a> ，甚至都没有整理，就随便堆在仓库里&lt;/p>
+&lt;p>&lt;strong>2018.06&lt;/strong>&lt;/p>
+&lt;p>背了一年 SS::STA Web 组的锅之后，也是时候交接了，最后把锅给了党老师。在 SS::STA 一年的工作也算是尘埃落定、盖棺定论（盖棺什么鬼）了。从现在来看，这个交接也不是一个坏决定。&lt;/p>
+&lt;p>唉，大学参与过的唯一一点社团工作。没有达到自己想象的结果，也还是相当遗憾，可能我也是太菜了点。&lt;/p>
+&lt;p>&lt;strong>2018.07&lt;/strong>&lt;/p>
+&lt;p>这学期期末的时候，又是那种复习周，百无聊赖那种。接了一个外包，算得上是一个大挑战。甲方有一个 Python 写的 QGIS 2.x 的插件，期望迁移到 QGIS 3.x ，原项目大概就两万多行。主要就是 Python 2.7 要迁移到 Python 3.6 ，然后图形库要从 PyQt4 转到 PyQt5 ，以及 QGIS 一些 API 的迁移。忙了差不多之后，甲方又说要加需求（当然，钱也加了），要整合几个小的插件到这一个大的上。那几个小插件有几个 QGIS 3.x 的，源码弄来直接加就是了，那几个 QGIS 2.x 的，由于前面迁移那个大的插件把我搞吐了，实在不想再搞了，就说不搞了。后来在甲方坚持下，还是又迁移了几个小的 QGIS 2.x 的插件，还剩几个就不弄了。工期历时 30 天，得钱数千。&lt;/p>
+&lt;p>虽然好像这种工作并不是我希望的，也不是我喜欢的领域，但是毕竟有钱花的感觉还是非常棒的。拿了钱转手买了一台 New Surface Pro （也就是现在所说的 5，最低配那个），Surface 用起来可真棒，这学期我甚至都没有带过书去上课，日常去上课就徒手带一台 Surface ，课本看电子版，笔记用 OneNote ，草稿有草图板，比纸笔书方便多了。日常也不怎么拿她写代码，IDE都很少运行，就看看文档，刷刷淘宝，看看电影，玩几个清新明丽的小游戏，Office写写实验报告、做个PPT，写写博客（比如现在这篇），草图板做个草稿啥的，贼舒适，堪称年度最值剁手。&lt;/p>
+&lt;p>暑假除了做这个外包，还有就是顺利考过了科二、科三，练车可真累，以及，科四只能等寒假回家考了，没能在 2018 年拿到驾照还真是可惜呢。&lt;/p>
+&lt;p>&lt;strong>2018.09&lt;/strong>&lt;/p>
+&lt;p>大三了，可怕吧！！太可怕了，转眼竟然都大三了，而我还那么菜。&lt;/p>
+&lt;p>这学期常常陷入痛苦的思考人生中，又咸鱼、又菜，怕是马上就要去要饭了。幸好，意志坚定，我还活着。&lt;/p>
+&lt;p>开学又到了和小绿人（军训的学弟学妹）抢饭吃的时节，SS::STA 的招新活动也开始了。感觉厉害的学弟学妹还是年年有啊（哎呀，我好菜啊）&lt;/p>
+&lt;p>这学期一大重要改变就是，把工作场所从宿舍搬到 G302 （SS::STA 活动室），但好像并没有怎么改善咸鱼的状态。&lt;/p>
+&lt;p>&lt;strong>2018.10&lt;/strong>&lt;/p>
+&lt;p>由于受不了在 Windows 平台没有像样的扫雷玩，于是乎将 Ubuntu 的 gnome-mines 移植到了 Web 端，详见 &lt;a href="https://github.com/keybrl/keybrl-mines">keybrl/keybrl-mines&lt;/a> （想玩的话点这个 &lt;a href="https://mines.keybrl.com/">KeybrL Mines&lt;/a> ）。算是我这个学期唯一一个，完全遵从我内心的项目了，大三上忙得真是...（骂人的话）&lt;/p>
+&lt;p>&lt;strong>2018.11&lt;/strong>&lt;/p>
+&lt;p>又到一年双十一，岂能不买买买。于是乎用个小小的工控主板搭了一个软路由 + NAS，详见 &lt;a href="2018-11-02-router1_hardware.md">“软路由与NAS 硬件平台搭建”&lt;/a>&lt;/p>
+&lt;p>&lt;strong>2018.12&lt;/strong>&lt;/p>
+&lt;p>终于到这个月了，这个月好像除了忙各种实验报告、大作业、验收，就什么都没做了。太可怕了，但愿忙完这周就能结束吧...（一定要结束啊，我还等着期末考试周百无聊赖干些有趣的事情呢）&lt;/p>
+&lt;h2 id="_2">小小总结&lt;/h2>
+&lt;p>看来大三上过得真咸鱼&lt;/p>
+&lt;h2 id="2019">关于2019&lt;/h2>
+&lt;p>2019 年立几个 flag 吧&lt;/p>
+&lt;ol>
+&lt;li>上半年找到一份像样的实习（能顺利结束就好）&lt;/li>
+&lt;li>下半年找到一份正式的工作，工资最好能够我刷淘宝，还能有多就更棒了&lt;/li>
+&lt;li>早睡早起，正常饮食（不可能的）&lt;/li>
+&lt;li>有时间玩游戏&lt;/li>
+&lt;li>有时间看书&lt;/li>
+&lt;li>坚持更新我的博客&lt;/li>
+&lt;li>多写点有益身心的代码&lt;/li>
+&lt;li>继续没有挂科&lt;/li>
+&lt;li>毕业前学校不出幺蛾子&lt;/li>
+&lt;li>不要再遇到wxq教的课&lt;/li>
+&lt;li>继续保持有头发&lt;/li>
+&lt;li>有钱入一台 Surface Book？&lt;/li>
+&lt;li>有钱入一台浓缩咖啡机？&lt;/li>
+&lt;li>有钱能喝得起更棒的咖啡？&lt;/li>
+&lt;li>最好能遇见一个真正喜欢的女孩子？（那她可真惨）&lt;/li>
+&lt;li>拿什么来凑够10个呢，在网易云能够听到 3858 首新歌吧（这样我就能升到 Lv.9 了）&lt;/li>
+&lt;/ol></content>
+    </entry>
 
     <entry>
         <title>软路由与NAS 硬件平台搭建</title>
@@ -345,184 +409,5 @@
     }
 }
 &lt;/pre>&lt;/div></content>
-    </entry>
-
-    <entry>
-        <title>通过MkDocs搭建个人博客</title>
-        <link rel="alternate" type="text/html" title="通过MkDocs搭建个人博客" href="https://blog.keybrl.com/posts/2018-05-19-mkdocs-blog/"/>
-        <id>https://blog.keybrl.com/posts/2018-05-19-mkdocs-blog/</id>
-        <updated>2018-05-19T00:00:01+08:00</updated>
-        <published>2018-05-19T00:00:01+08:00</published>
-        <summary></summary>
-        <content type="html" xml:base="https://blog.keybrl.com/posts/2018-05-19-mkdocs-blog/">&lt;h1 id="mkdocs">通过MkDocs搭建个人博客&lt;/h1>
-&lt;blockquote>
-&lt;p>date: 2018-05-19&lt;/p>
-&lt;/blockquote>
-&lt;hr />
-&lt;p>搭建和维护个人博客以及写博客是一件非常酷的事情，这也是每个程序员生活的一部分。一个个人博客既是自己的一张名片也是自己学习的见证。&lt;/p>
-&lt;p>搭建和托管博客的方法有很多，很久以前我曾经推荐过通过GitHub托管Jekyll项目，并通过GitHub Pages服务展示博客的方法。&lt;/p>
-&lt;blockquote>
-&lt;p>详见，&lt;a href="../sssta/2017-10-08-SSSTA-Blog.md">《在GitHub上通过Jekyll搭建个人博客》&lt;/a>&lt;/p>
-&lt;/blockquote>
-&lt;p>Jekyll是一个强大的静态网站生成器，结合GitHub Pages的完美支持，非常便于你展示你的想法。但是，他并不易于操作，如果没有前端的知识你甚至没法操作，你只能被动接受Jekyll主题设计者在设计中加入的一大堆垃圾。&lt;/p>
-&lt;p>如果你只是想好好地写写文章，并让他们优雅地展示出来，那用Jekyll肯定是不合适的，或者至少是不方便的。很快我将为你介绍一个更优雅的方式应该具备的特性。&lt;/p>
-&lt;h2 id="0-mkdocs">0. MkDocs概述&lt;/h2>
-&lt;blockquote>
-&lt;p>MkDocs is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation.&lt;/p>
-&lt;p>MkDocs是一个致力于构建项目文档的快速、简单和绝对优雅的静态网站生成器。&lt;/p>
-&lt;/blockquote>
-&lt;p>MkDocs是被设计用于构建文档的，所以它特别适于注重内容的静态站点，它至少有以下优雅之处&lt;/p>
-&lt;ul>
-&lt;li>清晰的文章分级目录&lt;/li>
-&lt;li>文章内标题导航&lt;/li>
-&lt;li>全站文本搜索&lt;/li>
-&lt;li>全部Python Markdown扩展&lt;/li>
-&lt;li>优雅、易于阅读的Markdown渲染&lt;/li>
-&lt;/ul>
-&lt;p>除此之外，MkDocs的多数主题都没有多余的内容，只专注于展示文章，正如&lt;a href="https://blog.keybrl.ink">该站点&lt;/a>所呈现的。而且，你需要做的也只是写文章，其他细节都能很便捷地设置。这比Jekyll还简单，而且更优雅。&lt;br />
-&lt;strong>酷炸了不是吗？&lt;/strong>&lt;/p>
-&lt;p>接下来我将分部分逐步介绍通过MkDocs构建、部署个人博客的过程。点击列表中的超链接可以直接跳转到相应章节。&lt;/p>
-&lt;ol>
-&lt;li>&lt;a href="#1">环境搭建和MkDocs的安装&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#2">构建一个最简单的网站&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#3">通过Markdown写自己的文章&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#4">选择主题&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#5">完善配置文件&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#6">站点托管与部署&lt;/a>&lt;/li>
-&lt;/ol>
-&lt;div class="admonition tip">
-&lt;p class="admonition-title">阅读提示&lt;/p>
-&lt;p>本篇旨在从一个大的视角了解通过MkDocs构建站点的过程，而不是作为指导工作的手册、文档&lt;/p>
-&lt;p>对于上述的部分内容，本篇可能只会作简要描述，并引导读者前去阅读&lt;a href="http://www.mkdocs.org/">MkDocs的官方文档&lt;/a>或另一篇更详尽的文章&lt;/p>
-&lt;p>&lt;a href="#_1">本文最后&lt;/a>有一个列表，列出了全部在本文出现的建议阅读的相关的官方文档和其它文章，它们对于读者建立完善、准确的认识将更有帮助。&lt;/p>
-&lt;/div>
-&lt;h2 id="1">1. 准备工作&lt;/h2>
-&lt;p>MkDocs 是一个以 Python 实现的轻量化静态网站生成器&lt;/p>
-&lt;p>所以，首先我们需要安装 Python ，在 Debian/Ubuntu 下只需要通过 apt 安装即可&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>apt install python
-&lt;/pre>&lt;/div>
-
-
-&lt;div class="admonition warning">
-&lt;p class="admonition-title">兼容的Python版本&lt;/p>
-&lt;blockquote>
-&lt;p>官方文档的说明是：MkDocs supports Python versions 2.7, 3.3, 3.4, 3.5 and pypy.&lt;/p>
-&lt;/blockquote>
-&lt;p>但事实上我用 Python 3.6 也没有任何问题，所以我建议首先尝试 Python 的最新稳定版，如果存在兼容问题再参考官方推荐&lt;/p>
-&lt;/div>
-&lt;p>安装Python的第三方包管理器 pip&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>apt install python-pip
-&lt;/pre>&lt;/div>
-
-
-&lt;p>在Windows环境下安装 Python 和 pip 请参考 &lt;a href="https://www.python.org">python.org&lt;/a>&lt;/p>
-&lt;p>然后通过 pip 安装 MkDocs&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>pip install mkdocs
-&lt;/pre>&lt;/div>
-
-
-&lt;p>检查安装情况&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>pip show mkdocs
-&lt;/pre>&lt;/div>
-
-
-&lt;p>如果有出现对 MkDocs 的简要描述即安装成功&lt;/p>
-&lt;div class="admonition tip">
-&lt;p class="admonition-title">强烈推荐WSL&lt;/p>
-&lt;p>在 Windows 环境下进行与 Web 相关的开发经常都很不方便，如果既不喜欢虚拟机，又不习惯长时间在 Linux 下工作，又不想来回切换系统，那你一定要试试 WSL&lt;/p>
-&lt;blockquote>
-&lt;p>WSL: Windows Subsystem for Linux&lt;/p>
-&lt;/blockquote>
-&lt;p>WSL 是 Windows 的 Linux 子系统，可以在 Windows 中运行 Linux 应用，它只能通过命令行进行交互，有兴趣自行 Google&lt;/p>
-&lt;/div>
-&lt;h2 id="2">2. 好的开端&lt;/h2>
-&lt;p>MkDocs 给我们提供了一种简单的创建 MkDocs 项目的方式&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>mkdocs new hhh
-&lt;/pre>&lt;/div>
-
-
-&lt;div class="admonition tip">
-&lt;p class="admonition-title">备选方案&lt;/p>
-&lt;p>基于我还不清楚的原因，某些情况下，这样的命令可能不能工作&lt;/p>
-&lt;p>尝试替换为 &lt;code>python -m mkdocs new hhh&lt;/code> ，以下涉及 mkdocs 的命令都可以作类似替换&lt;/p>
-&lt;/div>
-&lt;p>在终端 cd 到合适的目录，执行上述命令，即可在当前目录创建一个最简单的 MkDocs 项目文件夹，在此他的文件夹名为 &lt;code>hhh&lt;/code> ，你可以将其换成任何你喜欢的名字，只要他符合文件夹命名规范&lt;/p>
-&lt;p>进入新建的目录&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>&lt;span class="nb">cd&lt;/span> hhh
-&lt;/pre>&lt;/div>
-
-
-&lt;p>使用 &lt;code>ls&lt;/code> 命令或直接在文件资源管理器打开可以看见里面有这些文件&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>- docs
-  |- index.md
-- mkdocs.yml
-&lt;/pre>&lt;/div>
-
-
-&lt;p>其中 &lt;code>mkdocs.yml&lt;/code> 是项目配置文件， &lt;code>docs/&lt;/code> 是默认用于存放文档的文件夹，目前里面只有一个 &lt;code>index.md&lt;/code> 是文档主页的文档&lt;/p>
-&lt;p>在上面所说的目录下，即 &lt;code>hhh/&lt;/code> 内，输入以下命令即可呈现文档&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>mkdocs serve
-&lt;/pre>&lt;/div>
-
-
-&lt;p>输入完之后终端会提示通过 URL http://127.0.0.1:8000 访问，在浏览器地址栏输入它，回车，你就能看见默认的主页&lt;/p>
-&lt;p>这是一个开发用的服务器，当你修改项目中的配置文件或文章，他会自动更新并使打开的页面刷新以保持同步。除此之外，使用 &lt;code>mkdocs build&lt;/code> 可以构建网站并将静态文件放入配置文件设置的某目录内，，默认是 &lt;code>site/&lt;/code> 里面就是一些简单的如 &lt;code>.html&lt;/code> 、 &lt;code>.css&lt;/code> 、 &lt;code>.js&lt;/code> 等静态文件，它们完全可以直接通过如 GitHub Pages 等静态网站服务展示出来，只需要将生成的 &lt;code>site/&lt;/code> 目录下的文件放进 GitHub 仓库，开启 GitHub Pages 服务即可。不过先不要急着这么做， MkDocs 有更优雅的方式，我将在该篇最后一节介绍这些部署技巧。&lt;/p>
-&lt;h2 id="3">3. 跃动的思想&lt;/h2>
-&lt;p>一个博客，或者文档，最重要的是里面的内容。和多数博客、文档或别的什么静态网站生成器一样 MkDocs&lt;br />
-支持将用 Markdown 写就的文章转换为具有好看样式的 HTML 页面，而且 MkDocs 只支持 Markdown。只需要将 &lt;code>.md&lt;/code> 文件放在 &lt;code>docs/&lt;/code> 目录内， MkDocs 会自动转换他们，按 &lt;code>docs/&lt;/code> 内的目录结构生成静态页面树，并尽可能将这种结构展现在页面中&lt;/p>
-&lt;div class="admonition tip">
-&lt;p class="admonition-title">关于文档结构&lt;/p>
-&lt;p>MkDocs会尽量自动展现文档结构，你也可以通过修改 &lt;code>mkdocs.yml&lt;/code> 文件来自定义文档结构，详见 &lt;a href="#5">5. 尽在掌控&lt;/a> 中关于修改配置文件的说明&lt;/p>
-&lt;p>不同的 MkDocs 主题对文档结构的呈现能力不同，但他们一般都不能呈现超过两层的文件目录&lt;/p>
-&lt;/div>
-&lt;p>MkDocs 对 Markdown 的转换是通过 &lt;a href="https://github.com/Python-Markdown/markdown">Python-Markdown&lt;/a> （一个 Python 的第三方库）实现的，所以除了支持标准的 Markdown 语法 （见&lt;a href="https://daringfireball.net/projects/markdown/syntax">Daring Fireball: Markdown Syntax Documentation&lt;/a>），也支持 Python-Markdown 支持的多数 Markdown 扩展 （详见其&lt;a href="https://python-markdown.github.io/extensions/">官方文档&lt;/a>，或另一篇更详尽的文章&lt;a href="2018-05-24-python-markdown.md">《Python-Markdown支持的Markdown扩展》&lt;/a>）&lt;/p>
-&lt;h2 id="4">4. 颜值即正义&lt;/h2>
-&lt;p>一个博客，或者文档，最重要的是里面的内容。但是这不意味着我们将容忍外观的丑陋，而且我们还应该有极致追求&lt;/p>
-&lt;p>MkDocs 有一个简单的基础主题，就是你刚刚看见那个。除此之外，你还可以在十几种第三方主题中选择一个或自己自定义主题&lt;/p>
-&lt;p>在 &lt;code>mkdocs.yml&lt;/code> 中加入以下内容&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>theme: &amp;#39;readthedocs&amp;#39;
-&lt;/pre>&lt;/div>
-
-
-&lt;p>这将将主题切换至 Read the Docs 的主题，或许你会发现这个主题十分熟悉，因为很多文档都是这么构建的。更多第三方主题详见 &lt;a href="https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes">社区wiki&lt;/a>&lt;/p>
-&lt;blockquote>
-&lt;p>我个人推荐 &lt;a href="https://squidfunk.github.io/mkdocs-material/">&lt;strong>Material&lt;/strong>&lt;/a>&lt;/p>
-&lt;/blockquote>
-&lt;p>自定义主题的相关内容已经远远超出本篇所能描述的范畴，详见 &lt;a href="http://www.mkdocs.org/user-guide/custom-themes/">Custom themes - MkDocs&lt;/a>&lt;/p>
-&lt;h2 id="5">5. 尽在掌控&lt;/h2>
-&lt;p>对 MkDocs 很多细节的设置是通过其项目配置文件 &lt;code>mkdocs.yml&lt;/code> 达成的，由于内容繁琐不便于叙述，所以我建议通过参阅相关官方文档了解这部分内容 &lt;a href="http://www.mkdocs.org/user-guide/configuration/">Configuration - MkDocs&lt;/a>&lt;/p>
-&lt;h2 id="6">6. 锋芒毕露&lt;/h2>
-&lt;p>无论怎么样，博客总是要给人看的。前面我已经介绍了如何在开发环境预览自己的 MkDocs 项目和在 GitHub Pages 部署 &lt;code>site/&lt;/code> 目录。在此，我将介绍 MkDocs 一个更方便、优雅的部署技巧。&lt;/p>
-&lt;p>GitHub Pages 不只能简单地展示 master 分支内的内容，他还能部署任意一个分支或者 master branch /docs folder 。所以如果我们要在一个 GitHub 仓库中展示 MkDocs 项目并部署其生成的静态网站，我们可以将它们分在两个分支中。将 MkDocs 项目的全部文件放在 master 分支，按照正常方法管理。创建一个专门用于部署静态网站的分支，比如我设置的是 &lt;code>gh-pages&lt;/code> ，在里面放置 &lt;code>site/&lt;/code> 中的文件，并在该分支开启 GitHub Pages 服务即可。&lt;/p>
-&lt;p>不要急着复制 &lt;code>site/&lt;/code> 中的文件， MkDocs 提供了 gh-deploy 工具，他可以帮你一键 build、commit、push&lt;/p>
-&lt;p>在 &lt;code>mkdocs.yml&lt;/code> 文件中加入以下内容&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>&lt;span class="n">remote_branch&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">gh&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">pages&lt;/span>
-&lt;span class="n">remote_name&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">origin&lt;/span>
-&lt;/pre>&lt;/div>
-
-
-&lt;p>第一个是用于开启 GitHub Pages 的分支名，第二项是仓库地址名，如果你打算设置成上述样子，那你就可以省略他们，因为他们是默认设置&lt;/p>
-&lt;p>然后在终端执行&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>mkdocs gh-deploy
-&lt;/pre>&lt;/div>
-
-
-&lt;p>MkDocs 会自动 build 该项目并 commit、push 到该项目仓库的指定分支，第一次使用该功能可能需要登录，按提示操作即可&lt;/p>
-&lt;p>如果分支设置、 GitHub Pages 设置、 gh-deploy 设置都正确的话，理论上讲你就已经把最新构建的网站部署了&lt;/p>
-&lt;div class="admonition danger">
-&lt;p class="admonition-title">谨慎行事&lt;/p>
-&lt;p>在您决定公开部署你的 MkDocs 项目之前，请确保项目中的全部内容符合您所在国家、地区的相关法律法规，避免冒犯您所在国家或地区的常见宗教信仰、风俗习惯，并尽量尊重可能的读者。&lt;/p>
-&lt;p>即使你确保符合上述要求，我个人仍然额外地建议您，当您在您的 MkDocs 项目中公开谈论政治时保持谨慎&lt;/p>
-&lt;/div>
-&lt;hr />
-&lt;h2 id="_1">建议阅读&lt;/h2>
-&lt;ul>
-&lt;li>MkDocs官方文档 &lt;a href="http://www.mkdocs.org/">MkDocs&lt;/a>&lt;/li>
-&lt;li>Python-Markdown的GitHub仓库 &lt;a href="https://github.com/Python-Markdown/markdown">Python-Markdown&lt;/a>&lt;/li>
-&lt;li>标准 Markdown 语法规范文档 &lt;a href="https://daringfireball.net/projects/markdown/syntax">Daring Fireball: Markdown Syntax Documentation&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/mkdocs/mkdocs/wiki/">MkDocs社区wiki&lt;/a>&lt;/li>
-&lt;li>&lt;a href="2018-05-24-python-markdown.md">《Python-Markdown支持的Markdown扩展》&lt;/a>&lt;/li>
-&lt;li>&lt;a href="../sssta/2017-10-08-SSSTA-Blog.md">《在GitHub上通过Jekyll搭建个人博客》&lt;/a>&lt;/li>
-&lt;/ul></content>
     </entry>
 </feed>

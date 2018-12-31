@@ -210,3 +210,25 @@ CPU 是 Intel&reg; Celeron&reg; J1800 ， TDP 只有 10W ，大小也只有 12cm
 ## 略显遗憾
 
 最后最后，其实硬盘的固定方案还没有找到合适的，正如你看见的，硬盘就直接摆在旁边。我也有尝试过尹大人的光驱位硬盘架固定法，但是可能也是缺少材料，也不像尹大人那时那样有一堆星火杯小车，所以硬盘架买了我也没找到合适的固定方法。而且对于这个主板来说，硬盘架有点大，看起来不是那么般配。有思考过定制亚克力、定制木板、之类的方案，但是感觉还是略显麻烦，所以暂时也没有付诸实践，日后如果有优雅的方案了会再更...也欢迎大家留言板写下自己的创意...
+
+---
+
+2018.12.19更新
+
+目前的解决方案，自己做了个木头的机箱，还能把硬盘架放里面，还有一个炫酷的开关
+
+![wood1](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood1.jpg)
+
+![wood2](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood2.jpg)
+
+![wood3](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood3.jpg)
+
+![wood4](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood4.jpg)
+
+![wood5](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood5.jpg)
+
+![wood6](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood6.jpg)
+
+![wood7](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood7.jpg)
+
+![wood8](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood8.jpg)
