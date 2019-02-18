@@ -7,10 +7,18 @@ base_info = {
     'author_name': 'KeybrL',
     'author_email': 'keyboard-l@outlook.com',
     'rights': 'Copyright &amp;copy; &lt;a href="https://blog.keybrl.com/">KeybrL&lt;/a> All Rights Reserved.',
-    'updated': '2018-12-31T00:00:01+08:00'
+    'updated': '2019-02-18T00:00:00+08:00'
 }
 
 entrys = [
+    {
+        'title': '软路由与NAS(2) 软件平台搭建',
+        'link': 'http://blog.keybrl.com/boring/2019-02-18-router2_software/',
+        'updated': '2019-02-18T00:00:00+08:00',
+        'published': '2019-02-18T00:00:00+08:00',
+        'summary': '',
+        'content_url': './posts/2019-02-18-router2_software.md'
+    },
 	{
         'title': '2018年终总结',
         'link': 'http://blog.keybrl.com/boring/2018-12-31-summary/',
@@ -20,9 +28,9 @@ entrys = [
         'content_url': './posts/2018-12-31-summary.md'
     },
     {
-        'title': '软路由与NAS 硬件平台搭建',
+        'title': '软路由与NAS(1) 硬件平台搭建',
         'link': 'http://blog.keybrl.com/boring/2018-11-02-router1_hardware/',
-        'updated': '2018-11-18T00:00:00+08:00',
+        'updated': '2019-02-18T00:00:00+08:00',
         'published': '2018-11-18T00:00:00+08:00',
         'summary': '',
         'content_url': './posts/2018-11-02-router1_hardware.md'
@@ -30,7 +38,7 @@ entrys = [
     {
         'title': 'Windows 常用注册表项',
         'link': 'https://blog.keybrl.com/posts/2018-10-23-Windows-regedit/',
-        'updated': '2018-10-23T00:00:00+08:00',
+        'updated': '2019-02-18T00:00:00+08:00',
         'published': '2018-10-23T00:00:00+08:00',
         'summary': '',
         'content_url': './posts/2018-10-23-Windows-regedit.md'
@@ -43,14 +51,6 @@ entrys = [
         'summary': '',
         'content_url': './posts/2018-10-14-Project-keybrl-gnome.md'
     },
-    {
-        'title': 'Nginx常用配置套路',
-        'link': 'https://blog.keybrl.com/posts/2018-07-02-nginx-configure/',
-        'updated': '2018-07-02T00:00:01+08:00',
-        'published': '2018-07-02T00:00:01+08:00',
-        'summary': '',
-        'content_url': './posts/2018-07-02-nginx-configure.md'
-    }
 ]
 
 exts = [

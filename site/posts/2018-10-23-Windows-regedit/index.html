@@ -329,6 +329,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="修改用户文件目录" class="md-nav__link">
+    修改用户文件目录
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="修改终端默认代码页" class="md-nav__link">
+    修改终端默认代码页
+  </a>
+  
+</li>
+      
       
       
       
@@ -658,6 +672,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../boring/2019-02-18-router2_software/" title="软路由与NAS(2) - 软件平台搭建" class="md-nav__link">
+      软路由与NAS(2) - 软件平台搭建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../boring/2018-12-31-summary/" title="2018年终总结" class="md-nav__link">
       2018年终总结
     </a>
@@ -670,8 +696,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../boring/2018-11-02-router1_hardware/" title="软路由与NAS 硬件平台搭建" class="md-nav__link">
-      软路由与NAS 硬件平台搭建
+    <a href="../../boring/2018-11-02-router1_hardware/" title="软路由与NAS(1) - 硬件平台搭建" class="md-nav__link">
+      软路由与NAS(1) - 硬件平台搭建
     </a>
   </li>
 
@@ -852,6 +878,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_2" title="修改用户文件目录" class="md-nav__link">
+    修改用户文件目录
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="修改终端默认代码页" class="md-nav__link">
+    修改终端默认代码页
+  </a>
+  
+</li>
+      
       
       
       
@@ -883,13 +923,22 @@
 <h2 id="_1">在文件资源管理器中的右键菜单</h2>
 <p>有时候可能因为安装无聊软件时忘了取消勾选什么，或者某些软件没卵用被卸载了，或者其他各种历史原因，右键菜单塞满了你不希望看见的选项，比如 “使用360强力删除”。修改或删除以下注册表项可以编辑你在文件资源管理器中的右键菜单。</p>
 <ul>
-<li>右键文件 <code>`HKEY_CLASSES_ROOT\</code></li>
+<li>右键文件 <code>HKEY_CLASSES_ROOT\</code></li>
 <li>所有类型的文件 <code>*\shell\</code> 和 <code>*\shellex\ContextMenuHandlers\</code></li>
 <li><code>.hhh</code> 类型的文件 <code>.hhh\shell\</code> 和 <code>.hhh\shellex\ContextMenuHandlers\</code> （一般不存在 <code>.hhh</code> ，这只是个代称，它可以是 <code>.mp4</code> 、 <code>.jpeg</code> ...）</li>
 <li>右键文件夹 <code>HKEY_CLASSES_ROOT\Directory\</code></li>
 <li>文件夹空白处 <code>Background\shell\</code> 和 <code>Background\shellex\ContextMenuHandlers\</code></li>
 <li>文件夹图标 <code>shell\</code> 和 <code>shellex\ContextMenuHandlers\</code></li>
 </ul>
+<h2 id="_2">修改用户文件目录</h2>
+<p>Windows 默认的用户文件目录一般是这样的 C:\Users\username\ 。默认情况下这个 <code>username</code> ，如果是本地用户就是本地用户的用户名，创建用户时设置的；如果是 Windows 10 刚装好后第一次开机时按照指引登录了微软账户，那么会截取微软账户账号的前五个字母，比如说：我的微软账号是 <code>keyboard-l@outlook.com</code> 那么 Windows 10 会截取 <code>keybo</code> 作为用户目录的文件夹名，这十分扯淡。</p>
+<p>开始的时候我是没什么所谓的，毕竟一般人也不会经常看见自己的用户目录，直到有一天我打开终端（CMD 或者 PowerShell）。终端的默认工作路径就在自己的用户目录（下图是已经改过来了）</p>
+<p><img alt="PowerShell" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/Windows-regedit/powershell.jpg" /></p>
+<p>那么如果用户目录不喜欢怎么办呢。首先需要修改注册表，修改系统的用户目录。</p>
+<p>注册表路径 <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Profilelist</code> 下的各注册表的表项 <code>ProfileImagePath</code> 的值就是用户目录，找到自己用户那一个，修改为自己喜欢的，然后重启。重启后会提示用户目录不存在，因为原来的用户目录下的文件路径没变，去修改 C:\Users\ 下的文件夹名，再重启（或者注销），完成。</p>
+<h2 id="_3">修改终端默认代码页</h2>
+<p>无论是使用 CMD 还是 PowerShell ，大家都会有一个烦恼，那就是中文时，默认字体是新宋体，虽然可以设置字体，但是可以选择的字体非常少。而且终端默认使用代码页 <code>936</code> ， GBK 编码，这时常导致麻烦。在终端输入 <code>chcp 65001</code> 可以将代码页切换到 UTF-8 编码的代码页，这时显示是英文，而且可以换各种英文字体，比如漂亮的 <code>Consolas</code> 。但是这样的修改是不可持久化的，下次再打开还是原来那样。所以有什么办法，修改默认的代码页呢，让它一启动就是代码页 <code>65001</code> 。</p>
+<p>注册表 <code>HKEY_CURRENT_USER\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe</code> 下的 <code>CodePage</code> ，将 <code>936</code> 改为 <code>65001</code> 就可以了。不过这个只对 Windows + R 弹出“运行”对话框，输入 powershell ，这样打开的 PowerShell 有用。无论是对保存的 PowerShell 的快捷方式还是对右键 Windows 徽标中的 <code>Windows PowerShell</code> 都是无效的，目前我还没有找到解决方法。而且代码页 <code>65001</code> 也不是完美的，在 PowerShell 中，显示中文会只有一个字符宽（正常应该是两个字符宽），导致显示不全，在 CMD 中则没有这个问题，这个目前我也没有找到解决方法。</p>
                 
                   
                 

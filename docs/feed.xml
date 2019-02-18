@@ -10,7 +10,128 @@
         <email>keyboard-l@outlook.com</email>
     </author>
     <rights type="html">Copyright &amp;copy; &lt;a href="https://blog.keybrl.com/">KeybrL&lt;/a> All Rights Reserved.</rights>
-    <updated>2018-12-31T00:00:01+08:00</updated>
+    <updated>2019-02-18T00:00:00+08:00</updated>
+
+    <entry>
+        <title>软路由与NAS(2) 软件平台搭建</title>
+        <link rel="alternate" type="text/html" title="软路由与NAS(2) 软件平台搭建" href="http://blog.keybrl.com/boring/2019-02-18-router2_software/"/>
+        <id>http://blog.keybrl.com/boring/2019-02-18-router2_software/</id>
+        <updated>2019-02-18T00:00:00+08:00</updated>
+        <published>2019-02-18T00:00:00+08:00</published>
+        <summary></summary>
+        <content type="html" xml:base="http://blog.keybrl.com/boring/2019-02-18-router2_software/">&lt;h1 id="nas2-">软路由与NAS(2) - 软件平台搭建&lt;/h1>
+&lt;blockquote>
+&lt;p>这篇文章拖了不知道多久多久（大概3个月），终于把坑填了，顺便再挖一个坑，有空写篇文章讲讲这机子外壳的制作过程。&lt;/p>
+&lt;/blockquote>
+&lt;p>2018年秋冬之交（双十一前后），我自己用工控主板搭了一个软路由和 NAS 的一个硬件平台，详见这篇文章 &lt;a href="./2018-11-02-router1_hardware.md">软路由与NAS 软件平台搭建&lt;/a>。但其实，那只是有了一个机子，真正要实现软路由和 NAS 的功能，还需要一些软件的支持。&lt;/p>
+&lt;p>所以这篇文章来讲讲这小东西软件平台的搭建历程...&lt;/p>
+&lt;h2 id="_1">操作系统&lt;/h2>
+&lt;p>首先是使用怎么样的操作系统作为这台机子的主要平台呢？这个问题其实没有多少答案，而且我之前也已经想好了。首先，不像尹大人那样那么会玩，我甚至没法想象去使用什么 Windows Server 来搞事情，也没听过什么 RouterOS 。所以其实，软路由部分肯定需要由 OpenWrt 来承载。 NAS 的话我的要求比较简单，就是能够通过网络访问、读写我那块 1T 硬盘里的数据就可以，性能最好能跟直接插上硬盘传差不多（这是不可能的），所以最简单的，就用 SMB 就行。 OpenWrt 也可以跑 SMB 。&lt;/p>
+&lt;p>再想想还能有什么应用？其实不管是什么，我能想到的，基本上 OpenWrt 都可以，那么就开始安装 OpenWrt 吧。当然不要！虽然我也不知道为什么，也许只是因为我比较菜，我觉得如果有个图形界面会好很多。而且一个中规中矩的 Linux 系统可能会比较易于使用，而且而且 opkg 实在不如 apt 好用，所以我还是很希望能安装一个 Ubuntu 什么的。但 OpenWrt 肯定是需要的，所以最终方案就是&lt;/p>
+&lt;p>&lt;strong>Ubuntu Desktop 18.04 + VM (OpenWrt)&lt;/strong>&lt;/p>
+&lt;p>了&lt;/p>
+&lt;p>Ubuntu 就直接官网下载安装就好了，没什么技术含量，不值一提。由于官方编译好的 x86_64 的 OpenWrt 固件完全不能符合我的需求，比如他甚至没有我那块无线网卡（QCA9880）的驱动，所以自己编译一个肯定是逃不了了。为了按照时间顺序记叙，我把这一部分留到后面再讲 （见 &lt;em>OpenWrt 编译&lt;/em> ）&lt;/p>
+&lt;h2 id="_2">虚拟机&lt;/h2>
+&lt;p>选购（选择）虚拟机也是一个复杂的事情。首先看看大家一般都会有些什么选择吧&lt;/p>
+&lt;ul>
+&lt;li>Oracle VM VirtualBox&lt;/li>
+&lt;li>VMware Workstation Pro&lt;/li>
+&lt;li>VMware Workstation Player&lt;/li>
+&lt;li>Microsoft Hyper-V (on Windows10)&lt;/li>
+&lt;/ul>
+&lt;p>一般来说，虚拟机我都会首先考虑 Oracle VM VirtualBox ，这东西简单易用，开源，免费... 如果这东西能用，我甚至都不会再考虑别的方案&lt;/p>
+&lt;p>但是大家还记得 VT-d 吧，这东西我在硬件平台搭建那篇文章提到过&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;em>英特尔&amp;reg; 定向 I/O 虚拟化技术 (VT-d) 在现有对 IA-32（VT-x）和安腾&amp;reg; 处理器 (VT-i) 虚拟化支持的基础上，还新增了对 I/O 设备虚拟化的支持。英特尔定向 I/O 虚拟化技术能帮助最终用户提高系统的安全性和可靠性，并改善 I/O 设备在虚拟化环境中的性能。&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;p>通过 VT-d 我才能将无线网卡穿透进虚拟机，在虚拟机里管理、配置并使能无线网卡。这样做的好处，一个是通过 OpenWrt 可以很方便地设置 WiFi 信道、带宽、功率、密码之类的东西，第二个是这样做 I/O 性能会好很多。&lt;/p>
+&lt;p>没有 VT-d 的解决方案就是在宿主机配置无线网卡，然后通过虚拟网桥将虚拟机里的虚拟网卡和这块无线网卡桥接。缺点就是没有上面说的两个好处。&lt;/p>
+&lt;p>那么，既然我花了那么多功夫挑了一块带有支持 VT-d 的 CPU 的主板，这就一定得用上！！&lt;/p>
+&lt;p>很可惜，我摸索了半天、查了半天，也不知道怎么在 VirtualBox 使用 CPU 的 VT-d 功能，最后我也请教了尹大人一下，貌似的确是不支持的。&lt;/p>
+&lt;p>VMware Workstation Pro 可能可以，毕竟还是个挺专业的虚拟机软件，但是那是商业软件，跟我的信仰不很相符，而且要付费，而且对于我来说还非常昂贵。随随便便就使用盗版也完全不符合我的信仰，所以暂时不予考虑。VMware Workstation Player 虽然是免费的（非商业使用时），但是功能太少，感觉比 VirtualBox 也不会好到哪里去。&lt;/p>
+&lt;p>Microsoft Hyper-V 这个东西要在 Windows 系统上才能使用，而且 Windows 10 的话要 Pro 才有这个功能。刚好我有一台 Windows 10 Pro 的机器，稍微尝试过，从微软宣传来看还是很牛的。但是我那台小东西没有 Win 10 Pro 啊，我也完全不想装 Windows ， Windows 啥也干不了。而且，按尹大人的说法，要 Windows Server 的 Hyper-V 才支持 VT-d 。还是需要折腾一堆盗版软件，罢了，不折腾了。&lt;/p>
+&lt;p>那我就走投无路了吗？当然没有。经过尹大人的提点，我想起了大名鼎鼎的 KVM (Kernel-based Virtual Machine) ，开源、免费、强大，而且简单的使用算不上复杂。赶紧 Google 一下，安装...&lt;/p>
+&lt;p>至于如何使用 VT-d 。稍微 Google 了一下，主要就以下几步&lt;/p>
+&lt;ol>
+&lt;li>修改 grub 内核引导参数，设置 &lt;code>intel_iommu=on&lt;/code> （对于 Intel&amp;reg; 的 CPU），重启。这一步主要是用于使能某些内核模块，使其支持 IOMMU 功能&lt;/li>
+&lt;li>在虚拟机中添加 PCI-E 设备，选择需要直通的设备。这个在图形化界面上操作会容易很多，比如 &lt;code>virt-manager&lt;/code> 。开机（开虚拟机）&lt;/li>
+&lt;li>第一次开机可能会报错，大意是不能分配所选的硬件。这个的话可以先 &lt;code>virtsh nodedev-detach xxxx&lt;/code> （&lt;code>xxxx&lt;/code> 是要直通的设备的设备号）解除宿主机的占用，要查看设备号的话可以先 &lt;code>virtsh nodedev-list --tree&lt;/code> 。&lt;/li>
+&lt;/ol>
+&lt;p>这个具体可以 Google 。&lt;/p>
+&lt;p>我按着教程设置好了之后还是开不了机，又 Google 了一圈，原因应该是无线网卡和两块有线网卡被分配到同一个 IOMMU 组了。这种情况下只能拆分这个 IOMMU 组，或者解除这个 IOMMU 组中所有设备在宿主机中的占用（既然宿主机用不了了，那我还不如把他们全部分配给虚拟机）。鉴于拆分一个 IOMMU 组的操作对于我来说过于繁琐，所以干脆把那些设备都分配给虚拟机吧。反正虚拟机是软路由，让他管理所有网络设备也挺好。修改完设置就可以开机了。&lt;/p>
+&lt;h2 id="openwrt">编译 OpenWrt&lt;/h2>
+&lt;p>OpenWrt 肯定是得自己编译一个，因为官方编译好的版本甚至都没有我那块无线网卡的驱动。编译嘛，也算得上简单，只要照着官方文档做就行（最好能有梯子，不然编译时的一些下载过程能够慢得让你怀疑人生）。配置的话，主要就是加上 &lt;code>Firmware -&amp;gt; ath10k-firmware-qca988x&lt;/code> ，这是对我那块无线网卡 QCA9880 的支持。其他的模块可以根据自己喜好选择，一些好玩的小应用也可以随便挑些（比如 啥都扫个死 之类的）。然后 &lt;code>make download&lt;/code> ， &lt;code>make&lt;/code> 就行。&lt;/p>
+&lt;p>第一次我是在那台小东西上编译的，因为编译完就可以立刻安装，看起来很方便。顺便也是测试一下 CPU 性能，还有就是发热量什么的（当时买的散热片还没有到，还记得硬件平台搭建那篇文章里扳手湿纸巾的照片吗）。编译过程超过一个小时，非常慢了，受不了，所以后面都是在 302 的喷气式发动机（一台8核、16G内存的刀片服务器，因其开机自检时风扇发出的强大声浪而得名“喷气式发动机”）上编译的。不过这个编译过程还是让我对这个小东西的发热量有了一定的认识，CPU 100% 时无风扇是能十分勉强地压住的，基本稳定在70摄氏度上下，平时 CPU 跑不满 100% ，就完全没有问题了。&lt;/p>
+&lt;p>编译完，设置虚拟机，启动。&lt;/p>
+&lt;h2 id="_3">网络配置&lt;/h2>
+&lt;p>网络配置的难点，其实主要不在那几个真的网卡的配置上。因为都直通给虚拟机了，所以在 OpenWrt 里设置非常简单。难点主要在于配置虚拟机的 OpenWrt 与外面宿主机的 Ubuntu 之间的网络。&lt;/p>
+&lt;p>如果是对虚拟机的有一些了解的人，他们第一反应肯定是 “桥接” 嘛。我们再来回顾一下虚拟机网络的几大经典模式 NAT、Bridged、Host-only、Internal&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Mode&lt;/th>
+&lt;th align="center">VM -&amp;gt; Host&lt;/th>
+&lt;th align="center">VM &amp;lt;- Host&lt;/th>
+&lt;th align="center">VM1 &amp;lt;&amp;gt; VM2&lt;/th>
+&lt;th align="center">VM -&amp;gt; Net/LAN&lt;/th>
+&lt;th align="center">VM &amp;lt;- Net/LAN&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Host-only&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">-&lt;/td>
+&lt;td align="center">-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Internal&lt;/td>
+&lt;td align="center">-&lt;/td>
+&lt;td align="center">-&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">-&lt;/td>
+&lt;td align="center">-&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Bridged&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NAT&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">Port forward&lt;/td>
+&lt;td align="center">-&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">Port forward&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>NAT Service&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">Port forward&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">+&lt;/td>
+&lt;td align="center">Port forward&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>参考 Oracle VM VirtualBox 的文档，的确桥接就能达到要求。但是 VirtualBox 桥接网络的配置应该是建立一个虚拟机虚拟网卡到宿主机真实网卡的一个虚拟网桥。用 KVM 也可以这样配置，但是我已经把仅有的两个以太网卡、一个无线网卡直通给虚拟机了，没有多余的网卡可以用于设置桥接。&lt;/p>
+&lt;p>不过幸运的是， KVM 可以自己设置虚拟网络，并不需要局限于某几种固定的网络结构。我随便摸索了一下，网通了。大概就是，新建一个虚拟网桥virbr1，虚拟机添加虚拟网络连接到虚拟网桥。然后 Openwrt 里将虚拟网卡桥接到其他几个 LAN 端的网卡上，宿主机设置 virbr1 接口的 ip 地址为 LAN 端网络的一个 ip 地址，设置宿主机路由表，设置 Openwrt 路由表。然后宿主机和 LAN 端其他设备都互通了。其实我完全搞不明白发生了什么，我现在连这一通虚拟设备、虚拟网络这些设置的东西在逻辑上是什么结构都不清楚，不过网络通了。设置虚拟机的虚拟网卡为 virtnet 之后，实测虚拟机和宿主机之间传输速率能达到 10Gbps ，看起来就不会有什么瓶颈了。&lt;/p>
+&lt;p>有空我得好好理解一下这里面的配置&lt;/p>
+&lt;h2 id="_4">剩余的工作&lt;/h2>
+&lt;p>网络都设置好之后其实问题就很简单了。安装配置 smb ，设置自动挂载硬盘。但是，非常奇怪的是，通过无线局域网访问 smb 时，传输速率只有不到 30MBps ，也就是 240Mbps ，远没有达到千兆位每秒。用 iperf3 测试了一下，通过 WiFi 连接软路由时，设备与软路由之间只有 300Mbps 左右的传输速率（设备紧贴路由器），那么就怪不得了，估计是无线的配置上、无线网卡的驱动、或者别的什么玄学的地方还有点问题了，有空再研究一下。&lt;/p>
+&lt;p>但是当我通过以太网连接， smb 的下载速率仍然不过 80MBps ，也就是 640Mbps ，也还是远没有达到千兆位以太网的传输速率。 iperf3 测速没问题， 1000Mbps 上下，那这少了几百兆位每秒的速率是怎么回事呢。硬盘读写速率没问题，本机拷贝的话 200MBps 左右，本机使用 smb 下载也差不多有 200MBps。那就很玄学了，有空再看看瓶颈在哪，看看怎么可以优化一下。&lt;/p>
+&lt;hr />
+&lt;h2 id="openwrt_1">关于OpenWrt&lt;/h2>
+&lt;p>最开始真正接触软路由，是大二的时候，在科协。尹大人在一台老旧的主机上跑个 OpenWrt ，那个机子有四个网卡（两LAN两WAN）。两个WAN一个走翼讯出，一个走校园网出，两个LAN接两个无线AP。效果就是睿思等校内流量走校园网，其他流量走翼讯，两个WiFi中一个是普通的，一个带透明代理。初见很是惊奇，未曾想过竟能如此优雅地配置网络。&lt;/p>
+&lt;p>那时的我，刚好大一结束的暑假刚看完一本计算机网络的入门教材（也是尹大人推荐的，《计算机网络 自顶向下方法》），对计算机网络充满兴趣。而 OpenWrt 在那时的我看来是一个完美的学习平台，可以检验我对很多计算机网络基础知识的认识，而且事实上也让我认识到自己对书上看的理解得太肤浅。所以从那时起我就慢慢玩起了 OpenWrt ，开始是直接官网下载固件来玩，后来也尝试照着文档自己编译来玩（特别是当发现官方提供的 Raspberry Pi 3B+ 的固件不能正常使用）。&lt;/p>
+&lt;p>不过其实到今天我也还只是稍微改几个配置然后编译，然后能用就不管的水平。比起尹大人，平均一天一编译，对每个配置项都了如指掌，甚至亲自修改源码，我算是非常肤浅的用户了。&lt;/p></content>
+    </entry>
 
     <entry>
         <title>2018年终总结</title>
@@ -77,13 +198,13 @@
     </entry>
 
     <entry>
-        <title>软路由与NAS 硬件平台搭建</title>
-        <link rel="alternate" type="text/html" title="软路由与NAS 硬件平台搭建" href="http://blog.keybrl.com/boring/2018-11-02-router1_hardware/"/>
+        <title>软路由与NAS(1) 硬件平台搭建</title>
+        <link rel="alternate" type="text/html" title="软路由与NAS(1) 硬件平台搭建" href="http://blog.keybrl.com/boring/2018-11-02-router1_hardware/"/>
         <id>http://blog.keybrl.com/boring/2018-11-02-router1_hardware/</id>
-        <updated>2018-11-18T00:00:00+08:00</updated>
+        <updated>2019-02-18T00:00:00+08:00</updated>
         <published>2018-11-18T00:00:00+08:00</published>
         <summary></summary>
-        <content type="html" xml:base="http://blog.keybrl.com/boring/2018-11-02-router1_hardware/">&lt;h1 id="nas">软路由与NAS 硬件平台搭建&lt;/h1>
+        <content type="html" xml:base="http://blog.keybrl.com/boring/2018-11-02-router1_hardware/">&lt;h1 id="nas1-">软路由与NAS(1) - 硬件平台搭建&lt;/h1>
 &lt;p>从大二下学期以来，一直梦想着拥有一个自己的软路由。千兆位局域网、透明代理、NAS、自建git私有仓库、...只要能运行Linux系统，就有无尽的乐趣。这种想法总会让我对各种奇奇怪怪的机子产生兴趣（也不知道我大三去了嵌入式方向是不是因为这个）&lt;/p>
 &lt;p>最初我有一个 Raspberry Pi 3B ，那也确实好玩，我还拿他刷过 OpenWrt ，做过一段时间的随身路由，上面配置有透明代理。可是 Raspberry Pi 最大的问题就是 I/O 性能太弱， USB 、内置无线网卡，都慢得不行。它本身的 SD 卡读写性能也是一个瓶颈。这就导致无论用它干什么都觉得不爽，无论是软路由还是文件共享，还是别的什么服务。也就有时需要一个东西在校园网内跑个长进程时需要他（比如大二期末用它跑了个成绩监视应用，有新成绩出来时通知我（项目仓库在这 &lt;a href="https://github.com/keybrl/xidian_grade_monitor">keybrl/xidian_grade_monitor&lt;/a> ）），它的体验甚至不如阿里云学生主机。所以后来也就很少玩了。开学初把它卖给了舍友，换了个 Raspberry Pi 3B+ ，一样没什么好玩。几周前，不小心短接了他 GPIO 的 VCC 5V 和 3.3V ，瞬间黑屏了。送修至今（发表这篇文章时已经等了 38 天了），了无音信，便不再牵挂。&lt;/p>
 &lt;p>大二下学期开学初，看了尹大人的几篇博客，了解了他与他的那个小小的软路由之间的有趣故事。比如这篇 &lt;a href="https://www.yichya.review/diy-nas-project-1/">DIY NAS Project (1) Hardware and OpenWRT&lt;/a> ，这是他这个系列文章的第一篇。下面这是尹大人初代 NAS&lt;/p>
@@ -201,14 +322,25 @@
 &lt;p>好了，硬件部分就先讲那么多吧，一篇文章太长也会把人看死，也会把我写死。软件部分也是坑巨多，有空我会再写一篇介绍一下这辛酸历程...&lt;/p>
 &lt;hr />
 &lt;h2 id="_4">略显遗憾&lt;/h2>
-&lt;p>最后最后，其实硬盘的固定方案还没有找到合适的，正如你看见的，硬盘就直接摆在旁边。我也有尝试过尹大人的光驱位硬盘架固定法，但是可能也是缺少材料，也不像尹大人那时那样有一堆星火杯小车，所以硬盘架买了我也没找到合适的固定方法。而且对于这个主板来说，硬盘架有点大，看起来不是那么般配。有思考过定制亚克力、定制木板、之类的方案，但是感觉还是略显麻烦，所以暂时也没有付诸实践，日后如果有优雅的方案了会再更...也欢迎大家留言板写下自己的创意...&lt;/p></content>
+&lt;p>最后最后，其实硬盘的固定方案还没有找到合适的，正如你看见的，硬盘就直接摆在旁边。我也有尝试过尹大人的光驱位硬盘架固定法，但是可能也是缺少材料，也不像尹大人那时那样有一堆星火杯小车，所以硬盘架买了我也没找到合适的固定方法。而且对于这个主板来说，硬盘架有点大，看起来不是那么般配。有思考过定制亚克力、定制木板、之类的方案，但是感觉还是略显麻烦，所以暂时也没有付诸实践，日后如果有优雅的方案了会再更...也欢迎大家留言板写下自己的创意...&lt;/p>
+&lt;hr />
+&lt;p>2018.12.19更新&lt;/p>
+&lt;p>目前的解决方案，自己做了个木头的机箱，还能把硬盘架放里面，还有一个炫酷的开关&lt;/p>
+&lt;p>&lt;img alt="wood1" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood1.jpg" />&lt;/p>
+&lt;p>&lt;img alt="wood2" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood2.jpg" />&lt;/p>
+&lt;p>&lt;img alt="wood3" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood3.jpg" />&lt;/p>
+&lt;p>&lt;img alt="wood4" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood4.jpg" />&lt;/p>
+&lt;p>&lt;img alt="wood5" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood5.jpg" />&lt;/p>
+&lt;p>&lt;img alt="wood6" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood6.jpg" />&lt;/p>
+&lt;p>&lt;img alt="wood7" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood7.jpg" />&lt;/p>
+&lt;p>&lt;img alt="wood8" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/router/wood8.jpg" />&lt;/p></content>
     </entry>
 
     <entry>
         <title>Windows 常用注册表项</title>
         <link rel="alternate" type="text/html" title="Windows 常用注册表项" href="https://blog.keybrl.com/posts/2018-10-23-Windows-regedit/"/>
         <id>https://blog.keybrl.com/posts/2018-10-23-Windows-regedit/</id>
-        <updated>2018-10-23T00:00:00+08:00</updated>
+        <updated>2019-02-18T00:00:00+08:00</updated>
         <published>2018-10-23T00:00:00+08:00</published>
         <summary></summary>
         <content type="html" xml:base="https://blog.keybrl.com/posts/2018-10-23-Windows-regedit/">&lt;h1 id="windows">Windows 常用注册表项&lt;/h1>
@@ -225,13 +357,22 @@
 &lt;h2 id="_1">在文件资源管理器中的右键菜单&lt;/h2>
 &lt;p>有时候可能因为安装无聊软件时忘了取消勾选什么，或者某些软件没卵用被卸载了，或者其他各种历史原因，右键菜单塞满了你不希望看见的选项，比如 “使用360强力删除”。修改或删除以下注册表项可以编辑你在文件资源管理器中的右键菜单。&lt;/p>
 &lt;ul>
-&lt;li>右键文件 &lt;code>`HKEY_CLASSES_ROOT\&lt;/code>&lt;/li>
+&lt;li>右键文件 &lt;code>HKEY_CLASSES_ROOT\&lt;/code>&lt;/li>
 &lt;li>所有类型的文件 &lt;code>*\shell\&lt;/code> 和 &lt;code>*\shellex\ContextMenuHandlers\&lt;/code>&lt;/li>
 &lt;li>&lt;code>.hhh&lt;/code> 类型的文件 &lt;code>.hhh\shell\&lt;/code> 和 &lt;code>.hhh\shellex\ContextMenuHandlers\&lt;/code> （一般不存在 &lt;code>.hhh&lt;/code> ，这只是个代称，它可以是 &lt;code>.mp4&lt;/code> 、 &lt;code>.jpeg&lt;/code> ...）&lt;/li>
 &lt;li>右键文件夹 &lt;code>HKEY_CLASSES_ROOT\Directory\&lt;/code>&lt;/li>
 &lt;li>文件夹空白处 &lt;code>Background\shell\&lt;/code> 和 &lt;code>Background\shellex\ContextMenuHandlers\&lt;/code>&lt;/li>
 &lt;li>文件夹图标 &lt;code>shell\&lt;/code> 和 &lt;code>shellex\ContextMenuHandlers\&lt;/code>&lt;/li>
-&lt;/ul></content>
+&lt;/ul>
+&lt;h2 id="_2">修改用户文件目录&lt;/h2>
+&lt;p>Windows 默认的用户文件目录一般是这样的 C:\Users\username\ 。默认情况下这个 &lt;code>username&lt;/code> ，如果是本地用户就是本地用户的用户名，创建用户时设置的；如果是 Windows 10 刚装好后第一次开机时按照指引登录了微软账户，那么会截取微软账户账号的前五个字母，比如说：我的微软账号是 &lt;code>keyboard-l@outlook.com&lt;/code> 那么 Windows 10 会截取 &lt;code>keybo&lt;/code> 作为用户目录的文件夹名，这十分扯淡。&lt;/p>
+&lt;p>开始的时候我是没什么所谓的，毕竟一般人也不会经常看见自己的用户目录，直到有一天我打开终端（CMD 或者 PowerShell）。终端的默认工作路径就在自己的用户目录（下图是已经改过来了）&lt;/p>
+&lt;p>&lt;img alt="PowerShell" src="//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/Windows-regedit/powershell.jpg" />&lt;/p>
+&lt;p>那么如果用户目录不喜欢怎么办呢。首先需要修改注册表，修改系统的用户目录。&lt;/p>
+&lt;p>注册表路径 &lt;code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Profilelist&lt;/code> 下的各注册表的表项 &lt;code>ProfileImagePath&lt;/code> 的值就是用户目录，找到自己用户那一个，修改为自己喜欢的，然后重启。重启后会提示用户目录不存在，因为原来的用户目录下的文件路径没变，去修改 C:\Users\ 下的文件夹名，再重启（或者注销），完成。&lt;/p>
+&lt;h2 id="_3">修改终端默认代码页&lt;/h2>
+&lt;p>无论是使用 CMD 还是 PowerShell ，大家都会有一个烦恼，那就是中文时，默认字体是新宋体，虽然可以设置字体，但是可以选择的字体非常少。而且终端默认使用代码页 &lt;code>936&lt;/code> ， GBK 编码，这时常导致麻烦。在终端输入 &lt;code>chcp 65001&lt;/code> 可以将代码页切换到 UTF-8 编码的代码页，这时显示是英文，而且可以换各种英文字体，比如漂亮的 &lt;code>Consolas&lt;/code> 。但是这样的修改是不可持久化的，下次再打开还是原来那样。所以有什么办法，修改默认的代码页呢，让它一启动就是代码页 &lt;code>65001&lt;/code> 。&lt;/p>
+&lt;p>注册表 &lt;code>HKEY_CURRENT_USER\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe&lt;/code> 下的 &lt;code>CodePage&lt;/code> ，将 &lt;code>936&lt;/code> 改为 &lt;code>65001&lt;/code> 就可以了。不过这个只对 Windows + R 弹出“运行”对话框，输入 powershell ，这样打开的 PowerShell 有用。无论是对保存的 PowerShell 的快捷方式还是对右键 Windows 徽标中的 &lt;code>Windows PowerShell&lt;/code> 都是无效的，目前我还没有找到解决方法。而且代码页 &lt;code>65001&lt;/code> 也不是完美的，在 PowerShell 中，显示中文会只有一个字符宽（正常应该是两个字符宽），导致显示不全，在 CMD 中则没有这个问题，这个目前我也没有找到解决方法。&lt;/p></content>
     </entry>
 
     <entry>
@@ -270,144 +411,5 @@
 &lt;p>说实话，在我几乎还没有思考这个游戏的实现细节的时候，我首先思考的就是这个项目的名字，这十分有挑战性。我过去的项目大都十分无聊，仅仅为了满足我的某些奇怪癖好，而且只是写着玩玩，比如&lt;a href="https://github.com/keybrl/Coin">keybrl/Coin&lt;/a>。相比之下，我觉得扫雷这个项目不是无聊的，尽管它仍然是为了满足我的奇怪癖好，而且我有预感它会得到不少关注，因为我知道有很多人喜欢玩这个小游戏，而且像我一样在 Windows 平台很难找到合适的版本。所以起一个恰当的好名字就非常重要。&lt;/p>
 &lt;p>我不能简单地将它命名为 &lt;code>Mine Sweeper&lt;/code> ，因为扫雷是一个历史悠久的游戏，多年来各种版本层出不穷，如果我简单的命名为 “Mine sweeper” 、 “扫雷” 或者 “Mines” 什么的，那我仿佛在宣称我的项目才是扫雷的标准，事实上这十分自以为是。所以首先我想到的是 &lt;code>web-mines&lt;/code> 因为我几乎是打算复刻 gnome-mines ，而我的项目是运行在 Web 平台的，所以模仿 gnome-mines 的命名就非常合适。但是 “web” 是一个含义很广的词，看起来还不如 &lt;code>www-mines&lt;/code> 明确。但不管是 “web-mines” 还是 “www-mines” ，都有一个问题， Web 不是我发明的，随随便便冠以 “Web” 的名头，是不是显得太自以为是，而且同样有企图宣称我的项目是 Web 平台上扫雷的标准的嫌疑。&lt;/p>
 &lt;p>所以，经过若干小时的思考，我认为 “gnome-mines” 的 “gnome” 除了是一个桌面平台，也可以理解为是作者（尽管作者不止一人），也就是 “gnome 写的 mines” 的意思。如果是这样，那我带上我的 id 似乎就非常不错，低调，而且万一以后火了大家还能轻易看出是谁写的，所以就有了目前这个项目名 &lt;code>keybrl-mines&lt;/code>。&lt;/p></content>
-    </entry>
-
-    <entry>
-        <title>Nginx常用配置套路</title>
-        <link rel="alternate" type="text/html" title="Nginx常用配置套路" href="https://blog.keybrl.com/posts/2018-07-02-nginx-configure/"/>
-        <id>https://blog.keybrl.com/posts/2018-07-02-nginx-configure/</id>
-        <updated>2018-07-02T00:00:01+08:00</updated>
-        <published>2018-07-02T00:00:01+08:00</published>
-        <summary></summary>
-        <content type="html" xml:base="https://blog.keybrl.com/posts/2018-07-02-nginx-configure/">&lt;h1 id="nginx">Nginx常用配置套路&lt;/h1>
-&lt;p>我们都知道， Nginx 是一个强大的 Web 服务器。只需要简单配置，它就能承载你的 Web 应用。轻易实现诸如负载均衡、反向代理、重定向、HTTPS证书配置、静态资源托管、......这一切只需要填写几个配置文件&lt;/p>
-&lt;p>我第一次使用 Nginx 是用它部署我的 Python Flask 应用，当时的情景可以看看这篇文章（ &lt;a href="2017-08-01-Nginx_uWSGI_Flask_in_CentOS.md">CentOS中通过Nginx和uWSGI部署Flask项目&lt;/a> ）作为回顾。其实后来我发现 Nginx 太好用了，我经常用它重定向或者搭建静态站点什么的。但是背配置文件实在太痛苦啦，每次都要借助 Google 的帮助，而且还不是特别容易一下子找到我想要的东西。所以我不如把我常用的配置记下来吧，找自己博客总还是比瞎搜快很多的。&lt;/p>
-&lt;h2 id="_1">初始配置&lt;/h2>
-&lt;p>在 Ubuntu 上， Nginx 可以通过 &lt;code>apt install nginx&lt;/code> 安装。如果是那样，那么默认配置文件是 &lt;code>/etc/nginx/nginx.conf&lt;/code> 。初始内容是这样的&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>&lt;span class="nt">user&lt;/span> &lt;span class="nt">www-data&lt;/span>&lt;span class="o">;&lt;/span>
-&lt;span class="nt">worker_processes&lt;/span> &lt;span class="nt">auto&lt;/span>&lt;span class="o">;&lt;/span>
-&lt;span class="nt">pid&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="nt">run&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nt">nginx&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nc">pid&lt;/span>&lt;span class="o">;&lt;/span>
-&lt;span class="nt">include&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="nt">etc&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nt">nginx&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="nt">modules-enabled&lt;/span>&lt;span class="o">/*&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nc">conf&lt;/span>&lt;span class="o">;&lt;/span>
-
-&lt;span class="nt">events&lt;/span> &lt;span class="p">{&lt;/span>
-    &lt;span class="err">worker_connections&lt;/span> &lt;span class="err">768&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">multi_accept&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;span class="p">}&lt;/span>
-
-&lt;span class="nt">http&lt;/span> &lt;span class="p">{&lt;/span>
-
-    &lt;span class="err">##&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">Basic&lt;/span> &lt;span class="err">Settings&lt;/span>
-    &lt;span class="err">##&lt;/span>
-
-    &lt;span class="err">sendfile&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">tcp_nopush&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">tcp_nodelay&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">keepalive_timeout&lt;/span> &lt;span class="err">65&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">types_hash_max_size&lt;/span> &lt;span class="err">2048&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">server_tokens&lt;/span> &lt;span class="err">off&lt;/span>&lt;span class="p">;&lt;/span>
-
-    &lt;span class="err">#&lt;/span> &lt;span class="err">server_names_hash_bucket_size&lt;/span> &lt;span class="err">64&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">server_name_in_redirect&lt;/span> &lt;span class="err">off&lt;/span>&lt;span class="p">;&lt;/span>
-
-    &lt;span class="err">include&lt;/span> &lt;span class="err">/etc/nginx/mime.types&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">default_type&lt;/span> &lt;span class="err">application/octet-stream&lt;/span>&lt;span class="p">;&lt;/span>
-
-    &lt;span class="err">##&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">SSL&lt;/span> &lt;span class="err">Settings&lt;/span>
-    &lt;span class="err">##&lt;/span>
-
-    &lt;span class="err">ssl_protocols&lt;/span> &lt;span class="err">TLSv1&lt;/span> &lt;span class="err">TLSv1.1&lt;/span> &lt;span class="err">TLSv1.2&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="err">#&lt;/span> &lt;span class="err">Dropping&lt;/span> &lt;span class="err">SSLv3,&lt;/span> &lt;span class="n">ref&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">POODLE&lt;/span>
-    &lt;span class="n">ssl_prefer_server_ciphers&lt;/span> &lt;span class="kc">on&lt;/span>&lt;span class="p">;&lt;/span>
-
-    &lt;span class="err">##&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">Logging&lt;/span> &lt;span class="err">Settings&lt;/span>
-    &lt;span class="err">##&lt;/span>
-
-    &lt;span class="err">access_log&lt;/span> &lt;span class="err">/var/log/nginx/access.log&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">error_log&lt;/span> &lt;span class="err">/var/log/nginx/error.log&lt;/span>&lt;span class="p">;&lt;/span>
-
-    &lt;span class="err">##&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">Gzip&lt;/span> &lt;span class="err">Settings&lt;/span>
-    &lt;span class="err">##&lt;/span>
-
-    &lt;span class="err">gzip&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
-
-    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_vary&lt;/span> &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_proxied&lt;/span> &lt;span class="err">any&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_comp_level&lt;/span> &lt;span class="err">6&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_buffers&lt;/span> &lt;span class="err">16&lt;/span> &lt;span class="err">8k&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_http_version&lt;/span> &lt;span class="err">1.1&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">gzip_types&lt;/span> &lt;span class="err">text/plain&lt;/span> &lt;span class="err">text/css&lt;/span> &lt;span class="err">application/json&lt;/span> &lt;span class="err">application/javascript&lt;/span> &lt;span class="err">text/xml&lt;/span> &lt;span class="err">application/xml&lt;/span> &lt;span class="err">application/xml+rss&lt;/span> &lt;span class="err">text/javascript&lt;/span>&lt;span class="p">;&lt;/span>
-
-    &lt;span class="err">##&lt;/span>
-    &lt;span class="err">#&lt;/span> &lt;span class="err">Virtual&lt;/span> &lt;span class="err">Host&lt;/span> &lt;span class="err">Configs&lt;/span>
-    &lt;span class="err">##&lt;/span>
-
-    &lt;span class="err">include&lt;/span> &lt;span class="err">/etc/nginx/conf.d/*.conf&lt;/span>&lt;span class="p">;&lt;/span>
-    &lt;span class="err">include&lt;/span> &lt;span class="err">/etc/nginx/sites-enabled/*&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;span class="p">}&lt;/span>
-
-
-&lt;span class="p">#&lt;/span>&lt;span class="nn">mail&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;span class="err">#&lt;/span>    &lt;span class="err">#&lt;/span> &lt;span class="err">See&lt;/span> &lt;span class="err">sample&lt;/span> &lt;span class="err">authentication&lt;/span> &lt;span class="err">script&lt;/span> &lt;span class="n">at&lt;/span>&lt;span class="p">:&lt;/span>
-&lt;span class="err">#&lt;/span>    &lt;span class="err">#&lt;/span> &lt;span class="n">http&lt;/span>&lt;span class="o">://&lt;/span>&lt;span class="n">wiki&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">nginx&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">org&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">ImapAuthenticateWithApachePhpScript&lt;/span>
-&lt;span class="err">#&lt;/span>
-&lt;span class="err">#&lt;/span>    &lt;span class="err">#&lt;/span> &lt;span class="n">auth_http&lt;/span> &lt;span class="n">localhost&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">auth&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">php&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;span class="err">#&lt;/span>    &lt;span class="err">#&lt;/span> &lt;span class="err">pop3_capabilities&lt;/span> &lt;span class="err">&amp;quot;TOP&amp;quot;&lt;/span> &lt;span class="err">&amp;quot;USER&amp;quot;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;span class="err">#&lt;/span>    &lt;span class="err">#&lt;/span> &lt;span class="err">imap_capabilities&lt;/span> &lt;span class="err">&amp;quot;IMAP4rev1&amp;quot;&lt;/span> &lt;span class="err">&amp;quot;UIDPLUS&amp;quot;&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;span class="err">#&lt;/span>
-&lt;span class="err">#&lt;/span>    &lt;span class="err">server&lt;/span> &lt;span class="err">{&lt;/span>
-&lt;span class="err">#&lt;/span>        &lt;span class="err">listen&lt;/span>     &lt;span class="n">localhost&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">110&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;span class="err">#&lt;/span>        &lt;span class="err">protocol&lt;/span>   &lt;span class="err">pop3&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;span class="err">#&lt;/span>        &lt;span class="err">proxy&lt;/span>      &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;span class="err">#&lt;/span>    &lt;span class="p">}&lt;/span>
-&lt;span class="err">#&lt;/span>
-&lt;span class="err">#&lt;/span>    &lt;span class="nt">server&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;span class="err">#&lt;/span>        &lt;span class="err">listen&lt;/span>     &lt;span class="n">localhost&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">143&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;span class="err">#&lt;/span>        &lt;span class="err">protocol&lt;/span>   &lt;span class="err">imap&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;span class="err">#&lt;/span>        &lt;span class="err">proxy&lt;/span>      &lt;span class="err">on&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;span class="err">#&lt;/span>    &lt;span class="p">}&lt;/span>
-&lt;span class="err">#}&lt;/span>
-&lt;/pre>&lt;/div>
-
-
-&lt;p>一般来说这个文件是不需要修改的，其中有一行是 &lt;code>include /etc/nginx/conf.d/*.conf;&lt;/code> ，说明，它会自动把 &lt;code>/etc/nginx/conf.d/&lt;/code> 下面所有 &lt;code>.conf&lt;/code> 文件引入到 &lt;code>http {}&lt;/code> 里面，一般我们通过这种方式就可以达到目的。&lt;/p>
-&lt;div class="admonition note">
-&lt;p class="admonition-title">值得注意&lt;/p>
-&lt;/div>
-&lt;p>​    &lt;code>http {}&lt;/code> 内有一句 &lt;code>include /etc/nginx/sites-enabled/*;&lt;/code> 会让你的 Nginx 成功安装、启动后，被访问时，显示 Nginx 的欢迎页面，像下面这样&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>![Nginx 的欢迎页面](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/nginx-configure/nginx_welcome_page.png)
-
-而且无论你设置什么别的配置，80 端口都会被这个页面占用，所以需要先加个井号注释掉这行。
-
-![Nginx 配置文件注释掉某行](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/nginx-configure/nginx_command.png)
-&lt;/pre>&lt;/div>
-
-
-&lt;p>然后剩下的配置可以写在 &lt;code>/etc/nginx/conf.d/&lt;/code> 里&lt;/p>
-&lt;h2 id="_2">静态文件服务器&lt;/h2>
-&lt;p>最简单最基础的就是配置一个静态文件服务器，它可以托管你的静态站点（比如这个博客），或者为别的什么静态资源提供一个简单的可通过 http 访问的接口。&lt;/p>
-&lt;p>我们在 &lt;code>/etc/nginx/conf.d/static_website.conf&lt;/code> 写下如下配置（当然，文件名可以是任意的，只要路径和文件名后缀一样就行）&lt;/p>
-&lt;div class="codehilite">&lt;pre>&lt;span>&lt;/span>server {
-    # 服务器监听的端口号
-    listen      80;
-    # 服务的ip地址或者域名
-    # 一般可以为 0.0.0.0 ，表示接受通过任意网卡任意域名的访问
-    server_name 0.0.0.0;
-
-    # 可选的日志文件路径，如果不设置则记录到 Nginx 的主日志文件中，其设置见 `/etc/nginx/nginx.conf`
-    access_log /home/someone/logs/neinx_static_files.log;
-    error_log  /home/someone/logs/nginx_static_files_error.log;
-
-    # 静态文件根目录
-    root        /home/someone/static_files/;
-
-    # 通过从头部开始能完整匹配 &amp;#39;/&amp;#39; 的 url访问的“路由”
-    location / {
-        autoindex on;
-    }
-}
-&lt;/pre>&lt;/div></content>
     </entry>
 </feed>
