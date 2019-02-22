@@ -7,12 +7,20 @@ base_info = {
     'author_name': 'KeybrL',
     'author_email': 'keyboard-l@outlook.com',
     'rights': 'Copyright &amp;copy; &lt;a href="https://blog.keybrl.com/">KeybrL&lt;/a> All Rights Reserved.',
-    'updated': '2019-02-18T00:00:00+08:00'
+    'updated': '2019-02-23T00:00:02+08:00'
 }
 
 entrys = [
     {
-        'title': '软路由与NAS(2) 软件平台搭建',
+        'title': '软路由与NAS(3) - 外壳',
+        'link': 'http://blog.keybrl.com/boring/2019-02-22-router3_shell/',
+        'updated': '2019-02-23T00:00:01+08:00',
+        'published': '2019-02-23T00:00:00+08:00',
+        'summary': '',
+        'content_url': './posts/2019-02-22-router3_shell.md'
+    },
+    {
+        'title': '软路由与NAS(2) - 软件平台搭建',
         'link': 'http://blog.keybrl.com/boring/2019-02-18-router2_software/',
         'updated': '2019-02-18T00:00:00+08:00',
         'published': '2019-02-18T00:00:00+08:00',
@@ -28,7 +36,7 @@ entrys = [
         'content_url': './posts/2018-12-31-summary.md'
     },
     {
-        'title': '软路由与NAS(1) 硬件平台搭建',
+        'title': '软路由与NAS(1) - 硬件平台搭建',
         'link': 'http://blog.keybrl.com/boring/2018-11-02-router1_hardware/',
         'updated': '2019-02-18T00:00:00+08:00',
         'published': '2018-11-18T00:00:00+08:00',

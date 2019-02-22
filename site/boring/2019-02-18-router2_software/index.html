@@ -618,6 +618,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../2019-02-22-router3_shell/" title="软路由与NAS(3) - 外壳" class="md-nav__link">
+      软路由与NAS(3) - 外壳
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -955,7 +967,7 @@
 <blockquote>
 <p>这篇文章拖了不知道多久多久（大概3个月），终于把坑填了，顺便再挖一个坑，有空写篇文章讲讲这机子外壳的制作过程。</p>
 </blockquote>
-<p>2018年秋冬之交（双十一前后），我自己用工控主板搭了一个软路由和 NAS 的一个硬件平台，详见这篇文章 <a href="../2018-11-02-router1_hardware/" target="_blank">软路由与NAS 软件平台搭建</a>。但其实，那只是有了一个机子，真正要实现软路由和 NAS 的功能，还需要一些软件的支持。</p>
+<p>2018年秋冬之交（双十一前后），用工控主板搭了一个软路由和 NAS 的一个硬件平台，详见这篇文章 <a href="../2018-11-02-router1_hardware/" target="_blank">软路由与NAS(1) - 硬件平台搭建</a>。但其实，那只是有了一个机子，真正要实现软路由和 NAS 的功能，还需要一些软件的支持。</p>
 <p>所以这篇文章来讲讲这小东西软件平台的搭建历程...</p>
 <h2 id="_1">操作系统</h2>
 <p>首先是使用怎么样的操作系统作为这台机子的主要平台呢？这个问题其实没有多少答案，而且我之前也已经想好了。首先，不像尹大人那样那么会玩，我甚至没法想象去使用什么 Windows Server 来搞事情，也没听过什么 RouterOS 。所以其实，软路由部分肯定需要由 OpenWrt 来承载。 NAS 的话我的要求比较简单，就是能够通过网络访问、读写我那块 1T 硬盘里的数据就可以，性能最好能跟直接插上硬盘传差不多（这是不可能的），所以最简单的，就用 SMB 就行。 OpenWrt 也可以跑 SMB 。</p>
@@ -1112,7 +1124,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../" title="无聊的日常 - 导读" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../2019-02-22-router3_shell/" title="软路由与NAS(3) - 外壳" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1121,7 +1133,7 @@
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                无聊的日常 - 导读
+                软路由与NAS(3) - 外壳
               </span>
             </div>
           </a>

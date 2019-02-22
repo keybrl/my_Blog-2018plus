@@ -41,6 +41,7 @@ pages:
         - 'Python入门1': 'sssta/2017-09-29-SSSTA-Python1.md'
     - 无聊的日常:
         - '无聊的日常 - 导读': 'boring/index.md'
+        - '软路由与NAS(3) - 外壳': 'boring/2019-02-22-router3_shell.md'
         - '软路由与NAS(2) - 软件平台搭建': 'boring/2019-02-18-router2_software.md'
         - '2018年终总结': 'boring/2018-12-31-summary.md'
         - '软路由与NAS(1) - 硬件平台搭建': 'boring/2018-11-02-router1_hardware.md'
