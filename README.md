@@ -8,8 +8,10 @@
 
 ## 主要内容
 
-该博客包含了 Keyboard 学习中的心得体会、知识的归纳总结、优秀读物的摘录还有 SS::STA 活动的教案。文章内容主要和 Web 相关  
-详见 **[文章](https://blog.keybrl.com/posts/)** 和 **[SS::STA回顾](https://blog.keybrl.com/sssta/)**
+该博客记录了 Keyboard 一些无聊的日常，它们在 **[无聊的日常](https://blog.keybrl.com/boring/)** 目录下
+
+同时该博客包含了 Keyboard 学习中的心得体会、知识的归纳总结、优秀读物的摘录还有 SS::STA 活动的教案。文章内容主要和 Web 相关  
+详见 **[专业相关](https://blog.keybrl.com/posts/)** 和 **[SS::STA回顾](https://blog.keybrl.com/sssta/)**
 
 学习就永远少不了练习， Keyboard 为此写了很多垃圾代码，并且收录了部分在该博客中  
 详见 **[垃圾代码](https://blog.keybrl.com/projects/)**

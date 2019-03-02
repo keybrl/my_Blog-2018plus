@@ -12,20 +12,29 @@ remote_branch: gh-pages
 remote_name: origin
 
 # Documentation layout
-pages:
+nav:
     - 主页: 'index.md'
-    - 文章:
-        - '无法分类的文章 - 导读': 'posts/index.md'
-        - 'Windows 常用注册表项': 'posts/2018-10-23-Windows-regedit.md'
-        - 'Nginx常用配置套路（未完成）': 'posts/2018-07-02-nginx-configure.md'
-#        - 'Python-Markdown支持的Markdown扩展（未完成）': 'posts/2018-05-24-python-markdown.md'
-        - '通过MkDocs搭建个人博客': 'posts/2018-05-19-mkdocs-blog.md'
-        - 'HTTP/1.1 - 状态码定义（翻译）（未完成）': 'posts/2017-12-19-HTTP11-Status-Code-Definitions-zh.md'
-        - 'CentOS中通过Nginx和uWSGI部署Flask项目': 'posts/2017-08-01-Nginx_uWSGI_Flask_in_CentOS.md'
-        - '使用Python的smtplib和email发送邮件': 'posts/2017-04-09-Use-smtplib-and-email-in-python-to-send-email.md'
-        - 'C语言上机心得': 'posts/2016-12-30-C-study.md'
-        - 'Markdown语法基础': 'posts/2016-11-13-The-base-of-grammar-in-Markdown.md'
-        - '从冯·诺依曼体系结构起航': 'posts/2016-10-22-John-Von-Nouma.md'
+    - 无聊的日常:
+        - '无聊的日常 - 导读': 'boring/index.md'
+        - '软路由与NAS(3) - 外壳': 'boring/2019-02-22-router3_shell.md'
+        - '软路由与NAS(2) - 软件平台搭建': 'boring/2019-02-18-router2_software.md'
+        - '2018年终总结': 'boring/2018-12-31-summary.md'
+        - '软路由与NAS(1) - 硬件平台搭建': 'boring/2018-11-02-router1_hardware.md'
+#        - 'New Surface Pro 初体验（未完成）': 'boring/2018-09-07-new_surface_pro.md'
+        - '虹吸壶冲泡咖啡': 'boring/2018-03-03-siphon.md'
+        - 'IKBC Poker2 加灯历程': 'boring/2018-01-20-lighted-poker2.md'
+    - 专业相关:
+        - '专业相关的文章 - 导读': 'professional/index.md'
+        - 'Windows 常用注册表项': 'professional/2018-10-23-Windows-regedit.md'
+        - 'Nginx常用配置套路（未完成）': 'professional/2018-07-02-nginx-configure.md'
+#        - 'Python-Markdown支持的Markdown扩展（未完成）': 'professional/2018-05-24-python-markdown.md'
+        - '通过MkDocs搭建个人博客': 'professional/2018-05-19-mkdocs-blog.md'
+        - 'HTTP/1.1 - 状态码定义（翻译）（未完成）': 'professional/2017-12-19-HTTP11-Status-Code-Definitions-zh.md'
+        - 'CentOS中通过Nginx和uWSGI部署Flask项目': 'professional/2017-08-01-Nginx_uWSGI_Flask_in_CentOS.md'
+        - '使用Python的smtplib和email发送邮件': 'professional/2017-04-09-Use-smtplib-and-email-in-python-to-send-email.md'
+        - 'C语言上机心得': 'professional/2016-12-30-C-study.md'
+        - 'Markdown语法基础': 'professional/2016-11-13-The-base-of-grammar-in-Markdown.md'
+        - '从冯·诺依曼体系结构起航': 'professional/2016-10-22-John-Von-Nouma.md'
     - 转载:
         - '转载文章 - 导读': 'repost/index.md'
         - 'HTTP/1.1 - Status Code Definitions': 'repost/2017-12-19-HTTP11-Status-Code-Definitions-en.md'
@@ -39,15 +48,6 @@ pages:
         - 'Python入门2': 'sssta/2017-10-08-SSSTA-Python2.md'
         - '在GitHub上通过Jekyll搭建个人博客': 'sssta/2017-10-08-SSSTA-Blog.md'
         - 'Python入门1': 'sssta/2017-09-29-SSSTA-Python1.md'
-    - 无聊的日常:
-        - '无聊的日常 - 导读': 'boring/index.md'
-        - '软路由与NAS(3) - 外壳': 'boring/2019-02-22-router3_shell.md'
-        - '软路由与NAS(2) - 软件平台搭建': 'boring/2019-02-18-router2_software.md'
-        - '2018年终总结': 'boring/2018-12-31-summary.md'
-        - '软路由与NAS(1) - 硬件平台搭建': 'boring/2018-11-02-router1_hardware.md'
-#        - 'New Surface Pro 初体验（未完成）': 'boring/2018-09-07-new_surface_pro.md'
-        - '虹吸壶冲泡咖啡': 'boring/2018-03-03-siphon.md'
-        - 'IKBC Poker2 加灯历程': 'boring/2018-01-20-lighted-poker2.md'
     - 垃圾代码:
         - '垃圾代码 - 导读': 'projects/index.md'
         - 'keybrl-mines - 优雅的扫雷从此无处不在': 'projects/2018-10-14-Project-keybrl-gnome.md'
