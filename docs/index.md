@@ -7,6 +7,15 @@ hero: 欢迎各位强者光临寒舍..
 
 该博客主要用于 Keyboard 个人记录思维成果和对外进行意识形态输出
 
+!!! tip "小提醒"
+    **文章目录在左侧（对于宽屏设备）**  
+    ![nav1](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/nav1.jpg)
+
+    **或左上角（对于窄屏设备）**  
+    ![nav2](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/nav2.jpg)
+
+    点击可浏览更多文章
+
 ## 主要内容
 
 该博客记录了 Keyboard 一些无聊的日常，它们在 **[无聊的日常](boring/index.md)** 目录下
