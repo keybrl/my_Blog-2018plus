@@ -11,7 +11,7 @@
 - Web全栈之**钟大佬** - [37A's Personal Site](http://blog.three7.cc/)
 - 精通游戏制作的Web后端**zsj** - [PaperStation](https://onesaber.github.io/PaperStation/)
 - 精通ML之**Virtuoso** - [Virtuoso's Blog](https://blog.v1rtuoso.cn/)
-- 游戏组三代目**张大炮** - [大炮的部落格](https://blog.dapaostudio.com/)
+- 游戏组三代目**张大炮** - [大炮's Blog - 喜欢的话就坚持吧](https://blog.dapaostudio.com/)
 - 精通计算机图形学的**杨大佬** - [心渡的小黑屋](http://blog.xindu233.com/)
 
 
