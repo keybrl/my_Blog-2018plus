@@ -7,6 +7,7 @@ import os
 from xml.etree import ElementTree
 import re
 import json
+import threading
 
 
 blog_config_file = 'sync_blog_config.json'
@@ -548,48 +549,94 @@ class OSSSynchronizer(object):
 
     # 从本地同步到OSS
     def sync_from_local_to_oss(self):
-        sync_list = self.sync_checking()
-
         # 进行同步
-        for thing in sync_list:
-            if thing[1]:  # 文件在本地
-                if thing[2] is not None:  # 本地和OSS各有一份
-                    data = self.local_dir.read_file(thing[0])
-                    file_md5 = md5(data).hexdigest().upper()
-                    if file_md5 != thing[2]:  # 内容不一致，上传本地文件到OSS
+        def sync(target_list: list):
+            for thing in target_list:
+                if thing[1]:  # 文件在本地
+                    if thing[2] is not None:  # 本地和OSS各有一份
+                        data = self.local_dir.read_file(thing[0])
+                        file_md5 = md5(data).hexdigest().upper()
+                        if file_md5 != thing[2]:  # 内容不一致，上传本地文件到OSS
+                            res = self.oss_bucket.put_object(thing[0], data)
+                            print('{status} [M] {filename}'.format(status=res, filename=thing[0]))
+                    else:  # 文件不在OSS，上传本地文件到OSS
+                        data = self.local_dir.read_file(thing[0])
                         res = self.oss_bucket.put_object(thing[0], data)
-                        print('{status} [M] {filename}'.format(status=res, filename=thing[0]))
-                else:  # 文件不在OSS，上传本地文件到OSS
-                    data = self.local_dir.read_file(thing[0])
-                    res = self.oss_bucket.put_object(thing[0], data)
-                    print('{status} [+] {filename}'.format(status=res, filename=thing[0]))
-            else:  # 文件不在本地，删除OSS上的对应对象
-                res = self.oss_bucket.del_object(thing[0])
-                print('{status} [-] {filename}'.format(status=res, filename=thing[0]))
+                        print('{status} [+] {filename}'.format(status=res, filename=thing[0]))
+                else:  # 文件不在本地，删除OSS上的对应对象
+                    res = self.oss_bucket.del_object(thing[0])
+                    print('{status} [-] {filename}'.format(status=res, filename=thing[0]))
+
+        sync_lists = self.sync_checking()
+        threads_num = 64
+        if len(sync_lists) < 64:
+            threads_num = len(sync_lists)
+        target_num = len(sync_lists) // threads_num
+        target_num_mod = len(sync_lists) % threads_num
+        threads = []
+        for i in range(threads_num):
+            if i < target_num_mod:
+                threads.append(threading.Thread(
+                    target=sync,
+                    args=(sync_lists[(target_num + 1) * i:(target_num + 1) * (i + 1)],)
+                ))
+            else:
+                threads.append(threading.Thread(
+                    target=sync,
+                    args=(sync_lists[target_num * i + target_num_mod:target_num * (i + 1) + target_num_mod],)
+                ))
+
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
 
     # 从OSS同步到本地
     def sync_from_oss_to_local(self):
-        sync_list = self.sync_checking()
-
         # 进行同步
-        for thing in sync_list:
-            if thing[1]:  # 文件在本地
-                if thing[2] is not None:  # 本地和OSS各有一份
-                    data = self.local_dir.read_file(thing[0])
-                    file_md5 = md5(data).hexdigest().upper()
-                    if file_md5 != thing[2]:  # 内容不一致，下载OSS对应文件
-                        res = self.oss_bucket.get_object(thing[0])
-                        if res:
-                            self.local_dir.write_file(thing[0], res)
-                        print('{status} [M] {filename}'.format(status='OK  ' if res else 'Fail', filename=thing[0]))
-                else:  # 文件不在OSS，删除本地文件
-                    self.local_dir.del_file(thing[0])
-                    print('{status} [-] {filename}'.format(status='OK  ', filename=thing[0]))
-            else:  # 文件不在本地，下载OSS上的对应对象
-                res = self.oss_bucket.get_object(thing[0])
-                if res:
-                    self.local_dir.write_file(thing[0], res)
-                print('{status} [+] {filename}'.format(status='OK  ' if res else 'Fail', filename=thing[0]))
+        def sync(target_list: list):
+            for thing in target_list:
+                if thing[1]:  # 文件在本地
+                    if thing[2] is not None:  # 本地和OSS各有一份
+                        data = self.local_dir.read_file(thing[0])
+                        file_md5 = md5(data).hexdigest().upper()
+                        if file_md5 != thing[2]:  # 内容不一致，下载OSS对应文件
+                            res = self.oss_bucket.get_object(thing[0])
+                            if res:
+                                self.local_dir.write_file(thing[0], res)
+                            print('{status} [M] {filename}'.format(status='OK' if res else 'Fail', filename=thing[0]))
+                    else:  # 文件不在OSS，删除本地文件
+                        self.local_dir.del_file(thing[0])
+                        print('{status} [-] {filename}'.format(status='OK', filename=thing[0]))
+                else:  # 文件不在本地，下载OSS上的对应对象
+                    res = self.oss_bucket.get_object(thing[0])
+                    if res:
+                        self.local_dir.write_file(thing[0], res)
+                    print('{status} [+] {filename}'.format(status='OK' if res else 'Fail', filename=thing[0]))
+
+        sync_lists = self.sync_checking()
+        threads_num = 64
+        if len(sync_lists) < 64:
+            threads_num = len(sync_lists)
+        target_num = len(sync_lists) // threads_num
+        target_num_mod = len(sync_lists) % threads_num
+        threads = []
+        for i in range(threads_num):
+            if i < target_num_mod:
+                threads.append(threading.Thread(
+                    target=sync,
+                    args=(sync_lists[(target_num + 1) * i:(target_num + 1) * (i + 1)], )
+                ))
+            else:
+                threads.append(threading.Thread(
+                    target=sync,
+                    args=(sync_lists[target_num * i + target_num_mod:target_num * (i + 1) + target_num_mod],)
+                ))
+
+        for t in threads:
+            t.start()
+        for t in threads:
+            t.join()
 
         # 清理空文件夹
         self.local_dir.clear_empty_folder()

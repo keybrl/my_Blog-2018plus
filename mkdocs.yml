@@ -75,7 +75,7 @@ theme:
 extra_javascript:
   - '/assets/javascripts/av-min.js'      # //cdn1.lncld.net/static/js/3.0.4/av-min.js
   - '/assets/javascripts/Valine.min.js'  # //unpkg.com/valine/dist/Valine.min.js
-  - '/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML'  # //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+  - '//blog-assets.keybrl.com/plugins/MathJax/unpacked/MathJax.js?config=TeX-MML-AM_CHTML'  # //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
 #extra_templates: []
 extra:
     search:
