@@ -1,10 +1,11 @@
 # 从冯·诺依曼体系结构起航
 
-> 大一 “计算机导论Ⅰ” 课程的大作业，关于冯诺依曼体系结构对今天计算机发展的影响。
+> 大一 “计算机导论Ⅰ” 课程的大作业，第一篇写那么长的作业，恬不知耻地post上来纪念一下。  
+> 关于冯诺依曼体系结构对今天计算机发展的影响。
 >
 > date: 2016-10-22
 
-![冯·诺依曼](//blog-oss.keybrl.com/2018/images/John-Von-Nouma/title_image.jpg)
+![冯·诺依曼](//blog-assets.keybrl.com/images/John-Von-Nouma/title_image.jpg)
 
 ---
 

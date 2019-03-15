@@ -9,10 +9,10 @@ hero: 欢迎各位强者光临寒舍..
 
 !!! tip "小提醒"
     **文章目录在左侧（对于宽屏设备）**  
-    ![nav1](//blog-oss.keybrl.com/2018/images/nav1.jpg)
+    ![nav1](//blog-assets.keybrl.com/images/nav1.jpg)
 
     **或左上角（对于窄屏设备）**  
-    ![nav2](//blog-oss.keybrl.com/2018/images/nav2.jpg)
+    ![nav2](//blog-assets.keybrl.com/images/nav2.jpg)
 
     点击可浏览更多文章
 

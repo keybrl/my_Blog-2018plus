@@ -9,8 +9,8 @@ import re
 import json
 
 
-config_file = '../sync_config.json'
-
+blog_config_file = 'sync_blog_config.json'
+assets_config_file = 'sync_assets_config.json'
 
 class OSSBucket(object):
     content_type_map = {
@@ -369,8 +369,11 @@ class OSSBucket(object):
         content_md5 = auth_info.get('content-md5') if auth_info.get('content-md5') else ''
         content_type = auth_info.get('content-type') if auth_info.get('content-type') else ''
         date = time.strftime('%a, %d %b %Y %H:%M:%S GMT', time.gmtime())
-        canonicalized_oss_headers = auth_info.get('canonicalized_oss_headers') if auth_info.get('canonicalized_oss_headers') else ''
-        canonicalized_resource = auth_info.get('canonicalized_resource') if auth_info.get('canonicalized_resource') else '/' + self.bucket + '/'
+        canonicalized_oss_headers = \
+            auth_info.get('canonicalized_oss_headers') if auth_info.get('canonicalized_oss_headers') else ''
+        canonicalized_resource = \
+            auth_info.get('canonicalized_resource') if \
+            auth_info.get('canonicalized_resource') else '/' + self.bucket + '/'
 
         signature = base64.b64encode(
             hmac.new(
@@ -443,7 +446,19 @@ class OSSBucket(object):
             })
         }
         res = requests.put('https://' + self.host + '/' + obj_name, data=data, headers=headers)
-        return 'OK  ' if res.status_code == 200 else str(res.status_code) + ' '
+        return 'OK  ' if res.status_code == 200 else 'Fail'
+
+    def get_object(self, obj_name: str) -> bytes:
+        headers = {
+            'Host': self.host,
+            'Date': time.strftime('%a, %d %b %Y %H:%M:%S GMT', time.gmtime()),
+            'Authorization': self.make_auth({
+                'verb': 'GET',
+                'canonicalized_resource': '/' + self.bucket + '/' + obj_name
+            })
+        }
+        res = requests.get('https://' + self.host + '/' + obj_name, headers=headers)
+        return res.content
 
     def del_object(self, obj_name: str) -> str:
         headers = {
@@ -455,33 +470,60 @@ class OSSBucket(object):
             })
         }
         res = requests.delete('https://' + self.host + '/' + obj_name, headers=headers)
-        return 'OK  ' if res.status_code == 204 else str(res.status_code) + ' '
+        return 'OK  ' if res.status_code == 204 else 'Fail'
 
 
-class OSSSynchronizer(object):
-    def __init__(self, local_dir: str, oss_bucket: OSSBucket):
-        self.local_dir = local_dir
-        self.oss_bucket = oss_bucket
+class FileManager(object):
+    def __init__(self, root_dir: str):
+        self.root_dir = root_dir
 
     def list_file(self) -> list:
-        root = self.local_dir
+        root = self.root_dir
         if root[-1] in ['/', '\\']:
             root = root[:-1]
 
-        root_len = len(self.local_dir) + 1
+        root_len = len(self.root_dir) + 1
         res = []
         for path in os.walk(root):
             if path[2]:
                 for file in path[2]:
                     res.append((path[0].replace('\\', '/') + '/' + file)[root_len:])
-            else:
-                if path[0][root_len:] == '':
-                    continue
-                res.append(path[0][root_len:].replace('\\', '/') + '/')
         return res
 
-    def sync_oss(self):
-        file_list = self.list_file()
+    def read_file(self, file_name: str) -> bytes:
+        with open(os.path.join(self.root_dir, file_name), 'rb') as file:
+            data = file.read()
+        return data
+
+    def write_file(self, file_name: str, data: bytes):
+        path = os.path.join(self.root_dir, file_name)
+        if not os.path.isdir(os.path.dirname(path)):
+            os.makedirs(os.path.dirname(path))
+
+        with open(path, 'wb') as file:
+            file.write(data)
+
+    def del_file(self, file_name: str):
+        path = os.path.join(self.root_dir, file_name)
+        if os.path.isfile(path):
+            os.remove(path)
+
+    def clear_empty_folder(self):
+        for path in os.walk(self.root_dir, False):
+            if path[0] == self.root_dir:
+                continue
+            if not path[1] and not path[2]:
+                os.rmdir(path[0])
+
+
+class OSSSynchronizer(object):
+    def __init__(self, local_dir: FileManager, oss_bucket: OSSBucket):
+        self.local_dir = local_dir
+        self.oss_bucket = oss_bucket
+
+    # 检查同步情况
+    def sync_checking(self) -> list:
+        file_list = self.local_dir.list_file()
         obj_list = self.oss_bucket.list_object()
 
         # 将(文件名, ETag)二元组列表转为键值映射字典
@@ -502,41 +544,82 @@ class OSSSynchronizer(object):
         for obj, etag in obj_map.items():
             sync_list.append((obj, False, etag))
 
+        return sync_list
+
+    # 从本地同步到OSS
+    def sync_from_local_to_oss(self):
+        sync_list = self.sync_checking()
+
         # 进行同步
         for thing in sync_list:
             if thing[1]:  # 文件在本地
                 if thing[2] is not None:  # 本地和OSS各有一份
-                    if thing[0][-1] == '/':
-                        continue
-                    with open(os.path.join(self.local_dir, thing[0]), 'rb') as file:
-                        data = file.read()
-                        file_md5 = md5(data).hexdigest().upper()
+                    data = self.local_dir.read_file(thing[0])
+                    file_md5 = md5(data).hexdigest().upper()
                     if file_md5 != thing[2]:  # 内容不一致，上传本地文件到OSS
                         res = self.oss_bucket.put_object(thing[0], data)
                         print('{status} [M] {filename}'.format(status=res, filename=thing[0]))
                 else:  # 文件不在OSS，上传本地文件到OSS
-                    if thing[0][-1] == '/':
-                        data = b''
-                    else:
-                        with open(os.path.join(self.local_dir, thing[0]), 'rb') as file:
-                            data = file.read()
+                    data = self.local_dir.read_file(thing[0])
                     res = self.oss_bucket.put_object(thing[0], data)
                     print('{status} [+] {filename}'.format(status=res, filename=thing[0]))
             else:  # 文件不在本地，删除OSS上的对应对象
                 res = self.oss_bucket.del_object(thing[0])
                 print('{status} [-] {filename}'.format(status=res, filename=thing[0]))
 
+    # 从OSS同步到本地
+    def sync_from_oss_to_local(self):
+        sync_list = self.sync_checking()
+
+        # 进行同步
+        for thing in sync_list:
+            if thing[1]:  # 文件在本地
+                if thing[2] is not None:  # 本地和OSS各有一份
+                    data = self.local_dir.read_file(thing[0])
+                    file_md5 = md5(data).hexdigest().upper()
+                    if file_md5 != thing[2]:  # 内容不一致，下载OSS对应文件
+                        res = self.oss_bucket.get_object(thing[0])
+                        if res:
+                            self.local_dir.write_file(thing[0], res)
+                        print('{status} [M] {filename}'.format(status='OK  ' if res else 'Fail', filename=thing[0]))
+                else:  # 文件不在OSS，删除本地文件
+                    self.local_dir.del_file(thing[0])
+                    print('{status} [-] {filename}'.format(status='OK  ', filename=thing[0]))
+            else:  # 文件不在本地，下载OSS上的对应对象
+                res = self.oss_bucket.get_object(thing[0])
+                if res:
+                    self.local_dir.write_file(thing[0], res)
+                print('{status} [+] {filename}'.format(status='OK  ' if res else 'Fail', filename=thing[0]))
+
+        # 清理空文件夹
+        self.local_dir.clear_empty_folder()
+
 
 if __name__ == '__main__':
-    # 读取配置文件
-    with open(config_file, 'r', encoding='utf-8') as file:
-        config = json.load(file)
+    # 同步博客
+    with open(blog_config_file, 'r', encoding='utf-8') as fp:
+        config = json.load(fp)
 
-    oss_bucket = OSSBucket(
+    oss = OSSBucket(
         config['oss']['host'],
         config['oss']['bucket'],
         config['oss']['access_key_id'],
         config['oss']['access_key_secret']
     )
-    oss_synchronizer = OSSSynchronizer(config['local_dir'], oss_bucket)
-    oss_synchronizer.sync_oss()
+    local = FileManager(config['local_dir'])
+    oss_synchronizer = OSSSynchronizer(local, oss)
+    oss_synchronizer.sync_from_local_to_oss()
+
+    # 同步静态文件
+    with open(assets_config_file, 'r', encoding='utf-8') as fp:
+        config = json.load(fp)
+
+    oss = OSSBucket(
+        config['oss']['host'],
+        config['oss']['bucket'],
+        config['oss']['access_key_id'],
+        config['oss']['access_key_secret']
+    )
+    local = FileManager(config['local_dir'])
+    oss_synchronizer = OSSSynchronizer(local, oss)
+    oss_synchronizer.sync_from_local_to_oss()

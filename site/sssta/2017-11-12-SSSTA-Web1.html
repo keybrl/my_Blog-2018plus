@@ -57,12 +57,8 @@
       
     
     
-
       <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
-<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
-<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
-
     
 <link rel="stylesheet" href="/assets/stylesheets/google-font.css">
 <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -811,7 +807,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+    <a href="../projects/2018-10-14-Project-keybrl-mines.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
       keybrl-mines - 优雅的扫雷从此无处不在
     </a>
   </li>
@@ -890,6 +886,18 @@
   <li class="md-nav__item">
     <a href="../donate.html" title="小额赞助" class="md-nav__link">
       小额赞助
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
+      测试页
     </a>
   </li>
 
@@ -986,14 +994,14 @@
               
                 
                 
-                <h1 id="web1-web">Web1 - Web应用概论</h1>
+                <h1 id="web1-web">Web1 - Web应用概论<a class="headerlink" href="#web1-web" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>SS::STA Web组第一次活动，关于“什么是Web”</p>
 <p>date: 2017-11-12</p>
 </blockquote>
 <hr />
 <p>该篇主要列出提纲，具体内容请通过自行Google了解</p>
-<h2 id="web">什么是Web？</h2>
+<h2 id="web">什么是Web？<a class="headerlink" href="#web" title="Permanent link">&para;</a></h2>
 <p><em>万维网（World Wide Web, WWW）</em> 是一个由许多互相链接的超文本组成的系统，通过互联网访问。</p>
 <ol>
 <li>超文本</li>
@@ -1009,44 +1017,50 @@
 <li>超文本标记语言（Hyper Text Markup Language, <a href="https://zh.wikipedia.org/wiki/HTML" target="_blank" title="HTML - 维基百科，自由的百科全书">HTML</a>）</li>
 <li>超文本传输协议（Hyper-Text Transfer Protocol, <a href="https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE" target="_blank" title="超文本传输协议 - 维基百科，自由的百科全书">HTTP</a>）</li>
 </ul>
-<h2 id="url">URL</h2>
+<h2 id="url">URL<a class="headerlink" href="#url" title="Permanent link">&para;</a></h2>
 <p>看一个真实的URL</p>
-<div class="codehilite"><pre><span></span>http://cn.bing.com:80/search?q=Python&amp;go=搜索&amp;qs=bs&amp;form=QBRE&amp;scope=web
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>http://cn.bing.com:80/search?q=Python&amp;go=搜索&amp;qs=bs&amp;form=QBRE&amp;scope=web
 </pre></div>
-
+</td></tr></table>
 
 <ul>
-<li><code>http</code>是协议，访问资源所使用的协议，常见的还有<code>file</code>、<code>https</code>、<code>ftp</code>、<code>smb</code>、<code>mailto</code>、......</li>
-<li><code>cn.bing.com</code>是主机名，可以是域名也可以是IP地址</li>
-<li><code>80</code>端口号，http默认使用80端口，https、file、ftp等都有默认端口号，浏览器会自动使用默认端口号，但如果自己写服务器用了不同端口号，比如<code>8080</code>，那就要自己加上</li>
-<li><code>/search</code>请求的目录</li>
-<li><code>q=Python&amp;go=搜索&amp;qs=bs&amp;form=QBRE&amp;scope=web</code>GET请求所带的查询参数，详细情况自行百度HTTP协议</li>
+<li><code class="codehilite">http</code>是协议，访问资源所使用的协议，常见的还有<code class="codehilite">file</code>、<code class="codehilite">https</code>、<code class="codehilite">ftp</code>、<code class="codehilite">smb</code>、<code class="codehilite">mailto</code>、......</li>
+<li><code class="codehilite">cn.bing.com</code>是主机名，可以是域名也可以是IP地址</li>
+<li><code class="codehilite">80</code>端口号，http默认使用80端口，https、file、ftp等都有默认端口号，浏览器会自动使用默认端口号，但如果自己写服务器用了不同端口号，比如<code class="codehilite">8080</code>，那就要自己加上</li>
+<li><code class="codehilite">/search</code>请求的目录</li>
+<li><code class="codehilite">q=Python&amp;go=搜索&amp;qs=bs&amp;form=QBRE&amp;scope=web</code>GET请求所带的查询参数，详细情况自行百度HTTP协议</li>
 </ul>
 <p>所以一般格式是这样的</p>
-<div class="codehilite"><pre><span></span>协议://主机名[:端口]/[目录][?查询参数]
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>协议://主机名[:端口]/[目录][?查询参数]
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>方括号内容为非必填，需要取决于服务所需，一般是前后端协商好的</p>
 </blockquote>
 <p>URL里面只有很少一部分是用户输入的，其他都是靠自动加载或以超链接的形式存在，所以即使有些URL很复杂，也不影响用户使用体验，只要把主页URL设简单就好。</p>
 <p>那些指示浏览器自动加载资源的或页面中的超链接的URL，都是在编写前端页面时加入的。</p>
-<h2 id="html">HTML</h2>
+<h2 id="html">HTML<a class="headerlink" href="#html" title="Permanent link">&para;</a></h2>
 <p>超文本标记语言，与之配套的还有CSS和JavaScript。</p>
 <p>HTML和CSS是联系比较紧密的</p>
 <p>JS比较复杂，而且不算一种超文本，也不是标记语言，是一种前端脚本语言（当然其用途不只是前端脚本），那是网页的灵魂所在。</p>
 <blockquote>
 <p>这就是所谓的前端三件套，这些内容以后会细说</p>
 </blockquote>
-<h2 id="http">HTTP协议</h2>
+<h2 id="http">HTTP协议<a class="headerlink" href="#http" title="Permanent link">&para;</a></h2>
 <p>Web应用都是根据HTTP协议在客户端和服务端之间通信的。</p>
 <p>HTTP报文分为Request和Response</p>
 <blockquote>
-<p>然后请出神器Fiddler，还有<code>F12</code></p>
+<p>然后请出神器Fiddler，还有<code class="codehilite">F12</code></p>
 </blockquote>
-<h3 id="_1">请求报文</h3>
-<div class="codehilite"><pre><span></span>请求方法 请求URL HTTP版本
+<h3 id="_1">请求报文<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>请求方法 请求URL HTTP版本
 请求头key1: 请求头value1
 请求头key2: 请求头value2
 请求头key3: 请求头value3
@@ -1054,23 +1068,26 @@
 
 请求体，balabala的，一般是表单数据
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>请求方法、请求头是比较重要的，自行了解</p>
 </blockquote>
-<h3 id="_2">响应报文</h3>
-<div class="codehilite"><pre><span></span>HTTP版本 状态码 状态描述
+<h3 id="_2">响应报文<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>HTTP版本 状态码 状态描述
 响应头
 
 响应data
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>状态码和响应头可多做了解</p>
 </blockquote>
-<h2 id="tcpip5">TCP/IP协议族的5层模型</h2>
+<h2 id="tcpip5">TCP/IP协议族的5层模型<a class="headerlink" href="#tcpip5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1253,6 +1270,12 @@
         
       
       <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+        <script src="/assets/javascripts/av-min.js"></script>
+      
+        <script src="/assets/javascripts/Valine.min.js"></script>
+      
+        <script src="/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
     

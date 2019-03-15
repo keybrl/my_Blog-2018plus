@@ -16,11 +16,11 @@
 
 ### 如果你是用户
 
-你只需要访问该项目的[主页](http://coin.keybrl.com/)，按照提示，适量点击屏幕适当位置即可。
+你只需要访问该项目的[主页](https://coin.keybrl.com/)，按照提示，适量点击屏幕适当位置即可。
 
 他目前主要有3个功能
 
-![手机端效果预览](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/project_img/Coin/preview.png)
+![手机端效果预览](//blog-assets.keybrl.com/images/project_img/Coin/preview.png)
 
 #### Coin
 
@@ -44,7 +44,7 @@
 
 你可以查看项目源码，这只是一个普通的静态网站
 
-> 项目GitHub仓库链接：[https://github.com/Keyboard-l/coin.git](https://github.com/Keyboard-l/coin.git)
+> 项目GitHub仓库链接：[https://github.com/keybrl/coin.git](https://github.com/keybrl/coin)
 
 ## 后续更新
 
@@ -62,6 +62,4 @@
 
 ## 关于打赏
 
-虽然概率之神乐于为你指明方向且不需要酬劳，但是该项目的作者非常贫穷。如果你觉得该项目非常棒，而且你刚好有闲钱，你肯定很乐意打赏项目作者的。如果的确如此，你可以通过下方**微信赞赏码**向我打赏
-
-![扫码向我转账](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/project_img/Coin/donate.png)
+虽然概率之神乐于为你指明方向且不需要酬劳，但是该项目的作者非常贫穷。如果你觉得该项目非常棒，而且你刚好有闲钱，你肯定很乐意打赏项目作者的。如果的确如此，你可以通过 [打赏页面](../donate.md) 提供的方法向我打赏

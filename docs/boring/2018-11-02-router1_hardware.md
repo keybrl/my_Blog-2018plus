@@ -4,9 +4,9 @@
 
 最初我有一个 Raspberry Pi 3B ，那也确实好玩，我还拿他刷过 OpenWrt ，做过一段时间的随身路由，上面配置有透明代理。可是 Raspberry Pi 最大的问题就是 I/O 性能太弱， USB 、内置无线网卡，都慢得不行。它本身的 SD 卡读写性能也是一个瓶颈。这就导致无论用它干什么都觉得不爽，无论是软路由还是文件共享，还是别的什么服务。也就有时需要一个东西在校园网内跑个长进程时需要他（比如大二期末用它跑了个成绩监视应用，有新成绩出来时通知我（项目仓库在这 [keybrl/xidian_grade_monitor](https://github.com/keybrl/xidian_grade_monitor) ）），它的体验甚至不如阿里云学生主机。所以后来也就很少玩了。开学初把它卖给了舍友，换了个 Raspberry Pi 3B+ ，一样没什么好玩。几周前，不小心短接了他 GPIO 的 VCC 5V 和 3.3V ，瞬间黑屏了。送修至今（发表这篇文章时已经等了 38 天了），了无音信，便不再牵挂。
 
-大二下学期开学初，看了尹大人的几篇博客，了解了他与他的那个小小的软路由之间的有趣故事。比如这篇 [DIY NAS Project (1) Hardware and OpenWRT](https://www.yichya.review/diy-nas-project-1/) ，这是他这个系列文章的第一篇。下面这是尹大人初代 NAS
+大二下学期开学初，看了尹大人的几篇博客，了解了他与他的那个小小的软路由之间的有趣故事。比如这篇 [DIY NAS Project (1) Hardware and OpenWRT](https://www.yichya.dev/diy-nas-project-1/) ，这是他这个系列文章的第一篇。下面这是尹大人初代 NAS
 
-![尹大人的初代](//blog-oss.keybrl.com/2018/images/router/yichya_router.webp)
+![尹大人的初代](//blog-assets.keybrl.com/images/router/yichya_router.webp)
 
 感觉，哇，太厉害了，我也想要一个！！于是乎心心念念到了现在，在又一个双十一的推波助澜下（虽然我买的这些东西都不会降价），我开始了我有生以来最具挑战的一次 DIY 之旅。
 
@@ -16,7 +16,7 @@
 
 电脑嘛，首先是 CPU 和 板子，因为 Raspberry Pi 给我的不好印象，我觉得只有 x86 好玩，兼容性也好，跑个什么系统都比较随意，其他平台都没意思（ARM 各种玄学）。开始也没多想，某宝搜个“工控主板”一大堆，挑了个比较小巧，好看的，像这个...
 
-![n29](//blog-oss.keybrl.com/2018/images/router/n29.png)
+![n29](//blog-assets.keybrl.com/images/router/n29.png)
 
 
 CPU 是 Intel&reg; Celeron&reg; J1800 ， TDP 只有 10W ，大小也只有 12cm * 12cm ，而且 CPU 我查了一下性能还可以。双以太网卡、一个 SATA 、一个 mSATA 、一个 mini PCI-E 、 USB 若干（甚至还有 USB3.0 ）。看起来无可挑剔了。
@@ -47,13 +47,13 @@ CPU 是 Intel&reg; Celeron&reg; J1800 ， TDP 只有 10W ，大小也只有 12cm
 
 把现有的几个 xxxxU CPU 的型号依次在某宝搜搜，最后，选择真是少得可怜。一个是尹大人的二代软路由用的板子，长这样
 
-![3215U](//blog-oss.keybrl.com/2018/images/router/3215U.png)
+![3215U](//blog-assets.keybrl.com/images/router/3215U.png)
 
-那是一块 Celeron&reg; 3215U ，四个以太网卡还是很诱人的，具体可以看尹大人这篇文章 [DIY NAS Project (3) Hardware Upgrade & Disaster](https://www.yichya.review/diy-nas-project-3/) 。这块板子据说有 USB3.0 干扰网卡的情况，加上也比较贵，而且仔细一想， 4 以太网卡对我也没什么用，所以还是算了。
+那是一块 Celeron&reg; 3215U ，四个以太网卡还是很诱人的，具体可以看尹大人这篇文章 [DIY NAS Project (3) Hardware Upgrade & Disaster](https://www.yichya.dev/diy-nas-project-3/) 。这块板子据说有 USB3.0 干扰网卡的情况，加上也比较贵，而且仔细一想， 4 以太网卡对我也没什么用，所以还是算了。
 
 然后还有就是 Celeron&reg; 3855U 的有几块，大致是这样的
 
-![3855U](//blog-oss.keybrl.com/2018/images/router/3855U.png)
+![3855U](//blog-assets.keybrl.com/images/router/3855U.png)
 
 区别的话主要是，有的板子支持 DDR4 2133 内存条，有的板子支持 DDR3L 1333/1600 。考虑到 DDR4 内存可能比这板子都贵，就选了用 DDR3L 内存的，也就是上图那块。配置基本如下
 
@@ -75,7 +75,7 @@ CPU 是 Intel&reg; Celeron&reg; J1800 ， TDP 只有 10W ，大小也只有 12cm
 
 首先是内存、外存、无线网卡
 
-![order1](//blog-oss.keybrl.com/2018/images/router/order1.png)
+![order1](//blog-assets.keybrl.com/images/router/order1.png)
 
 内存没什么挑的，找了个比较便宜的大牌子，镁光的8G DDR3L 1600。原本我想的是一个小路由用不了多少内存，我主力笔记本也才8G内存，302一堆2G内存的旧机子都能算得上流畅运行，偶尔给他们插上4G内存就流畅得不行了，所以4G内存绝对足够。 **但是** ，在我下单之前，我又在群里问了一下，尹大人竟然回我了个“多多益善”，还说什么8G内存就能支持什么什么文件系统了（具体是什么我甚至都忘了）。加上我一看8G比4G也就贵了100多，这多4G跑个虚拟机什么的肯定更轻松，于是心一横又下单了。
 
@@ -85,11 +85,11 @@ CPU 是 Intel&reg; Celeron&reg; J1800 ， TDP 只有 10W ，大小也只有 12cm
 
 买完了大头，还得买些小东西，馈线、天线得买几根，随便下单了几条好看的
 
-![order2](//blog-oss.keybrl.com/2018/images/router/order2.png)
+![order2](//blog-assets.keybrl.com/images/router/order2.png)
 
 在这期间顺便 Google 了一下那些天线说的什么增益，什么 5dBi 、 6dBi 到底是些啥意思。天线增益嘛，大家直观感觉肯定是增强信号了，那那个多少多少 dBi 肯定是增益的单位嘛，那数值肯定是越大越好了。真的吗？当然不是。其实要说增益是增强信号也不是没有道理，但是这个增强不是通过增加功率做到的，输出功率是由网卡决定的，天线没有任何影响。天线增益的基本原理其实就是改变信号的形状，一般的WiFi天线就是把信号压扁，削弱竖直方向的信号，增强水平方向的信号。那么增益的多少就是由形变量实现的，其实下面这张图已经可以非常清楚地说明了
 
-![dbi](//blog-oss.keybrl.com/2018/images/router/dbi.jpg)
+![dbi](//blog-assets.keybrl.com/images/router/dbi.jpg)
 
 说了那么多，所以我应该挑选多少 dBi 的天线呢？不知道，我瞎挑的，最重要是好看。看了一些文章，看起来 5dBi 挺中规中矩，那就 5dBi 吧。买了3根， 3 * 3 MIMO 嘛。顺便看到一根 3dBi 的挺可爱，也许便携使用时会有用，反正也不贵，顺便买了一根。
 
@@ -101,11 +101,11 @@ CPU 是 Intel&reg; Celeron&reg; J1800 ， TDP 只有 10W ，大小也只有 12cm
 
 经过几天焦急的等待，东西陆续都到了。首先是某个风和日丽的早晨，内存和SSD到了。
 
-![SSD&Memory](//blog-oss.keybrl.com/2018/images/router/SSD&Memory.jpg)
+![SSD&Memory](//blog-assets.keybrl.com/images/router/SSD&Memory.jpg)
 
-![Memory](//blog-oss.keybrl.com/2018/images/router/Memory.jpg)
+![Memory](//blog-assets.keybrl.com/images/router/Memory.jpg)
 
-![SSD](//blog-oss.keybrl.com/2018/images/router/SSD.jpg)
+![SSD](//blog-assets.keybrl.com/images/router/SSD.jpg)
 
 甚至挺好看，但是好像除了吊我胃口，没有任何卵用。
 
@@ -113,13 +113,13 @@ CPU 是 Intel&reg; Celeron&reg; J1800 ， TDP 只有 10W ，大小也只有 12cm
 
 毫无意外，板子长这样
 
-![board front](//blog-oss.keybrl.com/2018/images/router/board1.jpg)
+![board front](//blog-assets.keybrl.com/images/router/board1.jpg)
 
-![board back](//blog-oss.keybrl.com/2018/images/router/board2.jpg)
+![board back](//blog-assets.keybrl.com/images/router/board2.jpg)
 
 真的毫无意外吗？太意外了好吧，我发现他居然没带散热器！！虽然我在淘宝上看的时候没有看见他有散热器的照片，但是他们家其他板子都有带散热器，我以为只是因为这块CPU在背面所以才看不见，结果一到货彻底傻眼了...赶紧一量尺寸下单了两个散热器，和硅脂
 
-![cooler](//blog-oss.keybrl.com/2018/images/router/cooler.jpg)
+![cooler](//blog-assets.keybrl.com/images/router/cooler.jpg)
 
 两个尺寸是一样的，之所以买两个是因为我看我这U 15W TDP ，人家 J1800 才 10W TDP 散热器都比这个大，这怕是得有风扇才能压住。所以买了个有风扇的（虽然风扇电源接口不合适），但还是不想放弃无风扇散热方案，所以两个都买来试试。硅脂在京东买的，因为刚好发现京东有卖，而且自营的话第二天就能到。
 
@@ -127,21 +127,21 @@ CPU 是 Intel&reg; Celeron&reg; J1800 ， TDP 只有 10W ，大小也只有 12cm
 
 刚要高兴，发现，电源没到啊。找遍了302也没有发现接口合适的 DC12V 电源。但我看板子上有个奇怪的 4-pin 插座，在正常的电源接口旁边
 
-![power](//blog-oss.keybrl.com/2018/images/router/power.jpg)
+![power](//blog-assets.keybrl.com/images/router/power.jpg)
 
 而且这个接口和台式机电源引出来的一堆线中的一个看起来可以完美对接，就下面这个
 
-![power](//blog-oss.keybrl.com/2018/images/router/power-line.jpg)
+![power](//blog-assets.keybrl.com/images/router/power-line.jpg)
 
 那是不是可以用这个苟一下呢。
 
-但是，电源可是大事，莽不得，特别是我看尹大人文章时了解了尹大人因为电源问题烧毁了一块塞满数据的硬盘的有趣故事（详情可以看尹大人这篇文章 [DIY NAS Project (3) Hardware Upgrade & Disaster](https://www.yichya.review/diy-nas-project-3/) ）。于是我去找这板子的规格说明和用户手册，上面是这么说的
+但是，电源可是大事，莽不得，特别是我看尹大人文章时了解了尹大人因为电源问题烧毁了一块塞满数据的硬盘的有趣故事（详情可以看尹大人这篇文章 [DIY NAS Project (3) Hardware Upgrade & Disaster](https://www.yichya.dev/diy-nas-project-3/) ）。于是我去找这板子的规格说明和用户手册，上面是这么说的
 
-![power-info](//blog-oss.keybrl.com/2018/images/router/power_info.jpg)
+![power-info](//blog-assets.keybrl.com/images/router/power_info.jpg)
 
 噢，才疏学浅的我，结合一下 Google 才知道，原来这个东西就是传说中的 ATX 12V 电源接口，那应该是能用的吧。保险起见，我还拿多用电表测了一下电源上几个针脚的电压，看是不是符合说明书上的定义。但其实这样接上还是通不了电的，因为电源上的主输出接口没有输出，电源会以为没有东西接上他。所以我还得在302垃圾堆找到一块没用的主板插上，电源开始工作，然后插上那根 ATX 12V 电源线。压上散热片，按下电源开关，哔~ 的一声...
 
-![first-light](//blog-oss.keybrl.com/2018/images/router/first_light.jpg)
+![first-light](//blog-assets.keybrl.com/images/router/first_light.jpg)
 
 之所以要这样鬼畜地压着散热片，是因为散热片是随便找了块主板拆下来的，规格是不合适的，不能自己固定在这块板子上，而且由于没有硅脂，所以接触非常不紧密，只能通过增加一点压力让他们接触没那么糟糕（事实上还是很糟糕，看后面就知道了）。
 
@@ -149,59 +149,59 @@ CPU 是 Intel&reg; Celeron&reg; J1800 ， TDP 只有 10W ，大小也只有 12cm
 
 看起来，散热就位之前也没法做什么了。但是好死也好过赖活着，作死为什么不做到底呢，怎么说也得让我装个系统看看吧，我还想看看 SSD 擦写次数呢（为了确定没有人坑我），我甚至还想编译个 OpenWrt 呢... 再次去 Intel&reg; 官网看了一眼对于 CPU 温度的描述
 
-![temp-limit](//blog-oss.keybrl.com/2018/images/router/temp_limit.jpg)
+![temp-limit](//blog-assets.keybrl.com/images/router/temp_limit.jpg)
 
 看起来只要没到100度就不会死，反正 CPU 也会自己启动保护措施。那么就快动手吧，插上 Ubuntu 装机盘，深吸一口气，开机...
 
-![install-ubuntu](//blog-oss.keybrl.com/2018/images/router/install_ubuntu1.jpg)
+![install-ubuntu](//blog-assets.keybrl.com/images/router/install_ubuntu1.jpg)
 
-![install-ubuntu](//blog-oss.keybrl.com/2018/images/router/install_ubuntu2.jpg)
+![install-ubuntu](//blog-assets.keybrl.com/images/router/install_ubuntu2.jpg)
 
 呼，忍着手底的热度，终于完了，幸好是 SSD ，安装个系统不用半个钟。然后我还开机装了几个软件，期间感觉好像也没多热，松了一下手，没过多久，散热片甚至变凉了，凉了！！完全凉了。完全难以理解，我甚至以为是静息时就这个温度，但是很快，我发现我点什么都没有反应了，再过了一会鼠标都不能动了，赶紧强制关机，幸好还能再开机，于是便不敢再玩了。后来也没有想明白怎么回事，也许是 CPU 过热关机了，当时凉得不可思议，就好像关机时的温度一样，几十秒前还是温热的，但是为什么鼠标还可以动呢，难道外设通信不需要CPU干预？为什么没有瞬间黑屏呢，难道显卡还能自己工作？难道显示器有缓存？管他呢...
 
 第二天，硅脂到了，因为是京东自营嘛，而且电源也在不久后到了，具体是哪一天就忘了。而且无线网卡也到了，无线网卡是最期待的，毕竟我还没摸过这所谓的神卡呢，网卡见下图。虽然散热器没有到，但是有硅脂的话，之前那个小小的散热片也能勉强撑着。甚至开始尝试编译 OpenWrt 。
 
-![qca9880](//blog-oss.keybrl.com/2018/images/router/qca9880.jpg)
+![qca9880](//blog-assets.keybrl.com/images/router/qca9880.jpg)
 
 虽然天线还没有到，但是，302有一块闲置的 PCI-E 无线网卡，上面有两根天线，而且非常巧，在一个机箱里找到一根悬空的馈线，拆下来，这样就可以接一根网线了。但是，天线怎么固定呢。总不能像尹大人那样随便找个地方拿包装带一扎就当固定了吧。这可是有3根天线，总得齐齐整整摆着吧。然后我发现 PCI-E 挡板非常好用，就这样的东西
 
-![pcie-card](//blog-oss.keybrl.com/2018/images/router/pcie_wlan.jpg)
+![pcie-card](//blog-assets.keybrl.com/images/router/pcie_wlan.jpg)
 
 赶紧拆下来，找个位置拧个螺丝固定住
 
-![full1](//blog-oss.keybrl.com/2018/images/router/full1.jpg)
+![full1](//blog-assets.keybrl.com/images/router/full1.jpg)
 
 蓝色的东西是电工胶布，因为会接触到主板上一堆焊点，所以缠点电工胶布避免短路。四个脚是铜柱，把板子垫高，避免压到正面的元件
 
-![full2](//blog-oss.keybrl.com/2018/images/router/full2.jpg)
+![full2](//blog-assets.keybrl.com/images/router/full2.jpg)
 
 这扳手、纸巾是编译OpenWrt时热得不行时想出来的方法，扳手下面压的纸巾是湿水的（甚至可以称之为水冷），之所以用扳手是因为那是我当时第一眼看见的最合适的可以压在上面的东西
 
-![water cooler](//blog-oss.keybrl.com/2018/images/router/water_cooler.jpg)
+![water cooler](//blog-assets.keybrl.com/images/router/water_cooler.jpg)
 
 后来天线到了，但3孔位的 PCI-E 挡板没到，所以临时用了块纸板来固定天线（这里要感谢 [@Virtuoso](https://github.com/virtuoso00) 的创意）
 
-![full3](//blog-oss.keybrl.com/2018/images/router/full3.jpg)
+![full3](//blog-assets.keybrl.com/images/router/full3.jpg)
 
-![full4](//blog-oss.keybrl.com/2018/images/router/full4.jpg)
+![full4](//blog-assets.keybrl.com/images/router/full4.jpg)
 
 散热器到了之后就可以把他反过来正面朝上了，天线挡板还是没有到，所以暂时用单天线，用一个回形针固定，还挺可爱
 
-![full5](//blog-oss.keybrl.com/2018/images/router/full5.jpg)
+![full5](//blog-assets.keybrl.com/images/router/full5.jpg)
 
 最后所有东西都到了之后，长这样
 
-![full8](//blog-oss.keybrl.com/2018/images/router/full8.jpg)
+![full8](//blog-assets.keybrl.com/images/router/full8.jpg)
 
-![full6](//blog-oss.keybrl.com/2018/images/router/full6.jpg)
+![full6](//blog-assets.keybrl.com/images/router/full6.jpg)
 
-![full7](//blog-oss.keybrl.com/2018/images/router/full7.jpg)
+![full7](//blog-assets.keybrl.com/images/router/full7.jpg)
 
 插上硬盘，找了个小角落将它安置下来
 
-![full9](//blog-oss.keybrl.com/2018/images/router/full9.jpg)
+![full9](//blog-assets.keybrl.com/images/router/full9.jpg)
 
-![full10](//blog-oss.keybrl.com/2018/images/router/full10.jpg)
+![full10](//blog-assets.keybrl.com/images/router/full10.jpg)
 
 好了，硬件部分就先讲那么多吧，一篇文章太长也会把人看死，也会把我写死。软件部分也是坑巨多，有空我会再写一篇介绍一下这辛酸历程...
 
@@ -217,18 +217,18 @@ CPU 是 Intel&reg; Celeron&reg; J1800 ， TDP 只有 10W ，大小也只有 12cm
 
 目前的解决方案，自己做了个木头的机箱，还能把硬盘架放里面，还有一个炫酷的开关
 
-![wood1](//blog-oss.keybrl.com/2018/images/router/wood1.jpg)
+![wood1](//blog-assets.keybrl.com/images/router/wood1.jpg)
 
-![wood2](//blog-oss.keybrl.com/2018/images/router/wood2.jpg)
+![wood2](//blog-assets.keybrl.com/images/router/wood2.jpg)
 
-![wood3](//blog-oss.keybrl.com/2018/images/router/wood3.jpg)
+![wood3](//blog-assets.keybrl.com/images/router/wood3.jpg)
 
-![wood4](//blog-oss.keybrl.com/2018/images/router/wood4.jpg)
+![wood4](//blog-assets.keybrl.com/images/router/wood4.jpg)
 
-![wood5](//blog-oss.keybrl.com/2018/images/router/wood5.jpg)
+![wood5](//blog-assets.keybrl.com/images/router/wood5.jpg)
 
-![wood6](//blog-oss.keybrl.com/2018/images/router/wood6.jpg)
+![wood6](//blog-assets.keybrl.com/images/router/wood6.jpg)
 
-![wood7](//blog-oss.keybrl.com/2018/images/router/wood7.jpg)
+![wood7](//blog-assets.keybrl.com/images/router/wood7.jpg)
 
-![wood8](//blog-oss.keybrl.com/2018/images/router/wood8.jpg)
+![wood8](//blog-assets.keybrl.com/images/router/wood8.jpg)

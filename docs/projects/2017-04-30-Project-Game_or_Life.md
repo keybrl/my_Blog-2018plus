@@ -8,7 +8,7 @@
 
 **细胞自动机**（英语：Cellular automaton），又称**格状自动机**、**元胞自动机**，是一种离散模型，在可算性理论、数学及理论生物学都有相关研究。它是由无限个有规律、坚硬的方格组成，每格均处于一种有限状态。整个格网可以是任何有限维的。同时也是离散的。每格于t时的态由t-1时的一集有限格（这集叫那格的邻域）的态决定。每一格的“邻居”都是已被固定的。（一格可以是自己的邻居。）每次演进时，每格均遵从同一规矩一齐演进。
 
-![一个你看不见的有趣图片](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/project_img/Game_of_Life/Gospers_glider_gun.gif)
+![whatever](//blog-assets.keybrl.com/images/project_img/Game_of_Life/Gospers_glider_gun.gif)
 
 就形式而言，细胞自动机有三个特征：
 
@@ -24,7 +24,7 @@
 
 使用这个应用是十分简单的，你只需要点几下你的鼠标（或者手指）。
 
-> 首先你需要打开页面[Game of Life](https://keyboard-l.github.io/Game_of_Life/)
+> 首先你需要打开页面[Game of Life](https://keybrl.github.io/Game_of_Life/)
 
 通过单击50*50格网中任意一格可以将其状态在生与死之间切换。鼠标停留在任意格子上时其左和上方会有行列标高亮显示，以便于定位。
 
@@ -48,7 +48,7 @@
 
 在数周前我发现我的“程序设计基础实训”课程所要求的一些题目中有一道关于“生命游戏”的题。这让我回想起若干年前在电视节目中看过的一段影像。影像首先演示了一些格子的生存、死亡、出生的规则，然后设定了一个初始状态，这些格子在几条简单的规则下幻化出各种形状。没错，当我看到我的题目时我很快就意识到这就是我当年看到的东西。
 
-当时我觉得很兴奋，于是很快做出了那个题目。题目要求很简单，一个C的命令行程序，输入初始值，然后打印出往后各代的情况，直到后代数达到某个阈值。我把难度加大到了我比较满意的程度，做成了一个相当漂亮的命令行的“频闪动画”。这个程序的[源代码](https://github.com/Keyboard-l/Game_of_Life/tree/master/toy)我还保留着（单击超链接可以前往查看）。然后我盯着命令行一遍一遍地试，修改初始值和规则，但这并不简单。初始值要靠一堆的01字串输入，即使后来我把输入重定向到了一个文件中，这仍很麻烦；修改参数需要通过修改源代码。所以我萌生了做一个漂亮点的生命游戏模拟器的念头。
+当时我觉得很兴奋，于是很快做出了那个题目。题目要求很简单，一个C的命令行程序，输入初始值，然后打印出往后各代的情况，直到后代数达到某个阈值。我把难度加大到了我比较满意的程度，做成了一个相当漂亮的命令行的“频闪动画”。这个程序的[源代码](https://github.com/keybrl/Game_of_Life/tree/master/toy)我还保留着（单击超链接可以前往查看）。然后我盯着命令行一遍一遍地试，修改初始值和规则，但这并不简单。初始值要靠一堆的01字串输入，即使后来我把输入重定向到了一个文件中，这仍很麻烦；修改参数需要通过修改源代码。所以我萌生了做一个漂亮点的生命游戏模拟器的念头。
 
 我觉得怎么才能算是漂亮呢。他应该有一个漂亮的图形界面，而不是命令提示行的小黑框；他可以通过点击格子的方式设定初始值；然后他可以随时开始、暂停；他可以简单地改变规则；他甚至应该可以在运行过程中修改规则和格子状态……一大堆的想法马上冒了出来。
 
@@ -64,8 +64,8 @@
 
 ## 关于
 
-作者：[Keyboard L](http://blog.keybrl.com/)，E-mail：[keyboard-l@outlook.com](mailto:keyboard-l@outlook.com)
+作者：[Keyboard L](https://blog.keybrl.com/)，E-mail：[keyboard-l@outlook.com](mailto:keyboard-l@outlook.com)
 
-项目仓库：[gameOfLife](https://github.com/Keyboard-l/Game_of_Life.git)
+项目仓库：[Game_of_Life](https://github.com/keybrl/Game_of_Life)
 
-喜欢该项目？可以选择[小额赞助](https://github.com/Keyboard-l/Game_of_Life/blob/master/donate.md)
+喜欢该项目？可以选择[小额赞助](../donate.md)

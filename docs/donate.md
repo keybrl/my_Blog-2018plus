@@ -12,7 +12,7 @@ hero: Help shape the future of this Blog. (客套话)
 
 ### 微信
 
-![微信赞赏码](//blog-oss.keybrl.com/2018/images/wechat_donate.png)
+![微信赞赏码](//blog-assets.keybrl.com/images/wechat_donate.png)
 
 你只需要打开手机微信“扫一扫”功能，然后扫描上方的赞赏码即可打赏（还能留言哦）
 
@@ -20,7 +20,7 @@ hero: Help shape the future of this Blog. (客套话)
 
 ### 支付宝
 
-![支付宝收款码](//blog-oss.keybrl.com/2018/images/alipay.png)
+![支付宝收款码](//blog-assets.keybrl.com/images/alipay.png)
 
 你只需要打开手机支付宝“扫一扫”功能，然后扫描上方的收款码即可打赏
 

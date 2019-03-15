@@ -57,12 +57,8 @@
       
     
     
-
       <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
-<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
-<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
-
     
 <link rel="stylesheet" href="/assets/stylesheets/google-font.css">
 <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -777,7 +773,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+    <a href="../projects/2018-10-14-Project-keybrl-mines.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
       keybrl-mines - 优雅的扫雷从此无处不在
     </a>
   </li>
@@ -860,6 +856,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
+      测试页
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -918,36 +926,36 @@
               
                 
                 
-                <h1 id="windows">Windows 常用注册表项</h1>
+                <h1 id="windows">Windows 常用注册表项<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h1>
 <p>不知道为什么，每当涉及到 Windows 系统的的比较复杂的配置时，都会涉及注册表或者组策略的修改，由于 Windows10 Home 没有组策略编辑器，所以我们还是看看注册表吧</p>
-<p>Windows 的注册表，有点像 Linux 的 <code>/etc</code> 文件夹，里面有各种奇奇怪怪的配置文件，而且 Windows 的明显要奇怪和反人类得多。所以才需要专门记录一下，以备不时之需</p>
+<p>Windows 的注册表，有点像 Linux 的 <code class="codehilite">/etc</code> 文件夹，里面有各种奇奇怪怪的配置文件，而且 Windows 的明显要奇怪和反人类得多。所以才需要专门记录一下，以备不时之需</p>
 <p>以下是本人平时遇到需要修改注册表时通过搜索引擎获得并搜集整理的一些注册表项的作用的记录，它们对于当时的 Windows 10 是有效的，理论上有可能会失效（特别是如果 Windows 10 还能苟很久的话）。如果你发现部分已经被移除了或者被永久转移了，可以在文章下方留言或者通过邮件联系我（邮箱在本站主页有）</p>
 <hr />
 <p>首先是打开注册表编辑器的方法</p>
 <ul>
-<li><code>Windows + R</code> 打开“运行”，输入 <code>regedit</code> ，回车</li>
+<li><code class="codehilite">Windows + R</code> 打开“运行”，输入 <code class="codehilite">regedit</code> ，回车</li>
 <li>在“开始”菜单的搜索栏搜索“注册表编辑器”</li>
 <li>问小娜</li>
 </ul>
-<h2 id="_1">在文件资源管理器中的右键菜单</h2>
+<h2 id="_1">在文件资源管理器中的右键菜单<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>有时候可能因为安装无聊软件时忘了取消勾选什么，或者某些软件没卵用被卸载了，或者其他各种历史原因，右键菜单塞满了你不希望看见的选项，比如 “使用360强力删除”。修改或删除以下注册表项可以编辑你在文件资源管理器中的右键菜单。</p>
 <ul>
-<li>右键文件 <code>HKEY_CLASSES_ROOT\</code></li>
-<li>所有类型的文件 <code>*\shell\</code> 和 <code>*\shellex\ContextMenuHandlers\</code></li>
-<li><code>.hhh</code> 类型的文件 <code>.hhh\shell\</code> 和 <code>.hhh\shellex\ContextMenuHandlers\</code> （一般不存在 <code>.hhh</code> ，这只是个代称，它可以是 <code>.mp4</code> 、 <code>.jpeg</code> ...）</li>
-<li>右键文件夹 <code>HKEY_CLASSES_ROOT\Directory\</code></li>
-<li>文件夹空白处 <code>Background\shell\</code> 和 <code>Background\shellex\ContextMenuHandlers\</code></li>
-<li>文件夹图标 <code>shell\</code> 和 <code>shellex\ContextMenuHandlers\</code></li>
+<li>右键文件 <code class="codehilite">HKEY_CLASSES_ROOT\</code></li>
+<li>所有类型的文件 <code class="codehilite">*\shell\</code> 和 <code class="codehilite">*\shellex\ContextMenuHandlers\</code></li>
+<li><code class="codehilite"><span class="na">.hhh</span></code> 类型的文件 <code class="codehilite"><span class="na">.hhh</span><span class="err">\</span><span class="no">shell</span><span class="err">\</span></code> 和 <code class="codehilite"><span class="na">.hhh</span><span class="err">\</span><span class="no">shellex</span><span class="err">\</span><span class="no">ContextMenuHandlers</span><span class="err">\</span></code> （一般不存在 <code class="codehilite"><span class="na">.hhh</span></code> ，这只是个代称，它可以是 <code class="codehilite"><span class="na">.mp4</span></code> 、 <code class="codehilite"><span class="na">.jpeg</span></code> ...）</li>
+<li>右键文件夹 <code class="codehilite">HKEY_CLASSES_ROOT\Directory\</code></li>
+<li>文件夹空白处 <code class="codehilite">Background\shell\</code> 和 <code class="codehilite">Background\shellex\ContextMenuHandlers\</code></li>
+<li>文件夹图标 <code class="codehilite">shell\</code> 和 <code class="codehilite">shellex\ContextMenuHandlers\</code></li>
 </ul>
-<h2 id="_2">修改用户文件目录</h2>
-<p>Windows 默认的用户文件目录一般是这样的 C:\Users\username\ 。默认情况下这个 <code>username</code> ，如果是本地用户就是本地用户的用户名，创建用户时设置的；如果是 Windows 10 刚装好后第一次开机时按照指引登录了微软账户，那么会截取微软账户账号的前五个字母，比如说：我的微软账号是 <code>keyboard-l@outlook.com</code> 那么 Windows 10 会截取 <code>keybo</code> 作为用户目录的文件夹名，这十分扯淡。</p>
+<h2 id="_2">修改用户文件目录<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Windows 默认的用户文件目录一般是这样的 C:\Users\username 。默认情况下这个 <code class="codehilite">username</code> ，如果是本地用户就是本地用户的用户名，创建用户时设置的；如果是 Windows 10 刚装好后第一次开机时按照指引登录了微软账户，那么会截取微软账户账号的前五个字母，比如说：我的微软账号是 <code class="codehilite">keyboard-l@outlook.com</code> 那么 Windows 10 会截取 <code class="codehilite">keybo</code> 作为用户目录的文件夹名，这十分扯淡。</p>
 <p>开始的时候我是没什么所谓的，毕竟一般人也不会经常看见自己的用户目录，直到有一天我打开终端（CMD 或者 PowerShell）。终端的默认工作路径就在自己的用户目录（下图是已经改过来了）</p>
-<p><img alt="PowerShell" src="//blog-oss.keybrl.com/2018/images/Windows-regedit/powershell.jpg" /></p>
+<p><img alt="PowerShell" src="//blog-assets.keybrl.com/images/Windows-regedit/powershell.jpg" /></p>
 <p>那么如果用户目录不喜欢怎么办呢。首先需要修改注册表，修改系统的用户目录。</p>
-<p>注册表路径 <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Profilelist</code> 下的各注册表的表项 <code>ProfileImagePath</code> 的值就是用户目录，找到自己用户那一个，修改为自己喜欢的，然后重启。重启后会提示用户目录不存在，因为原来的用户目录下的文件路径没变，去修改 C:\Users\ 下的文件夹名，再重启（或者注销），完成。</p>
-<h2 id="_3">修改终端默认代码页</h2>
-<p>无论是使用 CMD 还是 PowerShell ，大家都会有一个烦恼，那就是中文时，默认字体是新宋体，虽然可以设置字体，但是可以选择的字体非常少。而且终端默认使用代码页 <code>936</code> ， GBK 编码，这时常导致麻烦。在终端输入 <code>chcp 65001</code> 可以将代码页切换到 UTF-8 编码的代码页，这时显示是英文，而且可以换各种英文字体，比如漂亮的 <code>Consolas</code> 。但是这样的修改是不可持久化的，下次再打开还是原来那样。所以有什么办法，修改默认的代码页呢，让它一启动就是代码页 <code>65001</code> 。</p>
-<p>注册表 <code>HKEY_CURRENT_USER\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe</code> 下的 <code>CodePage</code> ，将 <code>936</code> 改为 <code>65001</code> 就可以了。不过这个只对 Windows + R 弹出“运行”对话框，输入 powershell ，这样打开的 PowerShell 有用。无论是对保存的 PowerShell 的快捷方式还是对右键 Windows 徽标中的 <code>Windows PowerShell</code> 都是无效的，目前我还没有找到解决方法。而且代码页 <code>65001</code> 也不是完美的，在 PowerShell 中，显示中文会只有一个字符宽（正常应该是两个字符宽），导致显示不全，在 CMD 中则没有这个问题，这个目前我也没有找到解决方法。</p>
+<p>注册表路径 <code class="codehilite">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Profilelist</code> 下的各注册表的表项 <code class="codehilite">ProfileImagePath</code> 的值就是用户目录，找到自己用户那一个，修改为自己喜欢的，然后重启。重启后会提示用户目录不存在，因为原来的用户目录下的文件路径没变，去修改 C:\Users 下的文件夹名，再重启（或者注销），完成。</p>
+<h2 id="_3">修改终端默认代码页<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>无论是使用 CMD 还是 PowerShell ，大家都会有一个烦恼，那就是中文时，默认字体是新宋体，虽然可以设置字体，但是可以选择的字体非常少。而且终端默认使用代码页 <code class="codehilite">936</code> ， GBK 编码，这时常导致麻烦。在终端输入 <code class="codehilite">chcp 65001</code> 可以将代码页切换到 UTF-8 编码的代码页，这时显示是英文，而且可以换各种英文字体，比如漂亮的 <code class="codehilite">Consolas</code> 。但是这样的修改是不可持久化的，下次再打开还是原来那样。所以有什么办法，修改默认的代码页呢，让它一启动就是代码页 <code class="codehilite">65001</code> 。</p>
+<p>注册表 <code class="codehilite">HKEY_CURRENT_USER\Console\%SystemRoot%_System32_WindowsPowerShell_v1.0_powershell.exe</code> 下的 <code class="codehilite">CodePage</code> ，将 <code class="codehilite">936</code> 改为 <code class="codehilite">65001</code> 就可以了。不过这个只对 Windows + R 弹出“运行”对话框，输入 powershell ，这样打开的 PowerShell 有用。无论是对保存的 PowerShell 的快捷方式还是对右键 Windows 徽标中的 <code class="codehilite">Windows PowerShell</code> 都是无效的，目前我还没有找到解决方法。而且代码页 <code class="codehilite">65001</code> 也不是完美的，在 PowerShell 中，显示中文会只有一个字符宽（正常应该是两个字符宽），导致显示不全，在 CMD 中则没有这个问题，这个目前我也没有找到解决方法。</p>
                 
                   
                 
@@ -1089,6 +1097,12 @@
         
       
       <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+        <script src="/assets/javascripts/av-min.js"></script>
+      
+        <script src="/assets/javascripts/Valine.min.js"></script>
+      
+        <script src="/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
     

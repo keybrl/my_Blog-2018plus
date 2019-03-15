@@ -57,12 +57,8 @@
       
     
     
-
       <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
-<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
-<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
-
     
 <link rel="stylesheet" href="/assets/stylesheets/google-font.css">
 <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -839,7 +835,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+    <a href="../projects/2018-10-14-Project-keybrl-mines.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
       keybrl-mines - 优雅的扫雷从此无处不在
     </a>
   </li>
@@ -918,6 +914,18 @@
   <li class="md-nav__item">
     <a href="../donate.html" title="小额赞助" class="md-nav__link">
       小额赞助
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
+      测试页
     </a>
   </li>
 
@@ -1042,7 +1050,7 @@
               
                 
                 
-                <h1 id="web3-python">Web3 - Python复习</h1>
+                <h1 id="web3-python">Web3 - Python复习<a class="headerlink" href="#web3-python" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>关于Python的复习和补充，放卫星</p>
 <p>date: 2017-12-03</p>
@@ -1054,11 +1062,11 @@
 <li>语法基础</li>
 </ul>
 <p>科协最开始的两次活动有来的同学，应该对Python不陌生。Python是一种解释型的计算机程序设计语言，他跟C语言一样好学。那么我们就不再宽泛地介绍Python这个语言了，大家可以自行Bing/Google了解。我们先很少地介绍Python的环境和编译运行方法，然后再介绍一下Python的列表、元组、字典和函数的使用。</p>
-<h2 id="_1">目的何在</h2>
+<h2 id="_1">目的何在<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>我们为什么选择Python呢</p>
 </blockquote>
-<p><img alt="Which Programming Language Should I Learn First" src="//blog-oss.keybrl.com/2018/images/SSSTA-Web3/which-programming-language-should-i-learn-first-infographic.png" /></p>
+<p><img alt="Which Programming Language Should I Learn First" src="//blog-assets.keybrl.com/images/SSSTA-Web3/which-programming-language-should-i-learn-first-infographic.png" /></p>
 <ul>
 <li>Python比较容易入门</li>
 <li>Python有易用的Web开发的框架</li>
@@ -1069,7 +1077,7 @@
 <p>– Linus Torvalds (creator of Linux)</p>
 </blockquote>
 <p>我们主要用Python搭建Web的服务端应用，也会用它略微了解socket编程、少量写些爬虫。它有很多网络库，所以如果你对互联网基础知识有更多兴趣，它也可以作为学习时不错的实践工具。除此之外，你还可以用它群发邮件骚扰同学或者写些小游戏打发时间。</p>
-<h2 id="_2">作为开始</h2>
+<h2 id="_2">作为开始<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>作为开始，我们先再次讨论一下关于如何 <strong>开始使用Python</strong> 的问题（其实这些在科协第一次活动时已经介绍了，如果你们还记得）</p>
 <ul>
 <li>Python的环境准备：CPython解释器，包管理器pip</li>
@@ -1077,24 +1085,24 @@
 <li>优雅的Python IDE：<a href="https://www.jetbrains.com/pycharm/" target="_blank">PyCharm</a></li>
 <li>趁手的文本编辑器：<a href="https://atom.io/" target="_blank">Atom</a>或<a href="http://www.sublimetext.com/" target="_blank">Sublime Text</a></li>
 <li>关于如何运行</li>
-<li>交互式解释器（REPL）， <code>py -3</code> (Windows)或 <code>python3</code> (Linux或MacOS)</li>
-<li>终端解释运行， <code>py -3 {{ filename }}</code> (Windows)或 <code>python3 {{ filename }}</code> (Linux或MacOS)</li>
+<li>交互式解释器（REPL）， <code class="codehilite">py -3</code> (Windows)或 <code class="codehilite">python3</code> (Linux或MacOS)</li>
+<li>终端解释运行， <code class="codehilite"><span class="x">py -3 </span><span class="cp">{{</span> <span class="nv">filename</span> <span class="cp">}}</span><span class="x"></span></code> (Windows)或 <code class="codehilite"><span class="x">python3 </span><span class="cp">{{</span> <span class="nv">filename</span> <span class="cp">}}</span><span class="x"></span></code> (Linux或MacOS)</li>
 <li>IDE一键运行</li>
 </ul>
-<h2 id="python">Python基础语法</h2>
+<h2 id="python">Python基础语法<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
 <p>Python的语法和多数其他编程语言都很像</p>
-<h3 id="_3">代码基本形态</h3>
+<h3 id="_3">代码基本形态<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>语句以换行结尾</li>
 <li>语句块以缩进表示</li>
 <li>大小写严格</li>
 </ul>
-<h3 id="_4">最基本的常用内建函数</h3>
+<h3 id="_4">最基本的常用内建函数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ul>
-<li>输入输出： <code>input()</code> 和 <code>print()</code></li>
-<li>获取帮助： <code>help()</code></li>
+<li>输入输出： <code class="codehilite">input()</code> 和 <code class="codehilite">print()</code></li>
+<li>获取帮助： <code class="codehilite">help()</code></li>
 </ul>
-<h3 id="_5">类型与变量</h3>
+<h3 id="_5">类型与变量<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>常用的标准数据类型</p>
 <ul>
 <li>int、float、bool、str（整型、浮点型、布尔型、字符串）</li>
@@ -1107,43 +1115,43 @@
 <p>Python的所有变量赋值（包括参数传递）都是 <strong>传递引用</strong></p>
 <p>Python是 <strong>强类型</strong> 和动态类型语言</p>
 </blockquote>
-<h3 id="_6">运算符</h3>
+<h3 id="_6">运算符<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>几种常用运算符</p>
 <ul>
 <li>代数运算符</li>
-<li>加、减、乘、除、模， <code>+ - * / %</code></li>
-<li>地板除、取余、乘方， <code>// **</code></li>
+<li>加、减、乘、除、模， <code class="codehilite">+ - * / %</code></li>
+<li>地板除、取余、乘方， <code class="codehilite">// **</code></li>
 <li>比较运算符</li>
-<li>大于、小于， <code>&gt; &lt;</code></li>
-<li>不大于、不小于， <code>&lt;= &gt;=</code></li>
-<li>等于、不等于， <code>== !=</code></li>
-<li>同一对象， <code>is</code></li>
+<li>大于、小于， <code class="codehilite">&gt; &lt;</code></li>
+<li>不大于、不小于， <code class="codehilite">&lt;= &gt;=</code></li>
+<li>等于、不等于， <code class="codehilite">== !=</code></li>
+<li>同一对象， <code class="codehilite">is</code></li>
 <li>逻辑运算符</li>
-<li>或、与、非， <code>or and not</code></li>
+<li>或、与、非， <code class="codehilite">or and not</code></li>
 </ul>
-<h3 id="_7">常用语句</h3>
+<h3 id="_7">常用语句<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <ul>
 <li>条件</li>
-<li>if语句， <code>if</code> 、 <code>elif</code> 、 <code>else</code></li>
-<li>条件表达式（三元操作符）， <code>X if C else Y</code></li>
+<li>if语句， <code class="codehilite">if</code> 、 <code class="codehilite">elif</code> 、 <code class="codehilite">else</code></li>
+<li>条件表达式（三元操作符）， <code class="codehilite">X if C else Y</code></li>
 <li>循环语句</li>
-<li>for 语句， <code>for ... in ...:</code></li>
-<li>while 语句， <code>while ...:</code></li>
+<li>for 语句， <code class="codehilite">for ... in ...:</code></li>
+<li>while 语句， <code class="codehilite">while ...:</code></li>
 <li>错误与异常处理</li>
 <li>try-except-else-finally 语句</li>
 <li>上下文管理</li>
 <li>with 语句</li>
 </ul>
-<h3 id="_8">函数</h3>
+<h3 id="_8">函数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>函数定义</li>
 <li>函数的参数</li>
 <li>函数的变量作用域</li>
 <li>装饰器</li>
 </ul>
-<h3 id="_9">面向对象</h3>
+<h3 id="_9">面向对象<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>...</p>
-<h2 id="_10">写在最后</h2>
+<h2 id="_10">写在最后<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <p>真可怕，这里涉及那么多内容！</p>
 <p>推荐阅读</p>
 <blockquote>
@@ -1292,6 +1300,12 @@
         
       
       <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+        <script src="/assets/javascripts/av-min.js"></script>
+      
+        <script src="/assets/javascripts/Valine.min.js"></script>
+      
+        <script src="/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
     

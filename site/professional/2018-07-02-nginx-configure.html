@@ -57,12 +57,8 @@
       
     
     
-
       <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
-<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
-<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
-
     
 <link rel="stylesheet" href="/assets/stylesheets/google-font.css">
 <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -770,7 +766,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+    <a href="../projects/2018-10-14-Project-keybrl-mines.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
       keybrl-mines - 优雅的扫雷从此无处不在
     </a>
   </li>
@@ -853,6 +849,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
+      测试页
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -904,12 +912,96 @@
               
                 
                 
-                <h1 id="nginx">Nginx常用配置套路</h1>
+                <h1 id="nginx">Nginx常用配置套路<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h1>
 <p>我们都知道， Nginx 是一个强大的 Web 服务器。只需要简单配置，它就能承载你的 Web 应用。轻易实现诸如负载均衡、反向代理、重定向、HTTPS证书配置、静态资源托管、......这一切只需要填写几个配置文件</p>
 <p>我第一次使用 Nginx 是用它部署我的 Python Flask 应用，当时的情景可以看看这篇文章（ <a href="2017-08-01-Nginx_uWSGI_Flask_in_CentOS.html" target="_blank">CentOS中通过Nginx和uWSGI部署Flask项目</a> ）作为回顾。其实后来我发现 Nginx 太好用了，我经常用它重定向或者搭建静态站点什么的。但是背配置文件实在太痛苦啦，每次都要借助 Google 的帮助，而且还不是特别容易一下子找到我想要的东西。所以我不如把我常用的配置记下来吧，找自己博客总还是比瞎搜快很多的。</p>
-<h2 id="_1">初始配置</h2>
-<p>在 Ubuntu 上， Nginx 可以通过 <code>apt install nginx</code> 安装。如果是那样，那么默认配置文件是 <code>/etc/nginx/nginx.conf</code> 。初始内容是这样的</p>
-<div class="codehilite"><pre><span></span><span class="nt">user</span> <span class="nt">www-data</span><span class="o">;</span>
+<h2 id="_1">初始配置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>在 Ubuntu 上， Nginx 可以通过 <code class="codehilite">apt install nginx</code> 安装。如果是那样，那么默认配置文件是 <code class="codehilite">/etc/nginx/nginx.conf</code> 。初始内容是这样的</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">user</span> <span class="nt">www-data</span><span class="o">;</span>
 <span class="nt">worker_processes</span> <span class="nt">auto</span><span class="o">;</span>
 <span class="nt">pid</span> <span class="o">/</span><span class="nt">run</span><span class="o">/</span><span class="nt">nginx</span><span class="p">.</span><span class="nc">pid</span><span class="o">;</span>
 <span class="nt">include</span> <span class="o">/</span><span class="nt">etc</span><span class="o">/</span><span class="nt">nginx</span><span class="o">/</span><span class="nt">modules-enabled</span><span class="o">/*</span><span class="p">.</span><span class="nc">conf</span><span class="o">;</span>
@@ -995,21 +1087,39 @@
 <span class="err">#</span>    <span class="p">}</span>
 <span class="err">#}</span>
 </pre></div>
+</td></tr></table>
 
-
-<p>一般来说这个文件是不需要修改的，其中有一行是 <code>include /etc/nginx/conf.d/*.conf;</code> ，说明，它会自动把 <code>/etc/nginx/conf.d/</code> 下面所有 <code>.conf</code> 文件引入到 <code>http {}</code> 里面，一般我们通过这种方式就可以达到目的。</p>
+<p>一般来说这个文件是不需要修改的，其中有一行是 <code class="codehilite">include /etc/nginx/conf.d/*.conf;</code> ，说明，它会自动把 <code class="codehilite">/etc/nginx/conf.d/</code> 下面所有 <code class="codehilite"><span class="na">.conf</span></code> 文件引入到 <code class="codehilite">http {}</code> 里面，一般我们通过这种方式就可以达到目的。</p>
 <div class="admonition note">
 <p class="admonition-title">值得注意</p>
-<p><code>http {}</code> 内有一句 <code>include /etc/nginx/sites-enabled/*;</code> 会让你的 Nginx 成功安装、启动后，被访问时，显示 Nginx 的欢迎页面，像下面这样</p>
-<p><img alt="Nginx 的欢迎页面" src="//blog-oss.keybrl.com/2018/images/nginx-configure/nginx_welcome_page.png" /></p>
+<p><code class="codehilite">http {}</code> 内有一句 <code class="codehilite">include /etc/nginx/sites-enabled/*;</code> 会让你的 Nginx 成功安装、启动后，被访问时，显示 Nginx 的欢迎页面，像下面这样</p>
+<p><img alt="Nginx 的欢迎页面" src="//blog-assets.keybrl.com/images/nginx-configure/nginx_welcome_page.png" /></p>
 <p>而且无论你设置什么别的配置，80 端口都会被这个页面占用，所以需要先加个井号注释掉这行。</p>
-<p><img alt="Nginx 配置文件注释掉某行" src="//blog-oss.keybrl.com/2018/images/nginx-configure/nginx_command.png" /></p>
+<p><img alt="Nginx 配置文件注释掉某行" src="//blog-assets.keybrl.com/images/nginx-configure/nginx_command.png" /></p>
 </div>
-<p>然后剩下的配置可以写在 <code>/etc/nginx/conf.d/</code> 里</p>
-<h2 id="_2">静态文件服务器</h2>
+<p>然后剩下的配置可以写在 <code class="codehilite">/etc/nginx/conf.d/</code> 里</p>
+<h2 id="_2">静态文件服务器<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>最简单最基础的就是配置一个静态文件服务器，它可以托管你的静态站点（比如这个博客），或者为别的什么静态资源提供一个简单的可通过 http 访问的接口。</p>
-<p>我们在 <code>/etc/nginx/conf.d/static_website.conf</code> 写下如下配置（当然，文件名可以是任意的，只要路径和文件名后缀一样就行）</p>
-<div class="codehilite"><pre><span></span>server {
+<p>我们在 <code class="codehilite">/etc/nginx/conf.d/static_website.conf</code> 写下如下配置（当然，文件名可以是任意的，只要路径和文件名后缀一样就行）</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>server {
     # 服务器监听的端口号
     listen      80;
     # 服务的ip地址或者域名
@@ -1029,6 +1139,7 @@
     }
 }
 </pre></div>
+</td></tr></table>
                 
                   
                 
@@ -1170,6 +1281,12 @@
         
       
       <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+        <script src="/assets/javascripts/av-min.js"></script>
+      
+        <script src="/assets/javascripts/Valine.min.js"></script>
+      
+        <script src="/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
     

@@ -53,11 +53,11 @@ entrys = [
     },
     {
         'title': 'keybrl-mines - 优雅的扫雷从此无处不在',
-        'link': 'https://blog.keybrl.com/projects/2018-10-14-Project-keybrl-gnome.html',
+        'link': 'https://blog.keybrl.com/projects/2018-10-14-Project-keybrl-mines.html',
         'updated': '2018-10-14T00:00:01+08:00',
         'published': '2018-10-14T00:00:01+08:00',
         'summary': '',
-        'content_url': './posts/2018-10-14-Project-keybrl-gnome.md'
+        'content_url': './posts/2018-10-14-Project-keybrl-mines.md'
     },
 ]
 

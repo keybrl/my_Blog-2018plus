@@ -261,7 +261,7 @@ text = """\
 	<img src="cid:image1">
 	<p>这个页面真的<em>超无聊<em>啊</p>
 	<p>还很丑</p>
-	<p>From <a href="https://keyboard-l.github.io/Keyboard-L">Keyboard</a></p>
+	<p>From <a href="https://blog.keybrl.com/">KeybrL's Blog</a></p>
 </body>
 </html>
 """
@@ -390,7 +390,7 @@ html = """\
 	<img src="cid:image1">
 	<p>这个页面真的<em>超无聊<em>啊</p>
 	<p>还很丑</p>
-	<p>From <a href="https://keyboard-l.github.io/Keyboard-L">Keyboard</a></p>
+	<p>From <a href="https://blog.keybrl.com/">KeybrL's Blog</a></p>
 </body>
 </html>
 """

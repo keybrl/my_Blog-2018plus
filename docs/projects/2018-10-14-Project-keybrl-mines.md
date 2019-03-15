@@ -2,7 +2,7 @@
 
 **该项目未完成！！**
 
-> 项目地址：[keybrl/keybrl-mines](https://github.com/keybrl/keybrl-mines/tree/master)
+> 项目地址：[keybrl/keybrl-mines](https://github.com/keybrl/keybrl-mines/)
 
 点击链接开始游戏 [https://mines.keybrl.com/](https://mines.keybrl.com/)
 

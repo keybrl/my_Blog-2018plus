@@ -57,12 +57,8 @@
       
     
     
-
       <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
-<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
-<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
-
     
 <link rel="stylesheet" href="/assets/stylesheets/google-font.css">
 <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -817,7 +813,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+    <a href="../projects/2018-10-14-Project-keybrl-mines.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
       keybrl-mines - 优雅的扫雷从此无处不在
     </a>
   </li>
@@ -896,6 +892,18 @@
   <li class="md-nav__item">
     <a href="../donate.html" title="小额赞助" class="md-nav__link">
       小额赞助
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
+      测试页
     </a>
   </li>
 
@@ -998,7 +1006,7 @@
               
                 
                 
-                <h1 id="web20-htmlcss">Web2.0 - HTML与CSS入门</h1>
+                <h1 id="web20-htmlcss">Web2.0 - HTML与CSS入门<a class="headerlink" href="#web20-htmlcss" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>SS::STA 被取消的Web组第二次活动，前端部分，关于“HTML和CSS”</p>
 <p>date: 2017-11-19</p>
@@ -1006,12 +1014,12 @@
 <hr />
 <p>由于 <em>本科教学审核评估</em> 所导致的来自学院的压力，SS::STA这周活动取消并延后。所以Web组这次的活动内容，我整理了这份比较详细的教案，大家可以自行阅读并以查阅资料补充，这也是一个考察大家自学能力的时候。</p>
 <blockquote>
-<p><a href="//blog-oss.keybrl.com/2018/data/Web2.0%20-%20HTML%E4%B8%8ECSS%E5%85%A5%E9%97%A8%20-%20%E7%BD%97%E9%98%B3%E8%B1%AA.zip" target="_blank">点击此链接</a>，下载该篇所涉及的源代码</p>
+<p><a href="//blog-assets.keybrl.com/data/Web2.0%20-%20HTML%E4%B8%8ECSS%E5%85%A5%E9%97%A8%20-%20%E7%BD%97%E9%98%B3%E8%B1%AA.zip" target="_blank">点击此链接</a>，下载该篇所涉及的源代码</p>
 </blockquote>
 <hr />
 <p>众所周知，Web前端几乎只有HTML、CSS、JavaScript这三样东西。其他别的东西大多都是这三种东西特别是JS这种东西的发展。</p>
 <p>上次活动我们稍微介绍了HTML <em>(Hyper-Text Markup Language)</em> ，其实演示中也操作了CSS <em>（Cascading Style Sheets）</em> 。那么这次我们继续了解一下他们。</p>
-<h2 id="html">HTML</h2>
+<h2 id="html">HTML<a class="headerlink" href="#html" title="Permanent link">&para;</a></h2>
 <p>HTML是非常古老的一门语言</p>
 <ul>
 <li><strong>1989 HTML被首次提出</strong></li>
@@ -1035,7 +1043,16 @@
 </ul>
 </blockquote>
 <p>准备好文本编辑器之后，我们看看，最简单的一段HTML5代码应该长成这样</p>
-<div class="codehilite"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;zh_CN&quot;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
@@ -1046,12 +1063,12 @@
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
-<p>我将它写在了 <code>try1.html</code> 中</p>
+<p>我将它写在了 <code class="codehilite">try1.html</code> 中</p>
 </blockquote>
-<p>将他拷贝进文本编辑器，然后保存成 <code>.html</code> 文件（文件名前面部分随意），然后用浏览器打开它。</p>
+<p>将他拷贝进文本编辑器，然后保存成 <code class="codehilite"><span class="na">.html</span></code> 文件（文件名前面部分随意），然后用浏览器打开它。</p>
 <blockquote>
 <p>那么我们再推荐几款优秀的并且适合开发人员的浏览器</p>
 <ul>
@@ -1066,18 +1083,46 @@
 </ul>
 </blockquote>
 <p>当你用浏览器打开，你应该会看见这样的一个页面</p>
-<p><img alt="try1.html Preview" src="//blog-oss.keybrl.com/2018/images/SSSTA-Web2/try1_preview.png" /></p>
-<p>看完热闹之后我们来看看这段代码的一些细节。如果你足够仔细，你会发现这里面有很多 <code>&lt;xxx&gt;</code> ，这些尖括号包裹着一些东西，而且他们一般成对出现 <code>&lt;xxx&gt;...&lt;/xxx&gt;</code> ，中间包裹着一些内容，当然他们有时也只有孤零零一个。这些东西我们称为HTML的 <strong>标签</strong>。再继续深入之前，我们先看看这些标签在这里的含义</p>
+<p><img alt="try1.html Preview" src="//blog-assets.keybrl.com/images/SSSTA-Web2/try1_preview.png" /></p>
+<p>看完热闹之后我们来看看这段代码的一些细节。如果你足够仔细，你会发现这里面有很多 <code class="codehilite">&lt;xxx&gt;</code> ，这些尖括号包裹着一些东西，而且他们一般成对出现 <code class="codehilite"><span class="nt">&lt;xxx&gt;</span>...<span class="nt">&lt;/xxx&gt;</span></code> ，中间包裹着一些内容，当然他们有时也只有孤零零一个。这些东西我们称为HTML的 <strong>标签</strong>。再继续深入之前，我们先看看这些标签在这里的含义</p>
 <ul>
-<li><code>&lt;!DOCTYPE html&gt;</code> 指示文本属性为HTML5</li>
-<li><code>&lt;html&gt;...&lt;/html&gt;</code> 内部包含HTML代码</li>
-<li><code>&lt;head&gt;...&lt;/head&gt;</code> 包含该HTML页面的一些配置信息</li>
-<li><code>&lt;body&gt;...&lt;/body&gt;</code> 包含该页面的内容</li>
-<li><code>&lt;title&gt;...&lt;/title&gt;</code> 显示在页面标题栏的内容（注意看上图左上角）</li>
-<li><code>&lt;meta charset="utf-8"&gt;</code> 指示代码文字编码为 <code>UTF-8</code> ，这将保证页面中中文的正常显示。</li>
+<li><code class="codehilite"><span class="cp">&lt;!DOCTYPE html&gt;</span></code> 指示文本属性为HTML5</li>
+<li><code class="codehilite"><span class="nt">&lt;html&gt;</span>...<span class="nt">&lt;/html&gt;</span></code> 内部包含HTML代码</li>
+<li><code class="codehilite"><span class="nt">&lt;head&gt;</span>...<span class="nt">&lt;/head&gt;</span></code> 包含该HTML页面的一些配置信息</li>
+<li><code class="codehilite"><span class="nt">&lt;body&gt;</span>...<span class="nt">&lt;/body&gt;</span></code> 包含该页面的内容</li>
+<li><code class="codehilite"><span class="nt">&lt;title&gt;</span>...<span class="nt">&lt;/title&gt;</span></code> 显示在页面标题栏的内容（注意看上图左上角）</li>
+<li><code class="codehilite">&lt;meta charset=&quot;utf-8&quot;&gt;</code> 指示代码文字编码为 <code class="codehilite">UTF-8</code> ，这将保证页面中中文的正常显示。</li>
 </ul>
-<p>我们暂时不打算对上述标签再做更多的讲解，我们现在关注一下 <code>&lt;body&gt;...&lt;/body&gt;</code> 中的内容，单纯写文字肯定很无趣。但我们可以给文字加很多附加含义。看下面这段稍复杂的代码 <code>try2.html</code></p>
-<div class="codehilite"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<p>我们暂时不打算对上述标签再做更多的讲解，我们现在关注一下 <code class="codehilite"><span class="nt">&lt;body&gt;</span>...<span class="nt">&lt;/body&gt;</span></code> 中的内容，单纯写文字肯定很无趣。但我们可以给文字加很多附加含义。看下面这段稍复杂的代码 <code class="codehilite">try2.html</code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
@@ -1107,13 +1152,13 @@
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
+</td></tr></table>
 
-
-<p><img alt="try2.html Preview" src="//blog-oss.keybrl.com/2018/images/SSSTA-Web2/try2_preview.png" /></p>
+<p><img alt="try2.html Preview" src="//blog-assets.keybrl.com/images/SSSTA-Web2/try2_preview.png" /></p>
 <blockquote>
-<p>注意到，我们基本上只在 <code>try1.html</code> 的基础上修改了 <code>&lt;body&gt;&lt;/body&gt;</code> 内的内容。</p>
-<p>除此之外我修改了 <code>lang="en"</code> ，这个 <strong>属性</strong> 其实是标识页面主要语言的，既然没有一个汉字，我还是改为英文吧</p>
-<p>还有就是修改了 <code>&lt;title&gt;&lt;/title&gt;</code> ，Title是随便你定的</p>
+<p>注意到，我们基本上只在 <code class="codehilite">try1.html</code> 的基础上修改了 <code class="codehilite"><span class="nt">&lt;body&gt;&lt;/body&gt;</span></code> 内的内容。</p>
+<p>除此之外我修改了 <code class="codehilite">lang=&quot;en&quot;</code> ，这个 <strong>属性</strong> 其实是标识页面主要语言的，既然没有一个汉字，我还是改为英文吧</p>
+<p>还有就是修改了 <code class="codehilite"><span class="nt">&lt;title&gt;&lt;/title&gt;</span></code> ，Title是随便你定的</p>
 </blockquote>
 <p>你可能已经发现了，对文字应用不同的标签会使文字呈现出不一样的效果。HTML本质上就是，用大量结构性<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>的、语义<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>化的标签和标签中的文本内容描述一个文档。常用的标签如下</p>
 <blockquote>
@@ -1121,20 +1166,20 @@
 <p>介绍一个适合的学习网站<a href="http://www.w3school.com.cn/" target="_blank" title="W3School 在线教程">W3School</a></p>
 </blockquote>
 <p>在这里我们列出一些常用的标签，你们自己通过上面的网站学习并试着使用他们，你会发现这非常容易。</p>
-<h3 id="_1">块级元素</h3>
+<h3 id="_1">块级元素<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>&lt;h1&gt;</code> ~ <code>&lt;h6&gt;</code> ，一至六级标题</li>
-<li><code>&lt;p&gt;</code> ，段落</li>
-<li><code>&lt;div&gt;</code> ，无特殊含义的块级框（单纯用于结构的标签）</li>
-<li><code>&lt;ol&gt;</code> 、 <code>&lt;ul&gt;</code> 、 <code>&lt;li&gt;</code> ，列表</li>
-<li><code>&lt;form&gt;</code> 、 <code>&lt;input&gt;</code> 等，表单</li>
+<li><code class="codehilite">&lt;h1&gt;</code> ~ <code class="codehilite">&lt;h6&gt;</code> ，一至六级标题</li>
+<li><code class="codehilite">&lt;p&gt;</code> ，段落</li>
+<li><code class="codehilite">&lt;div&gt;</code> ，无特殊含义的块级框（单纯用于结构的标签）</li>
+<li><code class="codehilite">&lt;ol&gt;</code> 、 <code class="codehilite">&lt;ul&gt;</code> 、 <code class="codehilite">&lt;li&gt;</code> ，列表</li>
+<li><code class="codehilite">&lt;form&gt;</code> 、 <code class="codehilite">&lt;input&gt;</code> 等，表单</li>
 <li>...</li>
 </ul>
-<h3 id="_2">行内元素</h3>
+<h3 id="_2">行内元素<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>&lt;a&gt;</code> ，锚（超链接）</li>
-<li><code>&lt;b&gt;</code> 、 <code>&lt;em&gt;</code> ，强调</li>
-<li><code>&lt;span&gt;</code> ，无特殊含义的行内框</li>
+<li><code class="codehilite">&lt;a&gt;</code> ，锚（超链接）</li>
+<li><code class="codehilite">&lt;b&gt;</code> 、 <code class="codehilite">&lt;em&gt;</code> ，强调</li>
+<li><code class="codehilite">&lt;span&gt;</code> ，无特殊含义的行内框</li>
 <li>...</li>
 </ul>
 <p>更深入的内容就暂时不说了，我们就稍微解释一下什么是行内元素，什么是块级元素。因为如果不加区分，在使用CSS修饰他们时可能会产生非常多的混乱。以下是对他们最通俗的理解</p>
@@ -1143,34 +1188,81 @@
 <li><strong>行内元素</strong> ，他对外的表现就和别的文本一样。他可以随文本流动，嵌在一般的文本中，他的左右都可以有别的内容。</li>
 </ul>
 <p>更深入的理解可以自行Google，先接着讲解一下HTML的救星 -- CSS</p>
-<h2 id="css">CSS</h2>
-<p>CSS是如何产生的呢，以及对Web应用有什么意义？在CSS之前，HTML并不是完全乏味的，他有一个很神奇的标签 <code>&lt;font&gt;</code> ，他给HTML带来了丰富多彩的样式（文字的字体和颜色），比如这样</p>
-<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;8&quot;</span> <span class="na">color</span><span class="o">=</span><span class="s">&quot;grey&quot;</span> <span class="na">face</span><span class="o">=</span><span class="s">&quot;consolas&quot;</span><span class="p">&gt;</span>Hello World!<span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>
+<h2 id="css">CSS<a class="headerlink" href="#css" title="Permanent link">&para;</a></h2>
+<p>CSS是如何产生的呢，以及对Web应用有什么意义？在CSS之前，HTML并不是完全乏味的，他有一个很神奇的标签 <code class="codehilite">&lt;font&gt;</code> ，他给HTML带来了丰富多彩的样式（文字的字体和颜色），比如这样</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;8&quot;</span> <span class="na">color</span><span class="o">=</span><span class="s">&quot;grey&quot;</span> <span class="na">face</span><span class="o">=</span><span class="s">&quot;consolas&quot;</span><span class="p">&gt;</span>Hello World!<span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>
 </pre></div>
+</td></tr></table>
 
-
-<p><img alt="font_preview" src="//blog-oss.keybrl.com/2018/images/SSSTA-Web2/font_preview.png" /></p>
+<p><img alt="font_preview" src="//blog-assets.keybrl.com/images/SSSTA-Web2/font_preview.png" /></p>
 <blockquote>
-<p>上面只是一个页面的HTML代码的一个片段，他并不应该被单独写在一个文件中，像上面的其他代码一样，这段东西一般来说应该放在 <code>&lt;body&gt;&lt;/body&gt;</code>中</p>
+<p>上面只是一个页面的HTML代码的一个片段，他并不应该被单独写在一个文件中，像上面的其他代码一样，这段东西一般来说应该放在 <code class="codehilite"><span class="nt">&lt;body&gt;&lt;/body&gt;</span></code>中</p>
 </blockquote>
-<p><code>&lt;font&gt;</code> 标签给页面带来了更棒的效果，这种东西在过去被广泛且大量地使用。而且各主流浏览器大厂还为 <code>&lt;font&gt;</code> 标签增加了更多的功能（因为毕竟HTML标准最终是由浏览器落实的）以实现更复杂和酷炫的效果。开发人员也很乐于写他们，以愉悦老板。</p>
+<p><code class="codehilite">&lt;font&gt;</code> 标签给页面带来了更棒的效果，这种东西在过去被广泛且大量地使用。而且各主流浏览器大厂还为 <code class="codehilite">&lt;font&gt;</code> 标签增加了更多的功能（因为毕竟HTML标准最终是由浏览器落实的）以实现更复杂和酷炫的效果。开发人员也很乐于写他们，以愉悦老板。</p>
 <p>故事讲到这里似乎非常美好，Web前端的事业将会在这条路上越走越远，最终发展成今天这样，拥有赋予页面无比华丽特效的能力。 <strong>事实当然不是这样！</strong></p>
-<p>我们想象一些这样一个场景，你的老板让你写一个页面，那里面有很多，比如100个，特殊的字词，为了表示某种强调效果，你需要让他们都是红色的。很好，于是你需要写100个 <code>&lt;font&gt;</code> 标签，并将他们的 <code>color</code> 属性设置成合适的值。这看起来问题不大，因为我们都会复制粘贴嘛，100个也没什么大不了的。</p>
+<p>我们想象一些这样一个场景，你的老板让你写一个页面，那里面有很多，比如100个，特殊的字词，为了表示某种强调效果，你需要让他们都是红色的。很好，于是你需要写100个 <code class="codehilite">&lt;font&gt;</code> 标签，并将他们的 <code class="codehilite">color</code> 属性设置成合适的值。这看起来问题不大，因为我们都会复制粘贴嘛，100个也没什么大不了的。</p>
 <p>好的，你的老板看了之后很高兴，并且告诉你“我们应该低调一点，红色太扎眼了，还是把他们都换成蓝色吧。”还能接受吗？其实问题不大，只有100个。因为真实情况一般是，有很多页面，各种特殊样式的文字分布在各个角落，你需要把他们一个一个找出来并且做修改。</p>
-<p>而且 <code>&lt;font&gt;</code> 标签一般都是修饰行内元素的，他对块级元素无能为力。而且 <code>&lt;font&gt;</code> 标签不带有语义，尽管你把某些字设置为某种颜色或者某种字体、大小，但是你不能从代码中看出为什么要这么做。最重要的是，HTML设计的理念是用标签表示语义和结构，而不应该用他们表示样式。由此带来的混乱将会极大地限制Web前端的发展。所以，CSS是作为HTML的救星而出现的</p>
+<p>而且 <code class="codehilite">&lt;font&gt;</code> 标签一般都是修饰行内元素的，他对块级元素无能为力。而且 <code class="codehilite">&lt;font&gt;</code> 标签不带有语义，尽管你把某些字设置为某种颜色或者某种字体、大小，但是你不能从代码中看出为什么要这么做。最重要的是，HTML设计的理念是用标签表示语义和结构，而不应该用他们表示样式。由此带来的混乱将会极大地限制Web前端的发展。所以，CSS是作为HTML的救星而出现的</p>
 <hr />
 <p>那我们看看CSS到底长什么样吧。</p>
-<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-family: Consolas; font-size: 40px; color: grey;&quot;</span><span class="p">&gt;</span>Hello World<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-family: Consolas; font-size: 40px; color: grey;&quot;</span><span class="p">&gt;</span>Hello World<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
-<p>以上写法效果和上面的 <code>&lt;font&gt;</code> 写的效果类似，可以自行尝试</p>
+<p>以上写法效果和上面的 <code class="codehilite">&lt;font&gt;</code> 写的效果类似，可以自行尝试</p>
 </blockquote>
-<p>CSS可以写在绝大多数元素标签中，作为 <code>style</code> 属性的值。这样一看，貌似CSS也没有比 <code>&lt;font&gt;</code> 高到哪里去呀，不就是和一般标签结合了嘛，还是那么复杂（甚至字数还多了）。其实即使是这样CSS也有很明显的优势，他可以修饰块级元素，他可以控制元素位置、大小、背景、边框、边距、...反正他能控制的比 <code>&lt;font&gt;</code> 多得多；他和一般标签结合，这意味着他并不会破坏文档的结构，我们并不需要为了某些效果，增加一堆没有语义的标签。最重要的是，CSS还有另外两种更有用的存在形式。</p>
-<p>上面的例子中，CSS写在 <code>style</code> 属性中，这种方式叫做 <strong>内联的样式表</strong> ，CSS还有另外两种更常用的形式</p>
-<h3 id="_3">内部的样式表</h3>
-<div class="codehilite"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<p>CSS可以写在绝大多数元素标签中，作为 <code class="codehilite">style</code> 属性的值。这样一看，貌似CSS也没有比 <code class="codehilite">&lt;font&gt;</code> 高到哪里去呀，不就是和一般标签结合了嘛，还是那么复杂（甚至字数还多了）。其实即使是这样CSS也有很明显的优势，他可以修饰块级元素，他可以控制元素位置、大小、背景、边框、边距、...反正他能控制的比 <code class="codehilite">&lt;font&gt;</code> 多得多；他和一般标签结合，这意味着他并不会破坏文档的结构，我们并不需要为了某些效果，增加一堆没有语义的标签。最重要的是，CSS还有另外两种更有用的存在形式。</p>
+<p>上面的例子中，CSS写在 <code class="codehilite">style</code> 属性中，这种方式叫做 <strong>内联的样式表</strong> ，CSS还有另外两种更常用的形式</p>
+<h3 id="_3">内部的样式表<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
@@ -1219,17 +1311,33 @@
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
-<p>这段代码写在 <code>try3.html</code> 中</p>
+<p>这段代码写在 <code class="codehilite">try3.html</code> 中</p>
 </blockquote>
-<p><img alt="try3.html Preview" src="//blog-oss.keybrl.com/2018/images/SSSTA-Web2/try3_preview.png" /></p>
-<p>明显，这漂亮了很多，而且，我们并没有在每个元素标签中都加上 <code>style</code> 属性。取而代之的是在文件的 <code>&lt;head&gt;&lt;/head&gt;</code> 中加了一个 <code>&lt;style&gt;&lt;/style&gt;</code> 标签。而且你会发现CSS语句变得很不一样，如果你仔细看他们的格式，你会发现，在这里，除了描述样式的语句，还有一部分指示样式应用于什么元素的语句，比如 <code>p {...}</code> 表示大括号内的语句是描述页面中所有的 <code>&lt;p&gt;&lt;/p&gt;</code> 标签的。由此整个页面的样式可以集中写在文件头部一个地方，你再也不用为了修改一个颜色，找遍整个页面。</p>
-<h3 id="_4">外部的样式表</h3>
+<p><img alt="try3.html Preview" src="//blog-assets.keybrl.com/images/SSSTA-Web2/try3_preview.png" /></p>
+<p>明显，这漂亮了很多，而且，我们并没有在每个元素标签中都加上 <code class="codehilite">style</code> 属性。取而代之的是在文件的 <code class="codehilite"><span class="nt">&lt;head&gt;&lt;/head&gt;</span></code> 中加了一个 <code class="codehilite"><span class="nt">&lt;style&gt;&lt;/style&gt;</span></code> 标签。而且你会发现CSS语句变得很不一样，如果你仔细看他们的格式，你会发现，在这里，除了描述样式的语句，还有一部分指示样式应用于什么元素的语句，比如 <code class="codehilite">p {...}</code> 表示大括号内的语句是描述页面中所有的 <code class="codehilite"><span class="nt">&lt;p&gt;&lt;/p&gt;</span></code> 标签的。由此整个页面的样式可以集中写在文件头部一个地方，你再也不用为了修改一个颜色，找遍整个页面。</p>
+<h3 id="_4">外部的样式表<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>到这里CSS已经很完美了，但是并不够。我们经常看到，有些网站有很多页面，每个页面虽然内容不同，但都有非常相似的风格。难道我们需要在每个页面中都写上很大一段一模一样的CSS代码吗。并不用，我们可以把CSS写在一个单独的文件中，然后仅通过一条语句即可引入到HTML页面中。</p>
-<p>首先写一个 <code>.css</code> 文件，比如我用的是 <code>main.css</code></p>
-<div class="codehilite"><pre><span></span><span class="nt">body</span> <span class="p">{</span>
+<p>首先写一个 <code class="codehilite"><span class="na">.css</span></code> 文件，比如我用的是 <code class="codehilite">main.css</code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">body</span> <span class="p">{</span>
   <span class="k">background-color</span><span class="p">:</span> <span class="mh">#0f0f0f</span><span class="p">;</span>
   <span class="k">font-family</span><span class="p">:</span> <span class="s2">&quot;Monotype Corsiva&quot;</span><span class="p">;</span>
 <span class="p">}</span>
@@ -1247,22 +1355,22 @@
   <span class="k">font-size</span><span class="p">:</span> <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
+</td></tr></table>
 
-
-<p>将这个文件保存在 <code>try3.html</code> 的同一个目录中，然后我们可以把 <code>try3.html</code> 中那一大段 <code>&lt;style&gt;...&lt;/style&gt;</code> 换成这样一句话</p>
-<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;./main.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+<p>将这个文件保存在 <code class="codehilite">try3.html</code> 的同一个目录中，然后我们可以把 <code class="codehilite">try3.html</code> 中那一大段 <code class="codehilite"><span class="nt">&lt;style&gt;</span>...<span class="nt">&lt;/style&gt;</span></code> 换成这样一句话</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;./main.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
-<p><code>&lt;link&gt;</code> 标签用于为页面引入一些静态文件，比如图标、样式表； <code>href</code> 属性指示静态文件所在的位置，这是一个URL，可以使用绝对目录，也可以使用相对目录； <code>rel</code> 属性指示引入文件的类型是样式表</p>
+<p><code class="codehilite">&lt;link&gt;</code> 标签用于为页面引入一些静态文件，比如图标、样式表； <code class="codehilite">href</code> 属性指示静态文件所在的位置，这是一个URL，可以使用绝对目录，也可以使用相对目录； <code class="codehilite">rel</code> 属性指示引入文件的类型是样式表</p>
 </blockquote>
-<p>你把它们保存好，然后用浏览器打开 <code>try3.html</code> ，会发现，效果还是一样的，这个 <code>main.css</code> 会被浏览器自动加载（还记得上次活动讲的那堆自动访问的URL、自动发送的HTTP请求吗，这就是其中之一）。而且这个 <code>main.css</code> 还可以被你用在其他页面中以获得和 <code>try3.html</code> 相似的风格。</p>
-<h3 id="css_1">CSS语法基础</h3>
+<p>你把它们保存好，然后用浏览器打开 <code class="codehilite">try3.html</code> ，会发现，效果还是一样的，这个 <code class="codehilite">main.css</code> 会被浏览器自动加载（还记得上次活动讲的那堆自动访问的URL、自动发送的HTTP请求吗，这就是其中之一）。而且这个 <code class="codehilite">main.css</code> 还可以被你用在其他页面中以获得和 <code class="codehilite">try3.html</code> 相似的风格。</p>
+<h3 id="css_1">CSS语法基础<a class="headerlink" href="#css_1" title="Permanent link">&para;</a></h3>
 <p>CSS的学习比HTML要难一些，而且，CSS总是要结合HTML来设计的，这同样在<a href="http://www.w3school.com.cn/" target="_blank" title="W3School 在线教程">W3School</a>中有合适的教程，大家可以跟着边学边试。我们只阐述几个学习的要点</p>
 <ul>
 <li>注意区分应用于行内元素和块级元素的样式</li>
-<li>熟练使用各种选择器可以让你的样式设计比较有条理，但是注意一点，一般来说 <strong>id选择器</strong> 尽量不用， <code>id</code> 一般留给JS使用，CSS主要使用 <strong>class选择器</strong></li>
+<li>熟练使用各种选择器可以让你的样式设计比较有条理，但是注意一点，一般来说 <strong>id选择器</strong> 尽量不用， <code class="codehilite">id</code> 一般留给JS使用，CSS主要使用 <strong>class选择器</strong></li>
 <li>样式规则不用死记硬背，要用时查查就是了，背再多也不会用，用多了就记住了</li>
 <li>多思考CSS的组织方式，尽量使他们保持整洁且易于维护，这非常重要，这可以避免你被自己写的代码气死</li>
 </ul>
@@ -1427,6 +1535,12 @@
         
       
       <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+        <script src="/assets/javascripts/av-min.js"></script>
+      
+        <script src="/assets/javascripts/Valine.min.js"></script>
+      
+        <script src="/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
     

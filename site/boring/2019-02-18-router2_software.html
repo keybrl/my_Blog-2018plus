@@ -57,12 +57,8 @@
       
     
     
-
       <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
-<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
-<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
-
     
 <link rel="stylesheet" href="/assets/stylesheets/google-font.css">
 <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -798,7 +794,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+    <a href="../projects/2018-10-14-Project-keybrl-mines.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
       keybrl-mines - 优雅的扫雷从此无处不在
     </a>
   </li>
@@ -877,6 +873,18 @@
   <li class="md-nav__item">
     <a href="../donate.html" title="小额赞助" class="md-nav__link">
       小额赞助
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
+      测试页
     </a>
   </li>
 
@@ -960,19 +968,19 @@
               
                 
                 
-                <h1 id="nas2-">软路由与NAS(2) - 软件平台搭建</h1>
+                <h1 id="nas2-">软路由与NAS(2) - 软件平台搭建<a class="headerlink" href="#nas2-" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>这篇文章拖了不知道多久多久（大概3个月），终于把坑填了，顺便再挖一个坑，有空写篇文章讲讲这机子外壳的制作过程。</p>
 </blockquote>
 <p>2018年秋冬之交（双十一前后），用工控主板搭了一个软路由和 NAS 的一个硬件平台，详见这篇文章 <a href="2018-11-02-router1_hardware.html" target="_blank">软路由与NAS(1) - 硬件平台搭建</a>。但其实，那只是有了一个机子，真正要实现软路由和 NAS 的功能，还需要一些软件的支持。</p>
 <p>所以这篇文章来讲讲这小东西软件平台的搭建历程...</p>
-<h2 id="_1">操作系统</h2>
+<h2 id="_1">操作系统<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>首先是使用怎么样的操作系统作为这台机子的主要平台呢？这个问题其实没有多少答案，而且我之前也已经想好了。首先，不像尹大人那样那么会玩，我甚至没法想象去使用什么 Windows Server 来搞事情，也没听过什么 RouterOS 。所以其实，软路由部分肯定需要由 OpenWrt 来承载。 NAS 的话我的要求比较简单，就是能够通过网络访问、读写我那块 1T 硬盘里的数据就可以，性能最好能跟直接插上硬盘传差不多（这是不可能的），所以最简单的，就用 SMB 就行。 OpenWrt 也可以跑 SMB 。</p>
 <p>再想想还能有什么应用？其实不管是什么，我能想到的，基本上 OpenWrt 都可以，那么就开始安装 OpenWrt 吧。当然不要！虽然我也不知道为什么，也许只是因为我比较菜，我觉得如果有个图形界面会好很多。而且一个中规中矩的 Linux 系统可能会比较易于使用，而且而且 opkg 实在不如 apt 好用，所以我还是很希望能安装一个 Ubuntu 什么的。但 OpenWrt 肯定是需要的，所以最终方案就是</p>
 <p><strong>Ubuntu Desktop 18.04 + VM (OpenWrt)</strong></p>
 <p>了</p>
 <p>Ubuntu 就直接官网下载安装就好了，没什么技术含量，不值一提。由于官方编译好的 x86_64 的 OpenWrt 固件完全不能符合我的需求，比如他甚至没有我那块无线网卡（QCA9880）的驱动，所以自己编译一个肯定是逃不了了。为了按照时间顺序记叙，我把这一部分留到后面再讲 （见 <em>OpenWrt 编译</em> ）</p>
-<h2 id="_2">虚拟机</h2>
+<h2 id="_2">虚拟机<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>选购（选择）虚拟机也是一个复杂的事情。首先看看大家一般都会有些什么选择吧</p>
 <ul>
 <li>Oracle VM VirtualBox</li>
@@ -994,17 +1002,17 @@
 <p>那我就走投无路了吗？当然没有。经过尹大人的提点，我想起了大名鼎鼎的 KVM (Kernel-based Virtual Machine) ，开源、免费、强大，而且简单的使用算不上复杂。赶紧 Google 一下，安装...</p>
 <p>至于如何使用 VT-d 。稍微 Google 了一下，主要就以下几步</p>
 <ol>
-<li>修改 grub 内核引导参数，设置 <code>intel_iommu=on</code> （对于 Intel&reg; 的 CPU），重启。这一步主要是用于使能某些内核模块，使其支持 IOMMU 功能</li>
-<li>在虚拟机中添加 PCI-E 设备，选择需要直通的设备。这个在图形化界面上操作会容易很多，比如 <code>virt-manager</code> 。开机（开虚拟机）</li>
-<li>第一次开机可能会报错，大意是不能分配所选的硬件。这个的话可以先 <code>virtsh nodedev-detach xxxx</code> （<code>xxxx</code> 是要直通的设备的设备号）解除宿主机的占用，要查看设备号的话可以先 <code>virtsh nodedev-list --tree</code> 。</li>
+<li>修改 grub 内核引导参数，设置 <code class="codehilite">intel_iommu=on</code> （对于 Intel&reg; 的 CPU），重启。这一步主要是用于使能某些内核模块，使其支持 IOMMU 功能</li>
+<li>在虚拟机中添加 PCI-E 设备，选择需要直通的设备。这个在图形化界面上操作会容易很多，比如 <code class="codehilite">virt-manager</code> 。开机（开虚拟机）</li>
+<li>第一次开机可能会报错，大意是不能分配所选的硬件。这个的话可以先 <code class="codehilite">virtsh nodedev-detach xxxx</code> （<code class="codehilite">xxxx</code> 是要直通的设备的设备号）解除宿主机的占用，要查看设备号的话可以先 <code class="codehilite">virtsh nodedev-list --tree</code> 。</li>
 </ol>
 <p>这个具体可以 Google 。</p>
 <p>我按着教程设置好了之后还是开不了机，又 Google 了一圈，原因应该是无线网卡和两块有线网卡被分配到同一个 IOMMU 组了。这种情况下只能拆分这个 IOMMU 组，或者解除这个 IOMMU 组中所有设备在宿主机中的占用（既然宿主机用不了了，那我还不如把他们全部分配给虚拟机）。鉴于拆分一个 IOMMU 组的操作对于我来说过于繁琐，所以干脆把那些设备都分配给虚拟机吧。反正虚拟机是软路由，让他管理所有网络设备也挺好。修改完设置就可以开机了。</p>
-<h2 id="openwrt">编译 OpenWrt</h2>
-<p>OpenWrt 肯定是得自己编译一个，因为官方编译好的版本甚至都没有我那块无线网卡的驱动。编译嘛，也算得上简单，只要照着官方文档做就行（最好能有梯子，不然编译时的一些下载过程能够慢得让你怀疑人生）。配置的话，主要就是加上 <code>Firmware -&gt; ath10k-firmware-qca988x</code> ，这是对我那块无线网卡 QCA9880 的支持。其他的模块可以根据自己喜好选择，一些好玩的小应用也可以随便挑些（比如 啥都扫个死 之类的）。然后 <code>make download</code> ， <code>make</code> 就行。</p>
+<h2 id="openwrt">编译 OpenWrt<a class="headerlink" href="#openwrt" title="Permanent link">&para;</a></h2>
+<p>OpenWrt 肯定是得自己编译一个，因为官方编译好的版本甚至都没有我那块无线网卡的驱动。编译嘛，也算得上简单，只要照着官方文档做就行（最好能有梯子，不然编译时的一些下载过程能够慢得让你怀疑人生）。配置的话，主要就是加上 <code class="codehilite">Firmware -&gt; ath10k-firmware-qca988x</code> ，这是对我那块无线网卡 QCA9880 的支持。其他的模块可以根据自己喜好选择，一些好玩的小应用也可以随便挑些（比如 啥都扫个死 之类的）。然后 <code class="codehilite">make download</code> ， <code class="codehilite">make</code> 就行。</p>
 <p>第一次我是在那台小东西上编译的，因为编译完就可以立刻安装，看起来很方便。顺便也是测试一下 CPU 性能，还有就是发热量什么的（当时买的散热片还没有到，还记得硬件平台搭建那篇文章里扳手湿纸巾的照片吗）。编译过程超过一个小时，非常慢了，受不了，所以后面都是在 302 的喷气式发动机（一台8核、16G内存的刀片服务器，因其开机自检时风扇发出的强大声浪而得名“喷气式发动机”）上编译的。不过这个编译过程还是让我对这个小东西的发热量有了一定的认识，CPU 100% 时无风扇是能十分勉强地压住的，基本稳定在70摄氏度上下，平时 CPU 跑不满 100% ，就完全没有问题了。</p>
 <p>编译完，设置虚拟机，启动。</p>
-<h2 id="_3">网络配置</h2>
+<h2 id="_3">网络配置<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>网络配置的难点，其实主要不在那几个真的网卡的配置上。因为都直通给虚拟机了，所以在 OpenWrt 里设置非常简单。难点主要在于配置虚拟机的 OpenWrt 与外面宿主机的 Ubuntu 之间的网络。</p>
 <p>如果是对虚拟机的有一些了解的人，他们第一反应肯定是 “桥接” 嘛。我们再来回顾一下虚拟机网络的几大经典模式 NAT、Bridged、Host-only、Internal</p>
 <table>
@@ -1064,11 +1072,11 @@
 <p>参考 Oracle VM VirtualBox 的文档，的确桥接就能达到要求。但是 VirtualBox 桥接网络的配置应该是建立一个虚拟机虚拟网卡到宿主机真实网卡的一个虚拟网桥。用 KVM 也可以这样配置，但是我已经把仅有的两个以太网卡、一个无线网卡直通给虚拟机了，没有多余的网卡可以用于设置桥接。</p>
 <p>不过幸运的是， KVM 可以自己设置虚拟网络，并不需要局限于某几种固定的网络结构。我随便摸索了一下，网通了。大概就是，新建一个虚拟网桥virbr1，虚拟机添加虚拟网络连接到虚拟网桥。然后 Openwrt 里将虚拟网卡桥接到其他几个 LAN 端的网卡上，宿主机设置 virbr1 接口的 ip 地址为 LAN 端网络的一个 ip 地址，设置宿主机路由表，设置 Openwrt 路由表。然后宿主机和 LAN 端其他设备都互通了。其实我完全搞不明白发生了什么，我现在连这一通虚拟设备、虚拟网络这些设置的东西在逻辑上是什么结构都不清楚，不过网络通了。设置虚拟机的虚拟网卡为 virtnet 之后，实测虚拟机和宿主机之间传输速率能达到 10Gbps ，看起来就不会有什么瓶颈了。</p>
 <p>有空我得好好理解一下这里面的配置</p>
-<h2 id="_4">剩余的工作</h2>
+<h2 id="_4">剩余的工作<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>网络都设置好之后其实问题就很简单了。安装配置 smb ，设置自动挂载硬盘。但是，非常奇怪的是，通过无线局域网访问 smb 时，传输速率只有不到 30MBps ，也就是 240Mbps ，远没有达到千兆位每秒。用 iperf3 测试了一下，通过 WiFi 连接软路由时，设备与软路由之间只有 300Mbps 左右的传输速率（设备紧贴路由器），那么就怪不得了，估计是无线的配置上、无线网卡的驱动、或者别的什么玄学的地方还有点问题了，有空再研究一下。</p>
 <p>但是当我通过以太网连接， smb 的下载速率仍然不过 80MBps ，也就是 640Mbps ，也还是远没有达到千兆位以太网的传输速率。 iperf3 测速没问题， 1000Mbps 上下，那这少了几百兆位每秒的速率是怎么回事呢。硬盘读写速率没问题，本机拷贝的话 200MBps 左右，本机使用 smb 下载也差不多有 200MBps。那就很玄学了，有空再看看瓶颈在哪，看看怎么可以优化一下。</p>
 <hr />
-<h2 id="openwrt_1">关于OpenWrt</h2>
+<h2 id="openwrt_1">关于OpenWrt<a class="headerlink" href="#openwrt_1" title="Permanent link">&para;</a></h2>
 <p>最开始真正接触软路由，是大二的时候，在科协。尹大人在一台老旧的主机上跑个 OpenWrt ，那个机子有四个网卡（两LAN两WAN）。两个WAN一个走翼讯出，一个走校园网出，两个LAN接两个无线AP。效果就是睿思等校内流量走校园网，其他流量走翼讯，两个WiFi中一个是普通的，一个带透明代理。初见很是惊奇，未曾想过竟能如此优雅地配置网络。</p>
 <p>那时的我，刚好大一结束的暑假刚看完一本计算机网络的入门教材（也是尹大人推荐的，《计算机网络 自顶向下方法》），对计算机网络充满兴趣。而 OpenWrt 在那时的我看来是一个完美的学习平台，可以检验我对很多计算机网络基础知识的认识，而且事实上也让我认识到自己对书上看的理解得太肤浅。所以从那时起我就慢慢玩起了 OpenWrt ，开始是直接官网下载固件来玩，后来也尝试照着文档自己编译来玩（特别是当发现官方提供的 Raspberry Pi 3B+ 的固件不能正常使用）。</p>
 <p>不过其实到今天我也还只是稍微改几个配置然后编译，然后能用就不管的水平。比起尹大人，平均一天一编译，对每个配置项都了如指掌，甚至亲自修改源码，我算是非常肤浅的用户了。</p>
@@ -1213,6 +1221,12 @@
         
       
       <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+        <script src="/assets/javascripts/av-min.js"></script>
+      
+        <script src="/assets/javascripts/Valine.min.js"></script>
+      
+        <script src="/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
     

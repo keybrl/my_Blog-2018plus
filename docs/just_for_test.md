@@ -1,0 +1,15 @@
+# 测试页
+
+hhh
+
+```sequence
+Title: Here is a title
+A->B: Normal line
+B-->C: Dashed line
+C->>D: Open arrow
+D-->>A: Dashed open arrow
+```
+
+$$
+\frac{n!}{k!(n-k)!} = \binom{n}{k}
+$$

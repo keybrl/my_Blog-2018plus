@@ -433,11 +433,11 @@ $W_外+W_内=△E_k$
 
 ##### 行内式
 
-我们先了解一下行内式，行内式的超链接可以简单地插入到文本的任何地方(除了代码区块和代码区段)，比如[Bing](http://cn.bing.com/ "微软必应")。而我们只需要用方括号将链接文本置于方括号内，将链接地址置于方括号后的圆括号内，若有标题也可在圆括号内、链接地址后加入一个空格后用双引号标示
+我们先了解一下行内式，行内式的超链接可以简单地插入到文本的任何地方(除了代码区块和代码区段)，比如[Bing](https://cn.bing.com/ "微软必应")。而我们只需要用方括号将链接文本置于方括号内，将链接地址置于方括号后的圆括号内，若有标题也可在圆括号内、链接地址后加入一个空格后用双引号标示
 
 ```md
 格式:[Text](URL "Optional Title")
-例:[Bing](http://cn.bing.com/ "微软必应")
+例:[Bing](https://cn.bing.com/ "微软必应")
 ```
 
 > 如果是站内网页，也可以使用相对路径
@@ -457,7 +457,7 @@ $W_外+W_内=△E_k$
 
 ```md
 格式:[id]: URL "Optional Title"
-例:[a]: http://www.zhihu.com/ "与世界分享你的知识、经验和见解"
+例:[a]: https://www.zhihu.com/ "与世界分享你的知识、经验和见解"
 ```
 
 在定义连接内容时要注意:
@@ -473,16 +473,16 @@ $W_外+W_内=△E_k$
 
 ##### 自动链接
 
-Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用尖括号包围起来， Markdown 就会自动把它转换成链接。这时链接地址就和链接文本一样，例如：<http://cn.bing.com/>
+Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用尖括号包围起来， Markdown 就会自动把它转换成链接。这时链接地址就和链接文本一样，例如：<https://cn.bing.com/>
 
 ```
-<http://cn.bing.com/>
+<https://cn.bing.com/>
 ```
 
 Markdown 会将他转为：
 
 ```
-<a href="http://cn.bing.com/">http://ecn.bing.com/</a>
+<a href="https://cn.bing.com/">https://cn.bing.com/</a>
 ```
 
 邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：
@@ -508,7 +508,7 @@ Markdown 会转成：
 
 > 没有图片的文章都不是好文章
 
-![Insect](//blog-oss.keybrl.com/2018/images/The-base-of-grammar-in-Markdown/insect.jpg "Insect")
+![Insect](//blog-assets.keybrl.com/images/The-base-of-grammar-in-Markdown/insect.jpg "Insect")
 
 因此， Markdown 也很自然地为我们提供了插入图片的方法
 
@@ -518,22 +518,24 @@ Markdown 会转成：
 
 ```md
 ![Text](URL "Optional Title")
-例:![Insect](/../styles/images/insect.jpg "Insect")
+
+例:![Insect](../images/insect.jpg "Insect")
 ```
 
 参考式:
 
 ```md
-标记部分:
+标记部分:  
 ![Text][id]
-图片内容：
+
+图片内容：  
 [id]: URL "Optional Title"
 ```
 
 参考式便不作演示了
 
 > 除了感叹号，插入图片的方式与建立超链接几乎是一样的
-> 到目前为止 Markdown并不支持指定图片大小，如果有这种需求，可以使用 HTML 的<img></img>标签[^1]
+> 到目前为止 Markdown并不支持指定图片大小，如果有这种需求，可以使用 HTML 的 `<img></img>` 标签[^1]
 
 ### Footnotes
 
@@ -546,7 +548,7 @@ Markdown 会转成：
 然后你可以在文章任何地方输入这处注释的内容，他们的格式类似于这样
 
 ```md
-标记：  [^a]
+标记：  [^a]  
 内容：  [^a]:注释内容
 ```
 
@@ -639,4 +641,4 @@ _   底线
 > 多看多想  
 > 　　　　　　　　——某dalao
 
-[a]: http://www.zhihu.com/ "与世界分享你的知识、经验和见解"
+[a]: https://www.zhihu.com/ "与世界分享你的知识、经验和见解"

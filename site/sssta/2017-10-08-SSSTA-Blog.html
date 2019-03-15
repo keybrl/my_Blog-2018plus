@@ -57,12 +57,8 @@
       
     
     
-
       <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
-<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
-<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
-
     
 <link rel="stylesheet" href="/assets/stylesheets/google-font.css">
 <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -872,7 +868,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+    <a href="../projects/2018-10-14-Project-keybrl-mines.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
       keybrl-mines - 优雅的扫雷从此无处不在
     </a>
   </li>
@@ -951,6 +947,18 @@
   <li class="md-nav__item">
     <a href="../donate.html" title="小额赞助" class="md-nav__link">
       小额赞助
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
+      测试页
     </a>
   </li>
 
@@ -1108,14 +1116,14 @@
               
                 
                 
-                <h1 id="githubjekyll">在GitHub上通过Jekyll搭建个人博客</h1>
+                <h1 id="githubjekyll">在GitHub上通过Jekyll搭建个人博客<a class="headerlink" href="#githubjekyll" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>10分钟拥有一个自己的博客</p>
 <p>date: 2017-10-08</p>
 </blockquote>
 <hr />
 <p>搭建和维护个人博客以及写博客是一件非常酷的事情，而且这也基本可以算是每个程序员的必备技能之一。一个个人博客既是自己的一张名片也可以作为自己学习的见证。</p>
-<h2 id="_1">本节主要内容</h2>
+<h2 id="_1">本节主要内容<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>搭建个人博客的方法有很多，而我们今天讲其中比较简单的一种。主要涉及以下内容</p>
 <ol>
 <li>Git及GitHub的基本操作</li>
@@ -1124,18 +1132,18 @@
 <li>[可选]对Web前端的基本认识</li>
 <li>[可选]域名的选购与解析</li>
 </ol>
-<h2 id="gitgithub">Git和GitHub</h2>
+<h2 id="gitgithub">Git和GitHub<a class="headerlink" href="#gitgithub" title="Permanent link">&para;</a></h2>
 <p><strong>Git是一个分布式的版本控制软件</strong>，最初由林纳斯·托瓦兹（Linus Torvalds）创作</p>
 <blockquote>
 <p>"I'm an egotistical bastard, and I name all my projects after myself. First Linux, now git."</p>
 </blockquote>
 <p>这个工具非常强大，当然幸运的是我们现在不需要用到很多高级的功能。我们先做第一件事</p>
-<h3 id="_2">如何安装</h3>
+<h3 id="_2">如何安装<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Windows前往<a href="https://git-scm.com/" target="_blank">下载</a></li>
-<li>Debian/Ubuntu在终端执行<code>apt-get install git</code></li>
+<li>Debian/Ubuntu在终端执行<code class="codehilite">apt-get install git</code></li>
 </ol>
-<p><code>git --version</code> 验证安装是否成功</p>
+<p><code class="codehilite">git --version</code> 验证安装是否成功</p>
 <hr />
 <p>好的，我们先把Git放一放，我们来看看<a href="https://github.com/" target="_blank">GitHub</a></p>
 <p><strong>GitHub是一个通过Git进行版本控制的软件源代码托管平台</strong>，那是一个有趣的地方，多去逛逛。</p>
@@ -1152,39 +1160,41 @@
 <p>首先查看仓库克隆地址</p>
 <p>![仓库克隆地址]({{ site.assets_url }}/images/SSSTA-Blog/clone_url.png)</p>
 <p>然后在本地克隆一份</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> .
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> .
 git clone http://github.com/xxx/example.git
 </pre></div>
-
+</td></tr></table>
 
 <p>然后进入本地仓库目录</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> ./example
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">cd</span> ./example
 </pre></div>
-
+</td></tr></table>
 
 <p>然后我们可以先对仓库里面的文件做些修改，比如写个README.md</p>
 <p>然后我们试着提交修改并将修改后的仓库推到GitHub上</p>
 <p>首先是将目前文件夹里的内容加到仓库中</p>
-<div class="codehilite"><pre><span></span>git add .
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>git add .
 </pre></div>
-
+</td></tr></table>
 
 <p>然后提交修改</p>
-<div class="codehilite"><pre><span></span>git commit -m <span class="s1">&#39;summary</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>git commit -m <span class="s1">&#39;summary</span>
 <span class="s1">description&#39;</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
-<p>如果此时弹出类似 <code>Please tell me who you are</code> 的字样，那你需要先写两行配置信息</p>
-<p><code>git config --global user.name "{{ Your name }}"</code></p>
-<p><code>git config --global user.email "{{ Your email }}"</code></p>
+<p>如果此时弹出类似 <code class="codehilite">Please tell me who you are</code> 的字样，那你需要先写两行配置信息</p>
+<p><code class="codehilite"><span class="x">git config --global user.name &quot;</span><span class="cp">{{</span> <span class="nv">Your</span> <span class="nv">name</span> <span class="cp">}}</span><span class="x">&quot;</span></code></p>
+<p><code class="codehilite"><span class="x">git config --global user.email &quot;</span><span class="cp">{{</span> <span class="nv">Your</span> <span class="nv">email</span> <span class="cp">}}</span><span class="x">&quot;</span></code></p>
 <p>两个大括号以及他们内部的内容用自己的真实信息替换</p>
 </blockquote>
 <p>当然以上都是对本地仓库的操作，我们把修改后的仓库推到GitHub</p>
-<div class="codehilite"><pre><span></span>git push origin master
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>git push origin master
 </pre></div>
-
+</td></tr></table>
 
 <p>现在我们可以刷新一下GitHub看看了</p>
 <p>我们现在复习一下</p>
@@ -1195,14 +1205,14 @@ git clone http://github.com/xxx/example.git
 <li>push</li>
 </ol>
 <p>就是这样，很多事情就是这么枯燥乏味，但却很有趣。</p>
-<h2 id="jekyll">Jekyll</h2>
+<h2 id="jekyll">Jekyll<a class="headerlink" href="#jekyll" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>"Transform your plain text into static websites and blogs."</p>
 <p>---- <a href="https://jekyllrb.com/" target="_blank">Jekyll - Official Site</a></p>
 </blockquote>
-<p>Jekyll是个好东西，他非常神奇，对<strong>前端</strong>感兴趣的同学可以稍微深入研究一下。</p>
+<p>Jekyll是个好东西，他非常神奇，对**前端**感兴趣的同学可以稍微深入研究一下。</p>
 <p>但幸运的是，我们今天先不自己写，我们搬一个现成的。我们不用知道Jekyll怎么写，我们只需要知道怎么用别人写好的Jekyll模版。</p>
-<p>我们随便百度一下<code>Jekyll模版</code></p>
+<p>我们随便百度一下<code class="codehilite">Jekyll模版</code></p>
 <ul>
 <li><a href="http://jekyllthemes.org/" target="_blank">Jekyll Themes</a></li>
 </ul>
@@ -1213,43 +1223,45 @@ git clone http://github.com/xxx/example.git
 <li>扔到自己的GitHub仓库</li>
 </ol>
 <p>我们就说说修改配置文件</p>
-<h2 id="github-pages">GitHub Pages</h2>
+<h2 id="github-pages">GitHub Pages<a class="headerlink" href="#github-pages" title="Permanent link">&para;</a></h2>
 <p>GitHub Pages服务相当于为你提供一个静态网站服务器，对前端比较感兴趣的可能对此挺高兴，多数静态的前端作品都可以用这个展示出来。而且他还支持Jekyll，所以你用Jekyll写的（搬的）博客也可放在这上面。</p>
 <p>你只需要在自己的仓库里，设置，选择一个分支，确定。</p>
 <blockquote>
 <p>Settings -&gt; GitHub Pages -&gt; Source</p>
 </blockquote>
-<p>他会把一个叫<code>index</code>的文件作为索引，可以是<code>index.html</code>，也可以是<code>index.md</code>。</p>
+<p>他会把一个叫<code class="codehilite">index</code>的文件作为索引，可以是<code class="codehilite">index.html</code>，也可以是<code class="codehilite">index.md</code>。</p>
 <p>而且非常棒的是，你可以设置自己的域名，这样就不用用那个很长的https://username.github.io/project/了。</p>
 <blockquote>
-<p>关于<strong>域名</strong>的问题后面选读</p>
+<p>关于**域名**的问题后面选读</p>
 </blockquote>
-<h2 id="markdown">Markdown</h2>
+<h2 id="markdown">Markdown<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h2>
 <p><strong>我们一般用Markdown写博客</strong></p>
 <p>Markdown是一种轻量化的标记语言，他非常适合写博客。除此之外，你们平时也可以用它写文档、写作业、写小论文、写报告（我经常这么干），他是一种非常适合阅读的标记语言。</p>
 <p>标记只是决定一段文本的格式，比如说一级标题、二级标题、全局强调、局部强调、代码块、行内代码、超链接、图片、引用块、表格、......但是这些东西具体呈现出什么样子是由Markdown编辑器或者别的什么工具（比如Jekyll带的Markdown渲染引擎）渲染的。</p>
 <p>这是非常优雅的东西，这份课案，上一份课案，以及你们见到的我的所有课案都是用Markdown写的。多数编辑器都可以将Markdown转换为pdf（打印和交流）、html（应用于网页）、图片（方便分享）。</p>
 <blockquote>
-<p>好好学学，你们可以看看我的第一篇博客<a href="http://blog.keybrl.com/2016/11/13/The-base-of-grammar-in-Markdown.html" target="_blank">《Markdown语法基础》</a></p>
+<p>好好学学，你们可以看看我的第一篇博客<a href="../professional/2016-11-13-The-base-of-grammar-in-Markdown.html" target="_blank">《Markdown语法基础》</a></p>
 </blockquote>
-<h2 id="_3">最后的复习</h2>
+<h2 id="_3">最后的复习<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>我们借着推送一份文章的机会再最后复习一下Git和GitHub的操作</p>
-<p>将文章按照要求写好，放在<code>_post</code>文件夹中</p>
-<div class="codehilite"><pre><span></span>git add .
+<p>将文章按照要求写好，放在<code class="codehilite">_post</code>文件夹中</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>git add .
 git commit -m <span class="s1">&#39;push a new article&#39;</span>
 git push origin master
 </pre></div>
-
+</td></tr></table>
 
 <p>我们刷新一下自己刚搭好的博客，会不会有一种感动</p>
-<h2 id="_4">域名的选购与解析(选读)</h2>
+<h2 id="_4">域名的选购与解析(选读)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>“如果没有自己的域名，人生还有什么意义”</p>
 <p>---- 没错，就是我说的</p>
 </blockquote>
 <p>域名的用途有很多，可以解析到自己搭的Web服务器，方便别人访问自己的作品；解析到自己的邮件服务器，可以有自己独一无二的域名邮箱；所以当然，我们可以解析到自己的博客。这样别人可以用一种酷酷的方式访问自己的博客。</p>
 <blockquote>
-<p>比如我的<code>blog.keybrl.com</code></p>
+<p>比如我的<code class="codehilite">blog.keybrl.com</code></p>
 </blockquote>
 <p>不管你要用域名做什么，一般来所，你需要先买一个。推荐几个域名服务商</p>
 <ul>
@@ -1257,29 +1269,29 @@ git push origin master
 <li><a href="https://cn.aliyun.com/" target="_blank">阿里云</a></li>
 <li><a href="https://www.namecheap.com/" target="_blank">Namecheap</a></li>
 </ul>
-<h3 id="_5">域名的分类</h3>
+<h3 id="_5">域名的分类<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>首先，域名有顶级域名、二级域名、三级域名，...</p>
 <p>域名随便定的，就是个名字，只要可以解析。但是要能在世界上绝大部分地区能知道你的域名，获得你域名的解析，并访问解析的地址，那就需要有权威机构为你做这些事情。</p>
-<p>首先已经有了一堆国际顶级域名，这是国际上承认的。比如<code>.com</code>、<code>.cn</code>、<code>.org</code>、......然后顶级域名还可以用二级域名细分，比如科协的<code>sssta.org</code>、我的<code>keybrl.com</code>、<code>keyboard-l.com</code>、<code>keyboard-l.cn</code>。顶级域名是由国际公认的，某些顶级域名服务商负责管理，然后他们会授权很多别的服务商去管理一部分带有二级域名的子域名。</p>
+<p>首先已经有了一堆国际顶级域名，这是国际上承认的。比如<code class="codehilite"><span class="na">.com</span></code>、<code class="codehilite"><span class="na">.cn</span></code>、<code class="codehilite"><span class="na">.org</span></code>、......然后顶级域名还可以用二级域名细分，比如科协的<code class="codehilite">sssta.org</code>、我的<code class="codehilite">keybrl.com</code>、<code class="codehilite">keyboard-l.com</code>、<code class="codehilite">keyboard-l.cn</code>。顶级域名是由国际公认的，某些顶级域名服务商负责管理，然后他们会授权很多别的服务商去管理一部分带有二级域名的子域名。</p>
 <blockquote>
-<p>不同顶级域名的一般用途可自行百度，比如<code>.org</code>一般用于组织，<code>.edu</code>一般用于教育行业</p>
+<p>不同顶级域名的一般用途可自行百度，比如<code class="codehilite"><span class="na">.org</span></code>一般用于组织，<code class="codehilite"><span class="na">.edu</span></code>一般用于教育行业</p>
 <p>选择什么看自己钱包以及需求</p>
-<p>反正，尽量别选什么<code>.中国</code>就好</p>
+<p>反正，尽量别选什么<code class="codehilite"><span class="nf">.中国</span></code>就好</p>
 </blockquote>
 <p>然后所谓买域名，其实就是买某个顶级域名的子域名，你在谁那买的，谁就会负责管理，他们会帮你记录这个域名的注册信息，并部分公示，记录在哪里解析，不过或许他们会帮你解析。</p>
 <p>你可以选一个服务商，然后去那搜索一下自己意向的域名，如果没有被人注册，那你就可以把他买下来。</p>
-<h3 id="_6">域名解析</h3>
+<h3 id="_6">域名解析<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>然后你需要解析。其实域名很便宜，你花的钱多数是用于你的服务商为你提供的域名解析服务（DNS）。域名就像电话号码簿的某个人名，然后需要记录这个名字对应哪些电话号码。</p>
 <p>关于域名解析的设置，其实腾讯云和阿里云都有比较详细的说明。</p>
 <p>你一般需要为每条解析填写以下信息</p>
-<p><code>记录类型</code>将域名解析为什么类型的值</p>
-<p><code>主机记录</code>把域名以何种样子解析</p>
-<p><code>记录值</code>域名解析为的值</p>
-<p><code>TTL</code>解析被缓存的时间</p>
-<p>详细，你们可以去试着买个域名解析一下，腾讯云和阿里云都会给出充足的提示，不懂还可以百度一下。以及实在不懂可以再找个学长问问（最起码，随便一个名片带<code>web</code>的学长应该都懂）</p>
-<p>如果我们要解析到自己的GitHub Pages，那么你就选择<code>CNAME</code>记录类型，记录值填<code>username.github.io.</code>，<code>username</code>是你的GitHub用户名，主机记录按自己喜好填，其他默认。然后在GitHub上再填上自己解析好的域名，确定，即可。</p>
-<p>![腾讯云设置解析]({{ site.assets_url }}/images/SSSTA-Blog/tencentcloud_dns_set.png)</p>
-<p>![GitHub设置自定义域名]({{ site.assets_url }}/images/SSSTA-Blog/github_domain_set.png)</p>
+<p><code class="codehilite">记录类型</code>将域名解析为什么类型的值</p>
+<p><code class="codehilite">主机记录</code>把域名以何种样子解析</p>
+<p><code class="codehilite">记录值</code>域名解析为的值</p>
+<p><code class="codehilite">TTL</code>解析被缓存的时间</p>
+<p>详细，你们可以去试着买个域名解析一下，腾讯云和阿里云都会给出充足的提示，不懂还可以百度一下。以及实在不懂可以再找个学长问问（最起码，随便一个名片带<code class="codehilite">web</code>的学长应该都懂）</p>
+<p>如果我们要解析到自己的GitHub Pages，那么你就选择<code class="codehilite">CNAME</code>记录类型，记录值填<code class="codehilite">username.github.io.</code>，<code class="codehilite">username</code>是你的GitHub用户名，主机记录按自己喜好填，其他默认。然后在GitHub上再填上自己解析好的域名，确定，即可。</p>
+<p><img alt="腾讯云设置解析" src="//blog-assets.keybrl.com/images/SSSTA-Blog/tencentcloud_dns_set.png" /></p>
+<p><img alt="GitHub设置自定义域名" src="//blog-assets.keybrl.com/images/SSSTA-Blog/github_domain_set.png" /></p>
 <p>然后就大功告成了，你可以试着访问一下。</p>
 <blockquote>
 <p>确认无误后你就可以逢人便说：</p>
@@ -1287,20 +1299,20 @@ git push origin master
 <p>“想看看吗？快拿你的手机试试访问 <em>blog.keybrl.com</em> 。”</p>
 <p>（虽然这样看起来很傻）</p>
 </blockquote>
-<h2 id="sshgithub">用SSH连接GitHub仓库(选读)</h2>
+<h2 id="sshgithub">用SSH连接GitHub仓库(选读)<a class="headerlink" href="#sshgithub" title="Permanent link">&para;</a></h2>
 <p>之前我们一直在使用HTTPS连接自己的GitHub仓库，这样你经常需要登录，很麻烦，而且并不很安全。所以GitHub提供了一种免密连接的方法，......</p>
 <p>如果你有这样的追求，你一定不会畏惧于亲自寻找答案</p>
 <blockquote>
 <p>参考阅读：</p>
 <p><a href="https://help.github.com/articles/connecting-to-github-with-ssh/" target="_blank">Connecting to GitHub with SSH</a></p>
 </blockquote>
-<h2 id="_7">写在最后</h2>
-<p>这次我们很幸运地遇到了更多奇怪的东西。不过千万不要有<code>哇，好厉害诶，讲的是什么。我听不懂，我还是放弃吧。</code>这样类似的想法。</p>
-<p>我敢说，在我们接触这些时并没有比你们更多的基础，没有比你们更详细的指导，没有任何比你们更有利的条件。现在能将你们最终区分的只有<em>在虚无中快速构建根基并迅速扩展知识树的学习能力</em>。</p>
+<h2 id="_7">写在最后<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>这次我们很幸运地遇到了更多奇怪的东西。不过千万不要有<code class="codehilite">哇，好厉害诶，讲的是什么。我听不懂，我还是放弃吧。</code>这样类似的想法。</p>
+<p>我敢说，在我们接触这些时并没有比你们更多的基础，没有比你们更详细的指导，没有任何比你们更有利的条件。现在能将你们最终区分的只有*在虚无中快速构建根基并迅速扩展知识树的学习能力*。</p>
 <blockquote>
 <p>好好学，这很有趣！</p>
 </blockquote>
-<h3 id="_8">推荐阅读</h3>
+<h3 id="_8">推荐阅读<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p><a href="http://www.bootcss.com/p/git-guide/" target="_blank">git - 简易指南</a></p>
 <p><a href="https://help.github.com/" target="_blank">GitHub Help</a></p>
@@ -1308,17 +1320,13 @@ git push origin master
 <p>虽然我不很喜欢Coding.net，但是刚开始我的确是用Coding指导我在GitHub的操作的。感谢睿神让我知道这个东西。</p>
 <p><a href="http://jekyllcn.com/" target="_blank">Jekyll - Official Site</a></p>
 <p>这回是中文的</p>
-<p><a href="http://blog.keybrl.com/2016/11/13/The-base-of-grammar-in-Markdown.html" target="_blank">Markdown语法基础 - Keyboard L</a></p>
+<p><a href="../professional/2016-11-13-The-base-of-grammar-in-Markdown.html" target="_blank">Markdown语法基础 - Keyboard L</a></p>
 <p>我就是这么恬不知耻地推荐自己写的文章</p>
 <p><a href="http://www.w3school.com.cn/" target="_blank">W3School</a></p>
 <p>前端相关</p>
 </blockquote>
-<h3 id="_9">各位强者的博客</h3>
-<blockquote>
-<p><a href="http://tobiaslee.top/" target="_blank">Stay Hungry,Stay Foolish.</a> - 李主席</p>
-<p><a href="http://www.three7.cc/" target="_blank">叁拾柒 – Personal Site</a> - 钟副主席</p>
-<p><a href="http://blog.keybrl.com/" target="_blank">Keyboard L</a> - 这个几乎不写博客的垃圾的我</p>
-</blockquote>
+<h3 id="_9">各位强者的博客<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>请查看 <a href="../links.html" target="_blank">友链列表</a></p>
                 
                   
                 
@@ -1460,6 +1468,12 @@ git push origin master
         
       
       <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+        <script src="/assets/javascripts/av-min.js"></script>
+      
+        <script src="/assets/javascripts/Valine.min.js"></script>
+      
+        <script src="/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
     

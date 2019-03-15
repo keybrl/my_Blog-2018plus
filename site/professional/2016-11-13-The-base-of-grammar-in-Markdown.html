@@ -57,12 +57,8 @@
       
     
     
-
       <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
-<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
-<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
-
     
 <link rel="stylesheet" href="/assets/stylesheets/google-font.css">
 <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -1023,7 +1019,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+    <a href="../projects/2018-10-14-Project-keybrl-mines.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
       keybrl-mines - 优雅的扫雷从此无处不在
     </a>
   </li>
@@ -1102,6 +1098,18 @@
   <li class="md-nav__item">
     <a href="../donate.html" title="小额赞助" class="md-nav__link">
       小额赞助
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
+      测试页
     </a>
   </li>
 
@@ -1410,7 +1418,7 @@
               
                 
                 
-                <h1 id="markdown">Markdown语法基础</h1>
+                <h1 id="markdown">Markdown语法基础<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>这是第一次使用Markdown时，对Markdown的基本语法都不了解，通过这一篇文章学习、尝试</p>
 <p>date: 2016-11-13</p>
@@ -1424,60 +1432,74 @@
 <p>所以，如果 Markdown 并不能提高你的工作效率，那就让它见鬼去吧。</p>
 <p>如果你已经明确你需要使用 Markdown ，那么你一定需要了解一些语法和标记……</p>
 <hr />
-<h2 id="_1">区块元素</h2>
+<h2 id="_1">区块元素<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>区块元素一般以段落为单位，所以应用区块元素时注意段落的范围</p>
 <p>区块元素主要有 Heading、Quote、Table、Code Fence、List、Horizontal Line……</p>
 <p>在介绍他们之前，我们先区分一下什么是一个 Paragraph (段落)</p>
-<h3 id="paragraph">Paragraph</h3>
+<h3 id="paragraph">Paragraph<a class="headerlink" href="#paragraph" title="Permanent link">&para;</a></h3>
 <p>在 Markdown 中，段落由一个或多个连续的文本行组成，前后有一个或以上的空行(空行的定义是显示上看起来像是空的行。因此，若某一行只包含空格和制表符，则该行也会被视为空行)。</p>
 <blockquote>
 <p>普通段落不该用空格或制表符来缩进(这点与一般的汉语书写规范不同)。</p>
 </blockquote>
-<p>前文<code>连续的文本行</code>实际上暗示了 Markdown 允许段落内的<strong>强制换行</strong>，在 Markdown 中，使用<strong>先插入两个或以上的空格，然后再回车</strong>的方式可以做到段落内的强制换行。<br />
+<p>前文<code class="codehilite">连续的文本行</code>实际上暗示了 Markdown 允许段落内的**强制换行**，在 Markdown 中，使用**先插入两个或以上的空格，然后再回车**的方式可以做到段落内的强制换行。<br />
 就像这样进行换行。一般来说，文本行之间的间隔会小于段落之间的间隔。</p>
 <blockquote>
-<p>在多行的引用区块和列表中，换行是<strong>十分必要</strong>的。</p>
+<p>在多行的引用区块和列表中，换行是**十分必要**的。</p>
 </blockquote>
-<h3 id="heading">Heading</h3>
+<h3 id="heading">Heading<a class="headerlink" href="#heading" title="Permanent link">&para;</a></h3>
 <p>除了能起到更显眼的效果，标题还为 Markdown 提供更清晰、简洁的结构，所以学会在文章中应用标题十分重要。</p>
 <p>Heading 可以像这样标记出来，他们分别代表 HTML 中的 Heading1~Heading6</p>
-<div class="codehilite"><pre><span></span><span class="gh">#</span> Heading1 #
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gh">#</span> Heading1 #
 <span class="gu">##</span> Heading2 ##
 <span class="gu">###</span> Heading3 ###
 <span class="gu">####</span> Heading4 ####
 <span class="gu">#####</span> Heading5 #####
 <span class="gu">######</span> Heading6 ######
 </pre></div>
-
+</td></tr></table>
 
 <p>当然，我们完全可以像下面那样省略后面的#，结果跟上面是完全等效的</p>
-<div class="codehilite"><pre><span></span><span class="gh">#</span> Heading1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="gh">#</span> Heading1
 <span class="gu">##</span> Heading2
 <span class="gu">###</span> Heading3
 <span class="gu">####</span> Heading4
 <span class="gu">#####</span> Heading5
 <span class="gu">######</span> Heading6
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>需要注意的是，跟 HTML 一样，Markdown 并没有 Heading7。<br />
 幸运的是，我们不会需要再多的标题了。</p>
 </blockquote>
 <p>上面介绍的是比较常用的 Heading 用法，当然，Markdown 中 Heading 还有一些别的用法</p>
-<div class="codehilite"><pre><span></span>Heading1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Heading1
 ========
 
 Heading2
 --------
 </pre></div>
-
+</td></tr></table>
 
 <p>在 Markdown 中可以像在 Setext 中一样，用下方的-和=标记标题。值得注意的是，任何数量的-和=都能起到完全等效的作用(除了6个-表示分割线)</p>
 <blockquote>
 <p>正如你所见，这种方式的标题并不值得提倡</p>
 </blockquote>
-<h3 id="quote">Quote</h3>
+<h3 id="quote">Quote<a class="headerlink" href="#quote" title="Permanent link">&para;</a></h3>
 <p>在你的文章中，你或许会需要用酷一点的方式写个引言，或者引用一段话</p>
 <p>像这样</p>
 <blockquote>
@@ -1485,7 +1507,17 @@ Heading2
 　　　　　　　　——Albert Einstein</p>
 </blockquote>
 <p>那你一定需要Quote，他看起来十分简单</p>
-<div class="codehilite"><pre><span></span><span class="k">&gt; </span><span class="ge">你只需要在每一个文本行的开头输入一个&gt;  </span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">&gt; </span><span class="ge">你只需要在每一个文本行的开头输入一个&gt;  </span>
 <span class="k">&gt; </span><span class="ge">它就会变成这种效果  </span>
 <span class="k">&gt; </span><span class="ge">如果你需要换行，千万不要忘记前面所讲的**强制换行**</span>
 <span class="k">&gt;</span>
@@ -1497,15 +1529,15 @@ Heading2
 <span class="k">&gt; </span><span class="ge">没错，你需要一个空行  </span>
 实际上你也可以偷一点懒，只需在每个段落的开头加一个&gt;就能达到一样的效果
 </pre></div>
-
+</td></tr></table>
 
 <p>上面那一段代码产生的效果就像这样</p>
 <blockquote>
 <p>你只需要在每一个文本行的开头输入一个&gt;<br />
 它就会变成这种效果<br />
-如果你需要换行，千万不要忘记前面所讲的<strong>强制换行</strong></p>
+如果你需要换行，千万不要忘记前面所讲的**强制换行**</p>
 <blockquote>
-<p>如果你多加一个&gt;，你会得到<strong>二级引用</strong><br />
+<p>如果你多加一个&gt;，你会得到**二级引用**<br />
 这很酷，不是吗</p>
 </blockquote>
 <p>如果你需要结束这个引用区块(段落)，还记得怎么做吗</p>
@@ -1514,14 +1546,20 @@ Heading2
 </blockquote>
 <p>引用区块内也能使用 Markdown 中其他的语法</p>
 <blockquote>
-<p><code>code</code></p>
+<p><code class="codehilite">code</code></p>
 <p><strong>Strong</strong></p>
 <p><em>Emphasis</em></p>
 </blockquote>
-<h3 id="code-fence">Code Fence</h3>
+<h3 id="code-fence">Code Fence<a class="headerlink" href="#code-fence" title="Permanent link">&para;</a></h3>
 <p>有时候，你需要在你的文章中展示一段代码</p>
 <p>比如你最喜欢的“Hello World！”</p>
-<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
@@ -1529,37 +1567,44 @@ Heading2
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>那你一定需要像代码区块这样原汁原味的展示方式，他们并不复杂</p>
 <p>你只需要使用两组三个反单引号`隔开一个段落即可</p>
-<div class="codehilite"><pre><span></span>​```
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>​```
 这里是一个表示代码内容的段落
 ​```
 </pre></div>
-
+</td></tr></table>
 
 <p>当然，Markdown 还提供一种比较难操作的方式。你可以在每一行缩进一个换行符或四个空格</p>
-<div class="codehilite"><pre><span></span>    就像这样
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>    就像这样
     制表符会一定程度上地破坏段落的结构，这使得这一方式并不十分好用
     当然，如果你喜欢，你可以尝试一下
     原则上两者并没有明显的优劣之分
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>在代码区块中的内容一般不会被视为语法</p>
 </blockquote>
-<h3 id="list">List</h3>
+<h3 id="list">List<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
 <p>如果你需要使文章观点或信息更加鲜明地列出，特别是在学术文章或说明文章中，你会很自然地想到在每一个文本行前面加上序号或别的着重标记。</p>
 <p>在 Markdown 中，这么做是十分容易和自然的。</p>
-<h5 id="ordered-list">Ordered List</h5>
+<h5 id="ordered-list">Ordered List<a class="headerlink" href="#ordered-list" title="Permanent link">&para;</a></h5>
 <p>有序列表，就是带有顺序序号的列表</p>
-<div class="codehilite"><pre><span></span><span class="k">1.</span> 第一行
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">1.</span> 第一行
 <span class="k">2.</span> 第二行
 <span class="k">0.</span> 第三行，在输入时数字可以是任意的，这并不能影响实际显示效果，但这样的习惯并不好
 </pre></div>
-
+</td></tr></table>
 
 <p>效果就像这样</p>
 <ol>
@@ -1568,14 +1613,16 @@ Heading2
 <li>一个有序列表也是一个段落，所以它也以一个空行结尾</li>
 <li>在列表中，并不需要多加两个空格强制换行，直接敲回车即可</li>
 </ol>
-<h5 id="unordered-list">Unordered List</h5>
+<h5 id="unordered-list">Unordered List<a class="headerlink" href="#unordered-list" title="Permanent link">&para;</a></h5>
 <p>无序列表看起来只是在每个文本行前加上了一个着重标记</p>
 <p>只需要像这样在每个文本行前加上减号、加号或星号(-、+、*)和空格，这三种标记是完全等效的</p>
-<div class="codehilite"><pre><span></span><span class="k">-</span> 第一行
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">-</span> 第一行
 + 第二行
 <span class="k">*</span> 第三行，用什么标记并没有什么不同
 </pre></div>
-
+</td></tr></table>
 
 <p>效果看起来是这样的</p>
 <ul>
@@ -1584,11 +1631,13 @@ Heading2
 <li>混用三种标记并没有什么不同，但为什么要煞费心机换着花样呢，选一个自己最喜欢的更为明智</li>
 </ul>
 <p>如果试着在标记符前面加上两个或四个空格，你也能得到分层的无序列表</p>
-<div class="codehilite"><pre><span></span><span class="k">-</span> 第一层
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">-</span> 第一层
   <span class="k">-</span> 第二层
     <span class="k">-</span> 第三层
 </pre></div>
-
+</td></tr></table>
 
 <p>他们像这样</p>
 <ul>
@@ -1601,32 +1650,37 @@ Heading2
 <blockquote>
 <p>这样可以使层次更复杂，这是有序列表不具有的特性</p>
 </blockquote>
-<h5 id="task-list">Task List</h5>
+<h5 id="task-list">Task List<a class="headerlink" href="#task-list" title="Permanent link">&para;</a></h5>
 <p>任务列表实际上就是带有“待办”标记的列表，他们看起来比较复杂</p>
-<div class="codehilite"><pre><span></span><span class="k">- [x]</span> 这表示完成
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">- [x]</span> 这表示完成
 <span class="k">- [ ]</span> 这表示未完成
 </pre></div>
-
+</td></tr></table>
 
 <p>效果就像下面这样</p>
-<ul>
-<li>[x] 这表示完成</li>
-<li>[ ] 这表示未完成</li>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 这表示完成</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 这表示未完成</li>
 </ul>
 <blockquote>
 <p>减号与方括号之间、两个方括号之间和方括号与其后的内容之间都有一个空格<br />
 就像你看到的，这个功能并不一定能被Jekyll兼容</p>
 </blockquote>
-<h3 id="table">Table</h3>
+<h3 id="table">Table<a class="headerlink" href="#table" title="Permanent link">&para;</a></h3>
 <p>在文章中，表格是十分重要的，而同时，表格的编辑又充满挑战。比如在 Word 中就有很多很强大的表格工具，甚至可以插入 Excel 表格，但是其操作并不简单。幸运的是 Markdown 为我们提供了一种十分轻量级的表格工具，我们可以将精力从编辑表格样式转移到丰富表格的内容中来。</p>
 <p>Markdown 中的表格是由竖线、减号和冒号(| - :)构成的，你可以像这样建立一个表格</p>
-<div class="codehilite"><pre><span></span>| Header1 | Header2 | Header3 | Header4 |
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>| Header1 | Header2 | Header3 | Header4 |
 | ------- | :------ | :-----: | ------: |
 | (1,1)   | (2,1)   | (3,1)   | (4,1)   |
 | (1,2)   | (2,2)   | (3,2)   | (4,2)   |
 | (1,3)   | (2,3)   | (3,3)   | (4,3)   |
 </pre></div>
-
+</td></tr></table>
 
 <p>表格的实际效果就像下面这样</p>
 <table>
@@ -1659,47 +1713,62 @@ Heading2
 </tr>
 </tbody>
 </table>
-<h3 id="math-block">Math Block</h3>
+<h3 id="math-block">Math Block<a class="headerlink" href="#math-block" title="Permanent link">&para;</a></h3>
 <p>就像代码在代码区块中更像代码一样，数学方程在数学区块中更像数学方程</p>
-<p>$$
+<div>
+<div class="MathJax_Preview">
 E=mc^2
-$$</p>
-<p>$$
+</div>
+<script type="math/tex; mode=display">
+E=mc^2
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
 a^3-b^3=(a-b)(a^2+ab+b^)
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+a^3-b^3=(a-b)(a^2+ab+b^)
+</script>
+</div>
 <p>操作起来并不复杂，像这样</p>
-<div class="codehilite"><pre><span></span>$$
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$$
 E=Mc^2
 $$
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>但是这个功能并不常用，而且并不是md一般标准，算是一种扩展，被部分编辑器支持，Jekyll的md引擎一般不支持</p>
 <p>所以就不赘述了</p>
 </blockquote>
-<h3 id="horizontal-line">Horizontal Line</h3>
+<h3 id="horizontal-line">Horizontal Line<a class="headerlink" href="#horizontal-line" title="Permanent link">&para;</a></h3>
 <p>有时候你并不知道分割线的具体作用，但你就是想用一个分割线，或许为了“长文预警”、“多图预警”、“不适预警”……或许只是为了装饰一下。</p>
-<p>你可以不知道分割线有什么用，但是你一定不能不知道分割线怎么用。因为他几乎是最简单的段落了，没错，它的确是一个<strong>段落</strong></p>
-<div class="codehilite"><pre><span></span>------
+<p>你可以不知道分割线有什么用，但是你一定不能不知道分割线怎么用。因为他几乎是最简单的段落了，没错，它的确是一个**段落**</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>------
 <span class="ge">* *</span> *
 <span class="gs">****</span>
 <span class="gs">__________</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>你只需要像上面那样，在一行用三个以上的星号、减号或下划线产生一个分割线，这一行不能存在其他的字符。当然，在星号或减号之间插入空格是被允许的</p>
 <p>这是一条喜闻乐见的分割线</p>
 <hr />
-<h3 id="table-of-content">Table of Content</h3>
+<h3 id="table-of-content">Table of Content<a class="headerlink" href="#table-of-content" title="Permanent link">&para;</a></h3>
 <p>如果你的文章很长，并且你用标题管理得十分井井有条，那么你一定希望用一个目录向你的读者展示你的文章结构，并提供快速转到的帮助</p>
 <p>很幸运 Markdown 提供了这样的功能，而且十分简单，你只需要在你想创建目录的地方敲上一个这样的段落</p>
-<div class="codehilite"><pre><span></span>[TOC]
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>[TOC]
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
-<p>没错，这也是一个<strong>段落</strong>，不要忘了空行</p>
+<p>没错，这也是一个**段落**，不要忘了空行</p>
 </blockquote>
 <p>像这样</p>
 <div class="toc">
@@ -1758,112 +1827,116 @@ $$
 <blockquote>
 <p>很不幸的是，这个功能也不一定能发挥作用</p>
 </blockquote>
-<h2 id="_2">区段元素</h2>
+<h2 id="_2">区段元素<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>与上面的区块元素不同，区段元素一般不作用于段落，而是作用于字符串</p>
-<h3 id="_3">强调</h3>
+<h3 id="_3">强调<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>在 HTML 中用于强调的标签主要有两个</p>
-<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>全局强调<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>全局强调<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>局部强调<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>
 </pre></div>
+</td></tr></table>
 
-
-<p>应用 strong 标签的文本被定义为全局范围的强调，主要表现形式就是<strong>加粗</strong></p>
-<p>而应用 em 标签的文本则被定义为局部范围的强调，主要表现形式是<em>斜体</em></p>
+<p>应用 strong 标签的文本被定义为全局范围的强调，主要表现形式就是**加粗**</p>
+<p>而应用 em 标签的文本则被定义为局部范围的强调，主要表现形式是*斜体*</p>
 <blockquote>
 <p>局部强调是阅读到附近时才能发现的，而全局强调是在篇章的尺度上能被明显区分的</p>
 </blockquote>
 <p>在 Markdown 中也有完全一样的功能，只是形式上更为简洁</p>
-<h5 id="strong">Strong</h5>
+<h5 id="strong">Strong<a class="headerlink" href="#strong" title="Permanent link">&para;</a></h5>
 <p>在 Markdown 中你可以使用下划线和星号(- *)标记强调</p>
-<div class="codehilite"><pre><span></span>**Strong**
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>**Strong**
 </pre></div>
-
+</td></tr></table>
 
 <p>主要效果就是加粗</p>
 <p><strong>Strong</strong></p>
-<h4 id="emphasis">Emphasis</h4>
+<h4 id="emphasis">Emphasis<a class="headerlink" href="#emphasis" title="Permanent link">&para;</a></h4>
 <p>类似于 Strong ，使用星号或下划线</p>
-<div class="codehilite"><pre><span></span>*Emphasis*
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>*Emphasis*
 </pre></div>
-
+</td></tr></table>
 
 <p>这样的强调效果主要是斜体</p>
 <p><em>Emphasis</em></p>
-<h3 id="underline">Underline</h3>
+<h3 id="underline">Underline<a class="headerlink" href="#underline" title="Permanent link">&para;</a></h3>
 <p>出于一些无聊的目的，你可能需要在一些文字下面加入一些 <u>下划线</u> ，那么你只需要这样</p>
-<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">u</span><span class="p">&gt;</span>下划线<span class="p">&lt;/</span><span class="nt">u</span><span class="p">&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">u</span><span class="p">&gt;</span>下划线<span class="p">&lt;/</span><span class="nt">u</span><span class="p">&gt;</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>没错，这就是完全沿用 HTML 的一个标签</p>
 </blockquote>
-<h3 id="code">Code</h3>
+<h3 id="code">Code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h3>
 <p>你有时需要在文本中引用一小段代码，如何让他们类似于代码区块长得像代码，而又不用另起一行呢</p>
-<div class="codehilite"><pre><span></span><span class="sb">`&quot;Hello World!\n&quot;`</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="sb">`&quot;Hello World!\n&quot;`</span>
 </pre></div>
+</td></tr></table>
 
-
-<p>你只需要使用两个反单引号包围一串字符就能产生一个代码区段<code>"Hello World!\n"</code></p>
-<h3 id="inline-math">Inline Math</h3>
-<p>行内数学区段类似于前面提到的数学区块，只是它不用自成一段，也不会居中，它可以出现在除代码区块和代码区段外的任何地方，比如这里$W_外+W_内=△E_k$</p>
+<p>你只需要使用两个反单引号包围一串字符就能产生一个代码区段<code class="codehilite">&quot;Hello World!\n&quot;</code></p>
+<h3 id="inline-math">Inline Math<a class="headerlink" href="#inline-math" title="Permanent link">&para;</a></h3>
+<p>行内数学区段类似于前面提到的数学区块，只是它不用自成一段，也不会居中，它可以出现在除代码区块和代码区段外的任何地方，比如这里<span><span class="MathJax_Preview">W_外+W_内=△E_k</span><script type="math/tex">W_外+W_内=△E_k</script></span></p>
 <p>上面那个动能定理只要这样输入即可</p>
-<div class="codehilite"><pre><span></span>$W_外+W_内=△E_k$
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$W_外+W_内=△E_k$
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>十分不幸的是，跟数学区块一样，行内数学区段的兼容性也并不很好</p>
 </blockquote>
-<h3 id="strike">Strike</h3>
-<p>当我们要输入一些 ~~装逼~~ 有趣的文字时，我们常常要用到划线来划掉一些我们 ~~明明可以不输出来~~ 不太想让别人误会的文字。</p>
+<h3 id="strike">Strike<a class="headerlink" href="#strike" title="Permanent link">&para;</a></h3>
+<p>当我们要输入一些 <del>装逼</del> 有趣的文字时，我们常常要用到划线来划掉一些我们 <del>明明可以不输出来</del> 不太想让别人误会的文字。</p>
 <p>我们只需要用前后各两个波浪线(~)包围我们需要划掉的文字</p>
-<div class="codehilite"><pre><span></span>一切dalao都是 <span class="gd">~~纸老虎~~</span> 名副其实
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>一切dalao都是 <span class="gd">~~纸老虎~~</span> 名副其实
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>如果你善于观察，你会发现，在被划掉的文字两边加上空格效果会更好一些</p>
 </blockquote>
-<h3 id="comment">Comment</h3>
-<p>这个是一个直接来源于 HTML 的标签，而在 Markdown 中，这个标签变得可有可无，他其实就是一段<em>注释</em></p>
-<div class="codehilite"><pre><span></span><span class="c">&lt;!--这段话在这并没什么卵用，它也不会显示给用户--&gt;</span>
+<h3 id="comment">Comment<a class="headerlink" href="#comment" title="Permanent link">&para;</a></h3>
+<p>这个是一个直接来源于 HTML 的标签，而在 Markdown 中，这个标签变得可有可无，他其实就是一段*注释*</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c">&lt;!--这段话在这并没什么卵用，它也不会显示给用户--&gt;</span>
 </pre></div>
-
+</td></tr></table>
 
 <!--这段话并没什么卵用-->
 
 <blockquote>
 <p>注释是什么我在此不作说明，这对于代码的维护来说十分重要，但对于文本编辑，这似乎是一个鸡肋。</p>
 </blockquote>
-<h3 id="hyperlink">Hyperlink</h3>
+<h3 id="hyperlink">Hyperlink<a class="headerlink" href="#hyperlink" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>超链接,网页的灵魂所在。</p>
 </blockquote>
 <p>对于一篇文章而言，超链接常常也是必不可少的。Markdown 为我们提供了 <em>行内式</em> 和 <em>参考式</em> 两种类型的超链接</p>
-<h5 id="_4">行内式</h5>
-<p>我们先了解一下行内式，行内式的超链接可以简单地插入到文本的任何地方(除了代码区块和代码区段)，比如<a href="http://cn.bing.com/" target="_blank" title="微软必应">Bing</a>。而我们只需要用方括号将链接文本置于方括号内，将链接地址置于方括号后的圆括号内，若有标题也可在圆括号内、链接地址后加入一个空格后用双引号标示</p>
-<div class="codehilite"><pre><span></span>格式:[Text](URL &quot;Optional Title&quot;)
-例:[Bing](http://cn.bing.com/ &quot;微软必应&quot;)
+<h5 id="_4">行内式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h5>
+<p>我们先了解一下行内式，行内式的超链接可以简单地插入到文本的任何地方(除了代码区块和代码区段)，比如<a href="https://cn.bing.com/" target="_blank" title="微软必应">Bing</a>。而我们只需要用方括号将链接文本置于方括号内，将链接地址置于方括号后的圆括号内，若有标题也可在圆括号内、链接地址后加入一个空格后用双引号标示</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>格式:[Text](URL &quot;Optional Title&quot;)
+例:[Bing](https://cn.bing.com/ &quot;微软必应&quot;)
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>如果是站内网页，也可以使用相对路径</p>
 </blockquote>
-<h5 id="_5">参考式</h5>
-<p>然后是参考式，参考式是仅在段落中对链接文本做标记，<a href="http://www.zhihu.com/" target="_blank" title="与世界分享你的知识、经验和见解">知乎</a>，具体链接内容自成段落分布在文章其他地方</p>
+<h5 id="_5">参考式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h5>
+<p>然后是参考式，参考式是仅在段落中对链接文本做标记，<a href="https://www.zhihu.com/" target="_blank" title="与世界分享你的知识、经验和见解">知乎</a>，具体链接内容自成段落分布在文章其他地方</p>
 <p>标记部分：</p>
-<div class="codehilite"><pre><span></span>格式:[Text][id]
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>格式:[Text][id]
 例:[知乎][a]
 </pre></div>
-
+</td></tr></table>
 
 <p>链接内容：</p>
-<div class="codehilite"><pre><span></span>格式:[id]: URL &quot;Optional Title&quot;
-例:[a]: http://www.zhihu.com/ &quot;与世界分享你的知识、经验和见解&quot;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>格式:[id]: URL &quot;Optional Title&quot;
+例:[a]: https://www.zhihu.com/ &quot;与世界分享你的知识、经验和见解&quot;
 </pre></div>
-
+</td></tr></table>
 
 <p>在定义连接内容时要注意:</p>
 <ol>
@@ -1876,124 +1949,150 @@ $$
 <blockquote>
 <p>个人认为，参考式超链接不会破坏文章结构，使文章可读性更高，因此更值推广</p>
 </blockquote>
-<h5 id="_6">自动链接</h5>
-<p>Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用尖括号包围起来， Markdown 就会自动把它转换成链接。这时链接地址就和链接文本一样，例如：<a href="http://cn.bing.com/" target="_blank">http://cn.bing.com/</a></p>
-<div class="codehilite"><pre><span></span>&lt;http://cn.bing.com/&gt;
+<h5 id="_6">自动链接<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h5>
+<p>Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用尖括号包围起来， Markdown 就会自动把它转换成链接。这时链接地址就和链接文本一样，例如：<a href="https://cn.bing.com/">https://cn.bing.com/</a></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&lt;https://cn.bing.com/&gt;
 </pre></div>
-
+</td></tr></table>
 
 <p>Markdown 会将他转为：</p>
-<div class="codehilite"><pre><span></span><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://cn.bing.com/&quot;</span><span class="nt">&gt;</span>http://ecn.bing.com/<span class="nt">&lt;/a&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://cn.bing.com/&quot;</span><span class="nt">&gt;</span>https://cn.bing.com/<span class="nt">&lt;/a&gt;</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：</p>
-<div class="codehilite"><pre><span></span>&lt;address@example.com&gt;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&lt;address@example.com&gt;
 </pre></div>
-
+</td></tr></table>
 
 <p>Markdown 会转成：</p>
-<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&amp;#x6D;&amp;#x61;i&amp;#x6C;&amp;#x74;&amp;#x6F;:&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&amp;#x6D;&amp;#x61;i&amp;#x6C;&amp;#x74;&amp;#x6F;:&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;</span>
 <span class="s">&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;</span>
 <span class="s">&amp;#109;&quot;</span><span class="p">&gt;</span><span class="ni">&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;</span>
 <span class="ni">&amp;#109;&amp;#x70;&amp;#x6C;</span>e<span class="ni">&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
 </pre></div>
+</td></tr></table>
 
-
-<p>在浏览器里面，这段字串会变成一个可以点击的「address@example.com」链接。</p>
+<p>在浏览器里面，这段字串会变成一个可以点击的「<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#100;&#100;&#114;&#101;&#115;&#115;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;">&#97;&#100;&#100;&#114;&#101;&#115;&#115;&#64;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#46;&#99;&#111;&#109;</a>」链接。</p>
 <blockquote>
 <p>这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。</p>
 </blockquote>
-<h3 id="image">Image</h3>
+<h3 id="image">Image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>没有图片的文章都不是好文章</p>
 </blockquote>
-<p><img alt="Insect" src="//blog-oss.keybrl.com/2018/images/The-base-of-grammar-in-Markdown/insect.jpg" title="Insect" /></p>
+<p><img alt="Insect" src="//blog-assets.keybrl.com/images/The-base-of-grammar-in-Markdown/insect.jpg" title="Insect" /></p>
 <p>因此， Markdown 也很自然地为我们提供了插入图片的方法</p>
-<p>与超链接很类似，插入图片也分为<em>行内式</em>和<em>参考式</em></p>
+<p>与超链接很类似，插入图片也分为*行内式*和*参考式*</p>
 <p>行内式:</p>
-<div class="codehilite"><pre><span></span>![<span class="nt">Text</span>](<span class="na">URL &quot;Optional Title&quot;</span>)
-例:![Insect](/../styles/images/insect.jpg &quot;Insect&quot;)
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>![<span class="nt">Text</span>](<span class="na">URL &quot;Optional Title&quot;</span>)
 
+例:![Insect](../images/insect.jpg &quot;Insect&quot;)
+</pre></div>
+</td></tr></table>
 
 <p>参考式:</p>
-<div class="codehilite"><pre><span></span>标记部分:
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>标记部分:  
 ![Text][id]
-图片内容：
+
+图片内容：  
 [id]: URL &quot;Optional Title&quot;
 </pre></div>
-
+</td></tr></table>
 
 <p>参考式便不作演示了</p>
 <blockquote>
 <p>除了感叹号，插入图片的方式与建立超链接几乎是一样的
-到目前为止 Markdown并不支持指定图片大小，如果有这种需求，可以使用 HTML 的<img></img>标签<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
+到目前为止 Markdown并不支持指定图片大小，如果有这种需求，可以使用 HTML 的 <code class="codehilite"><span class="nt">&lt;img&gt;&lt;/img&gt;</span></code> 标签<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
 </blockquote>
-<h3 id="footnotes">Footnotes</h3>
+<h3 id="footnotes">Footnotes<a class="headerlink" href="#footnotes" title="Permanent link">&para;</a></h3>
 <p>在编辑文章，特别是学术文章时，你有时需要对文章的某些部分做出解释，但又不想直接写在正文中，那么你一定能想到书本的脚注。没错，Markdown 也提供了脚注的功能。</p>
 <p>类似于参考式的图片和超链接，脚注也有两部分，标记和注释</p>
 <p>如果你想在文中某处注释<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>一下，那么你只需要在要注释处输入一个用方括号包围的^x，x可以是任意你喜欢的数字</p>
 <p>然后你可以在文章任何地方输入这处注释的内容，他们的格式类似于这样</p>
-<div class="codehilite"><pre><span></span>标记：  [^a]
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>标记：  [^a]  
 内容：  [^a]:注释内容
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>脚注不是 Markdown 的标准，所以其实现效果各有不同</p>
 <p>没错，不管你写在哪，在最终效果中，注释内容一般都在文末</p>
 </blockquote>
-<h2 id="_7">其它</h2>
+<h2 id="_7">其它<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>上文已经就 Markdown 的一般用法做出了解释，但是你知道 Markdown 远不止于此。</p>
-<h3 id="html">兼容HTML</h3>
+<h3 id="html">兼容HTML<a class="headerlink" href="#html" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>Markdown 是一种适用于网络的书写语言。</p>
 </blockquote>
 <p>可以说 Markdown 是由HTML派生而来的，因此 Markdown 有很多 HTML 的影子。Markdown从来没有想要接近 HTML 或者取代 HTML，因为 Markdown 只是一种书写语言，其语法范围也只在文本的范围内。因此，当你需要使用一些超出文本需要的功能，你可以直接使用 HTML 实现。</p>
-<p>没错，Markdown 几乎兼容所有的 HTML <b>标签</b>。上一句话的“标签”两个字就是被 HTML 标签标记的，就像这样<code>&lt;b&gt;标签&lt;/b&gt;</code></p>
+<p>没错，Markdown 几乎兼容所有的 HTML <b>标签</b>。上一句话的“标签”两个字就是被 HTML 标签标记的，就像这样<code class="codehilite"><span class="nt">&lt;b&gt;</span>标签<span class="nt">&lt;/b&gt;</span></code></p>
 <blockquote>
-<p>像 Markdown 一样，有些 HTML 标签是<em>行内式</em>的，有些则是属于<em>段落</em>，应用时要注意<br />
+<p>像 Markdown 一样，有些 HTML 标签是*行内式*的，有些则是属于*段落*，应用时要注意<br />
 在 HTML 标签内，Markdown 语法不会发挥作用。</p>
 </blockquote>
-<h3 id="_8">特殊字符自动转换</h3>
-<p>在 HTML 中&amp;和&lt;是两个令人备受折磨的字符，因为他们都在 HTML 中作为语法的一部分有特殊含义。因此当你仅仅需要打印&amp;或&lt;时，你需要输入<code>&amp;amp;</code>或<code>&amp;lt;</code>分别代替&amp;和&lt;，甚至当网址中有&amp;时也要转换</p>
-<div class="codehilite"><pre><span></span><span class="nt">网址</span><span class="err">：</span>
+<h3 id="_8">特殊字符自动转换<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>在 HTML 中&amp;和&lt;是两个令人备受折磨的字符，因为他们都在 HTML 中作为语法的一部分有特殊含义。因此当你仅仅需要打印&amp;或&lt;时，你需要输入<code class="codehilite">&amp;amp;</code>或<code class="codehilite">&amp;lt;</code>分别代替&amp;和&lt;，甚至当网址中有&amp;时也要转换</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nt">网址</span><span class="err">：</span>
 <span class="nt">http</span><span class="o">://</span><span class="nt">images</span><span class="p">.</span><span class="nc">google</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">images</span><span class="o">?</span><span class="nt">num</span><span class="o">=</span><span class="nt">30</span><span class="o">&amp;</span><span class="nt">q</span><span class="o">=</span><span class="nt">larry</span><span class="o">+</span><span class="nt">bird</span>
 <span class="nt">需输成</span><span class="err">：</span>
 <span class="nt">http</span><span class="o">://</span><span class="nt">images</span><span class="p">.</span><span class="nc">google</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">images</span><span class="o">?</span><span class="nt">num</span><span class="o">=</span><span class="nt">30</span><span class="o">&amp;</span><span class="nt">amp</span><span class="o">;</span><span class="nt">q</span><span class="o">=</span><span class="nt">larry</span><span class="o">+</span><span class="nt">bird</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>这十分麻烦。但幸运的是，一般情况下，在 Markdown 中你并不需要这样，你只需要直接打出&amp;或&lt;即可，但是……</p>
 <blockquote>
 <p>Every coin has two sides.</p>
 </blockquote>
-<p>因此，这在 Markdown 中又变得复杂了一些。当你将它们当作一般的字符书写出来，Markdown 会自动将它们转换为<code>&amp;amp;</code>或<code>&amp;lt;</code>。但前面说过，Markdown 兼容 HTML ，因此，当 Markdown 认为那是 HTML 语法时，Markdown 不会转换他们。</p>
+<p>因此，这在 Markdown 中又变得复杂了一些。当你将它们当作一般的字符书写出来，Markdown 会自动将它们转换为<code class="codehilite">&amp;amp;</code>或<code class="codehilite">&amp;lt;</code>。但前面说过，Markdown 兼容 HTML ，因此，当 Markdown 认为那是 HTML 语法时，Markdown 不会转换他们。</p>
 <p>如果你想在文中加入一个版权符号©，你输入</p>
-<div class="codehilite"><pre><span></span>&amp;copy;
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&amp;copy;
 </pre></div>
-
+</td></tr></table>
 
 <p>Markdown 并不会转换他们，而是原样输入 HTML。但如果你输入</p>
-<div class="codehilite"><pre><span></span>1+1&lt;5
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>1+1&lt;5
 </pre></div>
-
+</td></tr></table>
 
 <p>Markdown 会自动将他们转换为</p>
-<div class="codehilite"><pre><span></span>1+1<span class="ni">&amp;lt;</span>5
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>1+1<span class="ni">&amp;lt;</span>5
 </pre></div>
-
+</td></tr></table>
 
 <p>因此了解 Markdown 何时自动转换、何时不转换十分重要。</p>
-<h3 id="_9">反斜杠</h3>
+<h3 id="_9">反斜杠<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果(但不用 `` 标签)，你可以在星号的前面加上反斜杠：</p>
-<div class="codehilite"><pre><span></span>\*literal asterisks\*
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>\*literal asterisks\*
 </pre></div>
-
+</td></tr></table>
 
 <p>Markdown 支持在以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
-<div class="codehilite"><pre><span></span>\   反斜线
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>\   反斜线
 `   反引号
 *   星号
 _   底线
@@ -2006,9 +2105,9 @@ _   底线
 .   英文句点
 !   惊叹号
 </pre></div>
+</td></tr></table>
 
-
-<h3 id="_10">·结语</h3>
+<h3 id="_10">·结语<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>多看多想<br />
 　　　　　　　　——某dalao</p>
@@ -2165,6 +2264,12 @@ _   底线
         
       
       <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+        <script src="/assets/javascripts/av-min.js"></script>
+      
+        <script src="/assets/javascripts/Valine.min.js"></script>
+      
+        <script src="/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
     

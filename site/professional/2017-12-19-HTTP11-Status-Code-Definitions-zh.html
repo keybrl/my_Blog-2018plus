@@ -57,12 +57,8 @@
       
     
     
-
       <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
-<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
-<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
-
     
 <link rel="stylesheet" href="/assets/stylesheets/google-font.css">
 <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -1121,7 +1117,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+    <a href="../projects/2018-10-14-Project-keybrl-mines.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
       keybrl-mines - 优雅的扫雷从此无处不在
     </a>
   </li>
@@ -1200,6 +1196,18 @@
   <li class="md-nav__item">
     <a href="../donate.html" title="小额赞助" class="md-nav__link">
       小额赞助
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
+      测试页
     </a>
   </li>
 
@@ -1606,7 +1614,7 @@
               
                 
                 
-                <h1 id="http11-">HTTP/1.1 - 状态码定义</h1>
+                <h1 id="http11-">HTTP/1.1 - 状态码定义<a class="headerlink" href="#http11-" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>对 Hypertext Transfer Protocol -- HTTP/1.1 中关于状态码定义的翻译</p>
 <p>date: 2017-12-19</p>
@@ -1618,12 +1626,12 @@ RFC 2616 Fielding, et al.</p>
 </blockquote>
 <p>这篇文章是 <em><a href="https://www.w3.org/Protocols/rfc2616/rfc2616.html" target="_blank">Hypertext Transfer Protocol -- HTTP/1.1</a></em> 的一部分<br />
 <em>RFC 2616</em> ，Fielding等人所著</p>
-<h2 id="10-status-code-definitions">10 Status Code Definitions （状态码定义）</h2>
+<h2 id="10-status-code-definitions">10 Status Code Definitions （状态码定义）<a class="headerlink" href="#10-status-code-definitions" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Each Status-Code is described below, including a description of which method(s) it can follow and any metainformation required in the response.</p>
 </blockquote>
 <p>下面是对于每个状态码的描述，包括它们适用的请求方法和响应中所需附带的信息。</p>
-<h3 id="101-informational-1xx">10.1 Informational 1xx （提示信息）</h3>
+<h3 id="101-informational-1xx">10.1 Informational 1xx （提示信息）<a class="headerlink" href="#101-informational-1xx" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>This class of status code indicates a provisional response, consisting only of the Status-Line and optional headers, and is terminated by an empty line. There are no required headers for this class of status code. Since HTTP/1.0 did not define any 1xx status codes, servers MUST NOT send a 1xx response to an HTTP/1.0 client except under experimental conditions.</p>
 </blockquote>
@@ -1631,18 +1639,18 @@ RFC 2616 Fielding, et al.</p>
 <blockquote>
 <p>A client MUST be prepared to accept one or more 1xx status responses prior to a regular response, even if the client does not expect a 100 (Continue) status message. Unexpected 1xx status responses MAY be ignored by a user agent.</p>
 </blockquote>
-<p>在等待接收一个一般（regular）的响应时，客户端 <strong>必须</strong> 准备好接收一个或多个1xx状态的响应，即使客户端并不期望接收一个 <code>100 (Continue)</code> 状态的消息。未预料的1xx状态的响应 <strong>可能</strong> 会被用户代理（user agent）忽略。</p>
+<p>在等待接收一个一般（regular）的响应时，客户端 <strong>必须</strong> 准备好接收一个或多个1xx状态的响应，即使客户端并不期望接收一个 <code class="codehilite">100 (Continue)</code> 状态的消息。未预料的1xx状态的响应 <strong>可能</strong> 会被用户代理（user agent）忽略。</p>
 <blockquote>
 <p>Proxies MUST forward 1xx responses, unless the connection between the proxy and its client has been closed, or unless the proxy itself requested the generation of the 1xx response. (For example, if a</p>
 <p>proxy adds a "Expect: 100-continue" field when it forwards a request, then it need not forward the corresponding 100 (Continue) response(s).)</p>
 </blockquote>
-<p>代理（proxy） <strong>必须</strong> 转发1xx响应，除非代理和客户端之间的连接已经关闭，或者除非代理本身要求产生1xx响应。（例如，如果代理在转发请求时添加了 <code>Expect：100-continue</code> 字段，则它不需要转发相应的 <code>100 (Continue)</code> 响应。）</p>
-<h4 id="1011-100-continue">10.1.1 100 Continue （继续）</h4>
+<p>代理（proxy） <strong>必须</strong> 转发1xx响应，除非代理和客户端之间的连接已经关闭，或者除非代理本身要求产生1xx响应。（例如，如果代理在转发请求时添加了 <code class="codehilite">Expect：100-continue</code> 字段，则它不需要转发相应的 <code class="codehilite">100 (Continue)</code> 响应。）</p>
+<h4 id="1011-100-continue">10.1.1 100 Continue （继续）<a class="headerlink" href="#1011-100-continue" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The client SHOULD continue with its request. This interim response is used to inform the client that the initial part of the request has been received and has not yet been rejected by the server. The client SHOULD continue by sending the remainder of the request or, if the request has already been completed, ignore this response. The server MUST send a final response after the request has been completed. See section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.2.3" target="_blank">8.2.3</a> for detailed discussion of the use and handling of this status code.</p>
 </blockquote>
 <p>客户端 <strong>应该</strong> 维持其请求。此临时响应用于通知客户端，请求的初始部分已被接收并且未被服务器拒绝。客户端 <strong>应该</strong> 继续发送请求的其余部分，如果请求已经完成，则忽略这个响应。请求完成后，服务器 <strong>必须</strong> 发送最终响应。关于该状态码的使用和处理的详细讨论见<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.2.3" target="_blank">8.2.3</a>节。</p>
-<h4 id="1012-101-switching-protocols">10.1.2 101 Switching Protocols （切换协议）</h4>
+<h4 id="1012-101-switching-protocols">10.1.2 101 Switching Protocols （切换协议）<a class="headerlink" href="#1012-101-switching-protocols" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The server understands and is willing to comply with the client's request, via the Upgrade message header field (section 14.42), for a change in the application protocol being used on this connection. The server will switch protocols to those defined by the response's Upgrade header field immediately after the empty line which terminates the 101 response.</p>
 </blockquote>
@@ -1651,12 +1659,12 @@ RFC 2616 Fielding, et al.</p>
 <p>The protocol SHOULD be switched only when it is advantageous to do so. For example, switching to a newer version of HTTP is advantageous over older versions, and switching to a real-time, synchronous protocol might be advantageous when delivering resources that use such features.</p>
 </blockquote>
 <p>协议只 <strong>应该</strong> 切换到更有利的情况。例如，切换到较新版本的HTTP比旧版本更有优势，又如当交付具有实时、同步特性的资源时，切换到具有这些特性的协议可能是有利的。</p>
-<h3 id="102-successful-2xx">10.2 Successful 2xx （成功）</h3>
+<h3 id="102-successful-2xx">10.2 Successful 2xx （成功）<a class="headerlink" href="#102-successful-2xx" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>This class of status code indicates that the client's request was successfully received, understood, and accepted.</p>
 </blockquote>
 <p>这类状态码表明客户端的请求已被成功接收，理解并接受。</p>
-<h4 id="1021-200-ok">10.2.1 200 OK （正常）</h4>
+<h4 id="1021-200-ok">10.2.1 200 OK （正常）<a class="headerlink" href="#1021-200-ok" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The request has succeeded. The information returned with the response is dependent on the method used in the request, for example:</p>
 </blockquote>
@@ -1671,16 +1679,16 @@ RFC 2616 Fielding, et al.</p>
 <p><strong>HEAD</strong> 在响应中发送与所请求的资源对应的实体头部（entity-header）字段，而不包含任何信息体（message-body）；</p>
 <p><strong>POST</strong> 一个描述或包含了处理结果的实体；</p>
 <p><strong>TRACE</strong> 一个包含终端服务器接收到的请求信息的实体。</p>
-<h4 id="1022-201-created">10.2.2 201 Created （已创建）</h4>
+<h4 id="1022-201-created">10.2.2 201 Created （已创建）<a class="headerlink" href="#1022-201-created" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The request has been fulfilled and resulted in a new resource being created. The newly created resource can be referenced by the URI(s) returned in the entity of the response, with the most specific URI for the resource given by a Location header field. The response SHOULD include an entity containing a list of resource characteristics and location(s) from which the user or user agent can choose the one most appropriate. The entity format is specified by the media type given in the Content-Type header field. The origin server MUST create the resource before returning the 201 status code. If the action cannot be carried out immediately, the server SHOULD respond with 202 (Accepted) response instead.</p>
 </blockquote>
-<p>请求完成，并因此创建了一个新的资源。该资源可由响应实体中返回的一个或多个URL引用，其中与该资源最匹配的URL会被作为头部的 <code>Location</code> 字段给出。响应 <strong>应该</strong> 包括一个含有一个列表的实体，该列表描述了所包含资源的特性和其一个或多个地址，用户或用户代理可以从中选择一个最合适的地址。实体格式由头部的 <code>Content-Type</code> 字段给出的媒体类型所指定。源服务器 <strong>必须</strong> 在返回201状态码之前创建好所需的资源。如果资源不能被立即创建，那么服务器应该用 <code>202 (Accepted)</code> 响应来代替201响应。</p>
+<p>请求完成，并因此创建了一个新的资源。该资源可由响应实体中返回的一个或多个URL引用，其中与该资源最匹配的URL会被作为头部的 <code class="codehilite">Location</code> 字段给出。响应 <strong>应该</strong> 包括一个含有一个列表的实体，该列表描述了所包含资源的特性和其一个或多个地址，用户或用户代理可以从中选择一个最合适的地址。实体格式由头部的 <code class="codehilite">Content-Type</code> 字段给出的媒体类型所指定。源服务器 <strong>必须</strong> 在返回201状态码之前创建好所需的资源。如果资源不能被立即创建，那么服务器应该用 <code class="codehilite">202 (Accepted)</code> 响应来代替201响应。</p>
 <blockquote>
 <p>A 201 response MAY contain an ETag response header field indicating the current value of the entity tag for the requested variant just created, see section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19" target="_blank">14.19</a>.</p>
 </blockquote>
-<p>一个201响应 <strong>可以</strong> 包含一个 <code>ETag</code> 响应头部字段，用于指出刚创建的被请求变量（requested variant）的实体标签（entity tag）的当前值，参见<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19" target="_blank">14.19</a>节</p>
-<h4 id="1023-202-accepted">10.2.3 202 Accepted （已接受）</h4>
+<p>一个201响应 <strong>可以</strong> 包含一个 <code class="codehilite">ETag</code> 响应头部字段，用于指出刚创建的被请求变量（requested variant）的实体标签（entity tag）的当前值，参见<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19" target="_blank">14.19</a>节</p>
+<h4 id="1023-202-accepted">10.2.3 202 Accepted （已接受）<a class="headerlink" href="#1023-202-accepted" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place. There is no facility for re-sending a status code from an asynchronous operation such as this.</p>
 </blockquote>
@@ -1689,12 +1697,12 @@ RFC 2616 Fielding, et al.</p>
 <p>The 202 response is intentionally non-committal. Its purpose is to allow a server to accept a request for some other process (perhaps a batch-oriented process that is only run once per day) without requiring that the user agent's connection to the server persist until the process is completed. The entity returned with this response SHOULD include an indication of the request's current status and either a pointer to a status monitor or some estimate of when the user can expect the request to be fulfilled.</p>
 </blockquote>
 <p>202响应是故意不作承诺（non-committal）的。它的目的在于允许服务器接受对其他进程的请求（也许是一个每天只运行一次的面向批处理（batch-oriented）的进程），而不需要维持与客户代理的连接直到进程完成。这个响应返回的实体 <strong>应该</strong> 包含一个对于请求的当前状态的指示，或者一个指向状态监视器的指针，或一些对于用户请求何时会被满足的估计。</p>
-<h4 id="1024-203-non-authoritative-information">10.2.4 203 Non-Authoritative Information （非权威信息）</h4>
+<h4 id="1024-203-non-authoritative-information">10.2.4 203 Non-Authoritative Information （非权威信息）<a class="headerlink" href="#1024-203-non-authoritative-information" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The returned metainformation in the entity-header is not the definitive set as available from the origin server, but is gathered from a local or a third-party copy. The set presented MAY be a subset or superset of the original version. For example, including local annotation information about the resource might result in a superset of the metainformation known by the origin server. Use of this response code is not required and is only appropriate when the response would otherwise be 200 (OK).</p>
 </blockquote>
-<p>在实体头部中返回的元信息（metainformation）并不是从源服务器获得的权威信息的集合，而是从本地或第三方副本收集的。所得的信息集合 <strong>可以</strong> 是原始版本的子集或超集。例如，如果包含对资源的本地标注信息，可能会导致得到一个源服务器已知元信息的超集。使用此响应代码不是必需的，并且该状态码只适于在不能使用 <code>200 (OK)</code> 响应的情况下使用。</p>
-<h4 id="1025-204-no-content">10.2.5 204 No Content （无内容）</h4>
+<p>在实体头部中返回的元信息（metainformation）并不是从源服务器获得的权威信息的集合，而是从本地或第三方副本收集的。所得的信息集合 <strong>可以</strong> 是原始版本的子集或超集。例如，如果包含对资源的本地标注信息，可能会导致得到一个源服务器已知元信息的超集。使用此响应代码不是必需的，并且该状态码只适于在不能使用 <code class="codehilite">200 (OK)</code> 响应的情况下使用。</p>
+<h4 id="1025-204-no-content">10.2.5 204 No Content （无内容）<a class="headerlink" href="#1025-204-no-content" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The server has fulfilled the request but does not need to return an entity-body, and might want to return updated metainformation. The response MAY include new or updated metainformation in the form of entity-headers, which if present SHOULD be associated with the requested variant.</p>
 </blockquote>
@@ -1707,16 +1715,16 @@ RFC 2616 Fielding, et al.</p>
 <p>The 204 response MUST NOT include a message-body, and thus is always terminated by the first empty line after the header fields.</p>
 </blockquote>
 <p>204响应 <strong>绝不能</strong> 包含信息体，因此它总会被头部字段之后的第一个空行所终止。</p>
-<h4 id="1026-205-reset-content">10.2.6 205 Reset Content （内容重置）</h4>
+<h4 id="1026-205-reset-content">10.2.6 205 Reset Content （内容重置）<a class="headerlink" href="#1026-205-reset-content" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The server has fulfilled the request and the user agent SHOULD reset the document view which caused the request to be sent. This response is primarily intended to allow input for actions to take place via user input, followed by a clearing of the form in which the input is given so that the user can easily initiate another input action. The response MUST NOT include an entity.</p>
 </blockquote>
 <p>服务器对请求的处理已完成，用户代理 <strong>应该</strong> 重置导致该请求被发送的文档的文档视图。该响应主要是为了允许通过用户输入对用户代理的活动进行输入操作，然后清除该输入，以便用户可以很容易地开始另一个输入动作。响应 <strong>绝不能</strong> 包含任何实体。</p>
-<h4 id="1027-206-partial-content">10.2.7 206 Partial Content （部分内容）</h4>
+<h4 id="1027-206-partial-content">10.2.7 206 Partial Content （部分内容）<a class="headerlink" href="#1027-206-partial-content" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The server has fulfilled the partial GET request for the resource. The request MUST have included a Range header field (section 14.35) indicating the desired range, and MAY have included an If-Range header field (section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.27" target="_blank">14.27</a>) to make the request conditional.</p>
 </blockquote>
-<p>服务器已经处理完了对资源的部分GET请求。该请求 <strong>必须</strong> 包含一个 <code>Range</code> 头部字段（14.35节），表示期望的范围，并且 <strong>可以</strong> 包含一个 <code>If-Range</code> 头部字段（<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.27" target="_blank">14.27</a>节）来使请求条件明确。</p>
+<p>服务器已经处理完了对资源的部分GET请求。该请求 <strong>必须</strong> 包含一个 <code class="codehilite">Range</code> 头部字段（14.35节），表示期望的范围，并且 <strong>可以</strong> 包含一个 <code class="codehilite">If-Range</code> 头部字段（<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.27" target="_blank">14.27</a>节）来使请求条件明确。</p>
 <blockquote>
 <p>The response MUST include the following header fields:</p>
 <ul>
@@ -1736,30 +1744,30 @@ variant</li>
 </blockquote>
 <p>响应 <strong>必须</strong> 包含以下头部字段：</p>
 <ul>
-<li>一个<code>Content-Range</code> 头部字段（14.16节），指示该响应包含<br />
-的范围；或者将 <code>Content-Type</code> 头部字段置为 <code>multipart/byteranges</code> ，<br />
-并在每个部分包含 <code>Content-Range</code> 字段。如果在响应头部含有一个<br />
-<code>Content-Length</code> 字段，则它的值 <strong>必须</strong> 与在信息体中实际传输<br />
+<li>一个<code class="codehilite">Content-Range</code> 头部字段（14.16节），指示该响应包含<br />
+的范围；或者将 <code class="codehilite">Content-Type</code> 头部字段置为 <code class="codehilite">multipart/byteranges</code> ，<br />
+并在每个部分包含 <code class="codehilite">Content-Range</code> 字段。如果在响应头部含有一个<br />
+<code class="codehilite">Content-Length</code> 字段，则它的值 <strong>必须</strong> 与在信息体中实际传输<br />
 的 <strong>8比特字节（octet）</strong> 数相匹配。</li>
-<li><code>Data</code></li>
-<li><code>ETag</code> 和/或 <code>Content-Location</code> ，如果头部已经在一个对该<br />
+<li><code class="codehilite">Data</code></li>
+<li><code class="codehilite">ETag</code> 和/或 <code class="codehilite">Content-Location</code> ，如果头部已经在一个对该<br />
 请求的200响应中被发送。</li>
-<li><code>Expires</code> ， <code>Cache-Control</code> ，和/或 <code>Vary</code> ，如果字段值（field-value）<br />
+<li><code class="codehilite">Expires</code> ， <code class="codehilite">Cache-Control</code> ，和/或 <code class="codehilite">Vary</code> ，如果字段值（field-value）<br />
 可能与之前对该请求发送的任何响应中的字段值都不同。</li>
 </ul>
 <blockquote>
 <p>If the 206 response is the result of an If-Range request that used a strong cache validator (see section 13.3.3), the response SHOULD NOT include other entity-headers. If the response is the result of an If-Range request that used a weak validator, the response MUST NOT include other entity-headers; this prevents inconsistencies between cached entity-bodies and updated headers. Otherwise, the response MUST include all of the entity-headers that would have been returned with a 200 (OK) response to the same request.</p>
 </blockquote>
-<p>如果该206响应是对一个使用强缓存验证器（strong cache validator）的 <code>If-Range</code> 请求（请参阅第13.3.3节）的回应，则该响应 <strong>不应该</strong> 包含其他实体头部。如果响应是对一个使用弱验证器（weak validator）的 <code>If-Range</code> 请求的回应，则该响应 <strong>绝不能</strong> 包含其他实体头部；这可以防止缓存的实体与更新的头部之间不一致。否则，该响应 <strong>必须</strong> 包含对该请求已返回的 <code>200 (OK)</code> 响应的全部实体头部。</p>
+<p>如果该206响应是对一个使用强缓存验证器（strong cache validator）的 <code class="codehilite">If-Range</code> 请求（请参阅第13.3.3节）的回应，则该响应 <strong>不应该</strong> 包含其他实体头部。如果响应是对一个使用弱验证器（weak validator）的 <code class="codehilite">If-Range</code> 请求的回应，则该响应 <strong>绝不能</strong> 包含其他实体头部；这可以防止缓存的实体与更新的头部之间不一致。否则，该响应 <strong>必须</strong> 包含对该请求已返回的 <code class="codehilite">200 (OK)</code> 响应的全部实体头部。</p>
 <blockquote>
 <p>A cache MUST NOT combine a 206 response with other previously cached content if the ETag or Last-Modified headers do not match exactly, see <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13.5.4" target="_blank">13.5.4</a>.</p>
 </blockquote>
-<p>如果缓存器的 <code>ETag</code> 或 <code>Last-Modified</code> 头部字段与一个206响应不完全匹配，则 <strong>绝不能</strong> 将该206响应与其他先前的缓存内容合并，见<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13.5.4" target="_blank">13.5.4</a>。</p>
+<p>如果缓存器的 <code class="codehilite">ETag</code> 或 <code class="codehilite">Last-Modified</code> 头部字段与一个206响应不完全匹配，则 <strong>绝不能</strong> 将该206响应与其他先前的缓存内容合并，见<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13.5.4" target="_blank">13.5.4</a>。</p>
 <blockquote>
 <p>A cache that does not support the Range and Content-Range headers MUST NOT cache 206 (Partial) responses.</p>
 </blockquote>
-<p>不支持 <code>Range</code> 和 <code>Content-Range</code> 头部的缓存器 <strong>绝不能</strong> 缓存 <code>206 (Partial)</code> 响应。</p>
-<h3 id="103-redirection-3xx">10.3 Redirection 3xx （重定向）</h3>
+<p>不支持 <code class="codehilite">Range</code> 和 <code class="codehilite">Content-Range</code> 头部的缓存器 <strong>绝不能</strong> 缓存 <code class="codehilite">206 (Partial)</code> 响应。</p>
+<h3 id="103-redirection-3xx">10.3 Redirection 3xx （重定向）<a class="headerlink" href="#103-redirection-3xx" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>This class of status code indicates that further action needs to be taken by the user agent in order to fulfill the request. The action required MAY be carried out by the user agent without interaction with the user if and only if the method used in the second request is GET or HEAD. A client SHOULD detect infinite redirection loops, since such loops generate network traffic for each redirection.</p>
 </blockquote>
@@ -1774,7 +1782,7 @@ limitation.</p>
 <p>注意：此规范过去的版本建议最多不超过五个重定向。内容开发者应该<br />
 意识到，也许有的客户端已经实现了这样一个固定的限制。</p>
 </blockquote>
-<h4 id="1031-300-multiple-choices">10.3.1 300 Multiple Choices （多重选择）</h4>
+<h4 id="1031-300-multiple-choices">10.3.1 300 Multiple Choices （多重选择）<a class="headerlink" href="#1031-300-multiple-choices" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The requested resource corresponds to any one of a set of representations, each with its own specific location, and agent-driven negotiation information (section 12) is being provided so that the user (or user agent) can select a preferred representation and redirect its request to that location.</p>
 </blockquote>
@@ -1782,20 +1790,20 @@ limitation.</p>
 <blockquote>
 <p>Unless it was a HEAD request, the response SHOULD include an entity containing a list of resource characteristics and location(s) from which the user or user agent can choose the one most appropriate. The entity format is specified by the media type given in the Content-Type header field. Depending upon the format and the capabilities of the user agent, selection of the most appropriate choice MAY be performed automatically. However, this specification does not define any standard for such automatic selection.</p>
 </blockquote>
-<p>除非是HEAD请求，否则响应 <strong>应该</strong> 附带一个内含列表的实体，该列表列出了资源的特性和资源所在的地址，用户或用户代理可以从中选择最合适的一个。实体格式由 <code>Content-Type</code> 头部字段中给出的媒体类型所指定。用户代理 <strong>可以</strong> 根据其设计和功能，自动选择最合适的选项。但是，该规范没有为这种自动选择定义任何标准。</p>
+<p>除非是HEAD请求，否则响应 <strong>应该</strong> 附带一个内含列表的实体，该列表列出了资源的特性和资源所在的地址，用户或用户代理可以从中选择最合适的一个。实体格式由 <code class="codehilite">Content-Type</code> 头部字段中给出的媒体类型所指定。用户代理 <strong>可以</strong> 根据其设计和功能，自动选择最合适的选项。但是，该规范没有为这种自动选择定义任何标准。</p>
 <blockquote>
 <p>If the server has a preferred choice of representation, it SHOULD include the specific URI for that representation in the Location field; user agents MAY use the Location field value for automatic redirection. This response is cacheable unless indicated otherwise.</p>
 </blockquote>
-<p>如果服务器有推荐的记录，它 <strong>应该</strong> 在 <code>Location</code> 字段中包含该记录的URI；用户代理 <strong>可以</strong> 使用 <code>Location</code> 字段值进行自动重定向。除非另有说明，否则该响应是可缓存的。</p>
-<h4 id="1032-301-moved-permanently">10.3.2 301 Moved Permanently （永久转移）</h4>
+<p>如果服务器有推荐的记录，它 <strong>应该</strong> 在 <code class="codehilite">Location</code> 字段中包含该记录的URI；用户代理 <strong>可以</strong> 使用 <code class="codehilite">Location</code> 字段值进行自动重定向。除非另有说明，否则该响应是可缓存的。</p>
+<h4 id="1032-301-moved-permanently">10.3.2 301 Moved Permanently （永久转移）<a class="headerlink" href="#1032-301-moved-permanently" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The requested resource has been assigned a new permanent URI and any future references to this resource SHOULD use one of the returned URIs. Clients with link editing capabilities ought to automatically re-link references to the Request-URI to one or more of the new references returned by the server, where possible. This response is cacheable unless indicated otherwise.</p>
 </blockquote>
-<p>所请求的资源已经被转移到了一个新的永久性的URI，任何将来对这个资源的引用都 <strong>应该</strong> 使用返回的URI中的一个。能够编辑链接的客户端应尽可能将对 <code>Request-URI</code> 的引用重新链接到服务器返回的一个或多个新的引用。除非另有说明，否则该响应是可缓存的。</p>
+<p>所请求的资源已经被转移到了一个新的永久性的URI，任何将来对这个资源的引用都 <strong>应该</strong> 使用返回的URI中的一个。能够编辑链接的客户端应尽可能将对 <code class="codehilite">Request-URI</code> 的引用重新链接到服务器返回的一个或多个新的引用。除非另有说明，否则该响应是可缓存的。</p>
 <blockquote>
 <p>The new permanent URI SHOULD be given by the Location field in the response. Unless the request method was HEAD, the entity of the response SHOULD contain a short hypertext note with a hyperlink to the new URI(s).</p>
 </blockquote>
-<p>新的永久URI <strong>应该</strong> 在响应的 <code>Location</code> 字段给出。除非请求方法是HEAD，否则响应的实体 <strong>应该</strong> 包含一条简短的超文本记录，该记录包含一个转到新URI的超链接。</p>
+<p>新的永久URI <strong>应该</strong> 在响应的 <code class="codehilite">Location</code> 字段给出。除非请求方法是HEAD，否则响应的实体 <strong>应该</strong> 包含一条简短的超文本记录，该记录包含一个转到新URI的超链接。</p>
 <blockquote>
 <p>If the 301 status code is received in response to a request other than GET or HEAD, the user agent MUST NOT automatically redirect the request unless it can be confirmed by the user, since this might change the conditions under which the request was issued.</p>
 </blockquote>
@@ -1809,15 +1817,15 @@ will erroneously change it into a GET request.</p>
 <p>注意：在收到一个301状态码后，自动重定向一个POST请求时，一些现有<br />
 的HTTP/1.0用户代理会错误地将其更改为GET请求。</p>
 </blockquote>
-<h4 id="1033-302-found">10.3.3 302 Found （已创建）</h4>
+<h4 id="1033-302-found">10.3.3 302 Found （已创建）<a class="headerlink" href="#1033-302-found" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The requested resource resides temporarily under a different URI. Since the redirection might be altered on occasion, the client SHOULD continue to use the Request-URI for future requests. This response is only cacheable if indicated by a Cache-Control or Expires header field.</p>
 </blockquote>
-<p>所请求的资源暂时驻留在另一个URI下。由于重定向可能会被改变，所以客户端 <strong>应该</strong> 继续使用 <code>Request-URI</code> 来处理将来的请求。只有在 <code>Cache-Control</code> 或 <code>Expires</code> 头部字段指明时，该响应才可缓存。</p>
+<p>所请求的资源暂时驻留在另一个URI下。由于重定向可能会被改变，所以客户端 <strong>应该</strong> 继续使用 <code class="codehilite">Request-URI</code> 来处理将来的请求。只有在 <code class="codehilite">Cache-Control</code> 或 <code class="codehilite">Expires</code> 头部字段指明时，该响应才可缓存。</p>
 <blockquote>
 <p>The temporary URI SHOULD be given by the Location field in the response. Unless the request method was HEAD, the entity of the response SHOULD contain a short hypertext note with a hyperlink to the new URI(s).</p>
 </blockquote>
-<p>临时URI <strong>应该</strong> 在响应的 <code>Location</code> 字段给出。除非请求方法是HEAD，否则响应的实体 <strong>应该</strong> 包含一条简短的超文本记录，该记录包含一个转到新URI的超链接。</p>
+<p>临时URI <strong>应该</strong> 在响应的 <code class="codehilite">Location</code> 字段给出。除非请求方法是HEAD，否则响应的实体 <strong>应该</strong> 包含一条简短的超文本记录，该记录包含一个转到新URI的超链接。</p>
 <blockquote>
 <p>If the 302 status code is received in response to a request other than GET or HEAD, the user agent MUST NOT automatically redirect the request unless it can be confirmed by the user, since this might change the conditions under which the request was issued.</p>
 </blockquote>
@@ -1834,10 +1842,10 @@ kind of reaction is expected of the client.</p>
 </blockquote>
 <p>注意：尽管RFC 1945和RFC 2068已明确不允许客户端更改重定向请求所使用的请求方<br />
 法。但是，现有的多数用户代理实现都将302响应当作303响应处理，无论原始请求方法<br />
-是什么，都对 <code>Location</code> 字段值发送GET请求。为了满足那些希望明确获知客户端期望何
+是什么，都对 <code class="codehilite">Location</code> 字段值发送GET请求。为了满足那些希望明确获知客户端期望何
 种反应的服务器，状态码303和307已被添加到新的规范中。</p>
 </blockquote>
-<h4 id="1034-303-see-other">10.3.4 303 See Other （查看其它）</h4>
+<h4 id="1034-303-see-other">10.3.4 303 See Other （查看其它）<a class="headerlink" href="#1034-303-see-other" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The response to the request can be found under a different URI and SHOULD be retrieved using a GET method on that resource. This method exists primarily to allow the output of a POST-activated script to redirect the user agent to a selected resource. The new URI is not a substitute reference for the originally requested resource. The 303 response MUST NOT be cached, but the response to the second (redirected) request might be cacheable.</p>
 </blockquote>
@@ -1845,7 +1853,7 @@ kind of reaction is expected of the client.</p>
 <blockquote>
 <p>The different URI SHOULD be given by the Location field in the response. Unless the request method was HEAD, the entity of the response SHOULD contain a short hypertext note with a hyperlink to the new URI(s).</p>
 </blockquote>
-<p>新的URI <strong>应该</strong> 由响应中的 <code>Location</code> 字段给出。除非请求方法是HEAD，否则响应的实体 <strong>应该</strong> 包含一条简短的超文本记录，该记录包含一个转到新URI的超链接。</p>
+<p>新的URI <strong>应该</strong> 由响应中的 <code class="codehilite">Location</code> 字段给出。除非请求方法是HEAD，否则响应的实体 <strong>应该</strong> 包含一条简短的超文本记录，该记录包含一个转到新URI的超链接。</p>
 <blockquote>
 <blockquote>
 <p>Note: Many pre-HTTP/1.1 user agents do not understand the 303<br />
@@ -1857,7 +1865,7 @@ to a 302 response as described here for 303.</p>
 交互性，可以使用302状态码来代替303状态码，因为多数用户代理对302的反应<br />
 像对303描述的那样。</p>
 </blockquote>
-<h4 id="1035-304-not-modified">10.3.5 304 Not Modified （未修改）</h4>
+<h4 id="1035-304-not-modified">10.3.5 304 Not Modified （未修改）<a class="headerlink" href="#1035-304-not-modified" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>If the client has performed a conditional GET request and access is allowed, but the document has not been modified, the server SHOULD respond with this status code. The 304 response MUST NOT contain a message-body, and thus is always terminated by the first empty line after the header fields.</p>
 </blockquote>
@@ -1878,48 +1886,48 @@ variant</li>
 </blockquote>
 <p>响应 <strong>必须</strong> 包含以下头部字段：</p>
 <ul>
-<li><code>Date</code> ，除非按第14.18.1节要求省略</li>
+<li><code class="codehilite">Date</code> ，除非按第14.18.1节要求省略</li>
 </ul>
 <p>如果无时钟的源服务器服从这些规则，并且代理和客户端将它们自己的日期添加到收到的任何的没有日期的响应中（如[RFC 2068]，[14.19]中所述），则缓存将正常运行。</p>
 <ul>
-<li><code>ETag</code> 和/或 <code>Content-Location</code> ，如果头部已经在一个对该请求的200响应中被发送。</li>
-<li><code>Expires</code> ， <code>Cache-Control</code> ，和/或 <code>Vary</code> ，如果字段值可能不同于在以往对该请求的任何响应中被发送的该字段值的变种</li>
+<li><code class="codehilite">ETag</code> 和/或 <code class="codehilite">Content-Location</code> ，如果头部已经在一个对该请求的200响应中被发送。</li>
+<li><code class="codehilite">Expires</code> ， <code class="codehilite">Cache-Control</code> ，和/或 <code class="codehilite">Vary</code> ，如果字段值可能不同于在以往对该请求的任何响应中被发送的该字段值的变种</li>
 </ul>
 <p>If the conditional GET used a strong cache validator (see section 13.3.3), the response SHOULD NOT include other entity-headers. Otherwise (i.e., the conditional GET used a weak validator), the response MUST NOT include other entity-headers; this prevents inconsistencies between cached entity-bodies and updated headers.</p>
 <p>If a 304 response indicates an entity not currently cached, then the cache MUST disregard the response and repeat the request without the conditional.</p>
 <p>If a cache uses a received 304 response to update a cache entry, the cache MUST update the entry to reflect any new field values given in the response.</p>
-<h4 id="1036-305-use-proxy">10.3.6 305 Use Proxy</h4>
+<h4 id="1036-305-use-proxy">10.3.6 305 Use Proxy<a class="headerlink" href="#1036-305-use-proxy" title="Permanent link">&para;</a></h4>
 <p>The requested resource MUST be accessed through the proxy given by the Location field. The Location field gives the URI of the proxy. The recipient is expected to repeat this single request via the proxy. 305 responses MUST only be generated by origin servers.</p>
 <blockquote>
 <p>Note: RFC 2068 was not clear that 305 was intended to redirect a<br />
 single request, and to be generated by origin servers only.  Not<br />
 observing these limitations has significant security consequences.</p>
 </blockquote>
-<h4 id="1037-306-unused">10.3.7 306 (Unused) （已停止使用）</h4>
+<h4 id="1037-306-unused">10.3.7 306 (Unused) （已停止使用）<a class="headerlink" href="#1037-306-unused" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>The 306 status code was used in a previous version of the specification, is no longer used, and the code is reserved.</p>
 </blockquote>
 <p>306状态码曾被用于先前版本的规范，现已不再使用，但仍保留该代码。</p>
-<h4 id="1038-307-temporary-redirect">10.3.8 307 Temporary Redirect</h4>
+<h4 id="1038-307-temporary-redirect">10.3.8 307 Temporary Redirect<a class="headerlink" href="#1038-307-temporary-redirect" title="Permanent link">&para;</a></h4>
 <p>The requested resource resides temporarily under a different URI. Since the redirection MAY be altered on occasion, the client SHOULD continue to use the Request-URI for future requests. This response is only cacheable if indicated by a Cache-Control or Expires header field.</p>
 <p>The temporary URI SHOULD be given by the Location field in the response. Unless the request method was HEAD, the entity of the response SHOULD contain a short hypertext note with a hyperlink to the new URI(s) , since many pre-HTTP/1.1 user agents do not understand the 307 status. Therefore, the note SHOULD contain the information necessary for a user to repeat the original request on the new URI.</p>
 <p>If the 307 status code is received in response to a request other than GET or HEAD, the user agent MUST NOT automatically redirect the request unless it can be confirmed by the user, since this might change the conditions under which the request was issued.</p>
-<h3 id="104-client-error-4xx">10.4 Client Error 4xx （客户端错误）</h3>
+<h3 id="104-client-error-4xx">10.4 Client Error 4xx （客户端错误）<a class="headerlink" href="#104-client-error-4xx" title="Permanent link">&para;</a></h3>
 <p>The 4xx class of status code is intended for cases in which the client seems to have erred. Except when responding to a HEAD request, the server SHOULD include an entity containing an explanation of the error situation, and whether it is a temporary or permanent condition. These status codes are applicable to any request method. User agents SHOULD display any included entity to the user.</p>
 <p>If the client is sending data, a server implementation using TCP SHOULD be careful to ensure that the client acknowledges receipt of the packet(s) containing the response, before the server closes the input connection. If the client continues sending data to the server after the close, the server's TCP stack will send a reset packet to the client, which may erase the client's unacknowledged input buffers before they can be read and interpreted by the HTTP application.</p>
-<h4 id="1041-400-bad-request">10.4.1 400 Bad Request</h4>
+<h4 id="1041-400-bad-request">10.4.1 400 Bad Request<a class="headerlink" href="#1041-400-bad-request" title="Permanent link">&para;</a></h4>
 <p>The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications.</p>
-<h4 id="1042-401-unauthorized">10.4.2 401 Unauthorized （未经许可）</h4>
+<h4 id="1042-401-unauthorized">10.4.2 401 Unauthorized （未经许可）<a class="headerlink" href="#1042-401-unauthorized" title="Permanent link">&para;</a></h4>
 <p>The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource. The client MAY repeat the request with a suitable Authorization header field (section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.8" target="_blank">14.8</a>). If the request already included Authorization credentials, then the 401 response indicates that authorization has been refused for those credentials. If the 401 response contains the same challenge as the prior response, and the user agent has already attempted authentication at least once, then the user SHOULD be presented the entity that was given in the response, since that entity might include relevant diagnostic information. HTTP access authentication is explained in "HTTP Authentication: Basic and Digest Access Authentication" <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec17.html#bib43" target="_blank">[43]</a>.</p>
-<h4 id="1043-402-payment-required">10.4.3 402 Payment Required （需要支付）</h4>
+<h4 id="1043-402-payment-required">10.4.3 402 Payment Required （需要支付）<a class="headerlink" href="#1043-402-payment-required" title="Permanent link">&para;</a></h4>
 <p>This code is reserved for future use.</p>
-<h4 id="1044-403-forbidden">10.4.4 403 Forbidden （禁止访问）</h4>
+<h4 id="1044-403-forbidden">10.4.4 403 Forbidden （禁止访问）<a class="headerlink" href="#1044-403-forbidden" title="Permanent link">&para;</a></h4>
 <p>The server understood the request, but is refusing to fulfill it. Authorization will not help and the request SHOULD NOT be repeated. If the request method was not HEAD and the server wishes to make public why the request has not been fulfilled, it SHOULD describe the reason for the refusal in the entity. If the server does not wish to make this information available to the client, the status code 404 (Not Found) can be used instead.</p>
-<h4 id="1045-404-not-found">10.4.5 404 Not Found （未找到）</h4>
+<h4 id="1045-404-not-found">10.4.5 404 Not Found （未找到）<a class="headerlink" href="#1045-404-not-found" title="Permanent link">&para;</a></h4>
 <p>The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address. This status code is commonly used when the server does not wish to reveal exactly why the request has been refused, or when no other response is applicable.</p>
-<h4 id="1046-405-method-not-allowed">10.4.6 405 Method Not Allowed （不允许的请求方法）</h4>
+<h4 id="1046-405-method-not-allowed">10.4.6 405 Method Not Allowed （不允许的请求方法）<a class="headerlink" href="#1046-405-method-not-allowed" title="Permanent link">&para;</a></h4>
 <p>The method specified in the Request-Line is not allowed for the resource identified by the Request-URI. The response MUST include an Allow header containing a list of valid methods for the requested resource.</p>
-<h4 id="1047-406-not-acceptable">10.4.7 406 Not Acceptable （不接受）</h4>
+<h4 id="1047-406-not-acceptable">10.4.7 406 Not Acceptable （不接受）<a class="headerlink" href="#1047-406-not-acceptable" title="Permanent link">&para;</a></h4>
 <p>The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request.</p>
 <p>Unless it was a HEAD request, the response SHOULD include an entity containing a list of available entity characteristics and location(s) from which the user or user agent can choose the one most appropriate. The entity format is specified by the media type given in the Content-Type header field. Depending upon the format and the capabilities of the user agent, selection of the most appropriate choice MAY be performed automatically. However, this specification does not define any standard for such automatic selection.</p>
 <blockquote>
@@ -1930,55 +1938,55 @@ request. In some cases, this may even be preferable to sending a<br />
 an incoming response to determine if it is acceptable.</p>
 </blockquote>
 <p>If the response could be unacceptable, a user agent SHOULD temporarily stop receipt of more data and query the user for a decision on further actions.</p>
-<h4 id="1048-407-proxy-authentication-required">10.4.8 407 Proxy Authentication Required （要求验证代理身份）</h4>
+<h4 id="1048-407-proxy-authentication-required">10.4.8 407 Proxy Authentication Required （要求验证代理身份）<a class="headerlink" href="#1048-407-proxy-authentication-required" title="Permanent link">&para;</a></h4>
 <p>This code is similar to 401 (Unauthorized), but indicates that the client must first authenticate itself with the proxy. The proxy MUST return a Proxy-Authenticate header field (section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.33" target="_blank">14.33</a>) containing a challenge applicable to the proxy for the requested resource. The client MAY repeat the request with a suitable Proxy-Authorization header field (section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.34" target="_blank">14.34</a>). HTTP access authentication is explained in "HTTP Authentication: Basic and Digest Access Authentication" <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec17.html#bib43" target="_blank">[43]</a>.</p>
-<h4 id="1049-408-request-timeout">10.4.9 408 Request Timeout （请求超时）</h4>
+<h4 id="1049-408-request-timeout">10.4.9 408 Request Timeout （请求超时）<a class="headerlink" href="#1049-408-request-timeout" title="Permanent link">&para;</a></h4>
 <p>The client did not produce a request within the time that the server was prepared to wait. The client MAY repeat the request without modifications at any later time.</p>
-<h4 id="10410-409-conflict">10.4.10 409 Conflict （访问冲突）</h4>
+<h4 id="10410-409-conflict">10.4.10 409 Conflict （访问冲突）<a class="headerlink" href="#10410-409-conflict" title="Permanent link">&para;</a></h4>
 <p>The request could not be completed due to a conflict with the current state of the resource. This code is only allowed in situations where it is expected that the user might be able to resolve the conflict and resubmit the request. The response body SHOULD include enough</p>
 <p>information for the user to recognize the source of the conflict. Ideally, the response entity would include enough information for the user or user agent to fix the problem; however, that might not be possible and is not required.</p>
 <p>Conflicts are most likely to occur in response to a PUT request. For example, if versioning were being used and the entity being PUT included changes to a resource which conflict with those made by an earlier (third-party) request, the server might use the 409 response to indicate that it can't complete the request. In this case, the response entity would likely contain a list of the differences between the two versions in a format defined by the response Content-Type.</p>
-<h4 id="10411-410-gone">10.4.11 410 Gone</h4>
+<h4 id="10411-410-gone">10.4.11 410 Gone<a class="headerlink" href="#10411-410-gone" title="Permanent link">&para;</a></h4>
 <p>The requested resource is no longer available at the server and no forwarding address is known. This condition is expected to be considered permanent. Clients with link editing capabilities SHOULD delete references to the Request-URI after user approval. If the server does not know, or has no facility to determine, whether or not the condition is permanent, the status code 404 (Not Found) SHOULD be used instead. This response is cacheable unless indicated otherwise.</p>
 <p>The 410 response is primarily intended to assist the task of web maintenance by notifying the recipient that the resource is intentionally unavailable and that the server owners desire that remote links to that resource be removed. Such an event is common for limited-time, promotional services and for resources belonging to individuals no longer working at the server's site. It is not necessary to mark all permanently unavailable resources as "gone" or to keep the mark for any length of time -- that is left to the discretion of the server owner.</p>
-<h4 id="10412-411-length-required">10.4.12 411 Length Required （要求指示长度）</h4>
+<h4 id="10412-411-length-required">10.4.12 411 Length Required （要求指示长度）<a class="headerlink" href="#10412-411-length-required" title="Permanent link">&para;</a></h4>
 <p>The server refuses to accept the request without a defined Content- Length. The client MAY repeat the request if it adds a valid Content-Length header field containing the length of the message-body in the request message.</p>
-<h4 id="10413-412-precondition-failed">10.4.13 412 Precondition Failed （先决条件未满足）</h4>
+<h4 id="10413-412-precondition-failed">10.4.13 412 Precondition Failed （先决条件未满足）<a class="headerlink" href="#10413-412-precondition-failed" title="Permanent link">&para;</a></h4>
 <p>The precondition given in one or more of the request-header fields evaluated to false when it was tested on the server. This response code allows the client to place preconditions on the current resource metainformation (header field data) and thus prevent the requested method from being applied to a resource other than the one intended.</p>
-<h4 id="10414-413-request-entity-too-large">10.4.14 413 Request Entity Too Large （请求实体过大）</h4>
+<h4 id="10414-413-request-entity-too-large">10.4.14 413 Request Entity Too Large （请求实体过大）<a class="headerlink" href="#10414-413-request-entity-too-large" title="Permanent link">&para;</a></h4>
 <p>The server is refusing to process a request because the request entity is larger than the server is willing or able to process. The server MAY close the connection to prevent the client from continuing the request.</p>
 <p>If the condition is temporary, the server SHOULD include a Retry- After header field to indicate that it is temporary and after what time the client MAY try again.</p>
-<h4 id="10415-414-request-uri-too-long">10.4.15 414 Request-URI Too Long</h4>
+<h4 id="10415-414-request-uri-too-long">10.4.15 414 Request-URI Too Long<a class="headerlink" href="#10415-414-request-uri-too-long" title="Permanent link">&para;</a></h4>
 <p>The server is refusing to service the request because the Request-URI is longer than the server is willing to interpret. This rare condition is only likely to occur when a client has improperly converted a POST request to a GET request with long query information, when the client has descended into a URI "black hole" of redirection (e.g., a redirected URI prefix that points to a suffix of itself), or when the server is under attack by a client attempting to exploit security holes present in some servers using fixed-length buffers for reading or manipulating the Request-URI.</p>
-<h4 id="10416-415-unsupported-media-type">10.4.16 415 Unsupported Media Type</h4>
+<h4 id="10416-415-unsupported-media-type">10.4.16 415 Unsupported Media Type<a class="headerlink" href="#10416-415-unsupported-media-type" title="Permanent link">&para;</a></h4>
 <p>The server is refusing to service the request because the entity of the request is in a format not supported by the requested resource for the requested method.</p>
-<h4 id="10417-416-requested-range-not-satisfiable">10.4.17 416 Requested Range Not Satisfiable</h4>
+<h4 id="10417-416-requested-range-not-satisfiable">10.4.17 416 Requested Range Not Satisfiable<a class="headerlink" href="#10417-416-requested-range-not-satisfiable" title="Permanent link">&para;</a></h4>
 <p>A server SHOULD return a response with this status code if a request included a Range request-header field (section 14.35), and none of the range-specifier values in this field overlap the current extent of the selected resource, and the request did not include an If-Range request-header field. (For byte-ranges, this means that the first- byte-pos of all of the byte-range-spec values were greater than the current length of the selected resource.)</p>
 <p>When this status code is returned for a byte-range request, the response SHOULD include a Content-Range entity-header field specifying the current length of the selected resource (see section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16" target="_blank">14.16</a>). This response MUST NOT use the multipart/byteranges content- type.</p>
-<h4 id="10418-417-expectation-failed">10.4.18 417 Expectation Failed</h4>
+<h4 id="10418-417-expectation-failed">10.4.18 417 Expectation Failed<a class="headerlink" href="#10418-417-expectation-failed" title="Permanent link">&para;</a></h4>
 <p>The expectation given in an Expect request-header field (see section 14.20) could not be met by this server, or, if the server is a proxy, the server has unambiguous evidence that the request could not be met by the next-hop server.</p>
-<h3 id="105-server-error-5xx">10.5 Server Error 5xx</h3>
+<h3 id="105-server-error-5xx">10.5 Server Error 5xx<a class="headerlink" href="#105-server-error-5xx" title="Permanent link">&para;</a></h3>
 <p>Response status codes beginning with the digit "5" indicate cases in which the server is aware that it has erred or is incapable of performing the request. Except when responding to a HEAD request, the server SHOULD include an entity containing an explanation of the error situation, and whether it is a temporary or permanent condition. User agents SHOULD display any included entity to the user. These response codes are applicable to any request method.</p>
-<h4 id="1051-500-internal-server-error">10.5.1 500 Internal Server Error</h4>
+<h4 id="1051-500-internal-server-error">10.5.1 500 Internal Server Error<a class="headerlink" href="#1051-500-internal-server-error" title="Permanent link">&para;</a></h4>
 <p>The server encountered an unexpected condition which prevented it from fulfilling the request.</p>
-<h4 id="1052-501-not-implemented">10.5.2 501 Not Implemented</h4>
+<h4 id="1052-501-not-implemented">10.5.2 501 Not Implemented<a class="headerlink" href="#1052-501-not-implemented" title="Permanent link">&para;</a></h4>
 <p>The server does not support the functionality required to fulfill the request. This is the appropriate response when the server does not recognize the request method and is not capable of supporting it for any resource.</p>
-<h4 id="1053-502-bad-gateway">10.5.3 502 Bad Gateway</h4>
+<h4 id="1053-502-bad-gateway">10.5.3 502 Bad Gateway<a class="headerlink" href="#1053-502-bad-gateway" title="Permanent link">&para;</a></h4>
 <p>The server, while acting as a gateway or proxy, received an invalid response from the upstream server it accessed in attempting to fulfill the request.</p>
-<h4 id="1054-503-service-unavailable">10.5.4 503 Service Unavailable</h4>
+<h4 id="1054-503-service-unavailable">10.5.4 503 Service Unavailable<a class="headerlink" href="#1054-503-service-unavailable" title="Permanent link">&para;</a></h4>
 <p>The server is currently unable to handle the request due to a temporary overloading or maintenance of the server. The implication is that this is a temporary condition which will be alleviated after some delay. If known, the length of the delay MAY be indicated in a Retry-After header. If no Retry-After is given, the client SHOULD handle the response as it would for a 500 response.</p>
 <blockquote>
 <p>Note: The existence of the 503 status code does not imply that a<br />
 server must use it when becoming overloaded. Some servers may wish<br />
 to simply refuse the connection.</p>
 </blockquote>
-<h4 id="1055-504-gateway-timeout">10.5.5 504 Gateway Timeout</h4>
+<h4 id="1055-504-gateway-timeout">10.5.5 504 Gateway Timeout<a class="headerlink" href="#1055-504-gateway-timeout" title="Permanent link">&para;</a></h4>
 <p>The server, while acting as a gateway or proxy, did not receive a timely response from the upstream server specified by the URI (e.g. HTTP, FTP, LDAP) or some other auxiliary server (e.g. DNS) it needed to access in attempting to complete the request.</p>
 <blockquote>
 <p>Note: Note to implementors: some deployed proxies are known to<br />
 return 400 or 500 when DNS lookups time out.</p>
 </blockquote>
-<h4 id="1056-505-http-version-not-supported">10.5.6 505 HTTP Version Not Supported</h4>
+<h4 id="1056-505-http-version-not-supported">10.5.6 505 HTTP Version Not Supported<a class="headerlink" href="#1056-505-http-version-not-supported" title="Permanent link">&para;</a></h4>
 <p>The server does not support, or refuses to support, the HTTP protocol version that was used in the request message. The server is indicating that it is unable or unwilling to complete the request using the same major version as the client, as described in section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.1" target="_blank">3.1</a>, other than with this error message. The response SHOULD contain an entity describing why that version is not supported and what other protocols are supported by that server.</p>
                 
                   
@@ -2121,6 +2129,12 @@ return 400 or 500 when DNS lookups time out.</p>
         
       
       <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+        <script src="/assets/javascripts/av-min.js"></script>
+      
+        <script src="/assets/javascripts/Valine.min.js"></script>
+      
+        <script src="/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
     

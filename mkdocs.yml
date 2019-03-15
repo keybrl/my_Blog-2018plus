@@ -50,13 +50,14 @@ nav:
         - 'Python入门1': 'sssta/2017-09-29-SSSTA-Python1.md'
     - 垃圾代码:
         - '垃圾代码 - 导读': 'projects/introduction.md'
-        - 'keybrl-mines - 优雅的扫雷从此无处不在': 'projects/2018-10-14-Project-keybrl-gnome.md'
+        - 'keybrl-mines - 优雅的扫雷从此无处不在': 'projects/2018-10-14-Project-keybrl-mines.md'
         - '概率神教 - 优秀的问题解决方案': 'projects/2017-11-19-Project-Coin.md'
         - 'Tetris': 'projects/2017-06-12-Project-Tetris.md'
         - '生命游戏': 'projects/2017-04-30-Project-Game_or_Life.md'
     - 留言板: 'board.md'
     - 友情链接: 'links.md'
     - 小额赞助: 'donate.md'
+    - 测试页: 'just_for_test.md'
 
 # Build directories
 theme:
@@ -71,7 +72,10 @@ theme:
 #docs_dir: 'docs'
 #site_dir: 'site'
 #extra_css: []
-#extra_javascript: []
+extra_javascript:
+  - '/assets/javascripts/av-min.js'      # //cdn1.lncld.net/static/js/3.0.4/av-min.js
+  - '/assets/javascripts/Valine.min.js'  # //unpkg.com/valine/dist/Valine.min.js
+  - '/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML'  # //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
 #extra_templates: []
 extra:
     search:
@@ -93,5 +97,30 @@ use_directory_urls: false
 dev_addr: 0.0.0.0:80
 
 # Formatting options
-markdown_extensions: ['admonition', 'markdown_newtab', 'footnotes', 'meta', 'codehilite']
+markdown_extensions:
+  - admonition
+  - codehilite:
+      linenums: true
+  - footnotes
+  - meta
+  - markdown_newtab
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
 #plugins: ['search']

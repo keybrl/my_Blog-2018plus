@@ -30,7 +30,7 @@ MkDocs是被设计用于构建文档的，所以它特别适于注重内容的�
 - 全部Python Markdown扩展
 - 优雅、易于阅读的Markdown渲染
 
-除此之外，MkDocs的多数主题都没有多余的内容，只专注于展示文章，正如[该站点](https://blog.keybrl.ink)所呈现的。而且，你需要做的也只是写文章，其他细节都能很便捷地设置。这比Jekyll还简单，而且更优雅。  
+除此之外，MkDocs的多数主题都没有多余的内容，只专注于展示文章，正如[该站点](https://blog.keybrl.com/)所呈现的。而且，你需要做的也只是写文章，其他细节都能很便捷地设置。这比Jekyll还简单，而且更优雅。  
 **酷炸了不是吗？**
 
 接下来我将分部分逐步介绍通过MkDocs构建、部署个人博客的过程。点击列表中的超链接可以直接跳转到相应章节。
@@ -45,7 +45,7 @@ MkDocs是被设计用于构建文档的，所以它特别适于注重内容的�
 !!! Tip "阅读提示"
     本篇旨在从一个大的视角了解通过MkDocs构建站点的过程，而不是作为指导工作的手册、文档
 
-    对于上述的部分内容，本篇可能只会作简要描述，并引导读者前去阅读[MkDocs的官方文档](http://www.mkdocs.org/)或另一篇更详尽的文章
+    对于上述的部分内容，本篇可能只会作简要描述，并引导读者前去阅读[MkDocs的官方文档](https://www.mkdocs.org/)或另一篇更详尽的文章
 
     [本文最后](#_1)有一个列表，列出了全部在本文出现的建议阅读的相关的官方文档和其它文章，它们对于读者建立完善、准确的认识将更有帮助。
 
@@ -145,7 +145,7 @@ mkdocs serve
 
     不同的 MkDocs 主题对文档结构的呈现能力不同，但他们一般都不能呈现超过两层的文件目录
 
-MkDocs 对 Markdown 的转换是通过 [Python-Markdown](https://github.com/Python-Markdown/markdown) （一个 Python 的第三方库）实现的，所以除了支持标准的 Markdown 语法 （见[Daring Fireball: Markdown Syntax Documentation](https://daringfireball.net/projects/markdown/syntax)），也支持 Python-Markdown 支持的多数 Markdown 扩展 （详见其[官方文档](https://python-markdown.github.io/extensions/)，或另一篇更详尽的文章[《Python-Markdown支持的Markdown扩展》](2018-05-24-python-markdown.md)）
+MkDocs 对 Markdown 的转换是通过 [Python-Markdown](https://github.com/Python-Markdown/markdown) （一个 Python 的第三方库）实现的，所以除了支持标准的 Markdown 语法 （见[Daring Fireball: Markdown Syntax Documentation](https://daringfireball.net/projects/markdown/syntax)），也支持 Python-Markdown 支持的多数 Markdown 扩展 （详见其[官方文档](https://python-markdown.github.io/extensions/)）
 
 ## 4. 颜值即正义
 
@@ -163,11 +163,11 @@ theme: 'readthedocs'
 
 > 我个人推荐 [**Material**](https://squidfunk.github.io/mkdocs-material/)
 
-自定义主题的相关内容已经远远超出本篇所能描述的范畴，详见 [Custom themes - MkDocs](http://www.mkdocs.org/user-guide/custom-themes/)
+自定义主题的相关内容已经远远超出本篇所能描述的范畴，详见 [Custom themes - MkDocs](https://www.mkdocs.org/user-guide/custom-themes/)
 
 ## 5. 尽在掌控
 
-对 MkDocs 很多细节的设置是通过其项目配置文件 `mkdocs.yml` 达成的，由于内容繁琐不便于叙述，所以我建议通过参阅相关官方文档了解这部分内容 [Configuration - MkDocs](http://www.mkdocs.org/user-guide/configuration/)
+对 MkDocs 很多细节的设置是通过其项目配置文件 `mkdocs.yml` 达成的，由于内容繁琐不便于叙述，所以我建议通过参阅相关官方文档了解这部分内容 [Configuration - MkDocs](https://www.mkdocs.org/user-guide/configuration/)
 
 ## 6. 锋芒毕露
 
@@ -205,9 +205,8 @@ MkDocs 会自动 build 该项目并 commit、push 到该项目仓库的指定分
 
 ## 建议阅读
 
-- MkDocs官方文档 [MkDocs](http://www.mkdocs.org/)
+- MkDocs官方文档 [MkDocs](https://www.mkdocs.org/)
 - Python-Markdown的GitHub仓库 [Python-Markdown](https://github.com/Python-Markdown/markdown)
 - 标准 Markdown 语法规范文档 [Daring Fireball: Markdown Syntax Documentation](https://daringfireball.net/projects/markdown/syntax)
 - [MkDocs社区wiki](https://github.com/mkdocs/mkdocs/wiki/)
-- [《Python-Markdown支持的Markdown扩展》](2018-05-24-python-markdown.md)
 - [《在GitHub上通过Jekyll搭建个人博客》](../sssta/2017-10-08-SSSTA-Blog.md)

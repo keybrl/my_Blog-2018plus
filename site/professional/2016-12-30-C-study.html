@@ -57,12 +57,8 @@
       
     
     
-
       <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
-<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
-<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
-
     
 <link rel="stylesheet" href="/assets/stylesheets/google-font.css">
 <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -824,7 +820,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+    <a href="../projects/2018-10-14-Project-keybrl-mines.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
       keybrl-mines - 优雅的扫雷从此无处不在
     </a>
   </li>
@@ -903,6 +899,18 @@
   <li class="md-nav__item">
     <a href="../donate.html" title="小额赞助" class="md-nav__link">
       小额赞助
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
+      测试页
     </a>
   </li>
 
@@ -1012,33 +1020,34 @@
               
                 
                 
-                <h1 id="c">C语言上机心得</h1>
+                <h1 id="c">C语言上机心得<a class="headerlink" href="#c" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>大一 “计算机导论Ⅱ” 所对应的C语言上机课程的课程总结，谈谈我对一个学期的C语言上机的看法</p>
+<p>大一 “计算机导论Ⅱ” 所对应的C语言上机课程的课程总结，谈谈我对一个学期的C语言上机的看法<br />
+（早期写不出文章，随便拿作业post上来充数，懒得删了）</p>
 <p>date: 2016-12-30</p>
 </blockquote>
 <hr />
-<h2 id="_1">谈谈收获</h2>
+<h2 id="_1">谈谈收获<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>转眼一个学期就要结束了，学校的上机课应该是有过六七次了，除去我没去的两次，也有十多个小时了。加上没少在宿舍“上机”，甚至有几次通宵写代码，可以说我也是在这上面花了不少时间了，当然，也不限于C语言。那我收获了什么呢？</p>
-<h4 id="_2">更熟练地“打字”</h4>
+<h4 id="_2">更熟练地“打字”<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>更熟练地打字可以说不算什么收获，因为并没有什么本质的改变，只是更快了。过去打的字不多，虽然指法也会，但不时还会敲不准。打了一个学期的代码，可以说熟练了不少，打一个程序可以流畅很多了。甚至于打多了开始喜欢敲键盘的感觉了。当然，这些不是主要的……</p>
 <p>打字本身并不是什么复杂的事情，复杂的是打的内容。所以说，除了练手速，上机的意义更大程度地在于使我的思维更熟练于写代码。高中时我也有兴趣用VB写一些小软件。但思考一个程序的实现的确是十分复杂的事情，而在大量的上机还有课后自己的练习中，我觉得我已经能比较轻松地应付学校课程要求的题目了，基本上看到题目就已经想到实现方法了。而这也正是“熟练”的意义所在。</p>
-<h4 id="_3">对程序思想的理解</h4>
+<h4 id="_3">对程序思想的理解<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>解决一个问题用程序实现有很多方法，有时候他们都是可行的，但是这常常不可能。更多的练习会让你很容易触及计算机运算能力的上限。常常，一个看似不复杂的问题需要及大量的运算资源。比如“N个皇后问题“，如果使用穷举的方法，那么时间复杂度将是n^n，没有试过你不会知道这意味着什么。所以对好的算法和数据结构的理解是需要不断地尝试产生的。而C语言也恰好给我提供了这样一个机会，他有足够的灵活度、足够接近硬件。</p>
 <p>更多的练习能让我接触、了解到更多的经典算法，很难说了解四五种排序法有什么用，但多熟悉经典的算法肯定比看见问题脑子里一片空白要好得多，当然，前提是这不会使你思维僵化。</p>
-<h2 id="_4">回顾常见错误</h2>
+<h2 id="_4">回顾常见错误<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>我来回顾一下过去我所常犯的错误。这其中很多还是折磨了我很多个晚上的症结所在。但愿，我永远也不会在出现这些问题，虽然这里面有不少出现过两次或以上。</p>
-<h5 id="1">1.“=” 和 “==”</h5>
-<p>这可以说是十分常见的一个错误。虽然说编译器明明可以根据上下文确定我是要<em>等于</em>还是<em>赋值</em>，就像C++中 “&gt;” 既可以是<em>小于</em>也可以是<em>发送</em>，通过上下文区分的方法也不是很难，但是很多编程语言仍要使用 “==” 和 “=” 区分<em>等于</em>和<em>赋值</em>。这不得不说一大恼人的设计。</p>
-<h5 id="2">2.整数除法得整数</h5>
+<h5 id="1">1.“=” 和 “==”<a class="headerlink" href="#1" title="Permanent link">&para;</a></h5>
+<p>这可以说是十分常见的一个错误。虽然说编译器明明可以根据上下文确定我是要*等于*还是*赋值*，就像C++中 “&gt;” 既可以是*小于*也可以是*发送*，通过上下文区分的方法也不是很难，但是很多编程语言仍要使用 “==” 和 “=” 区分*等于*和*赋值*。这不得不说一大恼人的设计。</p>
+<h5 id="2">2.整数除法得整数<a class="headerlink" href="#2" title="Permanent link">&para;</a></h5>
 <p>在C语言中，除法是相当违背常人思维的。整数除以整数相当于整除，而只要除数或被除数中有一个浮点数，那么不管能不能整除都会得到一个浮点数。当然，这也怪不得C语言，C语言的变量是静态类型的，在结果运算结果出来之前就要确定得数的类型，所以只能设定这样的规则。但这就导致了很多的错误，这也是每一个初学者都会遇到的问题。</p>
-<h5 id="3asciiunicodeutf-8gbk">3.ASCII、Unicode、UTF-8和GBK</h5>
+<h5 id="3asciiunicodeutf-8gbk">3.ASCII、Unicode、UTF-8和GBK<a class="headerlink" href="#3asciiunicodeutf-8gbk" title="Permanent link">&para;</a></h5>
 <p>文字编码，特别是中文编码一直都是令人头疼的问题 。GCC的默认代码编码为UTF-8，而命令提示行是GBK编码的，有些IDE如Code::Blocks的编辑器是GBK编码的，有些纯文本编辑器如Notepad++默认是UTF-8的。这就使得在文本编辑器编辑，在IDE调试，在命令提示行运行变得十分混乱，这也惹出了不少麻烦，需要不少设置。</p>
 <p>这还不是最头疼的，如果你用Python2.x写一个服务器，那么你会面临这样的问题。服务器一般最好使用UTF-8编码，客户端的HTML代码也用UTF-8，但到了浏览器显示的页面却是Unicode的，如果客户端给服务端POST了一个Form，那么这将会是Unicode的，如果要通过服务端给客户端渲染一个页面模版，那么这个页面的内容也应该是Unicode的，这将需要不少编码转换，而且你很有可能被弄晕。</p>
-<h2 id="c_1">对C语言的理解</h2>
+<h2 id="c_1">对C语言的理解<a class="headerlink" href="#c_1" title="Permanent link">&para;</a></h2>
 <p>其实我觉得，我更想谈谈这个学期跟C语言的接触，使我产生的对C语言的理解。</p>
 <p>上机或者说其他的练习、实践，给我最大的收获是了解C语言本身。对比其他的语言，C语言可以说是十分有特色的。就像各种书上常说的，C语言接近硬件，可移植性好，执行效率高，给程序员足够的灵活度……C语言可以说相当出色，虽然各种高级语言层出不穷，C语言的使用者越来越少，特别是随着互联网行业的发展，脚本语言崭露头角，面向对象编程的流行，大公司支持的C++、C#、Object-C发展迅速，C语言仍然被人们广泛认可。人们几乎很难对C语言有所挑剔，只是因为不适合而不使用C。</p>
-<p>C十分简单却很可靠、高效。当然，正是因为C太简单，所以如果要完成复杂任务，将需要从底层写起，这将产生大量的代码。比如完成<em>发送邮件</em>这样的工作，在Python中只需要引入email和smtplib两个包，再加上10行左右的代码就可以了，而这在C语言中将需要难以想象的代码量。当然，这并不是否定C语言，只是说明C语言常常不适合于很多应用层的任务，而更适合于接近硬件的层次。</p>
+<p>C十分简单却很可靠、高效。当然，正是因为C太简单，所以如果要完成复杂任务，将需要从底层写起，这将产生大量的代码。比如完成*发送邮件*这样的工作，在Python中只需要引入email和smtplib两个包，再加上10行左右的代码就可以了，而这在C语言中将需要难以想象的代码量。当然，这并不是否定C语言，只是说明C语言常常不适合于很多应用层的任务，而更适合于接近硬件的层次。</p>
 <p>这种简单、自由、原始的特性实际上特别适合初学者，写一段C代码是十分轻松的事情，因为每一行都表意明确，只需要手指跟着思维飞舞。即使是复杂的循环嵌套，也能通过分别思考几个简单的问题确定。而如果是Python，Python有很强大的迭代功能，但是用Python写复杂的算法十分痛苦，每一次迭代都要思考迭代什么、从哪开始、到哪结束，当代码出现了强大的功能，你就需要花心思思考如何使用他们。而且，过于高级的语言并不适合初学者理解程序思维。比如交换a,b两个变量，C语言需要借用第三个变量，三行代码，而Python只需要一行“a,b=b,a”。这很方便，但是初学者并不能理解这背后的真相，以为他们就是简单地交换了，全不知这背后的奥妙。</p>
 <p>而且比较有趣的是，大多数的高级语言，特别是像Python，代码执行效率十分低。用Python计算斐波拉契数列第N项将会比用C语言慢上百倍。所以对于运算密集型程序，C语言仍然是一个十分合适的选择。</p>
 <p>理论上来说，C几乎是万能的，因为它十分接近硬件，可以对硬件进行精细操作。第一个Python解释器也是C语言写的。正是因为这一点，很多人并不愿意放弃C语言，在应用层人们给C加上更多的功能，产生了C++，给C加上“面向对象”，产生了C#和Object-C，而这两者正是当今两大系统下应用的首选编程语言即Windows的C#和OS的Object-C。可以说，C语言至今仍以某种方式活跃着。</p>
@@ -1184,6 +1193,12 @@
         
       
       <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+        <script src="/assets/javascripts/av-min.js"></script>
+      
+        <script src="/assets/javascripts/Valine.min.js"></script>
+      
+        <script src="/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
     

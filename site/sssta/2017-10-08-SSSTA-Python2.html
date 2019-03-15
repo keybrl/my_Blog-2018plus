@@ -57,12 +57,8 @@
       
     
     
-
       <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
     
-<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
-<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
-
     
 <link rel="stylesheet" href="/assets/stylesheets/google-font.css">
 <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
@@ -912,7 +908,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+    <a href="../projects/2018-10-14-Project-keybrl-mines.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
       keybrl-mines - 优雅的扫雷从此无处不在
     </a>
   </li>
@@ -991,6 +987,18 @@
   <li class="md-nav__item">
     <a href="../donate.html" title="小额赞助" class="md-nav__link">
       小额赞助
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
+      测试页
     </a>
   </li>
 
@@ -1188,40 +1196,52 @@
               
                 
                 
-                <h1 id="python2">Python入门2</h1>
+                <h1 id="python2">Python入门2<a class="headerlink" href="#python2" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>SS::STA第二次活动前半部分，关于Python入门</p>
 <p>date: 2017-10-08</p>
 </blockquote>
 <hr />
-<h2 id="_1">安全须知一</h2>
+<h2 id="_1">安全须知一<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Python语句以换行结束，不需要也不能毫无缘由地在一个语句后面加上<code>;</code>。当然，凡事总有例外，如果你需要在一行中书写多个语句，那么你需要用分号间隔他们。（但是原则上，如无特殊需求，尽量使用一行书写一个语句。关于一行多句以及一句多行的问题我们往后再谈。）</li>
-<li>Python以代码的<strong>缩进</strong>确定层次结构（所以我们避免了<strong>神圣的大括号之战</strong>），原则上同一缩进即为同一层（但我们仍然建议一个缩进为4个空格）。（所以你终于没有什么借口不缩进了吧）</li>
-<li>Python<strong>严格区分大小写</strong>，包括变量名、操作符、值、函数或类名、......（所有东西），比如<code>True</code>和<code>true</code>就完全不同（但我们仍然不希望你为<code>true</code>赋值）</li>
+<li>Python语句以换行结束，不需要也不能毫无缘由地在一个语句后面加上<code class="codehilite">;</code>。当然，凡事总有例外，如果你需要在一行中书写多个语句，那么你需要用分号间隔他们。（但是原则上，如无特殊需求，尽量使用一行书写一个语句。关于一行多句以及一句多行的问题我们往后再谈。）</li>
+<li>Python以代码的**缩进**确定层次结构（所以我们避免了**神圣的大括号之战**），原则上同一缩进即为同一层（但我们仍然建议一个缩进为4个空格）。（所以你终于没有什么借口不缩进了吧）</li>
+<li>Python**严格区分大小写**，包括变量名、操作符、值、函数或类名、......（所有东西），比如<code class="codehilite">True</code>和<code class="codehilite">true</code>就完全不同（但我们仍然不希望你为<code class="codehilite">true</code>赋值）</li>
 </ol>
-<h2 id="_2">玩耍前的热身</h2>
-<h3 id="_3">一点有用的内建函数</h3>
-<h4 id="_4">输入输出</h4>
+<h2 id="_2">玩耍前的热身<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">一点有用的内建函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">输入输出<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <ul>
 <li>print()</li>
 <li>input()</li>
 </ul>
 <p>于是你终于可以写你喜欢的“Hello World”及其变体了</p>
-<div class="codehilite"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Your name:&#39;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Your name:&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="si">%s</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
-<p>Python2.7中<code>print</code>更像操作符，他可以不需要括号。而功能与<code>input()</code>类似的则是<code>raw_input()</code></p>
+<p>Python2.7中<code class="codehilite">print</code>更像操作符，他可以不需要括号。而功能与<code class="codehilite">input()</code>类似的则是<code class="codehilite">raw_input()</code></p>
 </blockquote>
-<h4 id="_5">获取帮助</h4>
+<h4 id="_5">获取帮助<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <ul>
 <li>help()</li>
 </ul>
 <p>你可以通过他获取内建函数、基本数据类型和自定义类和函数的部分说明</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">help</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="c1"># 等价于下面这个</span>
@@ -1234,29 +1254,34 @@
 <span class="n">help</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 <span class="n">help</span><span class="p">(</span><span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">)</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>总之你什么都可以试着help()一下</p>
 </blockquote>
-<h4 id="_6">退出程序（特别是在交互式环境中）</h4>
+<h4 id="_6">退出程序（特别是在交互式环境中）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <ul>
 <li>exit()</li>
 </ul>
 <blockquote>
 <p>你在脚本中写这个似乎没什么意义</p>
 </blockquote>
-<h3 id="_7">关于代码注释</h3>
+<h3 id="_7">关于代码注释<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>养成良好的代码习惯十分重要，而代码注释是为数不多的在代码风格之战中被较好地达成一致的部分。</p>
-<p>而且特别幸运的是，在Python中，只有一种用于标记注释的符号，即<code>#</code></p>
-<div class="codehilite"><pre><span></span><span class="c1"># 这是一个无聊的注释，他可以独立成行</span>
+<p>而且特别幸运的是，在Python中，只有一种用于标记注释的符号，即<code class="codehilite">#</code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># 这是一个无聊的注释，他可以独立成行</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">)</span>  <span class="c1"># 他也可以跟在语句后面</span>
 <span class="c1"># 多行注释的每一行</span>
 <span class="c1"># 都必须要有一个井号</span>
 <span class="c1"># 就像这样</span>
 <span class="c1"># 其实你也可以理解为，Python没有多行注释</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>一般我们建议：</p>
@@ -1266,26 +1291,40 @@
 </ul>
 <p>就跟上面那段示例一样</p>
 </blockquote>
-<h3 id="_8">初谈变量与常量</h3>
-<p>与绝大多数编程语言类似，Python的变量标识符<code>只能由下划线或拉丁字母开头，只能包含下划线、拉丁字母和阿拉伯数字</code>，并且类似的，Python也有一些保留字</p>
-<p>Python有一个官方库<code>keyword</code>，里面有一个保留字列表<code>kwlist</code>和一个判断是否为保留字的方法<code>iskeyword</code></p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">keyword</span>
+<h3 id="_8">初谈变量与常量<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>与绝大多数编程语言类似，Python的变量标识符<code class="codehilite">只能由下划线或拉丁字母开头，只能包含下划线、拉丁字母和阿拉伯数字</code>，并且类似的，Python也有一些保留字</p>
+<p>Python有一个官方库<code class="codehilite">keyword</code>，里面有一个保留字列表<code class="codehilite">kwlist</code>和一个判断是否为保留字的方法<code class="codehilite">iskeyword</code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">keyword</span>
 <span class="k">print</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">)</span>  <span class="c1"># 打印保留字列表</span>
 <span class="k">print</span><span class="p">(</span><span class="n">keyword</span><span class="o">.</span><span class="n">iskeyword</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">))</span>  <span class="c1"># 判断&#39;True&#39;是否为保留字</span>
 </pre></div>
+</td></tr></table>
 
-
-<h4 id="_9">灵活的变量</h4>
+<h4 id="_9">灵活的变量<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>在Python中变量是一个十分灵活的存在</p>
-<p>首先他不需要显式地声明，也不需要显式地指明他的类型。他们可以简单地通过赋值运算符<code>=</code>进行创建、声明以及赋值,就像这样</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">233</span>  <span class="c1"># 整数</span>
+<p>首先他不需要显式地声明，也不需要显式地指明他的类型。他们可以简单地通过赋值运算符<code class="codehilite">=</code>进行创建、声明以及赋值,就像这样</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">233</span>  <span class="c1"># 整数</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mf">1.33</span>  <span class="c1"># 浮点数</span>
 <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;233&#39;</span>  <span class="c1"># 字符串</span>
 </pre></div>
+</td></tr></table>
 
-
-<p>一个变量的类型可以通过赋值操作符随意改变，但并不代表他们的类型很随意，其实Python有着严格的类型检查。我们可以用内建函数<code>type()</code>来获取一个变量的类型</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">233</span>  <span class="c1"># a是一个整数</span>
+<p>一个变量的类型可以通过赋值操作符随意改变，但并不代表他们的类型很随意，其实Python有着严格的类型检查。我们可以用内建函数<code class="codehilite">type()</code>来获取一个变量的类型</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">233</span>  <span class="c1"># a是一个整数</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 <span class="c1"># 233 &lt;class &#39;int&#39;&gt;</span>
 
@@ -1297,38 +1336,53 @@
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 <span class="c1"># 2.33 &lt;class &#39;float&#39;&gt;</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>关于Python中数据类型的介绍和关于变量的更多介绍将在后面为你展现</p>
 <blockquote>
 <p>也许你对从C语言死板的变量类型中逃离感到十分高兴，但你在不久后也许会意识到，这种高兴是多余的</p>
 </blockquote>
-<h4 id="_10">常量无用论</h4>
+<h4 id="_10">常量无用论<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>Python里没有常量，而唯一可以阻止一个变量被重新赋值的方法就是：你自己确保他没被重新赋值</p>
 </blockquote>
 <p>当然，好的代码习惯还是必要的，如果你的确需要用变量存储一些不打算改变的值，你可以使用大写字母变量名提醒自己（欺骗自己）</p>
-<div class="codehilite"><pre><span></span><span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14159265358979323846264338327950288419716939937510</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14159265358979323846264338327950288419716939937510</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>相应的，变的变量尽量不要使用大写字母开头</p>
 <blockquote>
 <p>然而我觉得，伪装成常量的变量真的很蠢，我为什么会需要常量呢</p>
 </blockquote>
-<h3 id="_11">标准类型</h3>
+<h3 id="_11">标准类型<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <ul>
 <li>int、float、bool、str（整型、浮点型、布尔型、字符串）</li>
 <li>list、tuple（列表、元组）</li>
 <li>dict（字典）</li>
 <li>NoneType（啥也不是）</li>
 </ul>
-<h4 id="_12">数字</h4>
+<h4 id="_12">数字<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>int、float</p>
 </blockquote>
 <p>Python中整数没有太多的禁忌（精度和大小方面），但是浮点数可能比较奇怪</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mh">0x1234567890ABCDE</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mh">0x1234567890ABCDE</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1"># 可以使用16进制表示</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">233323332333233323332333233323332333233323332333233323332333</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># 整数在精度和大小方面都没有限制</span>
@@ -1345,33 +1399,46 @@
 <span class="k">print</span><span class="p">(</span><span class="mf">2.</span> <span class="o">**</span> <span class="mi">10000</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span><span class="p">)</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>所以如无必要，尽量使用整数</p>
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="mi">2333333333333333333333333333333333333333333333333333333333333</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="mi">2333333333333333333333333333333333333333333333333333333333333</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="mf">2333333333333333333333333333333333333333333333333333333333333.</span><span class="p">)</span>
 </pre></div>
+</td></tr></table>
 
-
-<h4 id="_13">字符串</h4>
+<h4 id="_13">字符串<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>Python中有现成的字符串类型（而且比C++的好用），你不用像C那样用字符数组、字符指针来操作字符串，你只需要</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello World！&#39;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello World！&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>Python的字符串是一段在一对单引号或双引号之间的内容</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;233哈哈哈&#39;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;233哈哈哈&#39;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;233哈哈哈&quot;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># 结果当然是True，他们是一样的</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;毋庸置疑的是: &quot;在单引号标记的字符串里使用双引号是没有问题的&quot;，其实反过来也可以&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;但如果你既需要用双引号&quot;，又要用单引号</span><span class="se">\&#39;</span><span class="s1">，那你将需要用反斜杠转义&#39;</span><span class="p">)</span>
 </pre></div>
+</td></tr></table>
 
-
-<p>如果你需要使用多行文本，你可以使用<code>\n</code>换行，但其实Python提供了一种更漂亮的方法，即<strong>使用一对三个单引号包围多行文本</strong></p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;这是第一行</span><span class="se">\n</span><span class="s1">第二行</span><span class="se">\n</span><span class="s1">还有第三行</span><span class="se">\n</span><span class="s1">最后，第四行&#39;</span>
+<p>如果你需要使用多行文本，你可以使用<code class="codehilite">\n</code>换行，但其实Python提供了一种更漂亮的方法，即**使用一对三个单引号包围多行文本**</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;这是第一行</span><span class="se">\n</span><span class="s1">第二行</span><span class="se">\n</span><span class="s1">还有第三行</span><span class="se">\n</span><span class="s1">最后，第四行&#39;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;这是第一行</span>
 <span class="s1">第二行</span>
 <span class="s1">还有第三行</span>
@@ -1379,17 +1446,28 @@
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
+</td></tr></table>
 
-
-<p>转义字符相信大家都不陌生，Python也可以使用<code>\</code>进行转义，但是如果要输出<code>\</code>本身，就需要给他自己转义<code>\\</code>。某些情况下你需要非常多的<code>\</code>，在该死的re表达式中甚至需要多次转义（用四个<code>\</code>表示一个真正的<code>\</code>）。这样非常的蠢，所以Python还提供一种较优雅的方式</p>
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\\t\\\\</span><span class="s1">&#39;</span><span class="p">)</span>
+<p>转义字符相信大家都不陌生，Python也可以使用<code class="codehilite">\</code>进行转义，但是如果要输出<code class="codehilite">\</code>本身，就需要给他自己转义<code class="codehilite">\\</code>。某些情况下你需要非常多的<code class="codehilite">\</code>，在该死的re表达式中甚至需要多次转义（用四个<code class="codehilite">\</code>表示一个真正的<code class="codehilite">\</code>）。这样非常的蠢，所以Python还提供一种较优雅的方式</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\\t\\\\</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">\t</span><span class="se">\\\\</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
+</td></tr></table>
 
-
-<p>用<code>r</code>作为字符串的前缀可以使字符串内的反斜杠不转义</p>
+<p>用<code class="codehilite">r</code>作为字符串的前缀可以使字符串内的反斜杠不转义</p>
 <p>大家应该都玩过C的格式化输出，Python也有类似功能，但这不只能用在输出上</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello </span><span class="si">%s</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="s1">&#39;World&#39;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello </span><span class="si">%s</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="s1">&#39;World&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 
 <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> </span><span class="si">%5d</span><span class="s1"> </span><span class="si">%010d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">233</span><span class="p">,</span> <span class="mi">233</span><span class="p">,</span> <span class="mi">233</span><span class="p">)</span>
@@ -1401,7 +1479,7 @@
 <span class="n">d</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%x</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="mi">563</span>
 <span class="k">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>他们跟C的格式很像</p>
@@ -1409,7 +1487,13 @@
 <hr />
 <p>字符串还有很多很棒的操作，其中最好玩的就是字符串切片和”加减乘除“（其实没有‘除’和’减‘）</p>
 <p>如果你需要按照某种规律截取字符串的一部分，那在Python中多数情况下这很简单</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;abcdefghijklmn&#39;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;abcdefghijklmn&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># striing[start:end:step]</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="mi">6</span><span class="p">])</span>  <span class="c1"># 当start为0，end为字符串长度，step为1时他们可省略，省略step时其前的冒号亦可省略</span>
 
@@ -1417,97 +1501,142 @@
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>还有一种和切片很像的操作，像C一样用类似数组下标的方式获取某个字符（其实仍是字符串）</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;abcdefghijklmn&#39;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;abcdefghijklmn&#39;</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>‘加’、‘数乘’</p>
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;233&#39;</span> <span class="o">+</span> <span class="s1">&#39;有趣吗&#39;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;233&#39;</span> <span class="o">+</span> <span class="s1">&#39;有趣吗&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;233很无聊&#39;</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
+</td></tr></table>
 
-
-<h4 id="_14">列表和元组</h4>
+<h4 id="_14">列表和元组<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>你们都学习过C语言的‘数组’，嗯，Python也有很类似的东西，但是更智能，更有趣，那就是‘列表’（list）</p>
 <p>和其他变量一样，列表的创建或者说声明只需要通过’赋值‘操作。</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="c1"># 列表是由一组包裹在方括号内的数据组成的，他们不一定要有相同的类型</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;233&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="mf">2.345</span><span class="p">]</span>
 <span class="c1"># 列表可以嵌套，类似于C的‘二维数组’</span>
 <span class="n">c</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>列表可以通过下标访问或者切片（你一定在上面见识过字符串的切片了）</p>
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>你已经注意到了，Python的列表和C的数组有一个很大的区别，我们创建他时没有为他设置大小。因为Python解释器自动帮你完成了这些操作，解释器自动识别了数据大小并为之分配合适的内存空间。如果你足够有想法，你一定会想到</p>
 <p><strong>”如果他真的那么智能，那他为什么不为我动态分配内存呢，他只需要检查我要加入的或者移出的数据的大小然后为我多申请一些内存或者释放多余的内存就可以了“</strong></p>
 <p>嗯，Python就是这么做的。这意味Python的列表比C的数组有高得多的灵活性</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># 在a的末尾加入5这个元素</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># 在a的末尾加入5这个元素</span>
 <span class="n">a</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>  <span class="c1"># 作用类似于上面的方法，但这种方法是合并列表，而非追加元素</span>
 <span class="n">a</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>  <span class="c1"># 将2.5插入到a的第2位，其后元素后移</span>
 <span class="n">a</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 删除a中第3位的数据，其后元素前移</span>
 <span class="n">a</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="c1"># 还有一堆操作不讲了，自己help()和Google去</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>扔开恼人的内存管理还是一件相当值得高兴的事情</p>
 </blockquote>
 <p>还是想顺便提醒一下，以后别再在Python中写冒泡排序了</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
-
+</td></tr></table>
 
 <hr />
 <p>元组其实和列表很相似，不同的是列表是可变的，而元组是不可变的，他将在创建时被定格。元组不可变并不等同于存储了元组的变量不可变，上面说了，你没有任何办法阻止一个变量的重新赋值，除非你不这么做。</p>
-<p>元组的表示和读取操作和列表很像，只不过你需要用<code>()</code>代替<code>[]</code></p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<p>元组的表示和读取操作和列表很像，只不过你需要用<code class="codehilite">()</code>代替<code class="codehilite">[]</code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="mi">233</span><span class="p">,)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">][</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># 切片、检索都是和列表完全一样的</span>
 <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1">#  当元组中只有一个元素，唯一的元素后面必须写一个逗号，以消除歧义</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>元组不可变，但是元组可以存储可变对象</p>
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],)</span>
 <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">()</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
-
+</td></tr></table>
 
 <blockquote>
 <p>关于可变和不可变对象的讨论，我们后面会讲</p>
 </blockquote>
-<h4 id="_15">字典</h4>
+<h4 id="_15">字典<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>你们都见过C的数组或者是Python的列表。如果你需要用一个“名字”（一般是字符串）而不是数字下标作为索引来存储和取用数据，你会怎么做？</p>
 </blockquote>
 <p>一个简单显而易见的方法是，创建两个数组，一个存储所谓的“名字”一个存储值，两个数组中同一下标对应的数据就是所谓的对应的“名字”和值</p>
-<div class="codehilite"><pre><span></span><span class="kt">char</span> <span class="n">keys</span><span class="p">[</span><span class="mi">1000</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">char</span> <span class="n">keys</span><span class="p">[</span><span class="mi">1000</span><span class="p">][</span><span class="mi">10</span><span class="p">];</span>
 <span class="kt">int</span> <span class="n">values</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
 </pre></div>
-
+</td></tr></table>
 
 <p>字典几乎是所有高级语言的标配，但你们在C语言中可能没有接触过（因为根本没有）。</p>
 <p>在Python中字典是非常常用的类型</p>
-<div class="codehilite"><pre><span></span><span class="n">a_dict</span> <span class="o">=</span> <span class="p">{</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a_dict</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;罗阳豪&#39;</span><span class="p">,</span>
     <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;keyboard-l@outlook.com&#39;</span><span class="p">,</span>
     <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;keyboard&#39;</span>
@@ -1529,9 +1658,9 @@
 <span class="n">a_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;hhh&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;hhh&#39;</span><span class="p">))</span>
 </pre></div>
+</td></tr></table>
 
-
-<h3 id="_16">标准类型操作符</h3>
+<h3 id="_16">标准类型操作符<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p><strong>比较运算</strong></p>
 <table>
 <thead>
@@ -1576,7 +1705,7 @@
 </tbody>
 </table>
 <blockquote>
-<p>Python2.7还能使用<code>&lt;&gt;</code>表示‘不等于’，虽然我们并不推荐这么做</p>
+<p>Python2.7还能使用<code class="codehilite">&lt;&gt;</code>表示‘不等于’，虽然我们并不推荐这么做</p>
 </blockquote>
 <p><strong>逻辑运算</strong></p>
 <table>
@@ -1589,15 +1718,15 @@
 <tbody>
 <tr>
 <td align="center">not a</td>
-<td>a的逻辑<strong>非</strong></td>
+<td>a的逻辑**非**</td>
 </tr>
 <tr>
 <td align="center">a and b</td>
-<td>a和b的逻辑<strong>与</strong></td>
+<td>a和b的逻辑**与**</td>
 </tr>
 <tr>
 <td align="center">a or b</td>
-<td>a和b的逻辑<strong>或</strong></td>
+<td>a和b的逻辑**或**</td>
 </tr>
 </tbody>
 </table>
@@ -1641,11 +1770,11 @@
 </tbody>
 </table>
 <blockquote>
-<p>Python2.7中<code>/</code>表现地类似于C的除法（整数相除则地板除、浮点数相除或浮点数与整数相除则为浮点除法）</p>
+<p>Python2.7中<code class="codehilite">/</code>表现地类似于C的除法（整数相除则地板除、浮点数相除或浮点数与整数相除则为浮点除法）</p>
 </blockquote>
-<h3 id="_17">再谈变量</h3>
+<h3 id="_17">再谈变量<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>Python的变量与C语言的变量看起来有点类似（但几乎完全不同）</p>
-<h4 id="_18">强类型、动态类型</h4>
+<h4 id="_18">强类型、动态类型<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Python不需要显式的变量类型声明（隐式）</li>
 <li>变量的类型在赋值时确定，且可以通过赋值随意改变一个变量的类型（动态）</li>
@@ -1795,6 +1924,12 @@
         
       
       <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+        <script src="/assets/javascripts/av-min.js"></script>
+      
+        <script src="/assets/javascripts/Valine.min.js"></script>
+      
+        <script src="/assets/javascripts/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
     
