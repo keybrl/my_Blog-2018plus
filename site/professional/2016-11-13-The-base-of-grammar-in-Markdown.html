@@ -1,0 +1,2176 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="This site is the Blog of KeybrL.">
+      
+      
+        <link rel="canonical" href="https://blog.keybrl.com/professional/2016-11-13-The-base-of-grammar-in-Markdown.html">
+      
+      
+        <meta name="author" content="KeybrL">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="en, jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.3">
+    
+    
+      
+        <title>Markdown语法基础 - KeybrL's Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
+<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
+
+    
+<link rel="stylesheet" href="/assets/stylesheets/google-font.css">
+<style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="light-blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../#markdown" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://blog.keybrl.com/" title="KeybrL's Blog" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">code</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                KeybrL's Blog
+              </span>
+              <span class="md-header-nav__topic">
+                Markdown语法基础
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/keybrl/my_Blog-2018plus/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      keybrl/my_Blog-2018plus
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://blog.keybrl.com/" title="KeybrL's Blog" class="md-nav__button md-logo">
+      
+        <i class="md-icon">code</i>
+      
+    </a>
+    KeybrL's Blog
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/keybrl/my_Blog-2018plus/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      keybrl/my_Blog-2018plus
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      无聊的日常
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        无聊的日常
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/introduction.html" title="无聊的日常 - 导读" class="md-nav__link">
+      无聊的日常 - 导读
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2019-02-22-router3_shell.html" title="软路由与NAS(3) - 外壳" class="md-nav__link">
+      软路由与NAS(3) - 外壳
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2019-02-18-router2_software.html" title="软路由与NAS(2) - 软件平台搭建" class="md-nav__link">
+      软路由与NAS(2) - 软件平台搭建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2018-12-31-summary.html" title="2018年终总结" class="md-nav__link">
+      2018年终总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2018-11-02-router1_hardware.html" title="软路由与NAS(1) - 硬件平台搭建" class="md-nav__link">
+      软路由与NAS(1) - 硬件平台搭建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2018-03-03-siphon.html" title="虹吸壶冲泡咖啡" class="md-nav__link">
+      虹吸壶冲泡咖啡
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2018-01-20-lighted-poker2.html" title="IKBC Poker2 加灯历程" class="md-nav__link">
+      IKBC Poker2 加灯历程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      专业相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        专业相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="introduction.html" title="专业相关的文章 - 导读" class="md-nav__link">
+      专业相关的文章 - 导读
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2018-10-23-Windows-regedit.html" title="Windows 常用注册表项" class="md-nav__link">
+      Windows 常用注册表项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2018-07-02-nginx-configure.html" title="Nginx常用配置套路（未完成）" class="md-nav__link">
+      Nginx常用配置套路（未完成）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2018-05-19-mkdocs-blog.html" title="通过MkDocs搭建个人博客" class="md-nav__link">
+      通过MkDocs搭建个人博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2017-12-19-HTTP11-Status-Code-Definitions-zh.html" title="HTTP/1.1 - 状态码定义（翻译）（未完成）" class="md-nav__link">
+      HTTP/1.1 - 状态码定义（翻译）（未完成）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2017-08-01-Nginx_uWSGI_Flask_in_CentOS.html" title="CentOS中通过Nginx和uWSGI部署Flask项目" class="md-nav__link">
+      CentOS中通过Nginx和uWSGI部署Flask项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2017-04-09-Use-smtplib-and-email-in-python-to-send-email.html" title="使用Python的smtplib和email发送邮件" class="md-nav__link">
+      使用Python的smtplib和email发送邮件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2016-12-30-C-study.html" title="C语言上机心得" class="md-nav__link">
+      C语言上机心得
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Markdown语法基础
+      </label>
+    
+    <a href="2016-11-13-The-base-of-grammar-in-Markdown.html" title="Markdown语法基础" class="md-nav__link md-nav__link--active">
+      Markdown语法基础
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="区块元素" class="md-nav__link">
+    区块元素
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paragraph" title="Paragraph" class="md-nav__link">
+    Paragraph
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heading" title="Heading" class="md-nav__link">
+    Heading
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quote" title="Quote" class="md-nav__link">
+    Quote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-fence" title="Code Fence" class="md-nav__link">
+    Code Fence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" title="List" class="md-nav__link">
+    List
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordered-list" title="Ordered List" class="md-nav__link">
+    Ordered List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unordered-list" title="Unordered List" class="md-nav__link">
+    Unordered List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-list" title="Task List" class="md-nav__link">
+    Task List
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table" title="Table" class="md-nav__link">
+    Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#math-block" title="Math Block" class="md-nav__link">
+    Math Block
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horizontal-line" title="Horizontal Line" class="md-nav__link">
+    Horizontal Line
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-of-content" title="Table of Content" class="md-nav__link">
+    Table of Content
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="区段元素" class="md-nav__link">
+    区段元素
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="强调" class="md-nav__link">
+    强调
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strong" title="Strong" class="md-nav__link">
+    Strong
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emphasis" title="Emphasis" class="md-nav__link">
+    Emphasis
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#underline" title="Underline" class="md-nav__link">
+    Underline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code" title="Code" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-math" title="Inline Math" class="md-nav__link">
+    Inline Math
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strike" title="Strike" class="md-nav__link">
+    Strike
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comment" title="Comment" class="md-nav__link">
+    Comment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hyperlink" title="Hyperlink" class="md-nav__link">
+    Hyperlink
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="行内式" class="md-nav__link">
+    行内式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="参考式" class="md-nav__link">
+    参考式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="自动链接" class="md-nav__link">
+    自动链接
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image" title="Image" class="md-nav__link">
+    Image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#footnotes" title="Footnotes" class="md-nav__link">
+    Footnotes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="其它" class="md-nav__link">
+    其它
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" title="兼容HTML" class="md-nav__link">
+    兼容HTML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" title="特殊字符自动转换" class="md-nav__link">
+    特殊字符自动转换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" title="反斜杠" class="md-nav__link">
+    反斜杠
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="·结语" class="md-nav__link">
+    ·结语
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2016-10-22-John-Von-Nouma.html" title="从冯·诺依曼体系结构起航" class="md-nav__link">
+      从冯·诺依曼体系结构起航
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      转载
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        转载
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../repost/introduction.html" title="转载文章 - 导读" class="md-nav__link">
+      转载文章 - 导读
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../repost/2017-12-19-HTTP11-Status-Code-Definitions-en.html" title="HTTP/1.1 - Status Code Definitions" class="md-nav__link">
+      HTTP/1.1 - Status Code Definitions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      SS::STA回顾
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        SS::STA回顾
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/introduction.html" title="SS:STA活动回顾 - 导读" class="md-nav__link">
+      SS:STA活动回顾 - 导读
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2018-01-19-SSSTA-Web-list2017.html" title="Web 2017下半年活动内容清单" class="md-nav__link">
+      Web 2017下半年活动内容清单
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-12-03-SSSTA-Web4.0.html" title="Web4.0 - 前端页面的布局" class="md-nav__link">
+      Web4.0 - 前端页面的布局
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-12-03-SSSTA-Web3.html" title="Web3 - Python复习" class="md-nav__link">
+      Web3 - Python复习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-11-19-SSSTA-Web2.0.html" title="Web2.0 - HTML与CSS入门" class="md-nav__link">
+      Web2.0 - HTML与CSS入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-11-12-SSSTA-Web1.html" title="Web1 - Web应用概论" class="md-nav__link">
+      Web1 - Web应用概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-10-08-SSSTA-Python2.html" title="Python入门2" class="md-nav__link">
+      Python入门2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-10-08-SSSTA-Blog.html" title="在GitHub上通过Jekyll搭建个人博客" class="md-nav__link">
+      在GitHub上通过Jekyll搭建个人博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-09-29-SSSTA-Python1.html" title="Python入门1" class="md-nav__link">
+      Python入门1
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      垃圾代码
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        垃圾代码
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projects/introduction.html" title="垃圾代码 - 导读" class="md-nav__link">
+      垃圾代码 - 导读
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+      keybrl-mines - 优雅的扫雷从此无处不在
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projects/2017-11-19-Project-Coin.html" title="概率神教 - 优秀的问题解决方案" class="md-nav__link">
+      概率神教 - 优秀的问题解决方案
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projects/2017-06-12-Project-Tetris.html" title="Tetris" class="md-nav__link">
+      Tetris
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projects/2017-04-30-Project-Game_or_Life.html" title="生命游戏" class="md-nav__link">
+      生命游戏
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../board.html" title="留言板" class="md-nav__link">
+      留言板
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../links.html" title="友情链接" class="md-nav__link">
+      友情链接
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../donate.html" title="小额赞助" class="md-nav__link">
+      小额赞助
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="区块元素" class="md-nav__link">
+    区块元素
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paragraph" title="Paragraph" class="md-nav__link">
+    Paragraph
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heading" title="Heading" class="md-nav__link">
+    Heading
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quote" title="Quote" class="md-nav__link">
+    Quote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-fence" title="Code Fence" class="md-nav__link">
+    Code Fence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" title="List" class="md-nav__link">
+    List
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ordered-list" title="Ordered List" class="md-nav__link">
+    Ordered List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unordered-list" title="Unordered List" class="md-nav__link">
+    Unordered List
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-list" title="Task List" class="md-nav__link">
+    Task List
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table" title="Table" class="md-nav__link">
+    Table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#math-block" title="Math Block" class="md-nav__link">
+    Math Block
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horizontal-line" title="Horizontal Line" class="md-nav__link">
+    Horizontal Line
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-of-content" title="Table of Content" class="md-nav__link">
+    Table of Content
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="区段元素" class="md-nav__link">
+    区段元素
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="强调" class="md-nav__link">
+    强调
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strong" title="Strong" class="md-nav__link">
+    Strong
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emphasis" title="Emphasis" class="md-nav__link">
+    Emphasis
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#underline" title="Underline" class="md-nav__link">
+    Underline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code" title="Code" class="md-nav__link">
+    Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-math" title="Inline Math" class="md-nav__link">
+    Inline Math
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strike" title="Strike" class="md-nav__link">
+    Strike
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comment" title="Comment" class="md-nav__link">
+    Comment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hyperlink" title="Hyperlink" class="md-nav__link">
+    Hyperlink
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="行内式" class="md-nav__link">
+    行内式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" title="参考式" class="md-nav__link">
+    参考式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="自动链接" class="md-nav__link">
+    自动链接
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image" title="Image" class="md-nav__link">
+    Image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#footnotes" title="Footnotes" class="md-nav__link">
+    Footnotes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" title="其它" class="md-nav__link">
+    其它
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" title="兼容HTML" class="md-nav__link">
+    兼容HTML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" title="特殊字符自动转换" class="md-nav__link">
+    特殊字符自动转换
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" title="反斜杠" class="md-nav__link">
+    反斜杠
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="·结语" class="md-nav__link">
+    ·结语
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="markdown">Markdown语法基础</h1>
+<blockquote>
+<p>这是第一次使用Markdown时，对Markdown的基本语法都不了解，通过这一篇文章学习、尝试</p>
+<p>date: 2016-11-13</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>Markdown 是一种轻量级的标记语言</p>
+</blockquote>
+<p>在你使用 Markdown 之前你首先要确定你是否真的需要 Markdown。</p>
+<p>Markdown 是为那些需要经常码字或进行文字排版的，对码字速度和排版顺畅度有要求的人群设计的，他们希望用键盘把文字内容敲出来后就已经完成排版了，最好完全不用碰鼠标。这些人包括经常要写文档的软件工程师、博客写手、网站小编、出版业人士等。</p>
+<p>所以，如果 Markdown 并不能提高你的工作效率，那就让它见鬼去吧。</p>
+<p>如果你已经明确你需要使用 Markdown ，那么你一定需要了解一些语法和标记……</p>
+<hr />
+<h2 id="_1">区块元素</h2>
+<p>区块元素一般以段落为单位，所以应用区块元素时注意段落的范围</p>
+<p>区块元素主要有 Heading、Quote、Table、Code Fence、List、Horizontal Line……</p>
+<p>在介绍他们之前，我们先区分一下什么是一个 Paragraph (段落)</p>
+<h3 id="paragraph">Paragraph</h3>
+<p>在 Markdown 中，段落由一个或多个连续的文本行组成，前后有一个或以上的空行(空行的定义是显示上看起来像是空的行。因此，若某一行只包含空格和制表符，则该行也会被视为空行)。</p>
+<blockquote>
+<p>普通段落不该用空格或制表符来缩进(这点与一般的汉语书写规范不同)。</p>
+</blockquote>
+<p>前文<code>连续的文本行</code>实际上暗示了 Markdown 允许段落内的<strong>强制换行</strong>，在 Markdown 中，使用<strong>先插入两个或以上的空格，然后再回车</strong>的方式可以做到段落内的强制换行。<br />
+就像这样进行换行。一般来说，文本行之间的间隔会小于段落之间的间隔。</p>
+<blockquote>
+<p>在多行的引用区块和列表中，换行是<strong>十分必要</strong>的。</p>
+</blockquote>
+<h3 id="heading">Heading</h3>
+<p>除了能起到更显眼的效果，标题还为 Markdown 提供更清晰、简洁的结构，所以学会在文章中应用标题十分重要。</p>
+<p>Heading 可以像这样标记出来，他们分别代表 HTML 中的 Heading1~Heading6</p>
+<div class="codehilite"><pre><span></span><span class="gh">#</span> Heading1 #
+<span class="gu">##</span> Heading2 ##
+<span class="gu">###</span> Heading3 ###
+<span class="gu">####</span> Heading4 ####
+<span class="gu">#####</span> Heading5 #####
+<span class="gu">######</span> Heading6 ######
+</pre></div>
+
+
+<p>当然，我们完全可以像下面那样省略后面的#，结果跟上面是完全等效的</p>
+<div class="codehilite"><pre><span></span><span class="gh">#</span> Heading1
+<span class="gu">##</span> Heading2
+<span class="gu">###</span> Heading3
+<span class="gu">####</span> Heading4
+<span class="gu">#####</span> Heading5
+<span class="gu">######</span> Heading6
+</pre></div>
+
+
+<blockquote>
+<p>需要注意的是，跟 HTML 一样，Markdown 并没有 Heading7。<br />
+幸运的是，我们不会需要再多的标题了。</p>
+</blockquote>
+<p>上面介绍的是比较常用的 Heading 用法，当然，Markdown 中 Heading 还有一些别的用法</p>
+<div class="codehilite"><pre><span></span>Heading1
+========
+
+Heading2
+--------
+</pre></div>
+
+
+<p>在 Markdown 中可以像在 Setext 中一样，用下方的-和=标记标题。值得注意的是，任何数量的-和=都能起到完全等效的作用(除了6个-表示分割线)</p>
+<blockquote>
+<p>正如你所见，这种方式的标题并不值得提倡</p>
+</blockquote>
+<h3 id="quote">Quote</h3>
+<p>在你的文章中，你或许会需要用酷一点的方式写个引言，或者引用一段话</p>
+<p>像这样</p>
+<blockquote>
+<p>E=mc^2<br />
+　　　　　　　　——Albert Einstein</p>
+</blockquote>
+<p>那你一定需要Quote，他看起来十分简单</p>
+<div class="codehilite"><pre><span></span><span class="k">&gt; </span><span class="ge">你只需要在每一个文本行的开头输入一个&gt;  </span>
+<span class="k">&gt; </span><span class="ge">它就会变成这种效果  </span>
+<span class="k">&gt; </span><span class="ge">如果你需要换行，千万不要忘记前面所讲的**强制换行**</span>
+<span class="k">&gt;</span>
+<span class="ge">&gt; &gt; 如果你多加一个&gt;，你会得到**二级引用**  </span>
+<span class="k">&gt; </span><span class="ge">&gt; 这很酷，不是吗</span>
+<span class="k">&gt;</span>
+<span class="ge">&gt; 如果你需要结束这个引用区块(段落)，还记得怎么做吗</span>
+
+<span class="k">&gt; </span><span class="ge">没错，你需要一个空行  </span>
+实际上你也可以偷一点懒，只需在每个段落的开头加一个&gt;就能达到一样的效果
+</pre></div>
+
+
+<p>上面那一段代码产生的效果就像这样</p>
+<blockquote>
+<p>你只需要在每一个文本行的开头输入一个&gt;<br />
+它就会变成这种效果<br />
+如果你需要换行，千万不要忘记前面所讲的<strong>强制换行</strong></p>
+<blockquote>
+<p>如果你多加一个&gt;，你会得到<strong>二级引用</strong><br />
+这很酷，不是吗</p>
+</blockquote>
+<p>如果你需要结束这个引用区块(段落)，还记得怎么做吗</p>
+<p>没错，你需要一个空行<br />
+实际上你也可以偷一点懒，只需在每个段落的开头加一个&gt;就能达到一样的效果</p>
+</blockquote>
+<p>引用区块内也能使用 Markdown 中其他的语法</p>
+<blockquote>
+<p><code>code</code></p>
+<p><strong>Strong</strong></p>
+<p><em>Emphasis</em></p>
+</blockquote>
+<h3 id="code-fence">Code Fence</h3>
+<p>有时候，你需要在你的文章中展示一段代码</p>
+<p>比如你最喜欢的“Hello World！”</p>
+<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello Worle!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>那你一定需要像代码区块这样原汁原味的展示方式，他们并不复杂</p>
+<p>你只需要使用两组三个反单引号`隔开一个段落即可</p>
+<div class="codehilite"><pre><span></span>​```
+这里是一个表示代码内容的段落
+​```
+</pre></div>
+
+
+<p>当然，Markdown 还提供一种比较难操作的方式。你可以在每一行缩进一个换行符或四个空格</p>
+<div class="codehilite"><pre><span></span>    就像这样
+    制表符会一定程度上地破坏段落的结构，这使得这一方式并不十分好用
+    当然，如果你喜欢，你可以尝试一下
+    原则上两者并没有明显的优劣之分
+</pre></div>
+
+
+<blockquote>
+<p>在代码区块中的内容一般不会被视为语法</p>
+</blockquote>
+<h3 id="list">List</h3>
+<p>如果你需要使文章观点或信息更加鲜明地列出，特别是在学术文章或说明文章中，你会很自然地想到在每一个文本行前面加上序号或别的着重标记。</p>
+<p>在 Markdown 中，这么做是十分容易和自然的。</p>
+<h5 id="ordered-list">Ordered List</h5>
+<p>有序列表，就是带有顺序序号的列表</p>
+<div class="codehilite"><pre><span></span><span class="k">1.</span> 第一行
+<span class="k">2.</span> 第二行
+<span class="k">0.</span> 第三行，在输入时数字可以是任意的，这并不能影响实际显示效果，但这样的习惯并不好
+</pre></div>
+
+
+<p>效果就像这样</p>
+<ol>
+<li>有序列表的每一文本行都以阿拉伯数字序号+英文的句号(.)+一个空格开始</li>
+<li>最终显示的序号只能以1为步长递增</li>
+<li>一个有序列表也是一个段落，所以它也以一个空行结尾</li>
+<li>在列表中，并不需要多加两个空格强制换行，直接敲回车即可</li>
+</ol>
+<h5 id="unordered-list">Unordered List</h5>
+<p>无序列表看起来只是在每个文本行前加上了一个着重标记</p>
+<p>只需要像这样在每个文本行前加上减号、加号或星号(-、+、*)和空格，这三种标记是完全等效的</p>
+<div class="codehilite"><pre><span></span><span class="k">-</span> 第一行
++ 第二行
+<span class="k">*</span> 第三行，用什么标记并没有什么不同
+</pre></div>
+
+
+<p>效果看起来是这样的</p>
+<ul>
+<li>一般来说，这只是在每行前加一个原点标记一个要点</li>
+<li>除了标记符，其余的基本和有序列表一样</li>
+<li>混用三种标记并没有什么不同，但为什么要煞费心机换着花样呢，选一个自己最喜欢的更为明智</li>
+</ul>
+<p>如果试着在标记符前面加上两个或四个空格，你也能得到分层的无序列表</p>
+<div class="codehilite"><pre><span></span><span class="k">-</span> 第一层
+  <span class="k">-</span> 第二层
+    <span class="k">-</span> 第三层
+</pre></div>
+
+
+<p>他们像这样</p>
+<ul>
+<li>第一层</li>
+<li>第二层<ul>
+<li>第三层</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>这样可以使层次更复杂，这是有序列表不具有的特性</p>
+</blockquote>
+<h5 id="task-list">Task List</h5>
+<p>任务列表实际上就是带有“待办”标记的列表，他们看起来比较复杂</p>
+<div class="codehilite"><pre><span></span><span class="k">- [x]</span> 这表示完成
+<span class="k">- [ ]</span> 这表示未完成
+</pre></div>
+
+
+<p>效果就像下面这样</p>
+<ul>
+<li>[x] 这表示完成</li>
+<li>[ ] 这表示未完成</li>
+</ul>
+<blockquote>
+<p>减号与方括号之间、两个方括号之间和方括号与其后的内容之间都有一个空格<br />
+就像你看到的，这个功能并不一定能被Jekyll兼容</p>
+</blockquote>
+<h3 id="table">Table</h3>
+<p>在文章中，表格是十分重要的，而同时，表格的编辑又充满挑战。比如在 Word 中就有很多很强大的表格工具，甚至可以插入 Excel 表格，但是其操作并不简单。幸运的是 Markdown 为我们提供了一种十分轻量级的表格工具，我们可以将精力从编辑表格样式转移到丰富表格的内容中来。</p>
+<p>Markdown 中的表格是由竖线、减号和冒号(| - :)构成的，你可以像这样建立一个表格</p>
+<div class="codehilite"><pre><span></span>| Header1 | Header2 | Header3 | Header4 |
+| ------- | :------ | :-----: | ------: |
+| (1,1)   | (2,1)   | (3,1)   | (4,1)   |
+| (1,2)   | (2,2)   | (3,2)   | (4,2)   |
+| (1,3)   | (2,3)   | (3,3)   | (4,3)   |
+</pre></div>
+
+
+<p>表格的实际效果就像下面这样</p>
+<table>
+<thead>
+<tr>
+<th>这里是表头，这看起来更显眼</th>
+<th align="left">每一列的列宽是由这一列的内容长度决定的</th>
+<th align="center">当内容太多，表格会自动换行</th>
+<th align="right">这看起来很容易，不是吗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表头下面那一行是用减号和冒号填充的(那行在实际效果中不会显示)</td>
+<td align="left">减号和冒号的总数等于这一列的最大字符数</td>
+<td align="center">冒号只在减号两端有(就像上面的代码示例)</td>
+<td align="right">内容与竖线之间是以一个空格隔开的</td>
+</tr>
+<tr>
+<td>冒号的位置决定了这一列的对齐方式</td>
+<td align="left">左对齐</td>
+<td align="center">居中</td>
+<td align="right">右对齐</td>
+</tr>
+<tr>
+<td>每格的字符数都要与该列最大字符数相同，内容不足的用空符替代</td>
+<td align="left">一个汉字字符也算一个字符，尽管它们占两个字符的宽度</td>
+<td align="center">所以这导致了有汉字的表格在编辑状态下十分难看</td>
+<td align="right">幸好在实际效果中问题不大</td>
+</tr>
+</tbody>
+</table>
+<h3 id="math-block">Math Block</h3>
+<p>就像代码在代码区块中更像代码一样，数学方程在数学区块中更像数学方程</p>
+<p>$$
+E=mc^2
+$$</p>
+<p>$$
+a^3-b^3=(a-b)(a^2+ab+b^)
+$$</p>
+<p>操作起来并不复杂，像这样</p>
+<div class="codehilite"><pre><span></span>$$
+E=Mc^2
+$$
+</pre></div>
+
+
+<blockquote>
+<p>但是这个功能并不常用，而且并不是md一般标准，算是一种扩展，被部分编辑器支持，Jekyll的md引擎一般不支持</p>
+<p>所以就不赘述了</p>
+</blockquote>
+<h3 id="horizontal-line">Horizontal Line</h3>
+<p>有时候你并不知道分割线的具体作用，但你就是想用一个分割线，或许为了“长文预警”、“多图预警”、“不适预警”……或许只是为了装饰一下。</p>
+<p>你可以不知道分割线有什么用，但是你一定不能不知道分割线怎么用。因为他几乎是最简单的段落了，没错，它的确是一个<strong>段落</strong></p>
+<div class="codehilite"><pre><span></span>------
+<span class="ge">* *</span> *
+<span class="gs">****</span>
+<span class="gs">__________</span>
+</pre></div>
+
+
+<p>你只需要像上面那样，在一行用三个以上的星号、减号或下划线产生一个分割线，这一行不能存在其他的字符。当然，在星号或减号之间插入空格是被允许的</p>
+<p>这是一条喜闻乐见的分割线</p>
+<hr />
+<h3 id="table-of-content">Table of Content</h3>
+<p>如果你的文章很长，并且你用标题管理得十分井井有条，那么你一定希望用一个目录向你的读者展示你的文章结构，并提供快速转到的帮助</p>
+<p>很幸运 Markdown 提供了这样的功能，而且十分简单，你只需要在你想创建目录的地方敲上一个这样的段落</p>
+<div class="codehilite"><pre><span></span>[TOC]
+</pre></div>
+
+
+<blockquote>
+<p>没错，这也是一个<strong>段落</strong>，不要忘了空行</p>
+</blockquote>
+<p>像这样</p>
+<div class="toc">
+<ul>
+<li><a href="#markdown">Markdown语法基础</a><ul>
+<li><a href="#_1">区块元素</a><ul>
+<li><a href="#paragraph">Paragraph</a></li>
+<li><a href="#heading">Heading</a></li>
+<li><a href="#quote">Quote</a></li>
+<li><a href="#code-fence">Code Fence</a></li>
+<li><a href="#list">List</a><ul>
+<li><a href="#ordered-list">Ordered List</a></li>
+<li><a href="#unordered-list">Unordered List</a></li>
+<li><a href="#task-list">Task List</a></li>
+</ul>
+</li>
+<li><a href="#table">Table</a></li>
+<li><a href="#math-block">Math Block</a></li>
+<li><a href="#horizontal-line">Horizontal Line</a></li>
+<li><a href="#table-of-content">Table of Content</a></li>
+</ul>
+</li>
+<li><a href="#_2">区段元素</a><ul>
+<li><a href="#_3">强调</a><ul>
+<li><a href="#strong">Strong</a></li>
+<li><a href="#emphasis">Emphasis</a></li>
+</ul>
+</li>
+<li><a href="#underline">Underline</a></li>
+<li><a href="#code">Code</a></li>
+<li><a href="#inline-math">Inline Math</a></li>
+<li><a href="#strike">Strike</a></li>
+<li><a href="#comment">Comment</a></li>
+<li><a href="#hyperlink">Hyperlink</a><ul>
+<li><a href="#_4">行内式</a></li>
+<li><a href="#_5">参考式</a></li>
+<li><a href="#_6">自动链接</a></li>
+</ul>
+</li>
+<li><a href="#image">Image</a></li>
+<li><a href="#footnotes">Footnotes</a></li>
+</ul>
+</li>
+<li><a href="#_7">其它</a><ul>
+<li><a href="#html">兼容HTML</a></li>
+<li><a href="#_8">特殊字符自动转换</a></li>
+<li><a href="#_9">反斜杠</a></li>
+<li><a href="#_10">·结语</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>当然，一般情况下你应该在文章开头展示目录，而不是在这</p>
+<blockquote>
+<p>很不幸的是，这个功能也不一定能发挥作用</p>
+</blockquote>
+<h2 id="_2">区段元素</h2>
+<p>与上面的区块元素不同，区段元素一般不作用于段落，而是作用于字符串</p>
+<h3 id="_3">强调</h3>
+<p>在 HTML 中用于强调的标签主要有两个</p>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>全局强调<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>局部强调<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>应用 strong 标签的文本被定义为全局范围的强调，主要表现形式就是<strong>加粗</strong></p>
+<p>而应用 em 标签的文本则被定义为局部范围的强调，主要表现形式是<em>斜体</em></p>
+<blockquote>
+<p>局部强调是阅读到附近时才能发现的，而全局强调是在篇章的尺度上能被明显区分的</p>
+</blockquote>
+<p>在 Markdown 中也有完全一样的功能，只是形式上更为简洁</p>
+<h5 id="strong">Strong</h5>
+<p>在 Markdown 中你可以使用下划线和星号(- *)标记强调</p>
+<div class="codehilite"><pre><span></span>**Strong**
+</pre></div>
+
+
+<p>主要效果就是加粗</p>
+<p><strong>Strong</strong></p>
+<h4 id="emphasis">Emphasis</h4>
+<p>类似于 Strong ，使用星号或下划线</p>
+<div class="codehilite"><pre><span></span>*Emphasis*
+</pre></div>
+
+
+<p>这样的强调效果主要是斜体</p>
+<p><em>Emphasis</em></p>
+<h3 id="underline">Underline</h3>
+<p>出于一些无聊的目的，你可能需要在一些文字下面加入一些 <u>下划线</u> ，那么你只需要这样</p>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">u</span><span class="p">&gt;</span>下划线<span class="p">&lt;/</span><span class="nt">u</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<blockquote>
+<p>没错，这就是完全沿用 HTML 的一个标签</p>
+</blockquote>
+<h3 id="code">Code</h3>
+<p>你有时需要在文本中引用一小段代码，如何让他们类似于代码区块长得像代码，而又不用另起一行呢</p>
+<div class="codehilite"><pre><span></span><span class="sb">`&quot;Hello World!\n&quot;`</span>
+</pre></div>
+
+
+<p>你只需要使用两个反单引号包围一串字符就能产生一个代码区段<code>"Hello World!\n"</code></p>
+<h3 id="inline-math">Inline Math</h3>
+<p>行内数学区段类似于前面提到的数学区块，只是它不用自成一段，也不会居中，它可以出现在除代码区块和代码区段外的任何地方，比如这里$W_外+W_内=△E_k$</p>
+<p>上面那个动能定理只要这样输入即可</p>
+<div class="codehilite"><pre><span></span>$W_外+W_内=△E_k$
+</pre></div>
+
+
+<blockquote>
+<p>十分不幸的是，跟数学区块一样，行内数学区段的兼容性也并不很好</p>
+</blockquote>
+<h3 id="strike">Strike</h3>
+<p>当我们要输入一些 ~~装逼~~ 有趣的文字时，我们常常要用到划线来划掉一些我们 ~~明明可以不输出来~~ 不太想让别人误会的文字。</p>
+<p>我们只需要用前后各两个波浪线(~)包围我们需要划掉的文字</p>
+<div class="codehilite"><pre><span></span>一切dalao都是 <span class="gd">~~纸老虎~~</span> 名副其实
+</pre></div>
+
+
+<blockquote>
+<p>如果你善于观察，你会发现，在被划掉的文字两边加上空格效果会更好一些</p>
+</blockquote>
+<h3 id="comment">Comment</h3>
+<p>这个是一个直接来源于 HTML 的标签，而在 Markdown 中，这个标签变得可有可无，他其实就是一段<em>注释</em></p>
+<div class="codehilite"><pre><span></span><span class="c">&lt;!--这段话在这并没什么卵用，它也不会显示给用户--&gt;</span>
+</pre></div>
+
+
+<!--这段话并没什么卵用-->
+
+<blockquote>
+<p>注释是什么我在此不作说明，这对于代码的维护来说十分重要，但对于文本编辑，这似乎是一个鸡肋。</p>
+</blockquote>
+<h3 id="hyperlink">Hyperlink</h3>
+<blockquote>
+<p>超链接,网页的灵魂所在。</p>
+</blockquote>
+<p>对于一篇文章而言，超链接常常也是必不可少的。Markdown 为我们提供了 <em>行内式</em> 和 <em>参考式</em> 两种类型的超链接</p>
+<h5 id="_4">行内式</h5>
+<p>我们先了解一下行内式，行内式的超链接可以简单地插入到文本的任何地方(除了代码区块和代码区段)，比如<a href="http://cn.bing.com/" target="_blank" title="微软必应">Bing</a>。而我们只需要用方括号将链接文本置于方括号内，将链接地址置于方括号后的圆括号内，若有标题也可在圆括号内、链接地址后加入一个空格后用双引号标示</p>
+<div class="codehilite"><pre><span></span>格式:[Text](URL &quot;Optional Title&quot;)
+例:[Bing](http://cn.bing.com/ &quot;微软必应&quot;)
+</pre></div>
+
+
+<blockquote>
+<p>如果是站内网页，也可以使用相对路径</p>
+</blockquote>
+<h5 id="_5">参考式</h5>
+<p>然后是参考式，参考式是仅在段落中对链接文本做标记，<a href="http://www.zhihu.com/" target="_blank" title="与世界分享你的知识、经验和见解">知乎</a>，具体链接内容自成段落分布在文章其他地方</p>
+<p>标记部分：</p>
+<div class="codehilite"><pre><span></span>格式:[Text][id]
+例:[知乎][a]
+</pre></div>
+
+
+<p>链接内容：</p>
+<div class="codehilite"><pre><span></span>格式:[id]: URL &quot;Optional Title&quot;
+例:[a]: http://www.zhihu.com/ &quot;与世界分享你的知识、经验和见解&quot;
+</pre></div>
+
+
+<p>在定义连接内容时要注意:</p>
+<ol>
+<li>在冒号与地址之间、地址与标题之间都有一个空格</li>
+<li>连接内容可以放置在文章的任何地方，习惯上可以类似于注释放置在全文末，也可以放置在相关的段落后，便于查看</li>
+<li>连接内容是段落，注意空行</li>
+<li>链接标签可以有字母、数字、空白和标点符号，但是并 <u>不区分大小写</u></li>
+</ol>
+<p>参考式超链接的标签可以省略，但用于包围标签的方括号不可省。省略标签时，默认以链接文本作为标签。</p>
+<blockquote>
+<p>个人认为，参考式超链接不会破坏文章结构，使文章可读性更高，因此更值推广</p>
+</blockquote>
+<h5 id="_6">自动链接</h5>
+<p>Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用尖括号包围起来， Markdown 就会自动把它转换成链接。这时链接地址就和链接文本一样，例如：<a href="http://cn.bing.com/" target="_blank">http://cn.bing.com/</a></p>
+<div class="codehilite"><pre><span></span>&lt;http://cn.bing.com/&gt;
+</pre></div>
+
+
+<p>Markdown 会将他转为：</p>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://cn.bing.com/&quot;</span><span class="nt">&gt;</span>http://ecn.bing.com/<span class="nt">&lt;/a&gt;</span>
+</pre></div>
+
+
+<p>邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：</p>
+<div class="codehilite"><pre><span></span>&lt;address@example.com&gt;
+</pre></div>
+
+
+<p>Markdown 会转成：</p>
+<div class="codehilite"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&amp;#x6D;&amp;#x61;i&amp;#x6C;&amp;#x74;&amp;#x6F;:&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;</span>
+<span class="s">&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;</span>
+<span class="s">&amp;#109;&quot;</span><span class="p">&gt;</span><span class="ni">&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;</span>
+<span class="ni">&amp;#109;&amp;#x70;&amp;#x6C;</span>e<span class="ni">&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>在浏览器里面，这段字串会变成一个可以点击的「address@example.com」链接。</p>
+<blockquote>
+<p>这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。</p>
+</blockquote>
+<h3 id="image">Image</h3>
+<blockquote>
+<p>没有图片的文章都不是好文章</p>
+</blockquote>
+<p><img alt="Insect" src="//blog-oss.keybrl.com/2018/images/The-base-of-grammar-in-Markdown/insect.jpg" title="Insect" /></p>
+<p>因此， Markdown 也很自然地为我们提供了插入图片的方法</p>
+<p>与超链接很类似，插入图片也分为<em>行内式</em>和<em>参考式</em></p>
+<p>行内式:</p>
+<div class="codehilite"><pre><span></span>![<span class="nt">Text</span>](<span class="na">URL &quot;Optional Title&quot;</span>)
+例:![Insect](/../styles/images/insect.jpg &quot;Insect&quot;)
+</pre></div>
+
+
+<p>参考式:</p>
+<div class="codehilite"><pre><span></span>标记部分:
+![Text][id]
+图片内容：
+[id]: URL &quot;Optional Title&quot;
+</pre></div>
+
+
+<p>参考式便不作演示了</p>
+<blockquote>
+<p>除了感叹号，插入图片的方式与建立超链接几乎是一样的
+到目前为止 Markdown并不支持指定图片大小，如果有这种需求，可以使用 HTML 的<img></img>标签<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></p>
+</blockquote>
+<h3 id="footnotes">Footnotes</h3>
+<p>在编辑文章，特别是学术文章时，你有时需要对文章的某些部分做出解释，但又不想直接写在正文中，那么你一定能想到书本的脚注。没错，Markdown 也提供了脚注的功能。</p>
+<p>类似于参考式的图片和超链接，脚注也有两部分，标记和注释</p>
+<p>如果你想在文中某处注释<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>一下，那么你只需要在要注释处输入一个用方括号包围的^x，x可以是任意你喜欢的数字</p>
+<p>然后你可以在文章任何地方输入这处注释的内容，他们的格式类似于这样</p>
+<div class="codehilite"><pre><span></span>标记：  [^a]
+内容：  [^a]:注释内容
+</pre></div>
+
+
+<blockquote>
+<p>脚注不是 Markdown 的标准，所以其实现效果各有不同</p>
+<p>没错，不管你写在哪，在最终效果中，注释内容一般都在文末</p>
+</blockquote>
+<h2 id="_7">其它</h2>
+<p>上文已经就 Markdown 的一般用法做出了解释，但是你知道 Markdown 远不止于此。</p>
+<h3 id="html">兼容HTML</h3>
+<blockquote>
+<p>Markdown 是一种适用于网络的书写语言。</p>
+</blockquote>
+<p>可以说 Markdown 是由HTML派生而来的，因此 Markdown 有很多 HTML 的影子。Markdown从来没有想要接近 HTML 或者取代 HTML，因为 Markdown 只是一种书写语言，其语法范围也只在文本的范围内。因此，当你需要使用一些超出文本需要的功能，你可以直接使用 HTML 实现。</p>
+<p>没错，Markdown 几乎兼容所有的 HTML <b>标签</b>。上一句话的“标签”两个字就是被 HTML 标签标记的，就像这样<code>&lt;b&gt;标签&lt;/b&gt;</code></p>
+<blockquote>
+<p>像 Markdown 一样，有些 HTML 标签是<em>行内式</em>的，有些则是属于<em>段落</em>，应用时要注意<br />
+在 HTML 标签内，Markdown 语法不会发挥作用。</p>
+</blockquote>
+<h3 id="_8">特殊字符自动转换</h3>
+<p>在 HTML 中&amp;和&lt;是两个令人备受折磨的字符，因为他们都在 HTML 中作为语法的一部分有特殊含义。因此当你仅仅需要打印&amp;或&lt;时，你需要输入<code>&amp;amp;</code>或<code>&amp;lt;</code>分别代替&amp;和&lt;，甚至当网址中有&amp;时也要转换</p>
+<div class="codehilite"><pre><span></span><span class="nt">网址</span><span class="err">：</span>
+<span class="nt">http</span><span class="o">://</span><span class="nt">images</span><span class="p">.</span><span class="nc">google</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">images</span><span class="o">?</span><span class="nt">num</span><span class="o">=</span><span class="nt">30</span><span class="o">&amp;</span><span class="nt">q</span><span class="o">=</span><span class="nt">larry</span><span class="o">+</span><span class="nt">bird</span>
+<span class="nt">需输成</span><span class="err">：</span>
+<span class="nt">http</span><span class="o">://</span><span class="nt">images</span><span class="p">.</span><span class="nc">google</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">images</span><span class="o">?</span><span class="nt">num</span><span class="o">=</span><span class="nt">30</span><span class="o">&amp;</span><span class="nt">amp</span><span class="o">;</span><span class="nt">q</span><span class="o">=</span><span class="nt">larry</span><span class="o">+</span><span class="nt">bird</span>
+</pre></div>
+
+
+<p>这十分麻烦。但幸运的是，一般情况下，在 Markdown 中你并不需要这样，你只需要直接打出&amp;或&lt;即可，但是……</p>
+<blockquote>
+<p>Every coin has two sides.</p>
+</blockquote>
+<p>因此，这在 Markdown 中又变得复杂了一些。当你将它们当作一般的字符书写出来，Markdown 会自动将它们转换为<code>&amp;amp;</code>或<code>&amp;lt;</code>。但前面说过，Markdown 兼容 HTML ，因此，当 Markdown 认为那是 HTML 语法时，Markdown 不会转换他们。</p>
+<p>如果你想在文中加入一个版权符号©，你输入</p>
+<div class="codehilite"><pre><span></span>&amp;copy;
+</pre></div>
+
+
+<p>Markdown 并不会转换他们，而是原样输入 HTML。但如果你输入</p>
+<div class="codehilite"><pre><span></span>1+1&lt;5
+</pre></div>
+
+
+<p>Markdown 会自动将他们转换为</p>
+<div class="codehilite"><pre><span></span>1+1<span class="ni">&amp;lt;</span>5
+</pre></div>
+
+
+<p>因此了解 Markdown 何时自动转换、何时不转换十分重要。</p>
+<h3 id="_9">反斜杠</h3>
+<p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果(但不用 `` 标签)，你可以在星号的前面加上反斜杠：</p>
+<div class="codehilite"><pre><span></span>\*literal asterisks\*
+</pre></div>
+
+
+<p>Markdown 支持在以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
+<div class="codehilite"><pre><span></span>\   反斜线
+`   反引号
+*   星号
+_   底线
+{}  花括号
+[]  方括号
+()  括弧
+#   井字号
++   加号
+-   减号
+.   英文句点
+!   惊叹号
+</pre></div>
+
+
+<h3 id="_10">·结语</h3>
+<blockquote>
+<p>多看多想<br />
+　　　　　　　　——某dalao</p>
+</blockquote>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>没错，文中多次暗示了，Markdown 可以直接使用 HTML 标签，这在下文会详细介绍&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>对书籍或文章的词汇、内容、背景、引文做介绍、评议的文字&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+                  
+                
+              
+              
+<div id="comments_main">
+    <div style="height: 30px;"></div>
+    <hr>
+    <h2>你终于看完了！</h2>
+    <span id="leancloud-visitor" class="leancloud-visitors" data-flag-title="Your Article Title">
+        你可能会好奇这个数字，所以我就直接告诉你吧，<em class="post-meta-item-text"><b>这文章阅读量 </b></em>
+        <b><i class="leancloud-visitors-count">x</i></b>
+    </span>
+    <p>如果你对这篇文章有任何想法或者对Keyboard本人有什么看法，随便什么东西，甚至是“hhh”，都可以在下面留言。随便吐槽，反正我不会看的...</p>
+    <p>这是完全匿名的，当然你也可以留个名，甚至留个邮箱，因为如果你有什么有趣的留言我可能会好奇想认识一下你</p>
+    <p><em>（说实话，我会看的，真的！）</em></p>
+    <div id="vcomments"></div>
+</div>
+<script>
+    document.getElementById("leancloud-visitor").id = window.location.pathname;
+    let comments_switch = document.getElementById("comments_switch");
+    if (!comments_switch || comments_switch.innerText != "False") {
+        new Valine({
+            el: '#vcomments',
+            appId: '9nBhQjarudnTltm9uQgqT04z-gzGzoHsz',
+            appKey: 'jpCWh05kBHWtjvxg6pjbPiMP',
+            placeholder: 'e.g. hhh',
+            meta: ['nick', 'mail'],
+            pageSize: 5,
+            visitor: true
+        })
+    }
+    else {
+        document.getElementById("comments_main").hidden = true;
+    }
+    
+</script>
+
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="2016-12-30-C-study.html" title="C语言上机心得" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                C语言上机心得
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="2016-10-22-John-Von-Nouma.html" title="从冯·诺依曼体系结构起航" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                从冯·诺依曼体系结构起航
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; <a href="https://blog.keybrl.com/">KeybrL</a> All Rights Reserved.
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/keybrl" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://steamcommunity.com/id/keybrl" class="md-footer-social__link fa fa-steam"></a>
+    
+      <a href="mailto:keyboard-l@outlook.com" class="md-footer-social__link fa fa-envelope"></a>
+    
+      <a href="https://blog.keybrl.com/feed.xml" class="md-footer-social__link fa fa-rss"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+            <script src="../assets/javascripts/lunr/lunr.multi.js"></script>
+          
+        
+      
+      <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-119555935-1","blog.keybrl.com"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

@@ -15,7 +15,7 @@ remote_name: origin
 nav:
     - 主页: 'index.md'
     - 无聊的日常:
-        - '无聊的日常 - 导读': 'boring/index.md'
+        - '无聊的日常 - 导读': 'boring/introduction.md'
         - '软路由与NAS(3) - 外壳': 'boring/2019-02-22-router3_shell.md'
         - '软路由与NAS(2) - 软件平台搭建': 'boring/2019-02-18-router2_software.md'
         - '2018年终总结': 'boring/2018-12-31-summary.md'
@@ -24,7 +24,7 @@ nav:
         - '虹吸壶冲泡咖啡': 'boring/2018-03-03-siphon.md'
         - 'IKBC Poker2 加灯历程': 'boring/2018-01-20-lighted-poker2.md'
     - 专业相关:
-        - '专业相关的文章 - 导读': 'professional/index.md'
+        - '专业相关的文章 - 导读': 'professional/introduction.md'
         - 'Windows 常用注册表项': 'professional/2018-10-23-Windows-regedit.md'
         - 'Nginx常用配置套路（未完成）': 'professional/2018-07-02-nginx-configure.md'
 #        - 'Python-Markdown支持的Markdown扩展（未完成）': 'professional/2018-05-24-python-markdown.md'
@@ -36,10 +36,10 @@ nav:
         - 'Markdown语法基础': 'professional/2016-11-13-The-base-of-grammar-in-Markdown.md'
         - '从冯·诺依曼体系结构起航': 'professional/2016-10-22-John-Von-Nouma.md'
     - 转载:
-        - '转载文章 - 导读': 'repost/index.md'
+        - '转载文章 - 导读': 'repost/introduction.md'
         - 'HTTP/1.1 - Status Code Definitions': 'repost/2017-12-19-HTTP11-Status-Code-Definitions-en.md'
     - SS::STA回顾:
-        - 'SS:STA活动回顾 - 导读': 'sssta/index.md'
+        - 'SS:STA活动回顾 - 导读': 'sssta/introduction.md'
         - 'Web 2017下半年活动内容清单': 'sssta/2018-01-19-SSSTA-Web-list2017.md'
         - 'Web4.0 - 前端页面的布局': 'sssta/2017-12-03-SSSTA-Web4.0.md'
         - 'Web3 - Python复习': 'sssta/2017-12-03-SSSTA-Web3.md'
@@ -49,7 +49,7 @@ nav:
         - '在GitHub上通过Jekyll搭建个人博客': 'sssta/2017-10-08-SSSTA-Blog.md'
         - 'Python入门1': 'sssta/2017-09-29-SSSTA-Python1.md'
     - 垃圾代码:
-        - '垃圾代码 - 导读': 'projects/index.md'
+        - '垃圾代码 - 导读': 'projects/introduction.md'
         - 'keybrl-mines - 优雅的扫雷从此无处不在': 'projects/2018-10-14-Project-keybrl-gnome.md'
         - '概率神教 - 优秀的问题解决方案': 'projects/2017-11-19-Project-Coin.md'
         - 'Tetris': 'projects/2017-06-12-Project-Tetris.md'
@@ -88,7 +88,7 @@ extra:
       link: 'https://blog.keybrl.com/feed.xml'
 
 # Preview controls
-#use_directory_urls: true
+use_directory_urls: false
 #strict: false
 dev_addr: 0.0.0.0:80
 

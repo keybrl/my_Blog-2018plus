@@ -102,11 +102,11 @@ http {
 !!! note "值得注意"
     `http {}` 内有一句 `include /etc/nginx/sites-enabled/*;` 会让你的 Nginx 成功安装、启动后，被访问时，显示 Nginx 的欢迎页面，像下面这样
 
-    ![Nginx 的欢迎页面](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/nginx-configure/nginx_welcome_page.png)
+    ![Nginx 的欢迎页面](//blog-oss.keybrl.com/2018/images/nginx-configure/nginx_welcome_page.png)
 
     而且无论你设置什么别的配置，80 端口都会被这个页面占用，所以需要先加个井号注释掉这行。
 
-    ![Nginx 配置文件注释掉某行](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/nginx-configure/nginx_command.png)
+    ![Nginx 配置文件注释掉某行](//blog-oss.keybrl.com/2018/images/nginx-configure/nginx_command.png)
 
 然后剩下的配置可以写在 `/etc/nginx/conf.d/` 里
 

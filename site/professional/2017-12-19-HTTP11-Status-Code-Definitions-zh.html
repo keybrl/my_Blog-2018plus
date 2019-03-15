@@ -1,0 +1,2132 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="This site is the Blog of KeybrL.">
+      
+      
+        <link rel="canonical" href="https://blog.keybrl.com/professional/2017-12-19-HTTP11-Status-Code-Definitions-zh.html">
+      
+      
+        <meta name="author" content="KeybrL">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="en, jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.3">
+    
+    
+      
+        <title>HTTP/1.1 - 状态码定义（翻译）（未完成） - KeybrL's Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+<script src="/assets/javascripts/av-min.js"></script>      <!-- //cdn1.lncld.net/static/js/3.0.4/av-min.js -->
+<script src='/assets/javascripts/Valine.min.js'></script>  <!-- //unpkg.com/valine/dist/Valine.min.js -->
+
+    
+<link rel="stylesheet" href="/assets/stylesheets/google-font.css">
+<style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="light-blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../#http11-" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://blog.keybrl.com/" title="KeybrL's Blog" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">code</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                KeybrL's Blog
+              </span>
+              <span class="md-header-nav__topic">
+                HTTP/1.1 - 状态码定义（翻译）（未完成）
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/keybrl/my_Blog-2018plus/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      keybrl/my_Blog-2018plus
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://blog.keybrl.com/" title="KeybrL's Blog" class="md-nav__button md-logo">
+      
+        <i class="md-icon">code</i>
+      
+    </a>
+    KeybrL's Blog
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/keybrl/my_Blog-2018plus/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      keybrl/my_Blog-2018plus
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      无聊的日常
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        无聊的日常
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/introduction.html" title="无聊的日常 - 导读" class="md-nav__link">
+      无聊的日常 - 导读
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2019-02-22-router3_shell.html" title="软路由与NAS(3) - 外壳" class="md-nav__link">
+      软路由与NAS(3) - 外壳
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2019-02-18-router2_software.html" title="软路由与NAS(2) - 软件平台搭建" class="md-nav__link">
+      软路由与NAS(2) - 软件平台搭建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2018-12-31-summary.html" title="2018年终总结" class="md-nav__link">
+      2018年终总结
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2018-11-02-router1_hardware.html" title="软路由与NAS(1) - 硬件平台搭建" class="md-nav__link">
+      软路由与NAS(1) - 硬件平台搭建
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2018-03-03-siphon.html" title="虹吸壶冲泡咖啡" class="md-nav__link">
+      虹吸壶冲泡咖啡
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../boring/2018-01-20-lighted-poker2.html" title="IKBC Poker2 加灯历程" class="md-nav__link">
+      IKBC Poker2 加灯历程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      专业相关
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        专业相关
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="introduction.html" title="专业相关的文章 - 导读" class="md-nav__link">
+      专业相关的文章 - 导读
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2018-10-23-Windows-regedit.html" title="Windows 常用注册表项" class="md-nav__link">
+      Windows 常用注册表项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2018-07-02-nginx-configure.html" title="Nginx常用配置套路（未完成）" class="md-nav__link">
+      Nginx常用配置套路（未完成）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2018-05-19-mkdocs-blog.html" title="通过MkDocs搭建个人博客" class="md-nav__link">
+      通过MkDocs搭建个人博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        HTTP/1.1 - 状态码定义（翻译）（未完成）
+      </label>
+    
+    <a href="2017-12-19-HTTP11-Status-Code-Definitions-zh.html" title="HTTP/1.1 - 状态码定义（翻译）（未完成）" class="md-nav__link md-nav__link--active">
+      HTTP/1.1 - 状态码定义（翻译）（未完成）
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10-status-code-definitions" title="10 Status Code Definitions （状态码定义）" class="md-nav__link">
+    10 Status Code Definitions （状态码定义）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-informational-1xx" title="10.1 Informational 1xx （提示信息）" class="md-nav__link">
+    10.1 Informational 1xx （提示信息）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1011-100-continue" title="10.1.1 100 Continue （继续）" class="md-nav__link">
+    10.1.1 100 Continue （继续）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1012-101-switching-protocols" title="10.1.2 101 Switching Protocols （切换协议）" class="md-nav__link">
+    10.1.2 101 Switching Protocols （切换协议）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-successful-2xx" title="10.2 Successful 2xx （成功）" class="md-nav__link">
+    10.2 Successful 2xx （成功）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1021-200-ok" title="10.2.1 200 OK （正常）" class="md-nav__link">
+    10.2.1 200 OK （正常）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1022-201-created" title="10.2.2 201 Created （已创建）" class="md-nav__link">
+    10.2.2 201 Created （已创建）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1023-202-accepted" title="10.2.3 202 Accepted （已接受）" class="md-nav__link">
+    10.2.3 202 Accepted （已接受）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1024-203-non-authoritative-information" title="10.2.4 203 Non-Authoritative Information （非权威信息）" class="md-nav__link">
+    10.2.4 203 Non-Authoritative Information （非权威信息）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1025-204-no-content" title="10.2.5 204 No Content （无内容）" class="md-nav__link">
+    10.2.5 204 No Content （无内容）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1026-205-reset-content" title="10.2.6 205 Reset Content （内容重置）" class="md-nav__link">
+    10.2.6 205 Reset Content （内容重置）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1027-206-partial-content" title="10.2.7 206 Partial Content （部分内容）" class="md-nav__link">
+    10.2.7 206 Partial Content （部分内容）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-redirection-3xx" title="10.3 Redirection 3xx （重定向）" class="md-nav__link">
+    10.3 Redirection 3xx （重定向）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1031-300-multiple-choices" title="10.3.1 300 Multiple Choices （多重选择）" class="md-nav__link">
+    10.3.1 300 Multiple Choices （多重选择）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1032-301-moved-permanently" title="10.3.2 301 Moved Permanently （永久转移）" class="md-nav__link">
+    10.3.2 301 Moved Permanently （永久转移）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1033-302-found" title="10.3.3 302 Found （已创建）" class="md-nav__link">
+    10.3.3 302 Found （已创建）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1034-303-see-other" title="10.3.4 303 See Other （查看其它）" class="md-nav__link">
+    10.3.4 303 See Other （查看其它）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1035-304-not-modified" title="10.3.5 304 Not Modified （未修改）" class="md-nav__link">
+    10.3.5 304 Not Modified （未修改）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1036-305-use-proxy" title="10.3.6 305 Use Proxy" class="md-nav__link">
+    10.3.6 305 Use Proxy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1037-306-unused" title="10.3.7 306 (Unused) （已停止使用）" class="md-nav__link">
+    10.3.7 306 (Unused) （已停止使用）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1038-307-temporary-redirect" title="10.3.8 307 Temporary Redirect" class="md-nav__link">
+    10.3.8 307 Temporary Redirect
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-client-error-4xx" title="10.4 Client Error 4xx （客户端错误）" class="md-nav__link">
+    10.4 Client Error 4xx （客户端错误）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1041-400-bad-request" title="10.4.1 400 Bad Request" class="md-nav__link">
+    10.4.1 400 Bad Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1042-401-unauthorized" title="10.4.2 401 Unauthorized （未经许可）" class="md-nav__link">
+    10.4.2 401 Unauthorized （未经许可）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1043-402-payment-required" title="10.4.3 402 Payment Required （需要支付）" class="md-nav__link">
+    10.4.3 402 Payment Required （需要支付）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1044-403-forbidden" title="10.4.4 403 Forbidden （禁止访问）" class="md-nav__link">
+    10.4.4 403 Forbidden （禁止访问）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1045-404-not-found" title="10.4.5 404 Not Found （未找到）" class="md-nav__link">
+    10.4.5 404 Not Found （未找到）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1046-405-method-not-allowed" title="10.4.6 405 Method Not Allowed （不允许的请求方法）" class="md-nav__link">
+    10.4.6 405 Method Not Allowed （不允许的请求方法）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1047-406-not-acceptable" title="10.4.7 406 Not Acceptable （不接受）" class="md-nav__link">
+    10.4.7 406 Not Acceptable （不接受）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1048-407-proxy-authentication-required" title="10.4.8 407 Proxy Authentication Required （要求验证代理身份）" class="md-nav__link">
+    10.4.8 407 Proxy Authentication Required （要求验证代理身份）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1049-408-request-timeout" title="10.4.9 408 Request Timeout （请求超时）" class="md-nav__link">
+    10.4.9 408 Request Timeout （请求超时）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10410-409-conflict" title="10.4.10 409 Conflict （访问冲突）" class="md-nav__link">
+    10.4.10 409 Conflict （访问冲突）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10411-410-gone" title="10.4.11 410 Gone" class="md-nav__link">
+    10.4.11 410 Gone
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10412-411-length-required" title="10.4.12 411 Length Required （要求指示长度）" class="md-nav__link">
+    10.4.12 411 Length Required （要求指示长度）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10413-412-precondition-failed" title="10.4.13 412 Precondition Failed （先决条件未满足）" class="md-nav__link">
+    10.4.13 412 Precondition Failed （先决条件未满足）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10414-413-request-entity-too-large" title="10.4.14 413 Request Entity Too Large （请求实体过大）" class="md-nav__link">
+    10.4.14 413 Request Entity Too Large （请求实体过大）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10415-414-request-uri-too-long" title="10.4.15 414 Request-URI Too Long" class="md-nav__link">
+    10.4.15 414 Request-URI Too Long
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10416-415-unsupported-media-type" title="10.4.16 415 Unsupported Media Type" class="md-nav__link">
+    10.4.16 415 Unsupported Media Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10417-416-requested-range-not-satisfiable" title="10.4.17 416 Requested Range Not Satisfiable" class="md-nav__link">
+    10.4.17 416 Requested Range Not Satisfiable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10418-417-expectation-failed" title="10.4.18 417 Expectation Failed" class="md-nav__link">
+    10.4.18 417 Expectation Failed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#105-server-error-5xx" title="10.5 Server Error 5xx" class="md-nav__link">
+    10.5 Server Error 5xx
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1051-500-internal-server-error" title="10.5.1 500 Internal Server Error" class="md-nav__link">
+    10.5.1 500 Internal Server Error
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1052-501-not-implemented" title="10.5.2 501 Not Implemented" class="md-nav__link">
+    10.5.2 501 Not Implemented
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1053-502-bad-gateway" title="10.5.3 502 Bad Gateway" class="md-nav__link">
+    10.5.3 502 Bad Gateway
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1054-503-service-unavailable" title="10.5.4 503 Service Unavailable" class="md-nav__link">
+    10.5.4 503 Service Unavailable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1055-504-gateway-timeout" title="10.5.5 504 Gateway Timeout" class="md-nav__link">
+    10.5.5 504 Gateway Timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1056-505-http-version-not-supported" title="10.5.6 505 HTTP Version Not Supported" class="md-nav__link">
+    10.5.6 505 HTTP Version Not Supported
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2017-08-01-Nginx_uWSGI_Flask_in_CentOS.html" title="CentOS中通过Nginx和uWSGI部署Flask项目" class="md-nav__link">
+      CentOS中通过Nginx和uWSGI部署Flask项目
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2017-04-09-Use-smtplib-and-email-in-python-to-send-email.html" title="使用Python的smtplib和email发送邮件" class="md-nav__link">
+      使用Python的smtplib和email发送邮件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2016-12-30-C-study.html" title="C语言上机心得" class="md-nav__link">
+      C语言上机心得
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2016-11-13-The-base-of-grammar-in-Markdown.html" title="Markdown语法基础" class="md-nav__link">
+      Markdown语法基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2016-10-22-John-Von-Nouma.html" title="从冯·诺依曼体系结构起航" class="md-nav__link">
+      从冯·诺依曼体系结构起航
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      转载
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        转载
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../repost/introduction.html" title="转载文章 - 导读" class="md-nav__link">
+      转载文章 - 导读
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../repost/2017-12-19-HTTP11-Status-Code-Definitions-en.html" title="HTTP/1.1 - Status Code Definitions" class="md-nav__link">
+      HTTP/1.1 - Status Code Definitions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      SS::STA回顾
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        SS::STA回顾
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/introduction.html" title="SS:STA活动回顾 - 导读" class="md-nav__link">
+      SS:STA活动回顾 - 导读
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2018-01-19-SSSTA-Web-list2017.html" title="Web 2017下半年活动内容清单" class="md-nav__link">
+      Web 2017下半年活动内容清单
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-12-03-SSSTA-Web4.0.html" title="Web4.0 - 前端页面的布局" class="md-nav__link">
+      Web4.0 - 前端页面的布局
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-12-03-SSSTA-Web3.html" title="Web3 - Python复习" class="md-nav__link">
+      Web3 - Python复习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-11-19-SSSTA-Web2.0.html" title="Web2.0 - HTML与CSS入门" class="md-nav__link">
+      Web2.0 - HTML与CSS入门
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-11-12-SSSTA-Web1.html" title="Web1 - Web应用概论" class="md-nav__link">
+      Web1 - Web应用概论
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-10-08-SSSTA-Python2.html" title="Python入门2" class="md-nav__link">
+      Python入门2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-10-08-SSSTA-Blog.html" title="在GitHub上通过Jekyll搭建个人博客" class="md-nav__link">
+      在GitHub上通过Jekyll搭建个人博客
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../sssta/2017-09-29-SSSTA-Python1.html" title="Python入门1" class="md-nav__link">
+      Python入门1
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      垃圾代码
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        垃圾代码
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projects/introduction.html" title="垃圾代码 - 导读" class="md-nav__link">
+      垃圾代码 - 导读
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projects/2018-10-14-Project-keybrl-gnome.html" title="keybrl-mines - 优雅的扫雷从此无处不在" class="md-nav__link">
+      keybrl-mines - 优雅的扫雷从此无处不在
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projects/2017-11-19-Project-Coin.html" title="概率神教 - 优秀的问题解决方案" class="md-nav__link">
+      概率神教 - 优秀的问题解决方案
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projects/2017-06-12-Project-Tetris.html" title="Tetris" class="md-nav__link">
+      Tetris
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projects/2017-04-30-Project-Game_or_Life.html" title="生命游戏" class="md-nav__link">
+      生命游戏
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../board.html" title="留言板" class="md-nav__link">
+      留言板
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../links.html" title="友情链接" class="md-nav__link">
+      友情链接
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../donate.html" title="小额赞助" class="md-nav__link">
+      小额赞助
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10-status-code-definitions" title="10 Status Code Definitions （状态码定义）" class="md-nav__link">
+    10 Status Code Definitions （状态码定义）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-informational-1xx" title="10.1 Informational 1xx （提示信息）" class="md-nav__link">
+    10.1 Informational 1xx （提示信息）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1011-100-continue" title="10.1.1 100 Continue （继续）" class="md-nav__link">
+    10.1.1 100 Continue （继续）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1012-101-switching-protocols" title="10.1.2 101 Switching Protocols （切换协议）" class="md-nav__link">
+    10.1.2 101 Switching Protocols （切换协议）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-successful-2xx" title="10.2 Successful 2xx （成功）" class="md-nav__link">
+    10.2 Successful 2xx （成功）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1021-200-ok" title="10.2.1 200 OK （正常）" class="md-nav__link">
+    10.2.1 200 OK （正常）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1022-201-created" title="10.2.2 201 Created （已创建）" class="md-nav__link">
+    10.2.2 201 Created （已创建）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1023-202-accepted" title="10.2.3 202 Accepted （已接受）" class="md-nav__link">
+    10.2.3 202 Accepted （已接受）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1024-203-non-authoritative-information" title="10.2.4 203 Non-Authoritative Information （非权威信息）" class="md-nav__link">
+    10.2.4 203 Non-Authoritative Information （非权威信息）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1025-204-no-content" title="10.2.5 204 No Content （无内容）" class="md-nav__link">
+    10.2.5 204 No Content （无内容）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1026-205-reset-content" title="10.2.6 205 Reset Content （内容重置）" class="md-nav__link">
+    10.2.6 205 Reset Content （内容重置）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1027-206-partial-content" title="10.2.7 206 Partial Content （部分内容）" class="md-nav__link">
+    10.2.7 206 Partial Content （部分内容）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-redirection-3xx" title="10.3 Redirection 3xx （重定向）" class="md-nav__link">
+    10.3 Redirection 3xx （重定向）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1031-300-multiple-choices" title="10.3.1 300 Multiple Choices （多重选择）" class="md-nav__link">
+    10.3.1 300 Multiple Choices （多重选择）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1032-301-moved-permanently" title="10.3.2 301 Moved Permanently （永久转移）" class="md-nav__link">
+    10.3.2 301 Moved Permanently （永久转移）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1033-302-found" title="10.3.3 302 Found （已创建）" class="md-nav__link">
+    10.3.3 302 Found （已创建）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1034-303-see-other" title="10.3.4 303 See Other （查看其它）" class="md-nav__link">
+    10.3.4 303 See Other （查看其它）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1035-304-not-modified" title="10.3.5 304 Not Modified （未修改）" class="md-nav__link">
+    10.3.5 304 Not Modified （未修改）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1036-305-use-proxy" title="10.3.6 305 Use Proxy" class="md-nav__link">
+    10.3.6 305 Use Proxy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1037-306-unused" title="10.3.7 306 (Unused) （已停止使用）" class="md-nav__link">
+    10.3.7 306 (Unused) （已停止使用）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1038-307-temporary-redirect" title="10.3.8 307 Temporary Redirect" class="md-nav__link">
+    10.3.8 307 Temporary Redirect
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-client-error-4xx" title="10.4 Client Error 4xx （客户端错误）" class="md-nav__link">
+    10.4 Client Error 4xx （客户端错误）
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1041-400-bad-request" title="10.4.1 400 Bad Request" class="md-nav__link">
+    10.4.1 400 Bad Request
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1042-401-unauthorized" title="10.4.2 401 Unauthorized （未经许可）" class="md-nav__link">
+    10.4.2 401 Unauthorized （未经许可）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1043-402-payment-required" title="10.4.3 402 Payment Required （需要支付）" class="md-nav__link">
+    10.4.3 402 Payment Required （需要支付）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1044-403-forbidden" title="10.4.4 403 Forbidden （禁止访问）" class="md-nav__link">
+    10.4.4 403 Forbidden （禁止访问）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1045-404-not-found" title="10.4.5 404 Not Found （未找到）" class="md-nav__link">
+    10.4.5 404 Not Found （未找到）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1046-405-method-not-allowed" title="10.4.6 405 Method Not Allowed （不允许的请求方法）" class="md-nav__link">
+    10.4.6 405 Method Not Allowed （不允许的请求方法）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1047-406-not-acceptable" title="10.4.7 406 Not Acceptable （不接受）" class="md-nav__link">
+    10.4.7 406 Not Acceptable （不接受）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1048-407-proxy-authentication-required" title="10.4.8 407 Proxy Authentication Required （要求验证代理身份）" class="md-nav__link">
+    10.4.8 407 Proxy Authentication Required （要求验证代理身份）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1049-408-request-timeout" title="10.4.9 408 Request Timeout （请求超时）" class="md-nav__link">
+    10.4.9 408 Request Timeout （请求超时）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10410-409-conflict" title="10.4.10 409 Conflict （访问冲突）" class="md-nav__link">
+    10.4.10 409 Conflict （访问冲突）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10411-410-gone" title="10.4.11 410 Gone" class="md-nav__link">
+    10.4.11 410 Gone
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10412-411-length-required" title="10.4.12 411 Length Required （要求指示长度）" class="md-nav__link">
+    10.4.12 411 Length Required （要求指示长度）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10413-412-precondition-failed" title="10.4.13 412 Precondition Failed （先决条件未满足）" class="md-nav__link">
+    10.4.13 412 Precondition Failed （先决条件未满足）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10414-413-request-entity-too-large" title="10.4.14 413 Request Entity Too Large （请求实体过大）" class="md-nav__link">
+    10.4.14 413 Request Entity Too Large （请求实体过大）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10415-414-request-uri-too-long" title="10.4.15 414 Request-URI Too Long" class="md-nav__link">
+    10.4.15 414 Request-URI Too Long
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10416-415-unsupported-media-type" title="10.4.16 415 Unsupported Media Type" class="md-nav__link">
+    10.4.16 415 Unsupported Media Type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10417-416-requested-range-not-satisfiable" title="10.4.17 416 Requested Range Not Satisfiable" class="md-nav__link">
+    10.4.17 416 Requested Range Not Satisfiable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10418-417-expectation-failed" title="10.4.18 417 Expectation Failed" class="md-nav__link">
+    10.4.18 417 Expectation Failed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#105-server-error-5xx" title="10.5 Server Error 5xx" class="md-nav__link">
+    10.5 Server Error 5xx
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1051-500-internal-server-error" title="10.5.1 500 Internal Server Error" class="md-nav__link">
+    10.5.1 500 Internal Server Error
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1052-501-not-implemented" title="10.5.2 501 Not Implemented" class="md-nav__link">
+    10.5.2 501 Not Implemented
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1053-502-bad-gateway" title="10.5.3 502 Bad Gateway" class="md-nav__link">
+    10.5.3 502 Bad Gateway
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1054-503-service-unavailable" title="10.5.4 503 Service Unavailable" class="md-nav__link">
+    10.5.4 503 Service Unavailable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1055-504-gateway-timeout" title="10.5.5 504 Gateway Timeout" class="md-nav__link">
+    10.5.5 504 Gateway Timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1056-505-http-version-not-supported" title="10.5.6 505 HTTP Version Not Supported" class="md-nav__link">
+    10.5.6 505 HTTP Version Not Supported
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="http11-">HTTP/1.1 - 状态码定义</h1>
+<blockquote>
+<p>对 Hypertext Transfer Protocol -- HTTP/1.1 中关于状态码定义的翻译</p>
+<p>date: 2017-12-19</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>part of <a href="https://www.w3.org/Protocols/rfc2616/rfc2616.html" target="_blank">Hypertext Transfer Protocol -- HTTP/1.1</a><br />
+RFC 2616 Fielding, et al.</p>
+</blockquote>
+<p>这篇文章是 <em><a href="https://www.w3.org/Protocols/rfc2616/rfc2616.html" target="_blank">Hypertext Transfer Protocol -- HTTP/1.1</a></em> 的一部分<br />
+<em>RFC 2616</em> ，Fielding等人所著</p>
+<h2 id="10-status-code-definitions">10 Status Code Definitions （状态码定义）</h2>
+<blockquote>
+<p>Each Status-Code is described below, including a description of which method(s) it can follow and any metainformation required in the response.</p>
+</blockquote>
+<p>下面是对于每个状态码的描述，包括它们适用的请求方法和响应中所需附带的信息。</p>
+<h3 id="101-informational-1xx">10.1 Informational 1xx （提示信息）</h3>
+<blockquote>
+<p>This class of status code indicates a provisional response, consisting only of the Status-Line and optional headers, and is terminated by an empty line. There are no required headers for this class of status code. Since HTTP/1.0 did not define any 1xx status codes, servers MUST NOT send a 1xx response to an HTTP/1.0 client except under experimental conditions.</p>
+</blockquote>
+<p>这类状态码表示临时响应，响应仅包含状态行、可选的响应头部和作为响应结束标志的空行。这类状态码没有必需附带的响应头部。由于HTTP/1.0没有定义任何1xx状态码，因此服务器 <strong>绝不能</strong> 向HTTP/1.0客户端发送1xx响应，除非是作为实验而进行。</p>
+<blockquote>
+<p>A client MUST be prepared to accept one or more 1xx status responses prior to a regular response, even if the client does not expect a 100 (Continue) status message. Unexpected 1xx status responses MAY be ignored by a user agent.</p>
+</blockquote>
+<p>在等待接收一个一般（regular）的响应时，客户端 <strong>必须</strong> 准备好接收一个或多个1xx状态的响应，即使客户端并不期望接收一个 <code>100 (Continue)</code> 状态的消息。未预料的1xx状态的响应 <strong>可能</strong> 会被用户代理（user agent）忽略。</p>
+<blockquote>
+<p>Proxies MUST forward 1xx responses, unless the connection between the proxy and its client has been closed, or unless the proxy itself requested the generation of the 1xx response. (For example, if a</p>
+<p>proxy adds a "Expect: 100-continue" field when it forwards a request, then it need not forward the corresponding 100 (Continue) response(s).)</p>
+</blockquote>
+<p>代理（proxy） <strong>必须</strong> 转发1xx响应，除非代理和客户端之间的连接已经关闭，或者除非代理本身要求产生1xx响应。（例如，如果代理在转发请求时添加了 <code>Expect：100-continue</code> 字段，则它不需要转发相应的 <code>100 (Continue)</code> 响应。）</p>
+<h4 id="1011-100-continue">10.1.1 100 Continue （继续）</h4>
+<blockquote>
+<p>The client SHOULD continue with its request. This interim response is used to inform the client that the initial part of the request has been received and has not yet been rejected by the server. The client SHOULD continue by sending the remainder of the request or, if the request has already been completed, ignore this response. The server MUST send a final response after the request has been completed. See section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.2.3" target="_blank">8.2.3</a> for detailed discussion of the use and handling of this status code.</p>
+</blockquote>
+<p>客户端 <strong>应该</strong> 维持其请求。此临时响应用于通知客户端，请求的初始部分已被接收并且未被服务器拒绝。客户端 <strong>应该</strong> 继续发送请求的其余部分，如果请求已经完成，则忽略这个响应。请求完成后，服务器 <strong>必须</strong> 发送最终响应。关于该状态码的使用和处理的详细讨论见<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html#sec8.2.3" target="_blank">8.2.3</a>节。</p>
+<h4 id="1012-101-switching-protocols">10.1.2 101 Switching Protocols （切换协议）</h4>
+<blockquote>
+<p>The server understands and is willing to comply with the client's request, via the Upgrade message header field (section 14.42), for a change in the application protocol being used on this connection. The server will switch protocols to those defined by the response's Upgrade header field immediately after the empty line which terminates the 101 response.</p>
+</blockquote>
+<p>服务器理解并愿意依照客户端的请求，通过改造消息头的字段（14.42节），以改变在此连接上使用的应用协议。紧接在作为101响应结束的空行之后，服务器将立刻切换到改造后的响应头部字段所定义的协议。</p>
+<blockquote>
+<p>The protocol SHOULD be switched only when it is advantageous to do so. For example, switching to a newer version of HTTP is advantageous over older versions, and switching to a real-time, synchronous protocol might be advantageous when delivering resources that use such features.</p>
+</blockquote>
+<p>协议只 <strong>应该</strong> 切换到更有利的情况。例如，切换到较新版本的HTTP比旧版本更有优势，又如当交付具有实时、同步特性的资源时，切换到具有这些特性的协议可能是有利的。</p>
+<h3 id="102-successful-2xx">10.2 Successful 2xx （成功）</h3>
+<blockquote>
+<p>This class of status code indicates that the client's request was successfully received, understood, and accepted.</p>
+</blockquote>
+<p>这类状态码表明客户端的请求已被成功接收，理解并接受。</p>
+<h4 id="1021-200-ok">10.2.1 200 OK （正常）</h4>
+<blockquote>
+<p>The request has succeeded. The information returned with the response is dependent on the method used in the request, for example:</p>
+</blockquote>
+<p>请求成功。随响应一起返回的信息取决于请求中使用的方法，例如：</p>
+<blockquote>
+<p>GET an entity corresponding to the requested resource is sent in the response;</p>
+<p>HEAD the entity-header fields corresponding to the requested resource are sent in the response without any message-body;</p>
+<p>POST an entity describing or containing the result of the action;</p>
+<p>TRACE an entity containing the request message as received by the end server.</p>
+</blockquote>
+<p><strong>GET</strong> 在响应中发送与所请求的资源对应的实体（entity）；</p>
+<p><strong>HEAD</strong> 在响应中发送与所请求的资源对应的实体头部（entity-header）字段，而不包含任何信息体（message-body）；</p>
+<p><strong>POST</strong> 一个描述或包含了处理结果的实体；</p>
+<p><strong>TRACE</strong> 一个包含终端服务器接收到的请求信息的实体。</p>
+<h4 id="1022-201-created">10.2.2 201 Created （已创建）</h4>
+<blockquote>
+<p>The request has been fulfilled and resulted in a new resource being created. The newly created resource can be referenced by the URI(s) returned in the entity of the response, with the most specific URI for the resource given by a Location header field. The response SHOULD include an entity containing a list of resource characteristics and location(s) from which the user or user agent can choose the one most appropriate. The entity format is specified by the media type given in the Content-Type header field. The origin server MUST create the resource before returning the 201 status code. If the action cannot be carried out immediately, the server SHOULD respond with 202 (Accepted) response instead.</p>
+</blockquote>
+<p>请求完成，并因此创建了一个新的资源。该资源可由响应实体中返回的一个或多个URL引用，其中与该资源最匹配的URL会被作为头部的 <code>Location</code> 字段给出。响应 <strong>应该</strong> 包括一个含有一个列表的实体，该列表描述了所包含资源的特性和其一个或多个地址，用户或用户代理可以从中选择一个最合适的地址。实体格式由头部的 <code>Content-Type</code> 字段给出的媒体类型所指定。源服务器 <strong>必须</strong> 在返回201状态码之前创建好所需的资源。如果资源不能被立即创建，那么服务器应该用 <code>202 (Accepted)</code> 响应来代替201响应。</p>
+<blockquote>
+<p>A 201 response MAY contain an ETag response header field indicating the current value of the entity tag for the requested variant just created, see section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19" target="_blank">14.19</a>.</p>
+</blockquote>
+<p>一个201响应 <strong>可以</strong> 包含一个 <code>ETag</code> 响应头部字段，用于指出刚创建的被请求变量（requested variant）的实体标签（entity tag）的当前值，参见<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19" target="_blank">14.19</a>节</p>
+<h4 id="1023-202-accepted">10.2.3 202 Accepted （已接受）</h4>
+<blockquote>
+<p>The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place. There is no facility for re-sending a status code from an asynchronous operation such as this.</p>
+</blockquote>
+<p>该请求已被接受进行处理，但处理尚未完成。该请求最终可能会也可能不会被满足，因为请求可能在实际处理过程中被禁止。这样一种异步机制并没有重发状态码的功能。</p>
+<blockquote>
+<p>The 202 response is intentionally non-committal. Its purpose is to allow a server to accept a request for some other process (perhaps a batch-oriented process that is only run once per day) without requiring that the user agent's connection to the server persist until the process is completed. The entity returned with this response SHOULD include an indication of the request's current status and either a pointer to a status monitor or some estimate of when the user can expect the request to be fulfilled.</p>
+</blockquote>
+<p>202响应是故意不作承诺（non-committal）的。它的目的在于允许服务器接受对其他进程的请求（也许是一个每天只运行一次的面向批处理（batch-oriented）的进程），而不需要维持与客户代理的连接直到进程完成。这个响应返回的实体 <strong>应该</strong> 包含一个对于请求的当前状态的指示，或者一个指向状态监视器的指针，或一些对于用户请求何时会被满足的估计。</p>
+<h4 id="1024-203-non-authoritative-information">10.2.4 203 Non-Authoritative Information （非权威信息）</h4>
+<blockquote>
+<p>The returned metainformation in the entity-header is not the definitive set as available from the origin server, but is gathered from a local or a third-party copy. The set presented MAY be a subset or superset of the original version. For example, including local annotation information about the resource might result in a superset of the metainformation known by the origin server. Use of this response code is not required and is only appropriate when the response would otherwise be 200 (OK).</p>
+</blockquote>
+<p>在实体头部中返回的元信息（metainformation）并不是从源服务器获得的权威信息的集合，而是从本地或第三方副本收集的。所得的信息集合 <strong>可以</strong> 是原始版本的子集或超集。例如，如果包含对资源的本地标注信息，可能会导致得到一个源服务器已知元信息的超集。使用此响应代码不是必需的，并且该状态码只适于在不能使用 <code>200 (OK)</code> 响应的情况下使用。</p>
+<h4 id="1025-204-no-content">10.2.5 204 No Content （无内容）</h4>
+<blockquote>
+<p>The server has fulfilled the request but does not need to return an entity-body, and might want to return updated metainformation. The response MAY include new or updated metainformation in the form of entity-headers, which if present SHOULD be associated with the requested variant.</p>
+</blockquote>
+<p>服务器对请求的处理已完成，但没有返回实体主体（entity-body）的需要，并且可能想要返回更新后的元信息。响应 <strong>可以</strong> 在生成实体头部时包含新的或更新后的元信息，如果的确如此，那这些信息 <strong>应该</strong> 与请求变量相关联。</p>
+<blockquote>
+<p>If the client is a user agent, it SHOULD NOT change its document view from that which caused the request to be sent. This response is primarily intended to allow input for actions to take place without causing a change to the user agent's active document view, although any new or updated metainformation SHOULD be applied to the document currently in the user agent's active view.</p>
+</blockquote>
+<p>如果客户端是一个用户代理，则它 <strong>不应该</strong> 为此（接收到一个204响应）改变文档视图（document view）。尽管任何新的或更新后的元信息 <strong>应该</strong> 被用户代理应用到当前活动的文档视图中，但是这个响应主要是为了允许在不改变用户代理的活动文档视图的情况下为其活动进行输入操作。</p>
+<blockquote>
+<p>The 204 response MUST NOT include a message-body, and thus is always terminated by the first empty line after the header fields.</p>
+</blockquote>
+<p>204响应 <strong>绝不能</strong> 包含信息体，因此它总会被头部字段之后的第一个空行所终止。</p>
+<h4 id="1026-205-reset-content">10.2.6 205 Reset Content （内容重置）</h4>
+<blockquote>
+<p>The server has fulfilled the request and the user agent SHOULD reset the document view which caused the request to be sent. This response is primarily intended to allow input for actions to take place via user input, followed by a clearing of the form in which the input is given so that the user can easily initiate another input action. The response MUST NOT include an entity.</p>
+</blockquote>
+<p>服务器对请求的处理已完成，用户代理 <strong>应该</strong> 重置导致该请求被发送的文档的文档视图。该响应主要是为了允许通过用户输入对用户代理的活动进行输入操作，然后清除该输入，以便用户可以很容易地开始另一个输入动作。响应 <strong>绝不能</strong> 包含任何实体。</p>
+<h4 id="1027-206-partial-content">10.2.7 206 Partial Content （部分内容）</h4>
+<blockquote>
+<p>The server has fulfilled the partial GET request for the resource. The request MUST have included a Range header field (section 14.35) indicating the desired range, and MAY have included an If-Range header field (section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.27" target="_blank">14.27</a>) to make the request conditional.</p>
+</blockquote>
+<p>服务器已经处理完了对资源的部分GET请求。该请求 <strong>必须</strong> 包含一个 <code>Range</code> 头部字段（14.35节），表示期望的范围，并且 <strong>可以</strong> 包含一个 <code>If-Range</code> 头部字段（<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.27" target="_blank">14.27</a>节）来使请求条件明确。</p>
+<blockquote>
+<p>The response MUST include the following header fields:</p>
+<ul>
+<li>Either a Content-Range header field (section 14.16) indicating<br />
+the range included with this response, or a multipart/byteranges<br />
+Content-Type including Content-Range fields for each part. If a<br />
+Content-Length header field is present in the response, its<br />
+value MUST match the actual number of OCTETs transmitted in the<br />
+message-body.</li>
+<li>Date</li>
+<li>ETag and/or Content-Location, if the header would have been sent<br />
+in a 200 response to the same request</li>
+<li>Expires, Cache-Control, and/or Vary, if the field-value might<br />
+differ from that sent in any previous response for the same<br />
+variant</li>
+</ul>
+</blockquote>
+<p>响应 <strong>必须</strong> 包含以下头部字段：</p>
+<ul>
+<li>一个<code>Content-Range</code> 头部字段（14.16节），指示该响应包含<br />
+的范围；或者将 <code>Content-Type</code> 头部字段置为 <code>multipart/byteranges</code> ，<br />
+并在每个部分包含 <code>Content-Range</code> 字段。如果在响应头部含有一个<br />
+<code>Content-Length</code> 字段，则它的值 <strong>必须</strong> 与在信息体中实际传输<br />
+的 <strong>8比特字节（octet）</strong> 数相匹配。</li>
+<li><code>Data</code></li>
+<li><code>ETag</code> 和/或 <code>Content-Location</code> ，如果头部已经在一个对该<br />
+请求的200响应中被发送。</li>
+<li><code>Expires</code> ， <code>Cache-Control</code> ，和/或 <code>Vary</code> ，如果字段值（field-value）<br />
+可能与之前对该请求发送的任何响应中的字段值都不同。</li>
+</ul>
+<blockquote>
+<p>If the 206 response is the result of an If-Range request that used a strong cache validator (see section 13.3.3), the response SHOULD NOT include other entity-headers. If the response is the result of an If-Range request that used a weak validator, the response MUST NOT include other entity-headers; this prevents inconsistencies between cached entity-bodies and updated headers. Otherwise, the response MUST include all of the entity-headers that would have been returned with a 200 (OK) response to the same request.</p>
+</blockquote>
+<p>如果该206响应是对一个使用强缓存验证器（strong cache validator）的 <code>If-Range</code> 请求（请参阅第13.3.3节）的回应，则该响应 <strong>不应该</strong> 包含其他实体头部。如果响应是对一个使用弱验证器（weak validator）的 <code>If-Range</code> 请求的回应，则该响应 <strong>绝不能</strong> 包含其他实体头部；这可以防止缓存的实体与更新的头部之间不一致。否则，该响应 <strong>必须</strong> 包含对该请求已返回的 <code>200 (OK)</code> 响应的全部实体头部。</p>
+<blockquote>
+<p>A cache MUST NOT combine a 206 response with other previously cached content if the ETag or Last-Modified headers do not match exactly, see <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13.5.4" target="_blank">13.5.4</a>.</p>
+</blockquote>
+<p>如果缓存器的 <code>ETag</code> 或 <code>Last-Modified</code> 头部字段与一个206响应不完全匹配，则 <strong>绝不能</strong> 将该206响应与其他先前的缓存内容合并，见<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13.5.4" target="_blank">13.5.4</a>。</p>
+<blockquote>
+<p>A cache that does not support the Range and Content-Range headers MUST NOT cache 206 (Partial) responses.</p>
+</blockquote>
+<p>不支持 <code>Range</code> 和 <code>Content-Range</code> 头部的缓存器 <strong>绝不能</strong> 缓存 <code>206 (Partial)</code> 响应。</p>
+<h3 id="103-redirection-3xx">10.3 Redirection 3xx （重定向）</h3>
+<blockquote>
+<p>This class of status code indicates that further action needs to be taken by the user agent in order to fulfill the request. The action required MAY be carried out by the user agent without interaction with the user if and only if the method used in the second request is GET or HEAD. A client SHOULD detect infinite redirection loops, since such loops generate network traffic for each redirection.</p>
+</blockquote>
+<p>这类状态码表明用户代理需要采取进一步行动来完成请求。当且仅当第二个请求中使用的方法是GET或HEAD时，所需的进一步行动 <strong>可以</strong> 由用户代理自动执行，而不与用户进行交互。客户端 <strong>应该</strong> 检测到无限重定向循环，因为这种循环的每个重定向都在浪费网络流量。</p>
+<blockquote>
+<blockquote>
+<p>Note: previous versions of this specification recommended a<br />
+maximum of five redirections. Content developers should be aware<br />
+that there might be clients that implement such a fixed<br />
+limitation.</p>
+</blockquote>
+<p>注意：此规范过去的版本建议最多不超过五个重定向。内容开发者应该<br />
+意识到，也许有的客户端已经实现了这样一个固定的限制。</p>
+</blockquote>
+<h4 id="1031-300-multiple-choices">10.3.1 300 Multiple Choices （多重选择）</h4>
+<blockquote>
+<p>The requested resource corresponds to any one of a set of representations, each with its own specific location, and agent-driven negotiation information (section 12) is being provided so that the user (or user agent) can select a preferred representation and redirect its request to that location.</p>
+</blockquote>
+<p>所请求的资源对应于一组记录的任意一条，每条记录都有其唯一的地址，并且提供代理驱动（agent-driven）的协商信息（第12节），这使得用户（或用户代理）可以选择一条最优的记录，并重定向到所选的地址。</p>
+<blockquote>
+<p>Unless it was a HEAD request, the response SHOULD include an entity containing a list of resource characteristics and location(s) from which the user or user agent can choose the one most appropriate. The entity format is specified by the media type given in the Content-Type header field. Depending upon the format and the capabilities of the user agent, selection of the most appropriate choice MAY be performed automatically. However, this specification does not define any standard for such automatic selection.</p>
+</blockquote>
+<p>除非是HEAD请求，否则响应 <strong>应该</strong> 附带一个内含列表的实体，该列表列出了资源的特性和资源所在的地址，用户或用户代理可以从中选择最合适的一个。实体格式由 <code>Content-Type</code> 头部字段中给出的媒体类型所指定。用户代理 <strong>可以</strong> 根据其设计和功能，自动选择最合适的选项。但是，该规范没有为这种自动选择定义任何标准。</p>
+<blockquote>
+<p>If the server has a preferred choice of representation, it SHOULD include the specific URI for that representation in the Location field; user agents MAY use the Location field value for automatic redirection. This response is cacheable unless indicated otherwise.</p>
+</blockquote>
+<p>如果服务器有推荐的记录，它 <strong>应该</strong> 在 <code>Location</code> 字段中包含该记录的URI；用户代理 <strong>可以</strong> 使用 <code>Location</code> 字段值进行自动重定向。除非另有说明，否则该响应是可缓存的。</p>
+<h4 id="1032-301-moved-permanently">10.3.2 301 Moved Permanently （永久转移）</h4>
+<blockquote>
+<p>The requested resource has been assigned a new permanent URI and any future references to this resource SHOULD use one of the returned URIs. Clients with link editing capabilities ought to automatically re-link references to the Request-URI to one or more of the new references returned by the server, where possible. This response is cacheable unless indicated otherwise.</p>
+</blockquote>
+<p>所请求的资源已经被转移到了一个新的永久性的URI，任何将来对这个资源的引用都 <strong>应该</strong> 使用返回的URI中的一个。能够编辑链接的客户端应尽可能将对 <code>Request-URI</code> 的引用重新链接到服务器返回的一个或多个新的引用。除非另有说明，否则该响应是可缓存的。</p>
+<blockquote>
+<p>The new permanent URI SHOULD be given by the Location field in the response. Unless the request method was HEAD, the entity of the response SHOULD contain a short hypertext note with a hyperlink to the new URI(s).</p>
+</blockquote>
+<p>新的永久URI <strong>应该</strong> 在响应的 <code>Location</code> 字段给出。除非请求方法是HEAD，否则响应的实体 <strong>应该</strong> 包含一条简短的超文本记录，该记录包含一个转到新URI的超链接。</p>
+<blockquote>
+<p>If the 301 status code is received in response to a request other than GET or HEAD, the user agent MUST NOT automatically redirect the request unless it can be confirmed by the user, since this might change the conditions under which the request was issued.</p>
+</blockquote>
+<p>如果用户代理接收到一个301状态的响应，且该响应是对一个既非GET亦非HEAD请求的回应，那么除非经过用户的确认，否则用户代理 <strong>绝不能</strong> 自动重定向，因为这可能不符合最初发送请求的条件。</p>
+<blockquote>
+<blockquote>
+<p>Note: When automatically redirecting a POST request after<br />
+receiving a 301 status code, some existing HTTP/1.0 user agents<br />
+will erroneously change it into a GET request.</p>
+</blockquote>
+<p>注意：在收到一个301状态码后，自动重定向一个POST请求时，一些现有<br />
+的HTTP/1.0用户代理会错误地将其更改为GET请求。</p>
+</blockquote>
+<h4 id="1033-302-found">10.3.3 302 Found （已创建）</h4>
+<blockquote>
+<p>The requested resource resides temporarily under a different URI. Since the redirection might be altered on occasion, the client SHOULD continue to use the Request-URI for future requests. This response is only cacheable if indicated by a Cache-Control or Expires header field.</p>
+</blockquote>
+<p>所请求的资源暂时驻留在另一个URI下。由于重定向可能会被改变，所以客户端 <strong>应该</strong> 继续使用 <code>Request-URI</code> 来处理将来的请求。只有在 <code>Cache-Control</code> 或 <code>Expires</code> 头部字段指明时，该响应才可缓存。</p>
+<blockquote>
+<p>The temporary URI SHOULD be given by the Location field in the response. Unless the request method was HEAD, the entity of the response SHOULD contain a short hypertext note with a hyperlink to the new URI(s).</p>
+</blockquote>
+<p>临时URI <strong>应该</strong> 在响应的 <code>Location</code> 字段给出。除非请求方法是HEAD，否则响应的实体 <strong>应该</strong> 包含一条简短的超文本记录，该记录包含一个转到新URI的超链接。</p>
+<blockquote>
+<p>If the 302 status code is received in response to a request other than GET or HEAD, the user agent MUST NOT automatically redirect the request unless it can be confirmed by the user, since this might change the conditions under which the request was issued.</p>
+</blockquote>
+<p>如果用户代理接收到一个302状态的响应，且该响应是对一个既非GET亦非HEAD方法的请求的回应，那么除非经过用户的确认，否则用户代理 <strong>绝不能</strong> 自动重定向，因为这可能不符合最初发送请求的条件。</p>
+<blockquote>
+<blockquote>
+<p>Note: RFC 1945 and RFC 2068 specify that the client is not allowed<br />
+to change the method on the redirected request.  However, most<br />
+existing user agent implementations treat 302 as if it were a 303<br />
+response, performing a GET on the Location field-value regardless<br />
+of the original request method. The status codes 303 and 307 have<br />
+been added for servers that wish to make unambiguously clear which<br />
+kind of reaction is expected of the client.</p>
+</blockquote>
+<p>注意：尽管RFC 1945和RFC 2068已明确不允许客户端更改重定向请求所使用的请求方<br />
+法。但是，现有的多数用户代理实现都将302响应当作303响应处理，无论原始请求方法<br />
+是什么，都对 <code>Location</code> 字段值发送GET请求。为了满足那些希望明确获知客户端期望何
+种反应的服务器，状态码303和307已被添加到新的规范中。</p>
+</blockquote>
+<h4 id="1034-303-see-other">10.3.4 303 See Other （查看其它）</h4>
+<blockquote>
+<p>The response to the request can be found under a different URI and SHOULD be retrieved using a GET method on that resource. This method exists primarily to allow the output of a POST-activated script to redirect the user agent to a selected resource. The new URI is not a substitute reference for the originally requested resource. The 303 response MUST NOT be cached, but the response to the second (redirected) request might be cacheable.</p>
+</blockquote>
+<p>对请求的响应可以在另一个URI下被找到，并且 <strong>应该</strong> 使用GET方法通过新的URI重新获取资源。此方法主要用于允许POST方法激活的脚本（POST-activated script）的输出，从而将用户代理重定向到选定的的资源。新的URI并不是最初请求的资源的替代链接。303响应 <strong>绝不能</strong> 被缓存，但对第二个（重定向的）请求的响应可能是可缓存的。</p>
+<blockquote>
+<p>The different URI SHOULD be given by the Location field in the response. Unless the request method was HEAD, the entity of the response SHOULD contain a short hypertext note with a hyperlink to the new URI(s).</p>
+</blockquote>
+<p>新的URI <strong>应该</strong> 由响应中的 <code>Location</code> 字段给出。除非请求方法是HEAD，否则响应的实体 <strong>应该</strong> 包含一条简短的超文本记录，该记录包含一个转到新URI的超链接。</p>
+<blockquote>
+<blockquote>
+<p>Note: Many pre-HTTP/1.1 user agents do not understand the 303<br />
+status. When interoperability with such clients is a concern, the<br />
+302 status code may be used instead, since most user agents react<br />
+to a 302 response as described here for 303.</p>
+</blockquote>
+<p>注意：许多pre-HTTP/1.1用户代理不能理解303状态。如果担忧与这种客户端的<br />
+交互性，可以使用302状态码来代替303状态码，因为多数用户代理对302的反应<br />
+像对303描述的那样。</p>
+</blockquote>
+<h4 id="1035-304-not-modified">10.3.5 304 Not Modified （未修改）</h4>
+<blockquote>
+<p>If the client has performed a conditional GET request and access is allowed, but the document has not been modified, the server SHOULD respond with this status code. The 304 response MUST NOT contain a message-body, and thus is always terminated by the first empty line after the header fields.</p>
+</blockquote>
+<p>如果客户端发送了有条件的GET请求并被允许访问，但文档尚未被修改，则服务器 <strong>应该</strong> 使用此状态码进行响应。304响应 <strong>绝不能</strong> 包含消息体，因此总是在头部字段后的第一个空行后终止。</p>
+<blockquote>
+<p>The response MUST include the following header fields:</p>
+<ul>
+<li>Date, unless its omission is required by section 14.18.1</li>
+</ul>
+<p>If a clockless origin server obeys these rules, and proxies and clients add their own Date to any response received without one (as already specified by [RFC 2068], section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19" target="_blank">14.19</a>), caches will operate correctly.</p>
+<ul>
+<li>ETag and/or Content-Location, if the header would have been sent<br />
+in a 200 response to the same request</li>
+<li>Expires, Cache-Control, and/or Vary, if the field-value might<br />
+differ from that sent in any previous response for the same<br />
+variant</li>
+</ul>
+</blockquote>
+<p>响应 <strong>必须</strong> 包含以下头部字段：</p>
+<ul>
+<li><code>Date</code> ，除非按第14.18.1节要求省略</li>
+</ul>
+<p>如果无时钟的源服务器服从这些规则，并且代理和客户端将它们自己的日期添加到收到的任何的没有日期的响应中（如[RFC 2068]，[14.19]中所述），则缓存将正常运行。</p>
+<ul>
+<li><code>ETag</code> 和/或 <code>Content-Location</code> ，如果头部已经在一个对该请求的200响应中被发送。</li>
+<li><code>Expires</code> ， <code>Cache-Control</code> ，和/或 <code>Vary</code> ，如果字段值可能不同于在以往对该请求的任何响应中被发送的该字段值的变种</li>
+</ul>
+<p>If the conditional GET used a strong cache validator (see section 13.3.3), the response SHOULD NOT include other entity-headers. Otherwise (i.e., the conditional GET used a weak validator), the response MUST NOT include other entity-headers; this prevents inconsistencies between cached entity-bodies and updated headers.</p>
+<p>If a 304 response indicates an entity not currently cached, then the cache MUST disregard the response and repeat the request without the conditional.</p>
+<p>If a cache uses a received 304 response to update a cache entry, the cache MUST update the entry to reflect any new field values given in the response.</p>
+<h4 id="1036-305-use-proxy">10.3.6 305 Use Proxy</h4>
+<p>The requested resource MUST be accessed through the proxy given by the Location field. The Location field gives the URI of the proxy. The recipient is expected to repeat this single request via the proxy. 305 responses MUST only be generated by origin servers.</p>
+<blockquote>
+<p>Note: RFC 2068 was not clear that 305 was intended to redirect a<br />
+single request, and to be generated by origin servers only.  Not<br />
+observing these limitations has significant security consequences.</p>
+</blockquote>
+<h4 id="1037-306-unused">10.3.7 306 (Unused) （已停止使用）</h4>
+<blockquote>
+<p>The 306 status code was used in a previous version of the specification, is no longer used, and the code is reserved.</p>
+</blockquote>
+<p>306状态码曾被用于先前版本的规范，现已不再使用，但仍保留该代码。</p>
+<h4 id="1038-307-temporary-redirect">10.3.8 307 Temporary Redirect</h4>
+<p>The requested resource resides temporarily under a different URI. Since the redirection MAY be altered on occasion, the client SHOULD continue to use the Request-URI for future requests. This response is only cacheable if indicated by a Cache-Control or Expires header field.</p>
+<p>The temporary URI SHOULD be given by the Location field in the response. Unless the request method was HEAD, the entity of the response SHOULD contain a short hypertext note with a hyperlink to the new URI(s) , since many pre-HTTP/1.1 user agents do not understand the 307 status. Therefore, the note SHOULD contain the information necessary for a user to repeat the original request on the new URI.</p>
+<p>If the 307 status code is received in response to a request other than GET or HEAD, the user agent MUST NOT automatically redirect the request unless it can be confirmed by the user, since this might change the conditions under which the request was issued.</p>
+<h3 id="104-client-error-4xx">10.4 Client Error 4xx （客户端错误）</h3>
+<p>The 4xx class of status code is intended for cases in which the client seems to have erred. Except when responding to a HEAD request, the server SHOULD include an entity containing an explanation of the error situation, and whether it is a temporary or permanent condition. These status codes are applicable to any request method. User agents SHOULD display any included entity to the user.</p>
+<p>If the client is sending data, a server implementation using TCP SHOULD be careful to ensure that the client acknowledges receipt of the packet(s) containing the response, before the server closes the input connection. If the client continues sending data to the server after the close, the server's TCP stack will send a reset packet to the client, which may erase the client's unacknowledged input buffers before they can be read and interpreted by the HTTP application.</p>
+<h4 id="1041-400-bad-request">10.4.1 400 Bad Request</h4>
+<p>The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications.</p>
+<h4 id="1042-401-unauthorized">10.4.2 401 Unauthorized （未经许可）</h4>
+<p>The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource. The client MAY repeat the request with a suitable Authorization header field (section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.8" target="_blank">14.8</a>). If the request already included Authorization credentials, then the 401 response indicates that authorization has been refused for those credentials. If the 401 response contains the same challenge as the prior response, and the user agent has already attempted authentication at least once, then the user SHOULD be presented the entity that was given in the response, since that entity might include relevant diagnostic information. HTTP access authentication is explained in "HTTP Authentication: Basic and Digest Access Authentication" <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec17.html#bib43" target="_blank">[43]</a>.</p>
+<h4 id="1043-402-payment-required">10.4.3 402 Payment Required （需要支付）</h4>
+<p>This code is reserved for future use.</p>
+<h4 id="1044-403-forbidden">10.4.4 403 Forbidden （禁止访问）</h4>
+<p>The server understood the request, but is refusing to fulfill it. Authorization will not help and the request SHOULD NOT be repeated. If the request method was not HEAD and the server wishes to make public why the request has not been fulfilled, it SHOULD describe the reason for the refusal in the entity. If the server does not wish to make this information available to the client, the status code 404 (Not Found) can be used instead.</p>
+<h4 id="1045-404-not-found">10.4.5 404 Not Found （未找到）</h4>
+<p>The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent. The 410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is permanently unavailable and has no forwarding address. This status code is commonly used when the server does not wish to reveal exactly why the request has been refused, or when no other response is applicable.</p>
+<h4 id="1046-405-method-not-allowed">10.4.6 405 Method Not Allowed （不允许的请求方法）</h4>
+<p>The method specified in the Request-Line is not allowed for the resource identified by the Request-URI. The response MUST include an Allow header containing a list of valid methods for the requested resource.</p>
+<h4 id="1047-406-not-acceptable">10.4.7 406 Not Acceptable （不接受）</h4>
+<p>The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request.</p>
+<p>Unless it was a HEAD request, the response SHOULD include an entity containing a list of available entity characteristics and location(s) from which the user or user agent can choose the one most appropriate. The entity format is specified by the media type given in the Content-Type header field. Depending upon the format and the capabilities of the user agent, selection of the most appropriate choice MAY be performed automatically. However, this specification does not define any standard for such automatic selection.</p>
+<blockquote>
+<p>Note: HTTP/1.1 servers are allowed to return responses which are<br />
+not acceptable according to the accept headers sent in the<br />
+request. In some cases, this may even be preferable to sending a<br />
+406 response. User agents are encouraged to inspect the headers of<br />
+an incoming response to determine if it is acceptable.</p>
+</blockquote>
+<p>If the response could be unacceptable, a user agent SHOULD temporarily stop receipt of more data and query the user for a decision on further actions.</p>
+<h4 id="1048-407-proxy-authentication-required">10.4.8 407 Proxy Authentication Required （要求验证代理身份）</h4>
+<p>This code is similar to 401 (Unauthorized), but indicates that the client must first authenticate itself with the proxy. The proxy MUST return a Proxy-Authenticate header field (section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.33" target="_blank">14.33</a>) containing a challenge applicable to the proxy for the requested resource. The client MAY repeat the request with a suitable Proxy-Authorization header field (section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.34" target="_blank">14.34</a>). HTTP access authentication is explained in "HTTP Authentication: Basic and Digest Access Authentication" <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec17.html#bib43" target="_blank">[43]</a>.</p>
+<h4 id="1049-408-request-timeout">10.4.9 408 Request Timeout （请求超时）</h4>
+<p>The client did not produce a request within the time that the server was prepared to wait. The client MAY repeat the request without modifications at any later time.</p>
+<h4 id="10410-409-conflict">10.4.10 409 Conflict （访问冲突）</h4>
+<p>The request could not be completed due to a conflict with the current state of the resource. This code is only allowed in situations where it is expected that the user might be able to resolve the conflict and resubmit the request. The response body SHOULD include enough</p>
+<p>information for the user to recognize the source of the conflict. Ideally, the response entity would include enough information for the user or user agent to fix the problem; however, that might not be possible and is not required.</p>
+<p>Conflicts are most likely to occur in response to a PUT request. For example, if versioning were being used and the entity being PUT included changes to a resource which conflict with those made by an earlier (third-party) request, the server might use the 409 response to indicate that it can't complete the request. In this case, the response entity would likely contain a list of the differences between the two versions in a format defined by the response Content-Type.</p>
+<h4 id="10411-410-gone">10.4.11 410 Gone</h4>
+<p>The requested resource is no longer available at the server and no forwarding address is known. This condition is expected to be considered permanent. Clients with link editing capabilities SHOULD delete references to the Request-URI after user approval. If the server does not know, or has no facility to determine, whether or not the condition is permanent, the status code 404 (Not Found) SHOULD be used instead. This response is cacheable unless indicated otherwise.</p>
+<p>The 410 response is primarily intended to assist the task of web maintenance by notifying the recipient that the resource is intentionally unavailable and that the server owners desire that remote links to that resource be removed. Such an event is common for limited-time, promotional services and for resources belonging to individuals no longer working at the server's site. It is not necessary to mark all permanently unavailable resources as "gone" or to keep the mark for any length of time -- that is left to the discretion of the server owner.</p>
+<h4 id="10412-411-length-required">10.4.12 411 Length Required （要求指示长度）</h4>
+<p>The server refuses to accept the request without a defined Content- Length. The client MAY repeat the request if it adds a valid Content-Length header field containing the length of the message-body in the request message.</p>
+<h4 id="10413-412-precondition-failed">10.4.13 412 Precondition Failed （先决条件未满足）</h4>
+<p>The precondition given in one or more of the request-header fields evaluated to false when it was tested on the server. This response code allows the client to place preconditions on the current resource metainformation (header field data) and thus prevent the requested method from being applied to a resource other than the one intended.</p>
+<h4 id="10414-413-request-entity-too-large">10.4.14 413 Request Entity Too Large （请求实体过大）</h4>
+<p>The server is refusing to process a request because the request entity is larger than the server is willing or able to process. The server MAY close the connection to prevent the client from continuing the request.</p>
+<p>If the condition is temporary, the server SHOULD include a Retry- After header field to indicate that it is temporary and after what time the client MAY try again.</p>
+<h4 id="10415-414-request-uri-too-long">10.4.15 414 Request-URI Too Long</h4>
+<p>The server is refusing to service the request because the Request-URI is longer than the server is willing to interpret. This rare condition is only likely to occur when a client has improperly converted a POST request to a GET request with long query information, when the client has descended into a URI "black hole" of redirection (e.g., a redirected URI prefix that points to a suffix of itself), or when the server is under attack by a client attempting to exploit security holes present in some servers using fixed-length buffers for reading or manipulating the Request-URI.</p>
+<h4 id="10416-415-unsupported-media-type">10.4.16 415 Unsupported Media Type</h4>
+<p>The server is refusing to service the request because the entity of the request is in a format not supported by the requested resource for the requested method.</p>
+<h4 id="10417-416-requested-range-not-satisfiable">10.4.17 416 Requested Range Not Satisfiable</h4>
+<p>A server SHOULD return a response with this status code if a request included a Range request-header field (section 14.35), and none of the range-specifier values in this field overlap the current extent of the selected resource, and the request did not include an If-Range request-header field. (For byte-ranges, this means that the first- byte-pos of all of the byte-range-spec values were greater than the current length of the selected resource.)</p>
+<p>When this status code is returned for a byte-range request, the response SHOULD include a Content-Range entity-header field specifying the current length of the selected resource (see section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16" target="_blank">14.16</a>). This response MUST NOT use the multipart/byteranges content- type.</p>
+<h4 id="10418-417-expectation-failed">10.4.18 417 Expectation Failed</h4>
+<p>The expectation given in an Expect request-header field (see section 14.20) could not be met by this server, or, if the server is a proxy, the server has unambiguous evidence that the request could not be met by the next-hop server.</p>
+<h3 id="105-server-error-5xx">10.5 Server Error 5xx</h3>
+<p>Response status codes beginning with the digit "5" indicate cases in which the server is aware that it has erred or is incapable of performing the request. Except when responding to a HEAD request, the server SHOULD include an entity containing an explanation of the error situation, and whether it is a temporary or permanent condition. User agents SHOULD display any included entity to the user. These response codes are applicable to any request method.</p>
+<h4 id="1051-500-internal-server-error">10.5.1 500 Internal Server Error</h4>
+<p>The server encountered an unexpected condition which prevented it from fulfilling the request.</p>
+<h4 id="1052-501-not-implemented">10.5.2 501 Not Implemented</h4>
+<p>The server does not support the functionality required to fulfill the request. This is the appropriate response when the server does not recognize the request method and is not capable of supporting it for any resource.</p>
+<h4 id="1053-502-bad-gateway">10.5.3 502 Bad Gateway</h4>
+<p>The server, while acting as a gateway or proxy, received an invalid response from the upstream server it accessed in attempting to fulfill the request.</p>
+<h4 id="1054-503-service-unavailable">10.5.4 503 Service Unavailable</h4>
+<p>The server is currently unable to handle the request due to a temporary overloading or maintenance of the server. The implication is that this is a temporary condition which will be alleviated after some delay. If known, the length of the delay MAY be indicated in a Retry-After header. If no Retry-After is given, the client SHOULD handle the response as it would for a 500 response.</p>
+<blockquote>
+<p>Note: The existence of the 503 status code does not imply that a<br />
+server must use it when becoming overloaded. Some servers may wish<br />
+to simply refuse the connection.</p>
+</blockquote>
+<h4 id="1055-504-gateway-timeout">10.5.5 504 Gateway Timeout</h4>
+<p>The server, while acting as a gateway or proxy, did not receive a timely response from the upstream server specified by the URI (e.g. HTTP, FTP, LDAP) or some other auxiliary server (e.g. DNS) it needed to access in attempting to complete the request.</p>
+<blockquote>
+<p>Note: Note to implementors: some deployed proxies are known to<br />
+return 400 or 500 when DNS lookups time out.</p>
+</blockquote>
+<h4 id="1056-505-http-version-not-supported">10.5.6 505 HTTP Version Not Supported</h4>
+<p>The server does not support, or refuses to support, the HTTP protocol version that was used in the request message. The server is indicating that it is unable or unwilling to complete the request using the same major version as the client, as described in section <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.1" target="_blank">3.1</a>, other than with this error message. The response SHOULD contain an entity describing why that version is not supported and what other protocols are supported by that server.</p>
+                
+                  
+                
+              
+              
+<div id="comments_main">
+    <div style="height: 30px;"></div>
+    <hr>
+    <h2>你终于看完了！</h2>
+    <span id="leancloud-visitor" class="leancloud-visitors" data-flag-title="Your Article Title">
+        你可能会好奇这个数字，所以我就直接告诉你吧，<em class="post-meta-item-text"><b>这文章阅读量 </b></em>
+        <b><i class="leancloud-visitors-count">x</i></b>
+    </span>
+    <p>如果你对这篇文章有任何想法或者对Keyboard本人有什么看法，随便什么东西，甚至是“hhh”，都可以在下面留言。随便吐槽，反正我不会看的...</p>
+    <p>这是完全匿名的，当然你也可以留个名，甚至留个邮箱，因为如果你有什么有趣的留言我可能会好奇想认识一下你</p>
+    <p><em>（说实话，我会看的，真的！）</em></p>
+    <div id="vcomments"></div>
+</div>
+<script>
+    document.getElementById("leancloud-visitor").id = window.location.pathname;
+    let comments_switch = document.getElementById("comments_switch");
+    if (!comments_switch || comments_switch.innerText != "False") {
+        new Valine({
+            el: '#vcomments',
+            appId: '9nBhQjarudnTltm9uQgqT04z-gzGzoHsz',
+            appKey: 'jpCWh05kBHWtjvxg6pjbPiMP',
+            placeholder: 'e.g. hhh',
+            meta: ['nick', 'mail'],
+            pageSize: 5,
+            visitor: true
+        })
+    }
+    else {
+        document.getElementById("comments_main").hidden = true;
+    }
+    
+</script>
+
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="2018-05-19-mkdocs-blog.html" title="通过MkDocs搭建个人博客" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                通过MkDocs搭建个人博客
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="2017-08-01-Nginx_uWSGI_Flask_in_CentOS.html" title="CentOS中通过Nginx和uWSGI部署Flask项目" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                CentOS中通过Nginx和uWSGI部署Flask项目
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; <a href="https://blog.keybrl.com/">KeybrL</a> All Rights Reserved.
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/keybrl" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://steamcommunity.com/id/keybrl" class="md-footer-social__link fa fa-steam"></a>
+    
+      <a href="mailto:keyboard-l@outlook.com" class="md-footer-social__link fa fa-envelope"></a>
+    
+      <a href="https://blog.keybrl.com/feed.xml" class="md-footer-social__link fa fa-rss"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.jp.js"></script>
+              
+            
+          
+          
+            <script src="../assets/javascripts/lunr/lunr.multi.js"></script>
+          
+        
+      
+      <script>app.initialize({version:"1.0.3",url:{base:".."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-119555935-1","blog.keybrl.com"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

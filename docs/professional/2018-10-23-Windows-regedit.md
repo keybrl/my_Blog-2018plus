@@ -31,7 +31,7 @@ Windows 默认的用户文件目录一般是这样的 C:\Users\username\ 。默�
 
 开始的时候我是没什么所谓的，毕竟一般人也不会经常看见自己的用户目录，直到有一天我打开终端（CMD 或者 PowerShell）。终端的默认工作路径就在自己的用户目录（下图是已经改过来了）
 
-![PowerShell](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/Windows-regedit/powershell.jpg)
+![PowerShell](//blog-oss.keybrl.com/2018/images/Windows-regedit/powershell.jpg)
 
 那么如果用户目录不喜欢怎么办呢。首先需要修改注册表，修改系统的用户目录。
 

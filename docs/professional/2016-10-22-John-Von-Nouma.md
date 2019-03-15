@@ -4,7 +4,7 @@
 >
 > date: 2016-10-22
 
-![冯·诺依曼](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/John-Von-Nouma/title_image.jpg)
+![冯·诺依曼](//blog-oss.keybrl.com/2018/images/John-Von-Nouma/title_image.jpg)
 
 ---
 

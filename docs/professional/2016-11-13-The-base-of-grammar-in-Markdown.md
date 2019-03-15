@@ -508,7 +508,7 @@ Markdown 会转成：
 
 > 没有图片的文章都不是好文章
 
-![Insect](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/The-base-of-grammar-in-Markdown/insect.jpg "Insect")
+![Insect](//blog-oss.keybrl.com/2018/images/The-base-of-grammar-in-Markdown/insect.jpg "Insect")
 
 因此， Markdown 也很自然地为我们提供了插入图片的方法
 

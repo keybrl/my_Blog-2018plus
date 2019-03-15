@@ -13,7 +13,7 @@ base_info = {
 entrys = [
     {
         'title': '软路由与NAS(3) - 外壳',
-        'link': 'http://blog.keybrl.com/boring/2019-02-22-router3_shell/',
+        'link': 'http://blog.keybrl.com/boring/2019-02-22-router3_shell.html',
         'updated': '2019-02-23T00:00:01+08:00',
         'published': '2019-02-23T00:00:00+08:00',
         'summary': '',
@@ -21,7 +21,7 @@ entrys = [
     },
     {
         'title': '软路由与NAS(2) - 软件平台搭建',
-        'link': 'http://blog.keybrl.com/boring/2019-02-18-router2_software/',
+        'link': 'http://blog.keybrl.com/boring/2019-02-18-router2_software.html',
         'updated': '2019-02-18T00:00:00+08:00',
         'published': '2019-02-18T00:00:00+08:00',
         'summary': '',
@@ -29,7 +29,7 @@ entrys = [
     },
 	{
         'title': '2018年终总结',
-        'link': 'http://blog.keybrl.com/boring/2018-12-31-summary/',
+        'link': 'http://blog.keybrl.com/boring/2018-12-31-summary.html',
         'updated': '2018-12-31T00:00:00+08:00',
         'published': '2018-12-31T00:00:00+08:00',
         'summary': '',
@@ -37,7 +37,7 @@ entrys = [
     },
     {
         'title': '软路由与NAS(1) - 硬件平台搭建',
-        'link': 'http://blog.keybrl.com/boring/2018-11-02-router1_hardware/',
+        'link': 'http://blog.keybrl.com/boring/2018-11-02-router1_hardware.html',
         'updated': '2019-02-18T00:00:00+08:00',
         'published': '2018-11-18T00:00:00+08:00',
         'summary': '',
@@ -45,7 +45,7 @@ entrys = [
     },
     {
         'title': 'Windows 常用注册表项',
-        'link': 'https://blog.keybrl.com/posts/2018-10-23-Windows-regedit/',
+        'link': 'https://blog.keybrl.com/posts/2018-10-23-Windows-regedit.html',
         'updated': '2019-02-18T00:00:00+08:00',
         'published': '2018-10-23T00:00:00+08:00',
         'summary': '',
@@ -53,7 +53,7 @@ entrys = [
     },
     {
         'title': 'keybrl-mines - 优雅的扫雷从此无处不在',
-        'link': 'https://blog.keybrl.com/projects/2018-10-14-Project-keybrl-gnome/',
+        'link': 'https://blog.keybrl.com/projects/2018-10-14-Project-keybrl-gnome.html',
         'updated': '2018-10-14T00:00:01+08:00',
         'published': '2018-10-14T00:00:01+08:00',
         'summary': '',

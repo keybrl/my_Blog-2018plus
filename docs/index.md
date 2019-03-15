@@ -9,22 +9,22 @@ hero: 欢迎各位强者光临寒舍..
 
 !!! tip "小提醒"
     **文章目录在左侧（对于宽屏设备）**  
-    ![nav1](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/nav1.jpg)
+    ![nav1](//blog-oss.keybrl.com/2018/images/nav1.jpg)
 
     **或左上角（对于窄屏设备）**  
-    ![nav2](//keybrl-my-blog.oss-cn-shenzhen.aliyuncs.com/2018/images/nav2.jpg)
+    ![nav2](//blog-oss.keybrl.com/2018/images/nav2.jpg)
 
     点击可浏览更多文章
 
 ## 主要内容
 
-该博客记录了 Keyboard 一些无聊的日常，它们在 **[无聊的日常](boring/index.md)** 目录下
+该博客记录了 Keyboard 一些无聊的日常，它们在 **[无聊的日常](boring/introduction.md)** 目录下
 
 同时该博客包含了 Keyboard 学习中的心得体会、知识的归纳总结、优秀读物的摘录还有 SS::STA 活动的教案。文章内容主要和 Web 相关  
-详见 **[专业相关](professional/index.md)** 和 **[SS::STA回顾](sssta/index.md)**
+详见 **[专业相关](professional/introduction.md)** 和 **[SS::STA回顾](sssta/introduction.md)**
 
 学习就永远少不了练习， Keyboard 为此写了很多垃圾代码，并且收录了部分在该博客中  
-详见 **[垃圾代码](projects/index.md)**
+详见 **[垃圾代码](projects/introduction.md)**
 
 ## 关于作者
 
