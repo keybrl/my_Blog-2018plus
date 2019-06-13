@@ -147,7 +147,7 @@
 
 响应 **必须** 包含以下头部字段：
 
-- 一个`Content-Range` 头部字段（14.16节），指示该响应包含  
+- 一个 `Content-Range` 头部字段（14.16节），指示该响应包含  
 的范围；或者将 `Content-Type` 头部字段置为 `multipart/byteranges` ，  
 并在每个部分包含 `Content-Range` 字段。如果在响应头部含有一个  
 `Content-Length` 字段，则它的值 **必须** 与在信息体中实际传输  

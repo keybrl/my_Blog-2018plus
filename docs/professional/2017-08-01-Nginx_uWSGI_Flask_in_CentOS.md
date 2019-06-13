@@ -6,7 +6,7 @@
 
 ---
 
-在之前的很长一段时间里，我部署Flask项目都是使用Flask自带的服务器的。在开发环境中使用Flask自带的服务器还是相当方便的，但是在生产环境中使用这种简陋的服务器似乎并不大好（虽然我也不知道哪里不好）。不管怎么说，为了提高自己的知识水平，我也费了一天的时间稍微学习了一点人生的经验——*Nginx和uWSGI*
+在之前的很长一段时间里，我部署Flask项目都是使用Flask自带的服务器的。在开发环境中使用Flask自带的服务器还是相当方便的，但是在生产环境中使用这种简陋的服务器似乎并不大好（虽然我也不知道哪里不好）。不管怎么说，为了提高自己的知识水平，我也费了一天的时间稍微学习了一点人生的经验—— *Nginx和uWSGI*
 
 那我们开始吧······
 
@@ -16,7 +16,7 @@
 
 因为最近在尝试使用CentOS，所以本文主要讲解在CentOS上的操作，在Ubuntu上操作类似但略有不同，不同之处本文会作说明。
 
-> 准确的说是*CentOS 7.2 64位*和*Ubuntu 16.04 64位*
+> 准确的说是 *CentOS 7.2 64位* 和 *Ubuntu 16.04 64位*
 
 ## 环境搭建
 
@@ -28,9 +28,9 @@
 4. Nginx
 5. virtualenv（可选）
 
-所以我们首先安装python。可以通过`python --version`命令查看是否安装python及python版本，如果不是python 2.7请先安装或升级至Python 2.7版本。具体操作见[Python-Official Site](https://www.python.org/)
+所以我们首先安装python。可以通过 `python --version` 命令查看是否安装python及python版本，如果不是python 2.7请先安装或升级至Python 2.7版本。具体操作见[Python-Official Site](https://www.python.org/)
 
-然后安装Python的包管理器pip，当然，其他包管理器原则上也可以，但是我还是推荐使用pip。通过`pip --version`查看是否安装及版本。具体安装或更新操作见[PyPI-get pip](https://pip.pypa.io/en/latest/installing/)
+然后安装Python的包管理器pip，当然，其他包管理器原则上也可以，但是我还是推荐使用pip。通过 `pip --version` 查看是否安装及版本。具体安装或更新操作见[PyPI-get pip](https://pip.pypa.io/en/latest/installing/)
 
 ### 安装uWSGI
 
@@ -53,7 +53,7 @@ yum install python-devel
 pip install uwsgi
 ```
 
-通过`uwsgi --version`检验是否安装成功。
+通过 `uwsgi --version` 检验是否安装成功。
 
 \*Ubuntu下是
 
@@ -72,7 +72,7 @@ rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0
 yum install nginx
 ```
 
-然后通过`nginx -v`检验是否安装成功。
+然后通过 `nginx -v` 检验是否安装成功。
 
 \*Ubuntu直接使用apt即可
 
@@ -140,9 +140,9 @@ stats = 127.0.0.1:9191
 
 *以上代码中的所有注释都需删去*
 
-配置文件可以放在任何位置，我放置在项目文件夹内是为了方便使用。配置文件写好后就可以通过`uwsgi uwsgiconfig.ini`启动uWSGI及Flask项目
+配置文件可以放在任何位置，我放置在项目文件夹内是为了方便使用。配置文件写好后就可以通过 `uwsgi uwsgiconfig.ini` 启动uWSGI及Flask项目
 
-> 当然，如果你此时试图通过浏览器访问上述监听地址是不能成功的，因为`socket`表示是通过套接字进程通讯而非http通讯，如果只使用uWSGI而不使用Nginx的话，可以将`socket=127.0.0.1:5000`改成`http=0.0.0.0:80`
+> 当然，如果你此时试图通过浏览器访问上述监听地址是不能成功的，因为 `socket` 表示是通过套接字进程通讯而非http通讯，如果只使用uWSGI而不使用Nginx的话，可以将 `socket=127.0.0.1:5000` 改成 `http=0.0.0.0:80`
 
 实际上uWSGI支持多种配置文件格式，xml、json、ini等。
 
@@ -154,12 +154,12 @@ Nginx是一个高性能的http、反向代理或IMAP/POP3/SMTP服务器。我们
 
 Nginx的命令参数不多，常用的有一下几种
 
-- 启动：`nginx`
-- 停止：`nginx -s stop`
-- 查看Nginx是否应用配置文件：`nginx -t`
-- 查看版本：`nginx -v`
+- 启动： `nginx`
+- 停止： `nginx -s stop`
+- 查看Nginx是否应用配置文件： `nginx -t`
+- 查看版本： `nginx -v`
 
-Nginx主要依靠配置文件配置。我们打开Nginx的默认配置文件，一般是/etc/nginx/nginx.conf。具体文件位置可以通过`nginx -t`命令查看。默认配置文件大部分是加注释的，我们修改一部分。
+Nginx主要依靠配置文件配置。我们打开Nginx的默认配置文件，一般是/etc/nginx/nginx.conf。具体文件位置可以通过 `nginx -t` 命令查看。默认配置文件大部分是加注释的，我们修改一部分。
 
 ```conf
 http {
@@ -202,22 +202,22 @@ http {
 
 > 其实你只需要在/etc/nginx/conf.d中新建一个配置文件将增加的部分填入即可，并不一定要修改默认配置文件。
 >
-> 记得注释掉默认配置文件中的`include /etc/nginx/sites-enabled/*;`
+> 记得注释掉默认配置文件中的 `include /etc/nginx/sites-enabled/*;`
 
 *Ubuntu和CentOS中的Nginx的默认配置文件不完全相同，所以重要的是见机行事。
 
 ## 启动和停止
 
-1. `nginx`，启动Nginx
-2. `uwsgi uwsgiconfig.ini`，启动uWSGI
+1. `nginx` ，启动Nginx
+2. `uwsgi uwsgiconfig.ini` ，启动uWSGI
 
 然后你就可以尝试访问你的项目了
 
-如果你需要关闭服务器，只需要关闭Nginx和uWSGI即可。你可以通过`nginx -s stop`来关闭Nginx。但如果你要关闭uWSGI则略显麻烦。
+如果你需要关闭服务器，只需要关闭Nginx和uWSGI即可。你可以通过 `nginx -s stop` 来关闭Nginx。但如果你要关闭uWSGI则略显麻烦。
 
 ### 关闭uWSGI
 
-uWSGI似乎并没有什么命令关闭，如果你不慎使其在后台运行而无法通过`Ctrl+C`来终止的话，那么你需要进行下面的操作。
+uWSGI似乎并没有什么命令关闭，如果你不慎使其在后台运行而无法通过 `Ctrl+C` 来终止的话，那么你需要进行下面的操作。
 
 查看uWSGI的PID
 

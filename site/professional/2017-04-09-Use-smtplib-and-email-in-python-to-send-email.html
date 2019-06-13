@@ -907,18 +907,6 @@
   </li>
 
     
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
-      测试页
-    </a>
-  </li>
-
-    
   </ul>
 </nav>
                   </div>
@@ -1062,16 +1050,16 @@
 </pre></div>
 </td></tr></table>
 
-<p><code class="codehilite">host</code>即SMTP服务器的地址，常见的如</p>
+<p><code class="codehilite">host</code> 即SMTP服务器的地址，常见的如</p>
 <ul>
 <li>smtp-mail.outlook.com  <em>Outlook邮箱</em></li>
 <li>smtp.qq.com  <em>QQ邮箱</em></li>
 <li>smtp.163.com  <em>163邮箱</em></li>
 </ul>
-<p><code class="codehilite">port</code>即SMTP服务器端口，一般情况下，25为明文通信，587为加密通信。部分SMTP服务器，如Outlook邮箱，不支持明文通信。</p>
-<p><code class="codehilite">user</code>和<code class="codehilite">password</code>即登陆SMTP服务器的用户名和密码，一般情况下，其与你登录该邮箱时的用户名和密码相同，但有些服务器有不同，如QQ邮箱使用QQ号和邮箱授权码登录。</p>
-<p><code class="codehilite">from_addr</code>和<code class="codehilite">to_addr</code>即发件方和收件方的邮箱地址</p>
-<p><code class="codehilite">msg</code>即该邮件的内容，具体见下文</p>
+<p><code class="codehilite">port</code> 即SMTP服务器端口，一般情况下，25为明文通信，587为加密通信。部分SMTP服务器，如Outlook邮箱，不支持明文通信。</p>
+<p><code class="codehilite">user</code> 和 <code class="codehilite">password</code> 即登陆SMTP服务器的用户名和密码，一般情况下，其与你登录该邮箱时的用户名和密码相同，但有些服务器有不同，如QQ邮箱使用QQ号和邮箱授权码登录。</p>
+<p><code class="codehilite">from_addr</code> 和 <code class="codehilite">to_addr</code> 即发件方和收件方的邮箱地址</p>
+<p><code class="codehilite">msg</code> 即该邮件的内容，具体见下文</p>
 <h2 id="email">email<a class="headerlink" href="#email" title="Permanent link">&para;</a></h2>
 <p>由于SMTP设计之初是基于ASCII的纯文本的，对二进制文件处理得并不好，因此并不适合传输文件。由此产生了MIME扩展。</p>
 <blockquote>
@@ -1089,11 +1077,11 @@
 </pre></div>
 </td></tr></table>
 
-<p>可以看到<code class="codehilite">msg</code>即上文中SMTP所发送的那个<code class="codehilite">msg</code></p>
-<p><code class="codehilite">text</code>即邮件的文本内容，可为一般文本或HTML文本等</p>
-<p><code class="codehilite">subtype</code>即文本的格式，若为一般文本则为<code class="codehilite">&#39;plain&#39;</code>，若为HTML文本则为<code class="codehilite">&#39;html&#39;</code></p>
-<p><code class="codehilite">charset</code>即文本的文字编码，默认为<code class="codehilite">&#39;us-ascii&#39;</code>，如果邮件中含有中文内容，为了保证其对中文字符最大程度的支持，应将其设为<code class="codehilite">&#39;utf-8&#39;</code></p>
-<p>当然，如果你直接发送该邮件，你会发现邮件缺少发件人、收件人、主题等信息，这些信息其实是构建在邮件的<code class="codehilite">header</code>中的，你可以这样设置</p>
+<p>可以看到 <code class="codehilite">msg</code> 即上文中SMTP所发送的那个 <code class="codehilite">msg</code></p>
+<p><code class="codehilite">text</code> 即邮件的文本内容，可为一般文本或HTML文本等</p>
+<p><code class="codehilite">subtype</code> 即文本的格式，若为一般文本则为 <code class="codehilite">&#39;plain&#39;</code> ，若为HTML文本则为 <code class="codehilite">&#39;html&#39;</code></p>
+<p><code class="codehilite">charset</code> 即文本的文字编码，默认为 <code class="codehilite">&#39;us-ascii&#39;</code> ，如果邮件中含有中文内容，为了保证其对中文字符最大程度的支持，应将其设为 <code class="codehilite">&#39;utf-8&#39;</code></p>
+<p>当然，如果你直接发送该邮件，你会发现邮件缺少发件人、收件人、主题等信息，这些信息其实是构建在邮件的 <code class="codehilite">header</code> 中的，你可以这样设置</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1108,10 +1096,10 @@
 </pre></div>
 </td></tr></table>
 
-<p><code class="codehilite">Header()</code>函数用于构建email的头部，传入该函数的参数应为<code class="codehilite">unicode</code>格式的</p>
-<p><code class="codehilite">formataddr()</code>可以将发件人名和发件地址组合成类似于<code class="codehilite">Keyboard &lt;keyboard-l@outlook.com&gt;</code>的标准格式，传入该函数的参数应为<code class="codehilite">utf-8</code>格式</p>
+<p><code class="codehilite">Header()</code> 函数用于构建email的头部，传入该函数的参数应为 <code class="codehilite">unicode</code> 格式的</p>
+<p><code class="codehilite">formataddr()</code> 可以将发件人名和发件地址组合成类似于 <code class="codehilite">Keyboard &lt;keyboard-l@outlook.com&gt;</code> 的标准格式，传入该函数的参数应为 <code class="codehilite">utf-8</code> 格式</p>
 <blockquote>
-<p>对呀，所以上面才要进行一堆麻烦的<code class="codehilite">decode()</code>和<code class="codehilite">encode()</code>操作</p>
+<p>对呀，所以上面才要进行一堆麻烦的 <code class="codehilite">decode()</code> 和 <code class="codehilite">encode()</code> 操作</p>
 </blockquote>
 <p>所以们来发几个邮件试试吧</p>
 <h4 id="_1">发送文本邮件<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
@@ -1337,7 +1325,7 @@
 </pre></div>
 </td></tr></table>
 
-<p>可以看到，跟上一份代码比，这不过是更换了邮件正文内容和<code class="codehilite">msg</code>的<code class="codehilite">subtype</code></p>
+<p>可以看到，跟上一份代码比，这不过是更换了邮件正文内容和 <code class="codehilite">msg</code> 的 <code class="codehilite">subtype</code></p>
 <h4 id="html_1">发送带图片的HTML邮件<a class="headerlink" href="#html_1" title="Permanent link">&para;</a></h4>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -1719,7 +1707,7 @@
 </td></tr></table>
 
 <h2 id="_5">做点总结<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>看了几份代码，基本上应该能发现使用smtplib发送邮件的步骤是一样的，变的只是使用email构造邮件的方法。而且，构造邮件也是有一定相似之处的，首先创建邮件，然后加入头部的信息，然后将正文文本、HTML以及附带的图片、附件通过<code class="codehilite"><span class="na">.attach</span><span class="p">()</span></code>方法逐一加入到创建的邮件中去，如此便能构建出一份完整的邮件。</p>
+<p>看了几份代码，基本上应该能发现使用smtplib发送邮件的步骤是一样的，变的只是使用email构造邮件的方法。而且，构造邮件也是有一定相似之处的，首先创建邮件，然后加入头部的信息，然后将正文文本、HTML以及附带的图片、附件通过 <code class="codehilite"><span class="na">.attach</span><span class="p">()</span></code> 方法逐一加入到创建的邮件中去，如此便能构建出一份完整的邮件。</p>
 <blockquote>
 <p>所以说还是挺简单的嘛</p>
 </blockquote>

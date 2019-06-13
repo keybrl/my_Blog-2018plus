@@ -2,17 +2,17 @@
 
 强者们的个人博客
 
-- 被代码耽误的文学家**Maozu** - [Nothing important](https://blog.maozu.ink/)
-- 技能树全满之**尹大人** - [Review·何以解忧，唯有暴富](https://www.yichya.dev/)
-- 精通Web后端之**王大人** - [-Finley- - 博客园](https://www.cnblogs.com/Finley)
-- 精通科学计算的数学天才**陈大佬** - [Ciaran's Gondolin - 磐石之城、隐秘之地、守卫之塔、盛开在平原上的鲜花](https://blog.ciaran.cn/)
-- 手搓堆排序之**zsr** - [Stephen的小本本](http://www.stephenzhang.me/)
-- 全能型学霸**李主席** - [Stay Hungry, Stay Foolish.](https://tobiaslee.top/)
-- Web全栈之**钟大佬** - [37A's Personal Site](http://blog.three7.cc/)
-- 精通游戏制作的Web后端**zsj** - [PaperStation](https://onesaber.github.io/PaperStation/)
-- 精通ML之**Virtuoso** - [Virtuoso's Blog](https://blog.v1rtuoso.cn/)
-- 游戏组三代目**张大炮** - [大炮's Blog - 喜欢的话就坚持吧](https://blog.dapaostudio.com/)
-- 精通计算机图形学的**杨大佬** - [心渡的小黑屋](http://blog.xindu233.com/)
+- 被代码耽误的文学家 **Maozu** - [Nothing important](https://blog.maozu.ink/)
+- 技能树全满之 **尹大人** - [Review·何以解忧，唯有暴富](https://www.yichya.dev/)
+- 精通Web后端之 **王大人** - [-Finley- - 博客园](https://www.cnblogs.com/Finley)
+- 精通科学计算的数学天才 **陈大佬** - [Ciaran's Gondolin - 磐石之城、隐秘之地、守卫之塔、盛开在平原上的鲜花](https://blog.ciaran.cn/)
+- 手搓堆排序之 **zsr** - [Stephen的小本本](http://www.stephenzhang.me/)
+- 全能型学霸 **李主席** - [Stay Hungry, Stay Foolish.](https://tobiaslee.top/)
+- Web全栈之 **钟大佬** - [37A's Personal Site](http://blog.three7.cc/)
+- 精通游戏制作的Web后端 **zsj** - [PaperStation](https://onesaber.github.io/PaperStation/)
+- 精通ML之 **Virtuoso** - [Virtuoso's Blog](https://blog.v1rtuoso.cn/)
+- 游戏组三代目 **张大炮** - [大炮's Blog - 喜欢的话就坚持吧](https://blog.dapaostudio.com/)
+- 精通计算机图形学的 **杨大佬** - [心渡的小黑屋](http://blog.xindu233.com/)
 
 
 !!! note "可用性说明"

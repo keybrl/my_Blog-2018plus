@@ -913,18 +913,6 @@
   </li>
 
     
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
-      测试页
-    </a>
-  </li>
-
-    
   </ul>
 </nav>
                   </div>
@@ -1043,13 +1031,13 @@
 <p>date: 2017-08-01</p>
 </blockquote>
 <hr />
-<p>在之前的很长一段时间里，我部署Flask项目都是使用Flask自带的服务器的。在开发环境中使用Flask自带的服务器还是相当方便的，但是在生产环境中使用这种简陋的服务器似乎并不大好（虽然我也不知道哪里不好）。不管怎么说，为了提高自己的知识水平，我也费了一天的时间稍微学习了一点人生的经验——<em>Nginx和uWSGI</em></p>
+<p>在之前的很长一段时间里，我部署Flask项目都是使用Flask自带的服务器的。在开发环境中使用Flask自带的服务器还是相当方便的，但是在生产环境中使用这种简陋的服务器似乎并不大好（虽然我也不知道哪里不好）。不管怎么说，为了提高自己的知识水平，我也费了一天的时间稍微学习了一点人生的经验—— <em>Nginx和uWSGI</em></p>
 <p>那我们开始吧······</p>
 <h2 id="_1">系统<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>我们不建议在Windows系统中搞这些事情，否则你可能会遇见各种奇怪而难以解决的问题，而且这将使你看起来很蠢。我没用过也不会用MacOS。所以我还是在Linux系统上搞事情，你可以在Ubuntu或CentOS这两种Linux发行版上尝试本文所列举的操作。</p>
 <p>因为最近在尝试使用CentOS，所以本文主要讲解在CentOS上的操作，在Ubuntu上操作类似但略有不同，不同之处本文会作说明。</p>
 <blockquote>
-<p>准确的说是*CentOS 7.2 64位*和*Ubuntu 16.04 64位*</p>
+<p>准确的说是 <em>CentOS 7.2 64位</em> 和 <em>Ubuntu 16.04 64位</em></p>
 </blockquote>
 <h2 id="_2">环境搭建<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本文所诉操作依赖的环境主要包括：</p>
@@ -1060,8 +1048,8 @@
 <li>Nginx</li>
 <li>virtualenv（可选）</li>
 </ol>
-<p>所以我们首先安装python。可以通过<code class="codehilite">python --version</code>命令查看是否安装python及python版本，如果不是python 2.7请先安装或升级至Python 2.7版本。具体操作见<a href="https://www.python.org/" target="_blank">Python-Official Site</a></p>
-<p>然后安装Python的包管理器pip，当然，其他包管理器原则上也可以，但是我还是推荐使用pip。通过<code class="codehilite">pip --version</code>查看是否安装及版本。具体安装或更新操作见<a href="https://pip.pypa.io/en/latest/installing/" target="_blank">PyPI-get pip</a></p>
+<p>所以我们首先安装python。可以通过 <code class="codehilite">python --version</code> 命令查看是否安装python及python版本，如果不是python 2.7请先安装或升级至Python 2.7版本。具体操作见<a href="https://www.python.org/" target="_blank">Python-Official Site</a></p>
+<p>然后安装Python的包管理器pip，当然，其他包管理器原则上也可以，但是我还是推荐使用pip。通过 <code class="codehilite">pip --version</code> 查看是否安装及版本。具体安装或更新操作见<a href="https://pip.pypa.io/en/latest/installing/" target="_blank">PyPI-get pip</a></p>
 <h3 id="uwsgi">安装uWSGI<a class="headerlink" href="#uwsgi" title="Permanent link">&para;</a></h3>
 <p>首先你可能需要安装一些乱七八糟的依赖</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1080,7 +1068,7 @@ yum install zlib zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel
 </pre></div>
 </td></tr></table>
 
-<p>通过<code class="codehilite">uwsgi --version</code>检验是否安装成功。</p>
+<p>通过 <code class="codehilite">uwsgi --version</code> 检验是否安装成功。</p>
 <p>*Ubuntu下是</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1098,7 +1086,7 @@ yum install nginx
 </pre></div>
 </td></tr></table>
 
-<p>然后通过<code class="codehilite">nginx -v</code>检验是否安装成功。</p>
+<p>然后通过 <code class="codehilite">nginx -v</code> 检验是否安装成功。</p>
 <p>*Ubuntu直接使用apt即可</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>apt-get install nginx
 </pre></div>
@@ -1185,9 +1173,9 @@ yum install nginx
 </td></tr></table>
 
 <p><em>以上代码中的所有注释都需删去</em></p>
-<p>配置文件可以放在任何位置，我放置在项目文件夹内是为了方便使用。配置文件写好后就可以通过<code class="codehilite">uwsgi uwsgiconfig.ini</code>启动uWSGI及Flask项目</p>
+<p>配置文件可以放在任何位置，我放置在项目文件夹内是为了方便使用。配置文件写好后就可以通过 <code class="codehilite">uwsgi uwsgiconfig.ini</code> 启动uWSGI及Flask项目</p>
 <blockquote>
-<p>当然，如果你此时试图通过浏览器访问上述监听地址是不能成功的，因为<code class="codehilite">socket</code>表示是通过套接字进程通讯而非http通讯，如果只使用uWSGI而不使用Nginx的话，可以将<code class="codehilite">socket=127.0.0.1:5000</code>改成<code class="codehilite">http=0.0.0.0:80</code></p>
+<p>当然，如果你此时试图通过浏览器访问上述监听地址是不能成功的，因为 <code class="codehilite">socket</code> 表示是通过套接字进程通讯而非http通讯，如果只使用uWSGI而不使用Nginx的话，可以将 <code class="codehilite">socket=127.0.0.1:5000</code> 改成 <code class="codehilite">http=0.0.0.0:80</code></p>
 </blockquote>
 <p>实际上uWSGI支持多种配置文件格式，xml、json、ini等。</p>
 <h2 id="nginx_1">配置Nginx<a class="headerlink" href="#nginx_1" title="Permanent link">&para;</a></h2>
@@ -1197,12 +1185,12 @@ yum install nginx
 </blockquote>
 <p>Nginx的命令参数不多，常用的有一下几种</p>
 <ul>
-<li>启动：<code class="codehilite">nginx</code></li>
-<li>停止：<code class="codehilite">nginx -s stop</code></li>
-<li>查看Nginx是否应用配置文件：<code class="codehilite">nginx -t</code></li>
-<li>查看版本：<code class="codehilite">nginx -v</code></li>
+<li>启动： <code class="codehilite">nginx</code></li>
+<li>停止： <code class="codehilite">nginx -s stop</code></li>
+<li>查看Nginx是否应用配置文件： <code class="codehilite">nginx -t</code></li>
+<li>查看版本： <code class="codehilite">nginx -v</code></li>
 </ul>
-<p>Nginx主要依靠配置文件配置。我们打开Nginx的默认配置文件，一般是/etc/nginx/nginx.conf。具体文件位置可以通过<code class="codehilite">nginx -t</code>命令查看。默认配置文件大部分是加注释的，我们修改一部分。</p>
+<p>Nginx主要依靠配置文件配置。我们打开Nginx的默认配置文件，一般是/etc/nginx/nginx.conf。具体文件位置可以通过 <code class="codehilite">nginx -t</code> 命令查看。默认配置文件大部分是加注释的，我们修改一部分。</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1279,18 +1267,18 @@ yum install nginx
 
 <blockquote>
 <p>其实你只需要在/etc/nginx/conf.d中新建一个配置文件将增加的部分填入即可，并不一定要修改默认配置文件。</p>
-<p>记得注释掉默认配置文件中的<code class="codehilite">include /etc/nginx/sites-enabled/*;</code></p>
+<p>记得注释掉默认配置文件中的 <code class="codehilite">include /etc/nginx/sites-enabled/*;</code></p>
 </blockquote>
 <p>*Ubuntu和CentOS中的Nginx的默认配置文件不完全相同，所以重要的是见机行事。</p>
 <h2 id="_3">启动和停止<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ol>
-<li><code class="codehilite">nginx</code>，启动Nginx</li>
-<li><code class="codehilite">uwsgi uwsgiconfig.ini</code>，启动uWSGI</li>
+<li><code class="codehilite">nginx</code> ，启动Nginx</li>
+<li><code class="codehilite">uwsgi uwsgiconfig.ini</code> ，启动uWSGI</li>
 </ol>
 <p>然后你就可以尝试访问你的项目了</p>
-<p>如果你需要关闭服务器，只需要关闭Nginx和uWSGI即可。你可以通过<code class="codehilite">nginx -s stop</code>来关闭Nginx。但如果你要关闭uWSGI则略显麻烦。</p>
+<p>如果你需要关闭服务器，只需要关闭Nginx和uWSGI即可。你可以通过 <code class="codehilite">nginx -s stop</code> 来关闭Nginx。但如果你要关闭uWSGI则略显麻烦。</p>
 <h3 id="uwsgi_2">关闭uWSGI<a class="headerlink" href="#uwsgi_2" title="Permanent link">&para;</a></h3>
-<p>uWSGI似乎并没有什么命令关闭，如果你不慎使其在后台运行而无法通过<code class="codehilite">Ctrl+C</code>来终止的话，那么你需要进行下面的操作。</p>
+<p>uWSGI似乎并没有什么命令关闭，如果你不慎使其在后台运行而无法通过 <code class="codehilite">Ctrl+C</code> 来终止的话，那么你需要进行下面的操作。</p>
 <p>查看uWSGI的PID</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>ps -e
 </pre></div>

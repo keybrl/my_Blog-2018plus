@@ -57,7 +57,6 @@ nav:
     - 留言板: 'board.md'
     - 友情链接: 'links.md'
     - 小额赞助: 'donate.md'
-    - 测试页: 'just_for_test.md'
 
 # Build directories
 theme:

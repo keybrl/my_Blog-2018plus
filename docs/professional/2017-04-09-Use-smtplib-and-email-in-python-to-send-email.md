@@ -35,19 +35,19 @@ server.sendmail(from_addr, to_addr, msg.as_string())  # 发送邮件
 server.quit()  # 关闭SMTP服务器
 ```
 
-`host`即SMTP服务器的地址，常见的如
+`host` 即SMTP服务器的地址，常见的如
 
 * smtp-mail.outlook.com  *Outlook邮箱*
 * smtp.qq.com  *QQ邮箱*
 * smtp.163.com  *163邮箱*
 
-`port`即SMTP服务器端口，一般情况下，25为明文通信，587为加密通信。部分SMTP服务器，如Outlook邮箱，不支持明文通信。
+`port` 即SMTP服务器端口，一般情况下，25为明文通信，587为加密通信。部分SMTP服务器，如Outlook邮箱，不支持明文通信。
 
-`user`和`password`即登陆SMTP服务器的用户名和密码，一般情况下，其与你登录该邮箱时的用户名和密码相同，但有些服务器有不同，如QQ邮箱使用QQ号和邮箱授权码登录。
+`user` 和 `password` 即登陆SMTP服务器的用户名和密码，一般情况下，其与你登录该邮箱时的用户名和密码相同，但有些服务器有不同，如QQ邮箱使用QQ号和邮箱授权码登录。
 
-`from_addr`和`to_addr`即发件方和收件方的邮箱地址
+`from_addr` 和 `to_addr` 即发件方和收件方的邮箱地址
 
-`msg`即该邮件的内容，具体见下文
+`msg` 即该邮件的内容，具体见下文
 
 ## email
 
@@ -69,15 +69,15 @@ from email.mime.text import MIMEText
 msg = MIMEText(text, subtype, charset)
 ```
 
-可以看到`msg`即上文中SMTP所发送的那个`msg`
+可以看到 `msg` 即上文中SMTP所发送的那个 `msg`
 
-`text`即邮件的文本内容，可为一般文本或HTML文本等
+`text` 即邮件的文本内容，可为一般文本或HTML文本等
 
-`subtype`即文本的格式，若为一般文本则为`'plain'`，若为HTML文本则为`'html'`
+`subtype` 即文本的格式，若为一般文本则为 `'plain'` ，若为HTML文本则为 `'html'`
 
-`charset`即文本的文字编码，默认为`'us-ascii'`，如果邮件中含有中文内容，为了保证其对中文字符最大程度的支持，应将其设为`'utf-8'`
+`charset` 即文本的文字编码，默认为 `'us-ascii'` ，如果邮件中含有中文内容，为了保证其对中文字符最大程度的支持，应将其设为 `'utf-8'`
 
-当然，如果你直接发送该邮件，你会发现邮件缺少发件人、收件人、主题等信息，这些信息其实是构建在邮件的`header`中的，你可以这样设置
+当然，如果你直接发送该邮件，你会发现邮件缺少发件人、收件人、主题等信息，这些信息其实是构建在邮件的 `header` 中的，你可以这样设置
 
 ```python
 from email.header import Header
@@ -88,11 +88,11 @@ msg['To'] = formataddr((Header(to_name.decode(), 'utf-8').encode(), to_addr))
 msg['Subject'] = Header(subject.decode('utf-8'), 'utf-8').encode()
 ```
 
-`Header()`函数用于构建email的头部，传入该函数的参数应为`unicode`格式的
+`Header()` 函数用于构建email的头部，传入该函数的参数应为 `unicode` 格式的
 
-`formataddr()`可以将发件人名和发件地址组合成类似于`Keyboard <keyboard-l@outlook.com>`的标准格式，传入该函数的参数应为`utf-8`格式
+`formataddr()` 可以将发件人名和发件地址组合成类似于 `Keyboard <keyboard-l@outlook.com>` 的标准格式，传入该函数的参数应为 `utf-8` 格式
 
-> 对呀，所以上面才要进行一堆麻烦的`decode()`和`encode()`操作
+> 对呀，所以上面才要进行一堆麻烦的 `decode()` 和 `encode()` 操作
 
 所以们来发几个邮件试试吧
 
@@ -224,7 +224,7 @@ server.quit()
 
 ```
 
-可以看到，跟上一份代码比，这不过是更换了邮件正文内容和`msg`的`subtype`
+可以看到，跟上一份代码比，这不过是更换了邮件正文内容和 `msg` 的 `subtype`
 
 #### 发送带图片的HTML邮件
 
@@ -435,6 +435,6 @@ server.quit()
 
 ## 做点总结
 
-看了几份代码，基本上应该能发现使用smtplib发送邮件的步骤是一样的，变的只是使用email构造邮件的方法。而且，构造邮件也是有一定相似之处的，首先创建邮件，然后加入头部的信息，然后将正文文本、HTML以及附带的图片、附件通过`.attach()`方法逐一加入到创建的邮件中去，如此便能构建出一份完整的邮件。
+看了几份代码，基本上应该能发现使用smtplib发送邮件的步骤是一样的，变的只是使用email构造邮件的方法。而且，构造邮件也是有一定相似之处的，首先创建邮件，然后加入头部的信息，然后将正文文本、HTML以及附带的图片、附件通过 `.attach()` 方法逐一加入到创建的邮件中去，如此便能构建出一份完整的邮件。
 
 > 所以说还是挺简单的嘛

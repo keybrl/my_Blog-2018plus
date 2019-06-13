@@ -994,18 +994,6 @@
   </li>
 
     
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../just_for_test.html" title="测试页" class="md-nav__link">
-      测试页
-    </a>
-  </li>
-
-    
   </ul>
 </nav>
                   </div>
@@ -1207,9 +1195,9 @@
 <hr />
 <h2 id="_1">安全须知一<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Python语句以换行结束，不需要也不能毫无缘由地在一个语句后面加上<code class="codehilite">;</code>。当然，凡事总有例外，如果你需要在一行中书写多个语句，那么你需要用分号间隔他们。（但是原则上，如无特殊需求，尽量使用一行书写一个语句。关于一行多句以及一句多行的问题我们往后再谈。）</li>
-<li>Python以代码的**缩进**确定层次结构（所以我们避免了**神圣的大括号之战**），原则上同一缩进即为同一层（但我们仍然建议一个缩进为4个空格）。（所以你终于没有什么借口不缩进了吧）</li>
-<li>Python**严格区分大小写**，包括变量名、操作符、值、函数或类名、......（所有东西），比如<code class="codehilite">True</code>和<code class="codehilite">true</code>就完全不同（但我们仍然不希望你为<code class="codehilite">true</code>赋值）</li>
+<li>Python语句以换行结束，不需要也不能毫无缘由地在一个语句后面加上 <code class="codehilite">;</code> 。当然，凡事总有例外，如果你需要在一行中书写多个语句，那么你需要用分号间隔他们。（但是原则上，如无特殊需求，尽量使用一行书写一个语句。关于一行多句以及一句多行的问题我们往后再谈。）</li>
+<li>Python以代码的 <strong>缩进</strong> 确定层次结构（所以我们避免了 <strong>神圣的大括号之战</strong> ），原则上同一缩进即为同一层（但我们仍然建议一个缩进为4个空格）。（所以你终于没有什么借口不缩进了吧）</li>
+<li>Python <strong>严格区分大小写</strong> ，包括变量名、操作符、值、函数或类名、......（所有东西），比如 <code class="codehilite">True</code> 和 <code class="codehilite">true</code> 就完全不同（但我们仍然不希望你为 <code class="codehilite">true</code> 赋值）</li>
 </ol>
 <h2 id="_2">玩耍前的热身<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="_3">一点有用的内建函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -1226,7 +1214,7 @@
 </td></tr></table>
 
 <blockquote>
-<p>Python2.7中<code class="codehilite">print</code>更像操作符，他可以不需要括号。而功能与<code class="codehilite">input()</code>类似的则是<code class="codehilite">raw_input()</code></p>
+<p>Python2.7中 <code class="codehilite">print</code> 更像操作符，他可以不需要括号。而功能与  <code class="codehilite">input()</code> 类似的则是 <code class="codehilite">raw_input()</code></p>
 </blockquote>
 <h4 id="_5">获取帮助<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1271,7 +1259,7 @@
 </blockquote>
 <h3 id="_7">关于代码注释<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>养成良好的代码习惯十分重要，而代码注释是为数不多的在代码风格之战中被较好地达成一致的部分。</p>
-<p>而且特别幸运的是，在Python中，只有一种用于标记注释的符号，即<code class="codehilite">#</code></p>
+<p>而且特别幸运的是，在Python中，只有一种用于标记注释的符号，即 <code class="codehilite">#</code></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1295,8 +1283,8 @@
 <p>就跟上面那段示例一样</p>
 </blockquote>
 <h3 id="_8">初谈变量与常量<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>与绝大多数编程语言类似，Python的变量标识符<code class="codehilite">只能由下划线或拉丁字母开头，只能包含下划线、拉丁字母和阿拉伯数字</code>，并且类似的，Python也有一些保留字</p>
-<p>Python有一个官方库<code class="codehilite">keyword</code>，里面有一个保留字列表<code class="codehilite">kwlist</code>和一个判断是否为保留字的方法<code class="codehilite">iskeyword</code></p>
+<p>与绝大多数编程语言类似，Python的变量标识符 <code class="codehilite">只能由下划线或拉丁字母开头，只能包含下划线、拉丁字母和阿拉伯数字</code> ，并且类似的，Python也有一些保留字</p>
+<p>Python有一个官方库 <code class="codehilite">keyword</code> ，里面有一个保留字列表 <code class="codehilite">kwlist</code> 和一个判断是否为保留字的方法 <code class="codehilite">iskeyword</code></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">keyword</span>
@@ -1307,7 +1295,7 @@
 
 <h4 id="_9">灵活的变量<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>在Python中变量是一个十分灵活的存在</p>
-<p>首先他不需要显式地声明，也不需要显式地指明他的类型。他们可以简单地通过赋值运算符<code class="codehilite">=</code>进行创建、声明以及赋值,就像这样</p>
+<p>首先他不需要显式地声明，也不需要显式地指明他的类型。他们可以简单地通过赋值运算符 <code class="codehilite">=</code> 进行创建、声明以及赋值,就像这样</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">233</span>  <span class="c1"># 整数</span>
@@ -1316,7 +1304,7 @@
 </pre></div>
 </td></tr></table>
 
-<p>一个变量的类型可以通过赋值操作符随意改变，但并不代表他们的类型很随意，其实Python有着严格的类型检查。我们可以用内建函数<code class="codehilite">type()</code>来获取一个变量的类型</p>
+<p>一个变量的类型可以通过赋值操作符随意改变，但并不代表他们的类型很随意，其实Python有着严格的类型检查。我们可以用内建函数 <code class="codehilite">type()</code> 来获取一个变量的类型</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1434,7 +1422,7 @@
 </pre></div>
 </td></tr></table>
 
-<p>如果你需要使用多行文本，你可以使用<code class="codehilite">\n</code>换行，但其实Python提供了一种更漂亮的方法，即**使用一对三个单引号包围多行文本**</p>
+<p>如果你需要使用多行文本，你可以使用 <code class="codehilite">\n</code> 换行，但其实Python提供了一种更漂亮的方法，即 <strong>使用一对三个单引号包围多行文本</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1451,14 +1439,14 @@
 </pre></div>
 </td></tr></table>
 
-<p>转义字符相信大家都不陌生，Python也可以使用<code class="codehilite">\</code>进行转义，但是如果要输出<code class="codehilite">\</code>本身，就需要给他自己转义<code class="codehilite">\\</code>。某些情况下你需要非常多的<code class="codehilite">\</code>，在该死的re表达式中甚至需要多次转义（用四个<code class="codehilite">\</code>表示一个真正的<code class="codehilite">\</code>）。这样非常的蠢，所以Python还提供一种较优雅的方式</p>
+<p>转义字符相信大家都不陌生，Python也可以使用 <code class="codehilite">\</code> 进行转义，但是如果要输出 <code class="codehilite">\</code> 本身，就需要给他自己转义 <code class="codehilite">\\</code> 。某些情况下你需要非常多的 <code class="codehilite">\</code> ，在该死的re表达式中甚至需要多次转义（用四个 <code class="codehilite">\</code> 表示一个真正的 <code class="codehilite">\</code> ）。这样非常的蠢，所以Python还提供一种较优雅的方式</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\\t\\\\</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">\t</span><span class="se">\\\\</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-<p>用<code class="codehilite">r</code>作为字符串的前缀可以使字符串内的反斜杠不转义</p>
+<p>用 <code class="codehilite">r</code> 作为字符串的前缀可以使字符串内的反斜杠不转义</p>
 <p>大家应该都玩过C的格式化输出，Python也有类似功能，但这不只能用在输出上</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -1547,7 +1535,7 @@
 </td></tr></table>
 
 <p>你已经注意到了，Python的列表和C的数组有一个很大的区别，我们创建他时没有为他设置大小。因为Python解释器自动帮你完成了这些操作，解释器自动识别了数据大小并为之分配合适的内存空间。如果你足够有想法，你一定会想到</p>
-<p><strong>”如果他真的那么智能，那他为什么不为我动态分配内存呢，他只需要检查我要加入的或者移出的数据的大小然后为我多申请一些内存或者释放多余的内存就可以了“</strong></p>
+<p><strong>“如果他真的那么智能，那他为什么不为我动态分配内存呢，他只需要检查我要加入的或者移出的数据的大小然后为我多申请一些内存或者释放多余的内存就可以了”</strong></p>
 <p>嗯，Python就是这么做的。这意味Python的列表比C的数组有高得多的灵活性</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1577,7 +1565,7 @@
 
 <hr />
 <p>元组其实和列表很相似，不同的是列表是可变的，而元组是不可变的，他将在创建时被定格。元组不可变并不等同于存储了元组的变量不可变，上面说了，你没有任何办法阻止一个变量的重新赋值，除非你不这么做。</p>
-<p>元组的表示和读取操作和列表很像，只不过你需要用<code class="codehilite">()</code>代替<code class="codehilite">[]</code></p>
+<p>元组的表示和读取操作和列表很像，只不过你需要用 <code class="codehilite">()</code> 代替 <code class="codehilite">[]</code></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1721,15 +1709,15 @@
 <tbody>
 <tr>
 <td align="center">not a</td>
-<td>a的逻辑**非**</td>
+<td>a的逻辑 <strong>非</strong></td>
 </tr>
 <tr>
 <td align="center">a and b</td>
-<td>a和b的逻辑**与**</td>
+<td>a和b的逻辑 <strong>与</strong></td>
 </tr>
 <tr>
 <td align="center">a or b</td>
-<td>a和b的逻辑**或**</td>
+<td>a和b的逻辑 <strong>或</strong></td>
 </tr>
 </tbody>
 </table>
@@ -1773,7 +1761,7 @@
 </tbody>
 </table>
 <blockquote>
-<p>Python2.7中<code class="codehilite">/</code>表现地类似于C的除法（整数相除则地板除、浮点数相除或浮点数与整数相除则为浮点除法）</p>
+<p>Python2.7中 <code class="codehilite">/</code> 表现地类似于C的除法（整数相除则地板除、浮点数相除或浮点数与整数相除则为浮点除法）</p>
 </blockquote>
 <h3 id="_17">再谈变量<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>Python的变量与C语言的变量看起来有点类似（但几乎完全不同）</p>

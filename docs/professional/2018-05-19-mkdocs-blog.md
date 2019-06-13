@@ -161,7 +161,7 @@ theme: 'readthedocs'
 
 这将将主题切换至 Read the Docs 的主题，或许你会发现这个主题十分熟悉，因为很多文档都是这么构建的。更多第三方主题详见 [社区wiki](https://github.com/mkdocs/mkdocs/wiki/MkDocs-Themes)
 
-> 我个人推荐 [**Material**](https://squidfunk.github.io/mkdocs-material/)
+> 我个人推荐 [ **Material** ](https://squidfunk.github.io/mkdocs-material/)
 
 自定义主题的相关内容已经远远超出本篇所能描述的范畴，详见 [Custom themes - MkDocs](https://www.mkdocs.org/user-guide/custom-themes/)
 

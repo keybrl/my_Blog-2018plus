@@ -126,7 +126,7 @@ if __name__ == '__main__':
             f.write(txt)
 ```
 
-以上是一个有趣的小玩意，使用了第三方库 `pillow`。
+以上是一个有趣的小玩意，使用了第三方库 `pillow` 。
 
 > 你们可以试着拿C语言写一下，我反正不会233
 
@@ -157,30 +157,30 @@ if __name__ == '__main__':
 
 1. [Python官网](https://www.python.org/)下载、安装
 2. 设置环境变量（可自动完成，留心勾选就可以避免很多麻烦）
-3. 使用`py`启动器选择启动版本（`-2`或`-3`），使用`Python`启动随缘版本的Python
+3. 使用 `py` 启动器选择启动版本（ `-2` 或 `-3` ），使用 `Python` 启动随缘版本的Python
 
 #### Ubuntu(Debian)安装
 
-打开**终端**，使用apt命令安装py2或py3
+打开 **终端** ，使用apt命令安装py2或py3
 
 ```bash
 apt-get install python
 apt-get install python3
 ```
 
-> 你可能（肯定）需要使用`root`用户权限，比如在命令前加上`sudo`
+> 你可能（肯定）需要使用 `root` 用户权限，比如在命令前加上 `sudo`
 
-使用`python`启动Python2.x，或`python3`启动python3.x
+使用 `python` 启动Python2.x，或 `python3` 启动python3.x
 
 ### Python的力量之源
 
 前面说过Python拥有大量的官方和第三方库，这是高效的源泉（之一）。嗯，所以管理他们很重要。
 
-**pip**就是一个**\***好的Python包管理器
+**pip** 就是一个 **\*** 好的Python包管理器
 
-> 以上涉嫌违反广告法的部分已用*代替
+> 以上涉嫌违反广告法的部分已用\*代替
 
-Windows使用[`pip-get.py`脚本](https://pip.pypa.io/en/stable/installing/)安装
+Windows使用[ `pip-get.py` 脚本](https://pip.pypa.io/en/stable/installing/)安装
 
 ```bash
 python get-pip.py
@@ -194,7 +194,7 @@ apt-get install python-pip
 apt-get install python3-pip
 ```
 
-安装完成之后可以使用pip命令安装Python第三方库，比如一个优雅的HTTP库`requests`
+安装完成之后可以使用pip命令安装Python第三方库，比如一个优雅的HTTP库 `requests`
 
 ```bash
 pip install requests
@@ -205,9 +205,9 @@ pip3 install requests
 
 安装好Python后，我们就该开始写点代码了，我们主要有以下三种方式
 
-- 命令行的Python交互式环境（**Linux终端**、**PowerShell**、CMD、...）
-- 文本编辑器 + 命令行（[**sublime text 3**](http://www.sublimetext.com/)、Notepad ++、Visual Studio Code、...）
-- IDE（[**PyCharm**](https://www.jetbrains.com/pycharm/)、IDLE、Visual Studio *（这一定是在开玩笑）* 、...）
+- 命令行的Python交互式环境（ **Linux终端** 、 **PowerShell** 、CMD、...）
+- 文本编辑器 + 命令行（[ **sublime text 3** ](http://www.sublimetext.com/)、Notepad ++、Visual Studio Code、...）
+- IDE（[ **PyCharm** ](https://www.jetbrains.com/pycharm/)、IDLE、Visual Studio *（这一定是在开玩笑）* 、...）
 - [pythonanywhere](https://www.pythonanywhere.com/)等在线编译器
 - [QPython](http://www.qpython.com/)等移动端编译器
 
